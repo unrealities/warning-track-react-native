@@ -1,0 +1,17 @@
+{
+  "name": "WarningTrack",
+  "displayName": "WarningTrack",
+  "expo": {
+    "name": "WarningTrack",
+    "slug": "WarningTrack",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
