@@ -1,40 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Svg, {G, Path} from 'react-native-svg';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+
+var backgroundImg = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MCIgaGVpZ2h0PSI3MCI+CjxyZWN0IHdpZHRoPSI3MCIgaGVpZ2h0PSI3MCIgZmlsbD0iIzQ0YWEwMCI+PC9yZWN0Pgo8ZyB0cmFuc2Zvcm09InJvdGF0ZSg0NSkiPgo8cmVjdCB3aWR0aD0iOTkiIGhlaWdodD0iMjUiIGZpbGw9IiM1NWQ0MDAiPjwvcmVjdD4KPHJlY3QgeT0iLTUwIiB3aWR0aD0iOTkiIGhlaWdodD0iMjUiIGZpbGw9IiM1NWQ0MDAiPjwvcmVjdD4KPC9nPgo8L3N2Zz4=';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <SvgBackground />
-      <Text>WarningTrack</Text>
+      <ImageBackground imageStyle={styles.backgroundImg}
+                       source={{uri: backgroundImg}}
+                       style={styles.background}>
+        <Text>WarningTrack</Text>
+      </ImageBackground>
     </View>
   );
 }
 
-export class SvgBackground extends React.Component {
-  render() {
-    return (
-      <View style={styles.background}>
-        <Svg height="100%" width="100%">
-          <Path fill="#4a0" d="M0 0H70V70H0z"></Path>
-          <G fill="#55d400" transform="rotate(45)">
-            <Path d="M0 0H99V25H0z"></Path>
-            <Path d="M0 -50H99V-25H0z"></Path>
-          </G>
-        </Svg>
-      </View>
-    );
-  }
-}
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   background: {
     flex: 1,
-    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
+  backgroundImg: {
+    backgroundColor: '#44aa00',
+    borderRadius: 0,
+    resizeMode: 'repeat'
+  },
+  container: {
+    flex: 1
   }
 });
