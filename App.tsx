@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
 
@@ -15,9 +15,21 @@ export default function App() {
                        source={{uri: backgroundImg}}
                        style={styles.background}>
         <Text style={styles.headerTxt}>WarningTrack</Text>
+        <GameContainer/>
       </ImageBackground>
     </View>
   );
+}
+
+export class GameContainer extends Component {
+  render () {
+    return (
+      <View style={styles.gameContainer}>
+        <View style={styles.team}></View>
+        <View style={styles.team}></View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -34,9 +46,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center'
   },
+  gameContainer: {
+    justifyContent: 'center'
+  },
   headerTxt: {
     color: '#225500',
     fontFamily: 'Lobster_400Regular',
     fontSize: 32
+  },
+  team: {
+    justifyContent: 'center'
   }
 });
