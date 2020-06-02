@@ -25,8 +25,8 @@ export class GameContainer extends Component {
   render () {
     return (
       <View style={styles.gameContainer}>
-        <View style={styles.team}></View>
-        <View style={styles.team}></View>
+        <Text style={styles.team}>Cubs</Text>
+        <Text style={styles.team}>Cardinals</Text>
       </View>
     );
   }
@@ -55,6 +55,6 @@ const styles = StyleSheet.create({
     fontSize: 32
   },
   team: {
-    justifyContent: 'center'
+    textAlign: 'center'
   }
 });
