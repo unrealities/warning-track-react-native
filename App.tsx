@@ -36,31 +36,36 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     justifyContent: 'center',
+    width: '100%'
   },
   backgroundImg: {
+    alignItems: 'center',
     backgroundColor: '#44aa00',
     borderRadius: 0,
     resizeMode: 'repeat'
   },
   container: {
+    alignItems: 'center',
     flex: 1,
+    flexDirection: 'column',
     justifyContent: 'center'
   },
   gameContainer: {
     backgroundColor: '#ECE2C2',
     borderWidth: 2,
     borderRadius: 20,
+    margin: 10,
     padding: 10,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     shadowColor: '#225500',
     shadowOffset: {height: 4, width: 4},
-    shadowOpacity: 0.5,
-    width: '80%'
+    shadowOpacity: 0.5
   },
   headerTxt: {
     color: '#225500',
     fontFamily: 'Lobster_400Regular',
-    fontSize: 32
+    fontSize: 32,
+    textAlign: 'center'
   },
   team: {
     textAlign: 'center'
