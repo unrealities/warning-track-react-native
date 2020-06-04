@@ -47,7 +47,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   gameContainer: {
-    justifyContent: 'center'
+    backgroundColor: '#ECE2C2',
+    borderWidth: 2,
+    borderRadius: 20,
+    padding: 10,
+    justifyContent: 'center',
+    shadowColor: '#225500',
+    shadowOffset: {height: 4, width: 4},
+    shadowOpacity: 0.5,
+    width: '80%'
   },
   headerTxt: {
     color: '#225500',
