@@ -23,10 +23,11 @@ export default function App() {
 
 export class GameContainer extends Component {
   render () {
+    let games = [{'homeTeam': 'Cubs', 'awayTeam': 'White Sox'}];
     return (
       <View style={styles.gameContainer}>
-        <Text style={styles.team}>Cubs</Text>
-        <Text style={styles.team}>Cardinals</Text>
+        <Text style={styles.team}>{games[0]['homeTeam']}</Text>
+        <Text style={styles.team}>{games[0]['awayTeam']}</Text>
       </View>
     );
   }
