@@ -25,11 +25,13 @@ export default function App() {
 
 export class GameContainer extends Component {
   render () {
-    let game = new Game('Cardinals', 'Cubs')
+    let game = new Game('Cardinals', 3, 'Cubs', 4, 0)
     return (
       <View style={styles.gameContainer}>
         <Text style={styles.team}>{game['awayTeam']}</Text>
+        <Text style={styles.score}>{game['awayScore']}</Text>
         <Text style={styles.team}>{game['homeTeam']}</Text>
+        <Text style={styles.score}>{game['homeScore']}</Text>
       </View>
     );
   }
@@ -70,7 +72,11 @@ const styles = StyleSheet.create({
     fontSize: 32,
     textAlign: 'center'
   },
+  score: {
+    textAlign: 'center'
+  },
   team: {
+    fontWeight: 'bold',
     textAlign: 'center'
   }
 });
