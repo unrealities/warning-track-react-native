@@ -25,7 +25,7 @@ export default function App() {
 
 export class GameContainer extends Component {
   render () {
-    let game = new Game('Cardinals', 3, 'Cubs', 4, 0)
+    let game = new Game('Cardinals', 3, 3, true, true, true, 'Cubs', 4, 3, 0, 2)
     return (
       <View style={styles.gameContainer}>
         <Text style={styles.team}>{game['awayTeam']}</Text>
@@ -36,6 +36,69 @@ export class GameContainer extends Component {
     );
   }
 }
+
+/*
+<div class="game-container" ng-class="{'animated tada' : game.status.leverage_index > 3, 'not-in-progress': game.status.state < 22}">
+        <div class="leverage-index" ng-if="game.status.state > 21" title="leverage index: {{game.status.leverage_index}}">
+          <div>
+            <svg viewBox="0 0 24 102" width="24" height="102">
+              <use xlink:href="{{game.status.leverage_index| leverageToSvg}}" xlink:href="" />
+            </svg>
+          </div>
+        </div>
+        <div class="score game-box">
+          <div class="score-container">
+            <div class="team-logo" ng-style="{{game.teams.away | logoPosition}}">&nbsp;</div>
+            <div class="team-score">{{game.status.score.away}} - {{game.status.score.home}}</div>
+            <div class="team-logo" ng-style="{{game.teams.home | logoPosition}}">&nbsp;</div>
+          </div>
+          <div class="bso-container" ng-if="game.status.state > 21">
+            <div class="balls-strikes-outs">
+              <div class="icon-status">B:</div>
+              <div class="svg-balls-strikes-outs">
+                <svg class="balls" viewBox="0 0 90 25" width="60" height="16.67">
+                  <use xlink:href="{{game.status.count.balls | svgIconBallsHref}}" xlink:href="" />
+                </svg>
+              </div>
+            </div>
+            <div class="balls-strikes-outs">
+              <div class="icon-status">S:</div>
+              <div class="svg-balls-strikes-outs">
+                <svg class="strikes-outs" viewBox="0 0 68 25" width="50" height="18.38">
+                  <use xlink:href="{{game.status.count.strikes | svgIconStrikesOutsHref}}" xlink:href="" />
+                </svg>
+              </div>
+            </div>
+            <div class="balls-strikes-outs">
+              <div class="icon-status">O:</div>
+              <div class="svg-balls-strikes-outs">
+                <svg class="strikes-outs" viewBox="0 0 68 25" width="50" height="18.38">
+                  <use xlink:href="{{game.status.outs | svgIconStrikesOutsHref}}" xlink:href="" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="game-status" ng-if="game.status.state < 22">{{game | displayGameStatus}}</div>
+        </div>
+        <div class="game-box br" ng-if="game.status.state > 21">
+          <div class="base-runners">
+            <svg viewBox="0 0 34 26" width="68" height="52">
+              <use xlink:href="{{game.status.base_runner_state | svgIconBaseHref}}" xlink:href="" />
+            </svg>
+          </div>
+          <div class="game-status">{{game | displayGameStatus}}</div>
+        </div>
+        <div class="watch-container" ng-if="game.status.state > 21">
+          <div class="watch">
+            <a href="{{game.links.mlb_tv}}" target="_blank">
+              <img class="watch-image" src="img/mlbtv-logo-square.png" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+*/
 
 const styles = StyleSheet.create({
   background: {
