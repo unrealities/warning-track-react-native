@@ -29,10 +29,7 @@ export class GameContainer extends Component {
     return (
       <View style={styles.gameContainer}>
         <LeverageIndex value='5' />
-        <Text style={styles.team}>{game['awayTeam']}</Text>
-        <Text style={styles.score}>{game['awayScore']}</Text>
-        <Text style={styles.team}>{game['homeTeam']}</Text>
-        <Text style={styles.score}>{game['homeScore']}</Text>
+        <Score awayScore={game.awayScore} awayTeam={game.awayTeam} homeScore={game.homeScore} homeTeam={game.homeTeam} />
       </View>
     );
   }
@@ -46,6 +43,24 @@ const LeverageIndex: React.FC<LIProps> = (props) => {
   return (
     <View>
       <Text>{props.value}</Text>
+    </View>
+  )
+}
+
+export interface ScoreProps {
+  awayScore: number;
+  awayTeam: string;
+  homeScore: number;
+  homeTeam: number;
+}
+
+const Score: React.FC<ScoreProps> = (props) => {
+  return (
+    <View>
+      <Text style={styles.team}>{props.awayTeam}</Text>
+      <Text style={styles.score}>{props.awayScore}</Text>
+      <Text style={styles.team}>{props.homeTeam}</Text>
+      <Text style={styles.score}>{props.homeScore}</Text>
     </View>
   )
 }
