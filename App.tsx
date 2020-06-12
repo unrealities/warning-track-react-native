@@ -28,15 +28,20 @@ export class GameContainer extends Component {
     let game = new Game('Cardinals', 3, 3, true, true, true, 'Cubs', 4, 3, 0, 2)
     return (
       <View style={styles.gameContainer}>
-        <LeverageIndex value='5' />
+        <LeverageIndex value={game.leverageIndex} />
         <Score awayScore={game.awayScore} awayTeam={game.awayTeam} homeScore={game.homeScore} homeTeam={game.homeTeam} />
+        <View>
+          <BallsStrikesOuts amount={game.balls} />
+          <BallsStrikesOuts amount={game.strikes} />
+          <BallsStrikesOuts amount={game.outs} />
+        </View>
       </View>
     );
   }
 }
 
 export interface LIProps {
-  value: string;
+  value: number;
 }
 
 const LeverageIndex: React.FC<LIProps> = (props) => {
@@ -51,7 +56,7 @@ export interface ScoreProps {
   awayScore: number;
   awayTeam: string;
   homeScore: number;
-  homeTeam: number;
+  homeTeam: string;
 }
 
 const Score: React.FC<ScoreProps> = (props) => {
@@ -61,6 +66,18 @@ const Score: React.FC<ScoreProps> = (props) => {
       <Text style={styles.score}>{props.awayScore}</Text>
       <Text style={styles.team}>{props.homeTeam}</Text>
       <Text style={styles.score}>{props.homeScore}</Text>
+    </View>
+  )
+}
+
+export interface BSOProps {
+  amount: number;
+}
+
+const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
+  return (
+    <View>
+      <Text style={styles.bso}>{props.amount}</Text>
     </View>
   )
 }
@@ -139,6 +156,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#44aa00',
     borderRadius: 0,
     resizeMode: 'repeat'
+  },
+  bso: {
+    textAlign: 'center'
   },
   container: {
     alignItems: 'center',
