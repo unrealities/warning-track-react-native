@@ -1,18 +1,18 @@
 export class Game {
-    awayScore:number;
-    awayTeam:string; // todo: should be a team object
-    balls:number;
-    base1:boolean;
-    base2:boolean;
-    base3:boolean;
-    homeScore:number;
-    homeTeam:string; // todo: should be a team object
-    leverageIndex:number;
-    outs:number;
-    strikes:number;
+    awayScore: number;
+    awayTeam: number; // todo: should be a team object
+    balls: number;
+    base1: boolean;
+    base2: boolean;
+    base3: boolean;
+    homeScore: number;
+    homeTeam: number; // todo: should be a team object
+    leverageIndex: number;
+    outs: number;
+    strikes: number;
 
-    constructor(awayTeam:string, awayScore:number, balls:number, base1:boolean, base2:boolean, base3:boolean, 
-                homeTeam:string, homeScore:number, leverageIndex:number, outs:number, strikes:number) {
+    constructor(awayTeam: number, awayScore: number, balls: number, base1: boolean, base2: boolean, base3: boolean, 
+                homeTeam: number, homeScore: number, leverageIndex: number, outs: number, strikes: number) {
         this.awayScore = awayScore
         this.awayTeam = awayTeam
         this.balls = balls

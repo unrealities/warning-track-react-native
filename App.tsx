@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
 
 import { Game } from './game';
@@ -25,7 +25,7 @@ export default function App() {
 
 export class GameContainer extends Component {
   render () {
-    let game = new Game('Cardinals', 3, 3, true, true, true, 'Cubs', 4, 3, 0, 2)
+    let game = new Game(5, 3, 3, true, true, true, 6, 4, 3, 0, 2)
     return (
       <View style={styles.gameContainer}>
         <LeverageIndex value={game.leverageIndex} />
@@ -54,15 +54,17 @@ const LeverageIndex: React.FC<LIProps> = (props) => {
 
 export interface ScoreProps {
   awayScore: number;
-  awayTeam: string;
+  awayTeam: number;
   homeScore: number;
-  homeTeam: string;
+  homeTeam: number;
 }
 
 const Score: React.FC<ScoreProps> = (props) => {
+  let awayTeamLogoURI = 'http://warningtrack.co/img/team_logos/' + props.awayTeam + '.svg'
   return (
     <View>
       <Text style={styles.team}>{props.awayTeam}</Text>
+      <Image style={styles.logo} source={{uri: awayTeamLogoURI}} />
       <Text style={styles.score}>{props.awayScore}</Text>
       <Text style={styles.team}>{props.homeTeam}</Text>
       <Text style={styles.score}>{props.homeScore}</Text>
@@ -182,6 +184,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Lobster_400Regular',
     fontSize: 32,
     textAlign: 'center'
+  },
+  logo: {
+    justifyContent: 'center',
+    width: 20
   },
   score: {
     textAlign: 'center'
