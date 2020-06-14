@@ -60,7 +60,8 @@ export interface ScoreProps {
 }
 
 const Score: React.FC<ScoreProps> = (props) => {
-  let awayTeamLogoURI = 'http://warningtrack.co/img/team_logos/' + props.awayTeam + '.svg'
+  // TODO: this must be https. You need to setup https on warningtrack.co
+  let awayTeamLogoURI = 'https://warningtrack.co/img/team_logos/' + props.awayTeam + '.svg';
   return (
     <View>
       <Text style={styles.team}>{props.awayTeam}</Text>
