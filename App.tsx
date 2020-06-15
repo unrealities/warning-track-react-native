@@ -60,14 +60,13 @@ export interface ScoreProps {
 }
 
 const Score: React.FC<ScoreProps> = (props) => {
-  // TODO: this must be https. You need to setup https on warningtrack.co
   let awayTeamLogoURI = 'https://warningtrack.co/img/team_logos/' + props.awayTeam + '.svg';
+  let homeTeamLogoURI = 'https://warningtrack.co/img/team_logos/' + props.homeTeam + '.svg';
   return (
     <View>
-      <Text style={styles.team}>{props.awayTeam}</Text>
       <Image style={styles.logo} source={{uri: awayTeamLogoURI}} />
       <Text style={styles.score}>{props.awayScore}</Text>
-      <Text style={styles.team}>{props.homeTeam}</Text>
+      <Image style={styles.logo} source={{uri: homeTeamLogoURI}} />
       <Text style={styles.score}>{props.homeScore}</Text>
     </View>
   )
@@ -187,8 +186,9 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   logo: {
+    height: 60,
     justifyContent: 'center',
-    width: 20
+    width: 60
   },
   score: {
     textAlign: 'center'
