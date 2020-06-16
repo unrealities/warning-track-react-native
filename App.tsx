@@ -63,7 +63,7 @@ const Score: React.FC<ScoreProps> = (props) => {
   let awayTeamLogoURI = 'https://warningtrack.co/img/team_logos/' + props.awayTeam + '.svg';
   let homeTeamLogoURI = 'https://warningtrack.co/img/team_logos/' + props.homeTeam + '.svg';
   return (
-    <View>
+    <View style={styles.scoreContainer}>
       <Image style={styles.logo} source={{uri: awayTeamLogoURI}} />
       <Text style={styles.score}>{props.awayScore}</Text>
       <Image style={styles.logo} source={{uri: homeTeamLogoURI}} />
@@ -191,7 +191,15 @@ const styles = StyleSheet.create({
     width: 60
   },
   score: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    marginHorizontal: 12,
     textAlign: 'center'
+  },
+  scoreContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   team: {
     fontWeight: 'bold',
