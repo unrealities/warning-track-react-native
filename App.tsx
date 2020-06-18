@@ -78,10 +78,21 @@ export interface BSOProps {
 }
 
 const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
+  let circles = "0 0 68 25";
+  switch(props.amount) {
+    case 1:
+      circles = "0 0 46 25";
+    case 2:
+      circles = "0 0 68 25";
+    case 3:
+      circles = "0 0 90 25";
+    default:
+      circles = "0 0 22 25";
+  }
   return (
     <View>
       <Text style={styles.bso}>{props.amount}</Text>
-      <Svg viewBox="0 0 68 25" width="50" height="18.38">
+      <Svg viewBox={circles} width="50" height="18.38">
         <G id="b0">
           <Ellipse ry="10" rx="10" cy="12" cx="12" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
           <Ellipse ry="10" rx="10" cy="12" cx="34" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
