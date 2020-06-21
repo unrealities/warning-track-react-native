@@ -32,9 +32,9 @@ export class GameContainer extends Component {
         <LeverageIndex value={game.leverageIndex} />
         <Score awayScore={game.awayScore} awayTeam={game.awayTeam} homeScore={game.homeScore} homeTeam={game.homeTeam} />
         <View>
-          <BallsStrikesOuts amount={game.balls} />
-          <BallsStrikesOuts amount={game.strikes} />
-          <BallsStrikesOuts amount={game.outs} />
+          <BallsStrikesOuts value={game.balls} />
+          <BallsStrikesOuts value={game.strikes} />
+          <BallsStrikesOuts value={game.outs} />
         </View>
       </View>
     );
@@ -74,24 +74,28 @@ const Score: React.FC<ScoreProps> = (props) => {
 }
 
 export interface BSOProps {
-  amount: number;
+  value: number;
 }
 
 const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
   let circles = "0 0 68 25";
-  switch(props.amount) {
+  switch(props.value) {
     case 1:
       circles = "0 0 46 25";
+      break;
     case 2:
       circles = "0 0 68 25";
+      break;
     case 3:
       circles = "0 0 90 25";
+      break;
     default:
-      circles = "0 0 22 25";
+      circles = "0 0 0 25";
+      break;
   }
   return (
     <View>
-      <Text style={styles.bso}>{props.amount}</Text>
+      <Text style={styles.bso}>{props.value}</Text>
       <Svg viewBox={circles} width="50" height="18.38">
         <G id="b0">
           <Ellipse ry="10" rx="10" cy="12" cx="12" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
