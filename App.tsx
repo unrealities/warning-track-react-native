@@ -26,7 +26,7 @@ export default function App() {
 
 export class GameContainer extends Component {
   render () {
-    let game = new Game(5, 3, 3, true, true, true, 6, 4, 3, 0, 2)
+    let game = new Game(5, 3, 3, true, true, true, 6, 4, 3, 1, 2)
     return (
       <View style={styles.gameContainer}>
         <LeverageIndex value={game.leverageIndex} />
@@ -78,15 +78,18 @@ export interface BSOProps {
 }
 
 const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
-  let circles = "0 0 68 25";
+  let circles = "0 0 0 25";
   switch(props.value) {
     case 1:
-      circles = "0 0 46 25";
+      circles = "0 0 90 25";
       break;
     case 2:
-      circles = "0 0 68 25";
+      circles = "0 0 23 25";
       break;
     case 3:
+      circles = "0 0 67 25";
+      break;
+    case 4:
       circles = "0 0 90 25";
       break;
     default:
