@@ -81,13 +81,13 @@ const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
   let circles = "0 0 0 25";
   switch(props.value) {
     case 1:
-      circles = "0 0 90 25";
+      circles = "-45 0 45 25";
       break;
     case 2:
-      circles = "0 0 23 25";
+      circles = "0 0 1 25";
       break;
     case 3:
-      circles = "0 0 67 25";
+      circles = "0 0 45 25";
       break;
     case 4:
       circles = "0 0 90 25";
@@ -99,7 +99,7 @@ const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
   return (
     <View>
       <Text style={styles.bso}>{props.value}</Text>
-      <Svg viewBox={circles} width="50" height="18.38">
+      <Svg viewBox={circles} width="60" height="16.67">
         <G id="b0">
           <Ellipse ry="10" rx="10" cy="12" cx="12" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
           <Ellipse ry="10" rx="10" cy="12" cx="34" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
