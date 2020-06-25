@@ -31,10 +31,19 @@ export class GameContainer extends Component {
       <View style={styles.gameContainer}>
         <LeverageIndex value={game.leverageIndex} />
         <Score awayScore={game.awayScore} awayTeam={game.awayTeam} homeScore={game.homeScore} homeTeam={game.homeTeam} />
-        <View>
-          <Text>B:</Text><BallsStrikesOuts value={game.balls} />
-          <Text>S:</Text><BallsStrikesOuts value={game.strikes} />
-          <Text>O:</Text><BallsStrikesOuts value={game.outs} />
+        <View style={styles.bsos}>
+          <View style={styles.bsoContainer}>
+            <Text>B:</Text>
+            <BallsStrikesOuts value={game.balls} />
+          </View>
+          <View style={styles.bsoContainer}>
+            <Text>S:</Text>
+            <BallsStrikesOuts value={game.strikes} />
+          </View>
+          <View style={styles.bsoContainer}>
+            <Text>O:</Text>
+            <BallsStrikesOuts value={game.outs} />
+          </View>
         </View>
       </View>
     );
@@ -211,6 +220,18 @@ const styles = StyleSheet.create({
   },
   bso: {
     textAlign: 'center'
+  },
+  bsos: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  bsoContainer: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    margin: 10
   },
   container: {
     alignItems: 'center',
