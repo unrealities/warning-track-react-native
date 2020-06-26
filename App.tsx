@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
-import Svg, { Ellipse, G } from 'react-native-svg';
+import Svg, { Ellipse, G, Rect } from 'react-native-svg';
 import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
 
 import { Game } from './game';
@@ -143,6 +143,59 @@ const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
   )
 }
 
+export interface BaseRunnerProps {
+
+}
+
+const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
+  return (
+    <View>
+      <Svg>
+        <G id="br0">
+          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#225500" fill="#ffffff"/>
+          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#225500" fill="#ffffff"/>
+          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#225500" fill="#ffffff"/>
+        </G>
+        <G id="br1">
+          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#baa400" fill="#f5d800"/>
+          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#225500" fill="#ffffff"/>
+          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#225500" fill="#ffffff"/>
+        </G>
+        <G id="br2">
+          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#225500" fill="#ffffff"/>
+          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#baa400" fill="#f5d800"/>
+          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#225500" fill="#ffffff"/>
+        </G>
+        <G id="br3">
+          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#225500" fill="#ffffff"/>
+          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#225500" fill="#ffffff"/>
+          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#baa400" fill="#f5d800"/>
+        </G>
+        <G id="br4">
+          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#baa400" fill="#f5d800"/>
+          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#baa400" fill="#f5d800"/>
+          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#225500" fill="#ffffff"/>
+        </G>
+        <G id="br5">
+          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#baa400" fill="#f5d800"/>
+          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#225500" fill="#ffffff"/>
+          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#baa400" fill="#f5d800"/>
+        </G>
+        <G id="br6">
+          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#225500" fill="#ffffff"/>
+          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#baa400" fill="#f5d800"/>
+          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#baa400" fill="#f5d800"/>
+        </G>
+        <G id="br7">
+          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#baa400" fill="#f5d800"/>
+          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#baa400" fill="#f5d800"/>
+          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#baa400" fill="#f5d800"/>
+        </G>    
+      </Svg>
+    </View>
+  )
+}
+
 /*
 <div class="game-container" ng-class="{'animated tada' : game.status.leverage_index > 3, 'not-in-progress': game.status.state < 22}">
         <div class="leverage-index" ng-if="game.status.state > 21" title="leverage index: {{game.status.leverage_index}}">
@@ -157,32 +210,6 @@ const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
             <div class="team-logo" ng-style="{{game.teams.away | logoPosition}}">&nbsp;</div>
             <div class="team-score">{{game.status.score.away}} - {{game.status.score.home}}</div>
             <div class="team-logo" ng-style="{{game.teams.home | logoPosition}}">&nbsp;</div>
-          </div>
-          <div class="bso-container" ng-if="game.status.state > 21">
-            <div class="balls-strikes-outs">
-              <div class="icon-status">B:</div>
-              <div class="svg-balls-strikes-outs">
-                <svg class="balls" viewBox="0 0 90 25" width="60" height="16.67">
-                  <use xlink:href="{{game.status.count.balls | svgIconBallsHref}}" xlink:href="" />
-                </svg>
-              </div>
-            </div>
-            <div class="balls-strikes-outs">
-              <div class="icon-status">S:</div>
-              <div class="svg-balls-strikes-outs">
-                <svg class="strikes-outs" viewBox="0 0 68 25" width="50" height="18.38">
-                  <use xlink:href="{{game.status.count.strikes | svgIconStrikesOutsHref}}" xlink:href="" />
-                </svg>
-              </div>
-            </div>
-            <div class="balls-strikes-outs">
-              <div class="icon-status">O:</div>
-              <div class="svg-balls-strikes-outs">
-                <svg class="strikes-outs" viewBox="0 0 68 25" width="50" height="18.38">
-                  <use xlink:href="{{game.status.outs | svgIconStrikesOutsHref}}" xlink:href="" />
-                </svg>
-              </div>
-            </div>
           </div>
           <div class="game-status" ng-if="game.status.state < 22">{{game | displayGameStatus}}</div>
         </div>
