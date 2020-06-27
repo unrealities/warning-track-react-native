@@ -45,6 +45,9 @@ export class GameContainer extends Component {
             <BallsStrikesOuts value={game.outs} />
           </View>
         </View>
+        <View style={styles.baseRunnerContainer}>
+          <BaseRunner />
+        </View>
       </View>
     );
   }
@@ -244,6 +247,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#44aa00',
     borderRadius: 0,
     resizeMode: 'repeat'
+  },
+  baseRunnerContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center'
   },
   bso: {
     textAlign: 'center'
