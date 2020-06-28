@@ -46,7 +46,7 @@ export class GameContainer extends Component {
           </View>
         </View>
         <View style={styles.baseRunnerContainer}>
-          <BaseRunner />
+          <BaseRunner value={1}/>
         </View>
       </View>
     );
@@ -147,13 +147,31 @@ const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
 }
 
 export interface BaseRunnerProps {
-
+  value: number;
 }
 
 const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
+  let bases = "0 0 34 26";
+  switch(props.value) {
+    case 1:
+      bases = "0 0 34 26";
+      break;
+    case 2:
+      bases = "0 0 34 26";
+      break;
+    case 3:
+      bases = "0 0 34 26";
+      break;
+    case 4:
+      bases = "0 0 34 26";
+      break;
+    default:
+      bases = "0 0 34 26";
+      break;
+  }
   return (
     <View>
-      <Svg>
+      <Svg viewBox={bases} width="68" height="52">
         <G id="br0">
           <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#225500" fill="#ffffff"/>
           <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#225500" fill="#ffffff"/>
@@ -217,11 +235,6 @@ const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
           <div class="game-status" ng-if="game.status.state < 22">{{game | displayGameStatus}}</div>
         </div>
         <div class="game-box br" ng-if="game.status.state > 21">
-          <div class="base-runners">
-            <svg viewBox="0 0 34 26" width="68" height="52">
-              <use xlink:href="{{game.status.base_runner_state | svgIconBaseHref}}" xlink:href="" />
-            </svg>
-          </div>
           <div class="game-status">{{game | displayGameStatus}}</div>
         </div>
         <div class="watch-container" ng-if="game.status.state > 21">
