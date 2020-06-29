@@ -90,56 +90,43 @@ export interface BSOProps {
 }
 
 const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
-  let circles = "0 0 0 25";
+  let stroke=[];
+  let fill=[];
+
   switch(props.value) {
+    case 0:
+      stroke = ["#e6db8a","#e6db8a","#e6db8a","#e6db8a"];
+      fill = ["#ffffff","#ffffff","#ffffff","#ffffff"];
+      break;
     case 1:
-      circles = "-45 0 45 25";
+      stroke = ["#baa400","#e6db8a","#e6db8a","#e6db8a"];
+      fill = ["#f5d800","#ffffff","#ffffff","#ffffff"];
       break;
     case 2:
-      circles = "0 0 1 25";
+      stroke = ["#baa400","#baa400","#e6db8a","#e6db8a"];
+      fill = ["#f5d800","#f5d800","#ffffff","#ffffff"];
       break;
     case 3:
-      circles = "0 0 45 25";
+      stroke = ["#baa400","#baa400","#baa400","#e6db8a"];
+      fill = ["#f5d800","#f5d800","#f5d800","#ffffff"];
       break;
     case 4:
-      circles = "0 0 90 25";
+      stroke = ["#baa400","#baa400","#baa400","#baa400"];
+      fill = ["#f5d800","#f5d800","#f5d800","#f5d800"];
       break;
     default:
-      circles = "0 0 0 25";
+      stroke = ["#e6db8a","#e6db8a","#e6db8a","#e6db8a"];
+      fill = ["#ffffff","#ffffff","#ffffff","#ffffff"];
       break;
   }
   return (
     <View>
-      <Svg viewBox={circles} width="60" height="16.67">
-        <G id="b0">
-          <Ellipse ry="10" rx="10" cy="12" cx="12" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="34" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="56" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="78" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
-        </G>
-        <G id="b1">
-          <Ellipse ry="10" rx="10" cy="12" cx="12" stroke-linecap="null" stroke-linejoin="null" stroke="#baa400" fill="#f5d800"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="34" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="56" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="78" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
-        </G>
-        <G id="b2">
-          <Ellipse ry="10" rx="10" cy="12" cx="12" stroke-linecap="null" stroke-linejoin="null" stroke="#baa400" fill="#f5d800"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="34" stroke-linecap="null" stroke-linejoin="null" stroke="#baa400" fill="#f5d800"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="56" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="78" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
-        </G>
-        <G id="b3">
-          <Ellipse ry="10" rx="10" cy="12" cx="12" stroke-linecap="null" stroke-linejoin="null" stroke="#baa400" fill="#f5d800"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="34" stroke-linecap="null" stroke-linejoin="null" stroke="#baa400" fill="#f5d800"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="56" stroke-linecap="null" stroke-linejoin="null" stroke="#baa400" fill="#f5d800"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="78" stroke-linecap="null" stroke-linejoin="null" stroke="#e6db8a" fill="#ffffff"/>
-        </G>
-        <G id="b4">
-          <Ellipse ry="10" rx="10" cy="12" cx="12" stroke-linecap="null" stroke-linejoin="null" stroke="#baa400" fill="#f5d800"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="34" stroke-linecap="null" stroke-linejoin="null" stroke="#baa400" fill="#f5d800"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="56" stroke-linecap="null" stroke-linejoin="null" stroke="#baa400" fill="#f5d800"/>
-          <Ellipse ry="10" rx="10" cy="12" cx="78" stroke-linecap="null" stroke-linejoin="null" stroke="#baa400" fill="#f5d800"/>
+      <Svg viewBox="0 0 68 25" width="50" height="18.38">
+        <G>
+          <Ellipse ry="10" rx="10" cy="12" cx="12" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[0]} fill={fill[0]}/>
+          <Ellipse ry="10" rx="10" cy="12" cx="34" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[1]} fill={fill[1]}/>
+          <Ellipse ry="10" rx="10" cy="12" cx="56" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[2]} fill={fill[2]}/>
+          <Ellipse ry="10" rx="10" cy="12" cx="78" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[3]} fill={fill[3]}/>
         </G>
       </Svg>
     </View>
