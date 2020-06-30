@@ -138,32 +138,61 @@ export interface BaseRunnerProps {
 }
 
 const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
-  let bases = "0 0 34 26";
+  let stroke=[];
+  let fill=[];
+
   switch(props.value) {
+    case 0:
+      stroke = ["#225500","#225500","#225500"];
+      fill = ["#ffffff","#ffffff","#ffffff"];
+      break;
     case 1:
-      bases = "0 0 34 26";
+      stroke = ["#225500","#225500","#225500"];
+      fill = ["#ffffff","#ffffff","#ffffff"];
       break;
     case 2:
-      bases = "0 0 34 26";
+      stroke = ["#225500","#225500","#225500"];
+      fill = ["#ffffff","#ffffff","#ffffff"];
       break;
     case 3:
-      bases = "0 0 34 26";
+      stroke = ["#225500","#225500","#225500"];
+      fill = ["#ffffff","#ffffff","#ffffff"];
       break;
     case 4:
-      bases = "0 0 34 26";
+      stroke = ["#225500","#225500","#225500"];
+      fill = ["#ffffff","#ffffff","#ffffff"];
+      break;
+    case 5:
+      stroke = ["#225500","#225500","#225500"];
+      fill = ["#ffffff","#ffffff","#ffffff"];
+      break;
+    case 6:
+      stroke = ["#225500","#225500","#225500"];
+      fill = ["#ffffff","#ffffff","#ffffff"];
+      break;
+    case 7:
+      stroke = ["#225500","#225500","#225500"];
+      fill = ["#ffffff","#ffffff","#ffffff"];
       break;
     default:
-      bases = "0 0 34 26";
+      stroke = ["#225500","#225500","#225500"];
+      fill = ["#ffffff","#ffffff","#ffffff"];
       break;
   }
   return (
     <View>
-      <Svg viewBox={bases} width="68" height="52">
-        <G id="br0">
-          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#225500" fill="#ffffff"/>
-          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#225500" fill="#ffffff"/>
-          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#225500" fill="#ffffff"/>
-        </G>
+      <Svg viewBox="0 0 34 26" width="68" height="52">
+        <G>
+          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke={stroke[0]} fill={fill[0]}/>
+          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke={stroke[1]} fill={fill[1]}/>
+          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke={stroke[2]} fill={fill[2]}/>
+        </G> 
+      </Svg>
+    </View>
+  )
+}
+
+/*
         <G id="br1">
           <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#baa400" fill="#f5d800"/>
           <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#225500" fill="#ffffff"/>
@@ -198,11 +227,8 @@ const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
           <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#baa400" fill="#f5d800"/>
           <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#baa400" fill="#f5d800"/>
           <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#baa400" fill="#f5d800"/>
-        </G>    
-      </Svg>
-    </View>
-  )
-}
+        </G>   
+*/
 
 /*
 <div class="game-container" ng-class="{'animated tada' : game.status.leverage_index > 3, 'not-in-progress': game.status.state < 22}">
