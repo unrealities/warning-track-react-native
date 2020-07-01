@@ -147,36 +147,36 @@ const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
       fill = ["#ffffff","#ffffff","#ffffff"];
       break;
     case 1:
-      stroke = ["#225500","#225500","#225500"];
-      fill = ["#ffffff","#ffffff","#ffffff"];
+      stroke = ["#baa400","#225500","#225500"];
+      fill = ["#f5d800","#ffffff","#ffffff"];
       break;
     case 2:
-      stroke = ["#225500","#225500","#225500"];
-      fill = ["#ffffff","#ffffff","#ffffff"];
+      stroke = ["#225500","#baa400","#225500"];
+      fill = ["#ffffff","#f5d800","#ffffff"];
       break;
     case 3:
-      stroke = ["#225500","#225500","#225500"];
-      fill = ["#ffffff","#ffffff","#ffffff"];
+      stroke = ["#225500","#225500","#baa400"];
+      fill = ["#ffffff","#ffffff","#f5d800"];
       break;
     case 4:
-      stroke = ["#225500","#225500","#225500"];
-      fill = ["#ffffff","#ffffff","#ffffff"];
+      stroke = ["#baa400","#baa400","#225500"];
+      fill = ["#f5d800","#f5d800","#ffffff"];
       break;
     case 5:
-      stroke = ["#225500","#225500","#225500"];
-      fill = ["#ffffff","#ffffff","#ffffff"];
+      stroke = ["#baa400","#225500","#baa400"];
+      fill = ["#f5d800","#ffffff","#f5d800"];
       break;
     case 6:
-      stroke = ["#225500","#225500","#225500"];
-      fill = ["#ffffff","#ffffff","#ffffff"];
+      stroke = ["#225500","#baa400","#baa400"];
+      fill = ["#ffffff","#f5d800","#f5d800"];
       break;
     case 7:
-      stroke = ["#225500","#225500","#225500"];
-      fill = ["#ffffff","#ffffff","#ffffff"];
+      stroke = ["#baa400","#baa400","#baa400"];
+      fill = ["#f5d800","#f5d800","#f5d800"];
       break;
     default:
-      stroke = ["#225500","#225500","#225500"];
-      fill = ["#ffffff","#ffffff","#ffffff"];
+      stroke = ["#baa400","#baa400","#baa400"];
+      fill = ["#f5d800","#f5d800","#f5d800"];
       break;
   }
   return (
@@ -193,41 +193,21 @@ const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
 }
 
 /*
-        <G id="br1">
-          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#baa400" fill="#f5d800"/>
-          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#225500" fill="#ffffff"/>
-          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#225500" fill="#ffffff"/>
-        </G>
-        <G id="br2">
-          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#225500" fill="#ffffff"/>
-          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#baa400" fill="#f5d800"/>
-          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#225500" fill="#ffffff"/>
-        </G>
-        <G id="br3">
-          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#225500" fill="#ffffff"/>
-          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#225500" fill="#ffffff"/>
-          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#baa400" fill="#f5d800"/>
-        </G>
         <G id="br4">
-          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#baa400" fill="#f5d800"/>
-          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#baa400" fill="#f5d800"/>
-          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#225500" fill="#ffffff"/>
+          <stroke="#baa400" fill="#f5d800"/>
+          <stroke="#baa400" fill="#f5d800"/>
+          <stroke="#225500" fill="#ffffff"/>
         </G>
         <G id="br5">
-          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#baa400" fill="#f5d800"/>
-          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#225500" fill="#ffffff"/>
-          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#baa400" fill="#f5d800"/>
+          <stroke="#baa400" fill="#f5d800"/>
+          <stroke="#225500" fill="#ffffff"/>
+          <stroke="#baa400" fill="#f5d800"/>
         </G>
         <G id="br6">
-          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#225500" fill="#ffffff"/>
-          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#baa400" fill="#f5d800"/>
-          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#baa400" fill="#f5d800"/>
-        </G>
-        <G id="br7">
-          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke="#baa400" fill="#f5d800"/>
-          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke="#baa400" fill="#f5d800"/>
-          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke="#baa400" fill="#f5d800"/>
-        </G>   
+          <stroke="#225500" fill="#ffffff"/>
+          <stroke="#baa400" fill="#f5d800"/>
+          <stroke="#baa400" fill="#f5d800"/>
+        </G>  
 */
 
 /*
