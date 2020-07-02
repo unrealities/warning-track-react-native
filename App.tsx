@@ -46,7 +46,7 @@ export class GameContainer extends Component {
           </View>
         </View>
         <View style={styles.baseRunnerContainer}>
-          <BaseRunner value={1}/>
+          <BaseRunner value={game.baseRunners}/>
         </View>
       </View>
     );
@@ -191,24 +191,6 @@ const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
     </View>
   )
 }
-
-/*
-        <G id="br4">
-          <stroke="#baa400" fill="#f5d800"/>
-          <stroke="#baa400" fill="#f5d800"/>
-          <stroke="#225500" fill="#ffffff"/>
-        </G>
-        <G id="br5">
-          <stroke="#baa400" fill="#f5d800"/>
-          <stroke="#225500" fill="#ffffff"/>
-          <stroke="#baa400" fill="#f5d800"/>
-        </G>
-        <G id="br6">
-          <stroke="#225500" fill="#ffffff"/>
-          <stroke="#baa400" fill="#f5d800"/>
-          <stroke="#baa400" fill="#f5d800"/>
-        </G>  
-*/
 
 /*
 <div class="game-container" ng-class="{'animated tada' : game.status.leverage_index > 3, 'not-in-progress': game.status.state < 22}">
