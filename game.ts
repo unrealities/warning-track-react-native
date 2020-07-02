@@ -25,4 +25,6 @@ export class Game {
         this.outs = outs
         this.strikes = strikes
     }
+
+    /*TODO: convert bases to baseRunner*/
 }
