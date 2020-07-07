@@ -26,7 +26,7 @@ export default function App() {
 
 export class GameContainer extends Component {
   render () {
-    let game = new Game(5, 3, 3, true, true, true, 6, 4, 3, 1, 2)
+    let game = new Game(5, 3, 3, false, false, false, 6, 4, 3, 1, 2)
     return (
       <View style={styles.gameContainer}>
         <LeverageIndex value={game.leverageIndex} />
@@ -46,7 +46,7 @@ export class GameContainer extends Component {
           </View>
         </View>
         <View style={styles.baseRunnerContainer}>
-          <BaseRunner value={game.baseRunners}/>
+          <BaseRunner value={game.baseRunnerInt()}/>
         </View>
       </View>
     );
