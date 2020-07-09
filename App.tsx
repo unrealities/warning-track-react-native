@@ -89,7 +89,7 @@ const LeverageIndex: React.FC<LIProps> = (props) => {
   }
 
   return (
-    <View>
+    <View style={styles.leverageIndex} >
       <Svg>
         <g>
           <path d="m2.08791,8.81967l7.57237,0l2.33991,-7.19372l2.33993,7.19372l7.57236,0l-6.12615,4.44591l2.34004,7.19373l-6.12617,-4.44603l-6.12616,4.44603l2.34004,-7.19373l-6.12616,-4.44591l0,0z" stroke-width="NaN" stroke={stroke[0]} fill={fill[0]}/>
@@ -158,7 +158,7 @@ const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
       break;
   }
   return (
-    <View>
+    <View style={styles.bso}>
       <Svg viewBox="0 0 68 25" width="50" height="18.38">
         <G>
           <Ellipse ry="10" rx="10" cy="12" cx="12" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[0]} fill={fill[0]}/>
@@ -218,7 +218,7 @@ const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
       break;
   }
   return (
-    <View>
+    <View style={styles.BaseRunner}>
       <Svg viewBox="0 0 34 26" width="68" height="52">
         <G>
           <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke={stroke[0]} fill={fill[0]}/>
@@ -273,7 +273,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   bso: {
-    textAlign: 'center'
+    flex: 1,
+    flexDirection: 'column'
   },
   bsos: {
     flex: 1,
@@ -309,6 +310,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Lobster_400Regular',
     fontSize: 32,
     textAlign: 'center'
+  },
+  leverageIndex: {
+    flex: 1,
+    flexDirection: 'column'
   },
   logo: {
     height: 60,
