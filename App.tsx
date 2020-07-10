@@ -267,6 +267,11 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     resizeMode: 'repeat'
   },
+  baseRunner: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center'
+  },
   baseRunnerContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -295,9 +300,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   gameContainer: {
+    alignItems: 'center',
     backgroundColor: '#ECE2C2',
     borderWidth: 2,
     borderRadius: 20,
+    flexDirection: 'row',
     margin: 10,
     padding: 10,
     justifyContent: 'space-around',
