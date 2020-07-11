@@ -30,19 +30,21 @@ export class GameContainer extends Component {
     return (
       <View style={styles.gameContainer}>
         <LeverageIndex value={game.leverageIndex} />
-        <Score awayScore={game.awayScore} awayTeam={game.awayTeam} homeScore={game.homeScore} homeTeam={game.homeTeam} />
-        <View style={styles.bsos}>
-          <View style={styles.bsoContainer}>
-            <Text>B:</Text>
-            <BallsStrikesOuts value={game.balls} />
-          </View>
-          <View style={styles.bsoContainer}>
-            <Text>S:</Text>
-            <BallsStrikesOuts value={game.strikes} />
-          </View>
-          <View style={styles.bsoContainer}>
-            <Text>O:</Text>
-            <BallsStrikesOuts value={game.outs} />
+        <View>
+          <Score awayScore={game.awayScore} awayTeam={game.awayTeam} homeScore={game.homeScore} homeTeam={game.homeTeam} />
+          <View style={styles.bsos}>
+            <View style={styles.bsoContainer}>
+              <Text>B:</Text>
+              <BallsStrikesOuts value={game.balls} />
+            </View>
+            <View style={styles.bsoContainer}>
+              <Text>S:</Text>
+              <BallsStrikesOuts value={game.strikes} />
+            </View>
+            <View style={styles.bsoContainer}>
+              <Text>O:</Text>
+              <BallsStrikesOuts value={game.outs} />
+            </View>
           </View>
         </View>
         <View style={styles.baseRunnerContainer}>
@@ -305,12 +307,15 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 20,
     flexDirection: 'row',
+    height: 150,
     margin: 10,
     padding: 10,
-    justifyContent: 'space-around',
+    paddingTop: 40,
+    justifyContent: 'center',
     shadowColor: '#225500',
     shadowOffset: {height: 4, width: 4},
-    shadowOpacity: 0.5
+    shadowOpacity: 0.5,
+    width: 400
   },
   headerTxt: {
     color: '#225500',
