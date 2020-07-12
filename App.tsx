@@ -270,47 +270,40 @@ const styles = StyleSheet.create({
     resizeMode: 'repeat'
   },
   baseRunner: {
-    flex: 1,
     flexDirection: 'column',
     justifyContent: 'center'
   },
   baseRunnerContainer: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center'
   },
   bso: {
-    flex: 1,
     flexDirection: 'column'
   },
   bsos: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
   bsoContainer: {
     alignItems: 'center',
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     margin: 10
   },
   container: {
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center'
   },
   gameContainer: {
     alignItems: 'center',
+    alignSelf: 'center',
     backgroundColor: '#ECE2C2',
     borderWidth: 2,
     borderRadius: 20,
+    flex: 1,
     flexDirection: 'row',
     height: 150,
     margin: 10,
     padding: 10,
-    paddingTop: 40,
+    paddingTop: 10,
     justifyContent: 'center',
     shadowColor: '#225500',
     shadowOffset: {height: 4, width: 4},
