@@ -12,47 +12,50 @@ export default function App() {
     Lobster_400Regular,
   });
 
+  let game = new Game(5, 3, 3, false, false, false, 6, 4, 3, 1, 2);
+
   return (
     <View style={styles.container}>
       <ImageBackground imageStyle={styles.backgroundImg}
                        source={{uri: backgroundImg}}
                        style={styles.background}>
         <Text style={styles.headerTxt}>WarningTrack</Text>
-        <GameContainer/>
+        <GameContainer game={game}/>
       </ImageBackground>
     </View>
   );
 }
 
-export class GameContainer extends Component {
-  render () {
-    let game = new Game(5, 3, 3, false, false, false, 6, 4, 3, 1, 2)
-    return (
-      <View style={styles.gameContainer}>
-        <LeverageIndex value={game.leverageIndex} />
-        <View>
-          <Score awayScore={game.awayScore} awayTeam={game.awayTeam} homeScore={game.homeScore} homeTeam={game.homeTeam} />
-          <View style={styles.bsos}>
-            <View style={styles.bsoContainer}>
-              <Text>B:</Text>
-              <BallsStrikesOuts value={game.balls} />
-            </View>
-            <View style={styles.bsoContainer}>
-              <Text>S:</Text>
-              <BallsStrikesOuts value={game.strikes} />
-            </View>
-            <View style={styles.bsoContainer}>
-              <Text>O:</Text>
-              <BallsStrikesOuts value={game.outs} />
-            </View>
+export interface GameContainerProps {
+  game: Game;
+}
+
+const GameContainer: React.FC<GameContainerProps> = (props) => {
+  return (
+    <View style={styles.gameContainer}>
+      <LeverageIndex value={props.game.leverageIndex} />
+      <View>
+        <Score awayScore={props.game.awayScore} awayTeam={props.game.awayTeam} homeScore={props.game.homeScore} homeTeam={props.game.homeTeam} />
+        <View style={styles.bsos}>
+          <View style={styles.bsoContainer}>
+            <Text>B:</Text>
+            <BallsStrikesOuts value={props.game.balls} />
+          </View>
+          <View style={styles.bsoContainer}>
+            <Text>S:</Text>
+            <BallsStrikesOuts value={props.game.strikes} />
+          </View>
+          <View style={styles.bsoContainer}>
+            <Text>O:</Text>
+            <BallsStrikesOuts value={props.game.outs} />
           </View>
         </View>
-        <View style={styles.baseRunnerContainer}>
-          <BaseRunner value={game.baseRunnerInt()}/>
-        </View>
       </View>
-    );
-  }
+      <View style={styles.baseRunnerContainer}>
+        <BaseRunner value={props.game.baseRunnerInt()}/>
+      </View>
+    </View>
+  );
 }
 
 export interface LIProps {
