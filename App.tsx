@@ -12,7 +12,9 @@ export default function App() {
     Lobster_400Regular,
   });
 
-  let game = new Game(5, 3, 3, false, false, false, 6, 4, 3, 1, 2);
+  let game1 = new Game(5, 3, 3, false, false, false, 6, 4, 3, 1, 2);
+  let game2 = new Game(1, 1, 3, true, false, false, 7, 2, 0, 1, 2);
+  let games = [game1, game2];
 
   return (
     <View style={styles.container}>
@@ -20,7 +22,7 @@ export default function App() {
                        source={{uri: backgroundImg}}
                        style={styles.background}>
         <Text style={styles.headerTxt}>WarningTrack</Text>
-        <GameContainer game={game}/>
+        {games.map(game => <GameContainer game={game}/>)}
       </ImageBackground>
     </View>
   );
