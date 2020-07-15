@@ -240,11 +240,6 @@ const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
 /*
 <div class="game-container" ng-class="{'animated tada' : game.status.leverage_index > 3, 'not-in-progress': game.status.state < 22}">
         <div class="score game-box">
-          <div class="score-container">
-            <div class="team-logo" ng-style="{{game.teams.away | logoPosition}}">&nbsp;</div>
-            <div class="team-score">{{game.status.score.away}} - {{game.status.score.home}}</div>
-            <div class="team-logo" ng-style="{{game.teams.home | logoPosition}}">&nbsp;</div>
-          </div>
           <div class="game-status" ng-if="game.status.state < 22">{{game | displayGameStatus}}</div>
         </div>
         <div class="game-box br" ng-if="game.status.state > 21">
@@ -296,6 +291,7 @@ const styles = StyleSheet.create({
     margin: 10
   },
   container: {
+    height: '100%'
   },
   gameContainer: {
     alignItems: 'center',
@@ -305,8 +301,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flex: 1,
     flexDirection: 'row',
-    height: 150,
     margin: 10,
+    maxHeight: 150,
     padding: 10,
     paddingTop: 10,
     justifyContent: 'center',
