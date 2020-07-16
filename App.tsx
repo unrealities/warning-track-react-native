@@ -12,8 +12,8 @@ export default function App() {
     Lobster_400Regular,
   });
 
-  let game1 = new Game(5, 3, 3, false, false, false, 6, 4, 3, 1, 2);
-  let game2 = new Game(1, 1, 3, true, false, false, 7, 2, 0, 1, 2);
+  let game1 = new Game(5, 3, 3, false, false, false, 6, 4, 8, 3, 1, 2);
+  let game2 = new Game(1, 1, 3, true, false, false, 7, 2, 4, 0, 1, 2);
   let games = [game1, game2];
 
   return (
@@ -53,8 +53,13 @@ const GameContainer: React.FC<GameContainerProps> = (props) => {
           </View>
         </View>
       </View>
-      <View style={styles.baseRunnerContainer}>
-        <BaseRunner value={props.game.baseRunnerInt()}/>
+      <View style={styles.inningStateContainer}>
+        <View style={styles.baseRunnerContainer}>
+          <BaseRunner value={props.game.baseRunnerInt()}/>
+        </View>
+        <View>
+          <Text>{props.game.inning}</Text>
+        </View>
       </View>
     </View>
   );
@@ -304,7 +309,7 @@ const styles = StyleSheet.create({
     margin: 10,
     maxHeight: 150,
     padding: 10,
-    paddingTop: 10,
+    paddingTop: 40,
     justifyContent: 'center',
     shadowColor: '#225500',
     shadowOffset: {height: 4, width: 4},
