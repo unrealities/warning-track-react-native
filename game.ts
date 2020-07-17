@@ -8,6 +8,7 @@ export interface IGame {
     homeScore: number;
     homeTeam: number; // todo: should be a team object
     inning: number;
+    inningTop: boolean;
     leverageIndex: number;
     outs: number;
     strikes: number;
@@ -23,6 +24,7 @@ export class Game implements IGame {
         public homeScore: number,
         public homeTeam: number,
         public inning: number,
+        public inningTop: boolean,
         public leverageIndex: number,
         public outs: number,
         public strikes: number) {
@@ -35,6 +37,7 @@ export class Game implements IGame {
         this.homeScore = homeScore;
         this.homeTeam = homeTeam;
         this.inning = inning;
+        this.inningTop = inningTop;
         this.leverageIndex = leverageIndex;
         this.outs = outs;
         this.strikes = strikes;
@@ -58,5 +61,9 @@ export class Game implements IGame {
         } else {                                               // bases loaded
             return 7
         }
+    }
+
+    inningTopString() : string {
+        return this.inningTop ? 'T' : 'B';
     }
 }
