@@ -57,9 +57,7 @@ const GameContainer: React.FC<GameContainerProps> = (props) => {
         <View style={styles.baseRunnerContainer}>
           <BaseRunner value={props.game.baseRunnerInt()}/>
         </View>
-        <View>
-          <Text>{props.game.inningTopString()}{props.game.inning}</Text>
-        </View>
+        <Text style={styles.inningTxtContainer}>{props.game.inningTopString()}{props.game.inning}</Text>
       </View>
     </View>
   );
@@ -320,6 +318,22 @@ const styles = StyleSheet.create({
     color: '#225500',
     fontFamily: 'Lobster_400Regular',
     fontSize: 32,
+    textAlign: 'center'
+  },
+  inningStateContainer: {
+    backgroundColor: '#55D400',
+    borderColor: '#225500',
+    borderRadius: 20,
+    borderWidth: 1,
+    height: 100,
+    marginRight: 10,
+    paddingTop: 12,
+    width: 92
+  },
+  inningTxtContainer: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    justifyContent: 'center',
     textAlign: 'center'
   },
   leverageIndex: {
