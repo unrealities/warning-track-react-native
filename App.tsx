@@ -36,7 +36,7 @@ const GameContainer: React.FC<GameContainerProps> = (props) => {
   return (
     <View style={styles.gameContainer}>
       <LeverageIndex value={props.game.leverageIndex} />
-      <View>
+      <View style={styles.gameStateContainer}>
         <Score awayScore={props.game.awayScore} awayTeam={props.game.awayTeam} homeScore={props.game.homeScore} homeTeam={props.game.homeTeam} />
         <View style={styles.bsos}>
           <View style={styles.bsoContainer}>
@@ -58,6 +58,9 @@ const GameContainer: React.FC<GameContainerProps> = (props) => {
           <BaseRunner value={props.game.baseRunnerInt()}/>
         </View>
         <Text style={styles.inningTxtContainer}>{props.game.inningTopString()}{props.game.inning}</Text>
+      </View>
+      <View style={styles.mlbTVContainer}>
+        <Text>MLB.TV</Text>
       </View>
     </View>
   );
@@ -312,7 +315,10 @@ const styles = StyleSheet.create({
     shadowColor: '#225500',
     shadowOffset: {height: 4, width: 4},
     shadowOpacity: 0.5,
-    width: 400
+    width: 480
+  },
+  gameStateContainer: {
+    marginTop: -20
   },
   headerTxt: {
     color: '#225500',
@@ -326,9 +332,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1,
     height: 100,
+    marginLeft: 10,
     marginRight: 10,
+    marginTop: -30,
     paddingTop: 12,
-    width: 92
+    width: 80
   },
   inningTxtContainer: {
     fontSize: 16,
@@ -344,6 +352,9 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     width: 60
+  },
+  mlbTVContainer: {
+    textAlign: 'center'
   },
   score: {
     fontSize: 40,
