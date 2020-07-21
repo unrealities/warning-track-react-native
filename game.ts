@@ -12,6 +12,7 @@ export interface IGame {
     leverageIndex: number;
     outs: number;
     strikes: number;
+    url: string;
 }
 
 export class Game implements IGame {
@@ -27,7 +28,8 @@ export class Game implements IGame {
         public inningTop: boolean,
         public leverageIndex: number,
         public outs: number,
-        public strikes: number) {
+        public strikes: number,
+        public url: string) {
         this.awayScore = awayScore;
         this.awayTeam = awayTeam;
         this.balls = balls;
@@ -41,6 +43,7 @@ export class Game implements IGame {
         this.leverageIndex = leverageIndex;
         this.outs = outs;
         this.strikes = strikes;
+        this.url = url;
     }
 
     baseRunnerInt() : number {

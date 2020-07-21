@@ -12,8 +12,8 @@ export default function App() {
     Lobster_400Regular,
   });
 
-  let game1 = new Game(5, 3, 3, false, false, false, 6, 4, 8, false, 3, 1, 2);
-  let game2 = new Game(1, 1, 3, true, false, false, 7, 2, 4, true, 0, 1, 2);
+  let game1 = new Game(5, 3, 3, false, false, false, 6, 4, 8, false, 3, 1, 2, 'https://mlb.tv');
+  let game2 = new Game(1, 1, 3, true, false, false, 7, 2, 4, true, 0, 1, 2, 'https://mlb.tv');
   let games = [game1, game2];
 
   return (
@@ -61,6 +61,7 @@ const GameContainer: React.FC<GameContainerProps> = (props) => {
       </View>
       <View style={styles.mlbTVContainer}>
         <Text>MLB.TV</Text>
+        <Text>{props.game.url}</Text>
       </View>
     </View>
   );
