@@ -60,8 +60,7 @@ const GameContainer: React.FC<GameContainerProps> = (props) => {
         <Text style={styles.inningTxtContainer}>{props.game.inningTopString()}{props.game.inning}</Text>
       </View>
       <View style={styles.mlbTVContainer}>
-        <Text>MLB.TV</Text>
-        <Text>{props.game.url}</Text>
+        <Text onPress={() => Linking.openURL(props.game.url)}>MLB.TV</Text>
       </View>
     </View>
   );
