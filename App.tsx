@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageBackground, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Svg, { Ellipse, G, Path, Polygon, Rect } from 'react-native-svg';
 import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
 
@@ -53,16 +53,13 @@ const GameContainer: React.FC<GameContainerProps> = (props) => {
           </View>
         </View>
       </View>
-      <View style={styles.inningStateContainer}>
+      <TouchableOpacity style={styles.inningStateContainer} onPress={() => Linking.openURL(props.game.url)}>
         <View style={styles.baseRunnerContainer}>
           <BaseRunner value={props.game.baseRunnerInt()}/>
         </View>
         <Text style={styles.inningTxtContainer}>{props.game.inningTopString()}{props.game.inning}</Text>
-      </View>
-      <View style={styles.mlbTVContainer}>
         <MLBTVLogo/>
-        <Text onPress={() => Linking.openURL(props.game.url)}>MLB.TV</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -247,7 +244,7 @@ const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
 class MLBTVLogo extends React.Component {
   render(){
     return (
-      <View style={styles.MLBTVLogo}>
+      <View style={styles.mlbTVContainer}>
         <Svg viewBox="0 0 335.85 81">
           <G>
             <Path fill="#fff" d="M321.54,0H12.22A12.3,12.3,0,0,0,3.56,3.52,12.15,12.15,0,0,0,0,12.23v54.5a12.1,12.1,0,0,0,3.54,8.68A12.25,12.25,0,0,0,12.22,79H321.54a12.25,12.25,0,0,0,12.19-12.27V12.23A12.14,12.14,0,0,0,321.54,0Z"/>
@@ -339,7 +336,7 @@ const styles = StyleSheet.create({
     shadowColor: '#225500',
     shadowOffset: {height: 4, width: 4},
     shadowOpacity: 0.5,
-    width: 480
+    width: 400
   },
   gameStateContainer: {
     marginTop: -20
@@ -355,7 +352,7 @@ const styles = StyleSheet.create({
     borderColor: '#225500',
     borderRadius: 20,
     borderWidth: 1,
-    height: 100,
+    height: 120,
     marginLeft: 10,
     marginRight: 10,
     marginTop: -30,
@@ -378,7 +375,7 @@ const styles = StyleSheet.create({
     width: 60
   },
   mlbTVContainer: {
-    textAlign: 'center'
+    padding: 8
   },
   score: {
     fontSize: 40,
