@@ -126,9 +126,13 @@ const Score: React.FC<ScoreProps> = (props) => {
   let homeTeamLogoURI = 'https://warningtrack.co/img/team_logos/' + props.homeTeam + '.svg';
   return (
     <View style={styles.scoreContainer}>
-      <Image style={styles.logo} source={{uri: awayTeamLogoURI}} />
+      <View style={styles.logoContainer}>
+        <Image style={styles.logo} source={{uri: awayTeamLogoURI}} />
+      </View>
       <Text style={styles.score}>{props.awayScore}</Text>
-      <Image style={styles.logo} source={{uri: homeTeamLogoURI}} />
+      <View style={styles.logoContainer}>
+        <Image style={styles.logo} source={{uri: homeTeamLogoURI}} />
+      </View>
       <Text style={styles.score}>{props.homeScore}</Text>
     </View>
   )
@@ -264,25 +268,6 @@ class MLBTVLogo extends React.Component {
     );
   }
 }
-/*
-<div class="game-container" ng-class="{'animated tada' : game.status.leverage_index > 3, 'not-in-progress': game.status.state < 22}">
-        <div class="score game-box">
-          <div class="game-status" ng-if="game.status.state < 22">{{game | displayGameStatus}}</div>
-        </div>
-        <div class="game-box br" ng-if="game.status.state > 21">
-          <div class="game-status">{{game | displayGameStatus}}</div>
-        </div>
-        <div class="watch-container" ng-if="game.status.state > 21">
-          <div class="watch">
-            <a href="{{game.links.mlb_tv}}" target="_blank">
-              <img class="watch-image" src="img/mlbtv-logo-square.png" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-*/
 
 const styles = StyleSheet.create({
   background: {
@@ -329,9 +314,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     margin: 10,
-    maxHeight: 150,
+    maxHeight: 140,
     padding: 10,
-    paddingTop: 40,
+    paddingTop: 50,
     justifyContent: 'center',
     shadowColor: '#225500',
     shadowOffset: {height: 4, width: 4},
@@ -352,11 +337,11 @@ const styles = StyleSheet.create({
     borderColor: '#225500',
     borderRadius: 20,
     borderWidth: 1,
-    height: 120,
+    height: 110,
     marginLeft: 10,
     marginRight: 10,
-    marginTop: -30,
-    paddingTop: 12,
+    marginTop: -42,
+    paddingTop: 2,
     width: 80
   },
   inningTxtContainer: {
@@ -370,23 +355,28 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   logo: {
-    height: 60,
     justifyContent: 'center',
+    height: 60,
+    width: '100%'
+  },
+  logoContainer: {
+    marginHorizontal: 8,
     width: 60
   },
   mlbTVContainer: {
     padding: 8
   },
   score: {
-    fontSize: 40,
+    fontSize: 56,
     fontWeight: 'bold',
-    marginHorizontal: 12,
+    marginHorizontal: 6,
     textAlign: 'center'
   },
   scoreContainer: {
-    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: -10
   },
   team: {
     fontWeight: 'bold',
