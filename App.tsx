@@ -16,6 +16,9 @@ export default function App() {
   let game2 = new Game(1, 1, 3, true, false, false, 7, 2, 4, true, 0, 1, 2, 'https://mlb.tv');
   let games = [game1, game2];
 
+  let gameData = GetGameDataByDay();
+  console.log(gameData);
+
   return (
     <View style={styles.container}>
       <ImageBackground imageStyle={styles.backgroundImg}
@@ -28,8 +31,10 @@ export default function App() {
   );
 }
 
-function GetGameDataByDay() {
-  let gameDayData = 'https://us-central1-warning-track-backend.cloudfunctions.net/GetGameDataByDay';
+
+async function GetGameDataByDay() {
+  const proxy = 'https://cors-anywhere.herokuapp.com/'; // TODO: Remove this
+  const gameDayData = 'https://us-central1-warning-track-backend.cloudfunctions.net/GetGameDataByDay';
 
   let d = new Date();
   let date = [
@@ -38,10 +43,11 @@ function GetGameDataByDay() {
     d.getFullYear()
   ].join('-');
 
-  return fetch(gameDayData, {
-      method: 'POST',
-      headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+  return fetch((proxy + gameDayData), {
       body: JSON.stringify({date: date}),
+      headers: { Accept: 'application/json', 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+      method: 'POST',
+      mode: 'cors'
     })
     .then((response) => response.json())
     .then((responseJson) => {
