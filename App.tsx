@@ -21,10 +21,24 @@ export default function App() {
     let game0 = result[0];
     let awayScore = game0.status.score.away;
     let awayTeam = game0.teams.away; // TODO: we need a conversion I think
-    console.log(awayScore);
+    let balls = game0.status.count.balls;
+    let base1 = game0.status.baseState.First;
+    let base2 = game0.status.baseState.Second;
+    let base3 = game0.status.baseState.Third;
+    let homeScore = game0.status.score.home;
+    let homeTeam = game0.teams.home;
+    let inning = game0.status.inning;
+    let inningTop = game0.status.topOfInning;
+    let leverageIndex = game0.leverageIndex;
+    let outs = game0.status.outs;
+    let strikes = game0.status.count.strikes;
+    let uri = game0.mlbTVLink;
 
-      /* TODO
-        example game response:
+    let game = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, leverageIndex, outs, strikes, uri);
+
+    console.log(game);
+
+      /* example game response:
 
         {"gameTime":"2020-07-27T19:40:00Z",
          "leverageIndex":-1,
