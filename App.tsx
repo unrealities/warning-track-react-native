@@ -11,51 +11,40 @@ export default function App() {
   let [fontsLoaded] = useFonts({
     Lobster_400Regular,
   });
+  
+  var games: Game[];
+  games = [];
 
-  let game1 = new Game(5, 3, 3, false, false, false, 6, 4, 8, false, 3, 1, 2, 'https://mlb.tv');
-  let game2 = new Game(1, 1, 3, true, false, false, 7, 2, 4, true, 0, 1, 2, 'https://mlb.tv');
-  let games = [game1, game2];
+  // Test Data
+  // let game1 = new Game(5, 3, 3, false, false, false, 6, 4, 8, false, 3, 1, 2, 'https://mlb.tv');
+  // let game2 = new Game(1, 1, 3, true, false, false, 7, 2, 4, true, 0, 1, 2, 'https://mlb.tv');
+  // let games = [game1, game2];
 
   // TODO: pull this out into it's own function
-  GetGameDataByDay().then(function(result) {
-    let game0 = result[0];
-    let awayScore = game0.status.score.away;
-    let awayTeam = game0.teams.away; // TODO: we need a conversion I think
-    let balls = game0.status.count.balls;
-    let base1 = game0.status.baseState.First;
-    let base2 = game0.status.baseState.Second;
-    let base3 = game0.status.baseState.Third;
-    let homeScore = game0.status.score.home;
-    let homeTeam = game0.teams.home;
-    let inning = game0.status.inning;
-    let inningTop = game0.status.topOfInning;
-    let leverageIndex = game0.leverageIndex;
-    let outs = game0.status.outs;
-    let strikes = game0.status.count.strikes;
-    let uri = game0.mlbTVLink;
-
-    let game = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, leverageIndex, outs, strikes, uri);
-
-    console.log(game);
-
-      /* example game response:
-
-        {"gameTime":"2020-07-27T19:40:00Z",
-         "leverageIndex":-1,
-         "mlbID":631168,
-         "mlbTVLink":"https://www.mlb.com/tv/g631168",
-         "status":{
-           "baseState":{"First":true,"Second":true,"Third":true},
-           "count":{"balls":0,"strikes":0},
-           "inning":0,
-           "inProgress":false,
-           "outs":0,
-           "score":{"away":0,"home":0},
-           "topOfInning":false},
-          "teams":{"away":108,"home":133}
-          }
-      */
+  GetGameDataByDay().then(function(result:gameDataResponseGame[]) {
+    result.map(
+      game => {
+        let awayScore = game.status.score.away;
+        let awayTeam = game.teams.away; // TODO: we need a conversion I think
+        let balls = game.status.count.balls;
+        let base1 = game.status.baseState.First;
+        let base2 = game.status.baseState.Second;
+        let base3 = game.status.baseState.Third;
+        let homeScore = game.status.score.home;
+        let homeTeam = game.teams.home;
+        let inning = game.status.inning;
+        let inningTop = game.status.topOfInning;
+        let leverageIndex = game.leverageIndex;
+        let outs = game.status.outs;
+        let strikes = game.status.count.strikes;
+        let uri = game.mlbTVLink;
+    
+        games.push(new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, leverageIndex, outs, strikes, uri));
+      }
+    );
   })
+
+  console.log(games);
 
   return (
     <View style={styles.container}>
@@ -69,6 +58,35 @@ export default function App() {
   );
 }
 
+export interface gameDataResponseGame {
+  gameTime: string;
+  leverageIndex: number;
+  mlbID: number;
+  mlbTVLink: string;
+  status: {
+    baseState: {
+      First: boolean;
+      Second: boolean;
+      Third: boolean;
+    };
+    count: {
+      balls: number;
+      strikes: number;
+    };
+    inning: number;
+    inProgress: boolean;
+    outs: number;
+    score: {
+      away: number;
+      home: number;
+    },
+    topOfInning: boolean;
+  };
+  teams: {
+    away: number;
+    home: number;
+  };
+}
 
 async function GetGameDataByDay() {
   const proxy = 'https://cors-anywhere.herokuapp.com/'; // TODO: Remove this
