@@ -25,13 +25,13 @@ export default function App() {
     result.map(
       game => {
         let awayScore = game.status.score.away;
-        let awayTeam = game.teams.away; // TODO: we need a conversion I think
+        let awayTeam = convertTeamID(game.teams.away);
         let balls = game.status.count.balls;
         let base1 = game.status.baseState.First;
         let base2 = game.status.baseState.Second;
         let base3 = game.status.baseState.Third;
         let homeScore = game.status.score.home;
-        let homeTeam = game.teams.home;
+        let homeTeam = convertTeamID(game.teams.home);
         let inning = game.status.inning;
         let inningTop = game.status.topOfInning;
         let leverageIndex = game.leverageIndex;
