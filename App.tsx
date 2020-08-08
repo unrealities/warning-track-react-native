@@ -22,6 +22,9 @@ export default function App() {
 
   // TODO: pull this out into it's own function
   GetGameDataByDay().then(function(result:gameDataResponseGame[]) {
+    if (result.length == 0 ) { // check for empty result
+      return;
+    }
     result.map(
       game => {
         let awayScore = game.status.score.away;
