@@ -16,13 +16,14 @@ export default function App() {
   games = [];
 
   // Test Data
-  // let game1 = new Game(5, 3, 3, false, false, false, 6, 4, 8, false, 3, 1, 2, 'https://mlb.tv');
-  // let game2 = new Game(1, 1, 3, true, false, false, 7, 2, 4, true, 0, 1, 2, 'https://mlb.tv');
-  // let games = [game1, game2];
+  let game1 = new Game(5, 3, 3, false, false, false, 6, 4, 8, false, 3, 1, 2, 'https://mlb.tv');
+  let game2 = new Game(1, 1, 3, true, false, false, 7, 2, 4, true, 0, 1, 2, 'https://mlb.tv');
+  games = [game1, game2];
 
   // TODO: pull this out into it's own function
   GetGameDataByDay().then(function(result:gameDataResponseGame[]) {
     if (result.length == 0 ) { // check for empty result
+      console.log("no games");
       return;
     }
     result.map(
@@ -42,7 +43,9 @@ export default function App() {
         let strikes = game.status.count.strikes;
         let uri = game.mlbTVLink;
     
-        games.push(new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, leverageIndex, outs, strikes, uri));
+        let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, leverageIndex, outs, strikes, uri);
+        games.push(newGame);
+        console.log(games);
       }
     );
   })
