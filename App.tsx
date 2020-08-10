@@ -135,36 +135,37 @@ export interface GameContainerProps {
   game: Game;
 }
 
-const GameContainer: React.FC<GameContainerProps> = (props) => {
+class GameContainer extends React.Component<GameContainerProps> {
+  render() {
   return (
     <View style={styles.gameContainer}>
-      <LeverageIndex value={props.game.leverageIndex} />
+      <LeverageIndex value={this.props.game.leverageIndex} />
       <View style={styles.gameStateContainer}>
-        <Score awayScore={props.game.awayScore} awayTeam={props.game.awayTeam} homeScore={props.game.homeScore} homeTeam={props.game.homeTeam} />
+        <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
         <View style={styles.bsos}>
           <View style={styles.bsoContainer}>
             <Text>B:</Text>
-            <BallsStrikesOuts value={props.game.balls} />
+            <BallsStrikesOuts value={this.props.game.balls} />
           </View>
           <View style={styles.bsoContainer}>
             <Text>S:</Text>
-            <BallsStrikesOuts value={props.game.strikes} />
+            <BallsStrikesOuts value={this.props.game.strikes} />
           </View>
           <View style={styles.bsoContainer}>
             <Text>O:</Text>
-            <BallsStrikesOuts value={props.game.outs} />
+            <BallsStrikesOuts value={this.props.game.outs} />
           </View>
         </View>
       </View>
-      <TouchableOpacity style={styles.inningStateContainer} onPress={() => Linking.openURL(props.game.url)}>
+      <TouchableOpacity style={styles.inningStateContainer} onPress={() => Linking.openURL(this.props.game.url)}>
         <View style={styles.baseRunnerContainer}>
-          <BaseRunner value={props.game.baseRunnerInt()}/>
+          <BaseRunner value={this.props.game.baseRunnerInt()}/>
         </View>
-        <Text style={styles.inningTxtContainer}>{props.game.inningTopString()}{props.game.inning}</Text>
+        <Text style={styles.inningTxtContainer}>{this.props.game.inningTopString()}{this.props.game.inning}</Text>
         <MLBTVLogo/>
       </TouchableOpacity>
     </View>
-  );
+  );}
 }
 
 export interface LIProps {
