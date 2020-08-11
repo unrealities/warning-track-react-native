@@ -22,7 +22,7 @@ export default function App() {
 
   // TODO: pull this out into it's own function
   GetGameDataByDay().then(function(result:gameDataResponseGame[]) {
-    if (result.length == 0 ) { // check for empty result
+    if (!result || result.length == 0 ) { // check for empty result
       console.log("no games");
       return;
     }
@@ -137,35 +137,36 @@ export interface GameContainerProps {
 
 class GameContainer extends React.Component<GameContainerProps> {
   render() {
-  return (
-    <View style={styles.gameContainer}>
-      <LeverageIndex value={this.props.game.leverageIndex} />
-      <View style={styles.gameStateContainer}>
-        <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
-        <View style={styles.bsos}>
-          <View style={styles.bsoContainer}>
-            <Text>B:</Text>
-            <BallsStrikesOuts value={this.props.game.balls} />
-          </View>
-          <View style={styles.bsoContainer}>
-            <Text>S:</Text>
-            <BallsStrikesOuts value={this.props.game.strikes} />
-          </View>
-          <View style={styles.bsoContainer}>
-            <Text>O:</Text>
-            <BallsStrikesOuts value={this.props.game.outs} />
+    return (
+      <View style={styles.gameContainer}>
+        <LeverageIndex value={this.props.game.leverageIndex} />
+        <View style={styles.gameStateContainer}>
+          <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
+          <View style={styles.bsos}>
+            <View style={styles.bsoContainer}>
+              <Text>B:</Text>
+              <BallsStrikesOuts value={this.props.game.balls} />
+            </View>
+            <View style={styles.bsoContainer}>
+              <Text>S:</Text>
+              <BallsStrikesOuts value={this.props.game.strikes} />
+            </View>
+            <View style={styles.bsoContainer}>
+              <Text>O:</Text>
+              <BallsStrikesOuts value={this.props.game.outs} />
+            </View>
           </View>
         </View>
+        <TouchableOpacity style={styles.inningStateContainer} onPress={() => Linking.openURL(this.props.game.url)}>
+          <View style={styles.baseRunnerContainer}>
+            <BaseRunner value={this.props.game.baseRunnerInt()}/>
+          </View>
+          <Text style={styles.inningTxtContainer}>{this.props.game.inningTopString()}{this.props.game.inning}</Text>
+          <MLBTVLogo/>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.inningStateContainer} onPress={() => Linking.openURL(this.props.game.url)}>
-        <View style={styles.baseRunnerContainer}>
-          <BaseRunner value={this.props.game.baseRunnerInt()}/>
-        </View>
-        <Text style={styles.inningTxtContainer}>{this.props.game.inningTopString()}{this.props.game.inning}</Text>
-        <MLBTVLogo/>
-      </TouchableOpacity>
-    </View>
-  );}
+    );
+  }
 }
 
 export interface LIProps {
