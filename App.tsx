@@ -135,33 +135,50 @@ export interface GameContainerProps {
   game: Game;
 }
 
-class GameContainer extends React.Component<GameContainerProps> {
+export interface GameContainerState {
+  game: Game;
+}
+
+class GameContainer extends React.Component<GameContainerProps, GameContainerState> {
+  constructor(props: GameContainerProps) {
+    super(props);
+    this.state = { game: props.game };
+  }
+
+  componentWillMount(){
+    this.setState({ game: this.props.game });
+  }
+
+  componentDidMount(){
+    this.setState({ game: this.props.game });
+  }
+
   render() {
     return (
       <View style={styles.gameContainer}>
-        <LeverageIndex value={this.props.game.leverageIndex} />
+        <LeverageIndex value={this.state.game.leverageIndex} />
         <View style={styles.gameStateContainer}>
-          <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
+          <Score awayScore={this.state.game.awayScore} awayTeam={this.state.game.awayTeam} homeScore={this.state.game.homeScore} homeTeam={this.state.game.homeTeam} />
           <View style={styles.bsos}>
             <View style={styles.bsoContainer}>
               <Text>B:</Text>
-              <BallsStrikesOuts value={this.props.game.balls} />
+              <BallsStrikesOuts value={this.state.game.balls} />
             </View>
             <View style={styles.bsoContainer}>
               <Text>S:</Text>
-              <BallsStrikesOuts value={this.props.game.strikes} />
+              <BallsStrikesOuts value={this.state.game.strikes} />
             </View>
             <View style={styles.bsoContainer}>
               <Text>O:</Text>
-              <BallsStrikesOuts value={this.props.game.outs} />
+              <BallsStrikesOuts value={this.state.game.outs} />
             </View>
           </View>
         </View>
-        <TouchableOpacity style={styles.inningStateContainer} onPress={() => Linking.openURL(this.props.game.url)}>
+        <TouchableOpacity style={styles.inningStateContainer} onPress={() => Linking.openURL(this.state.game.url)}>
           <View style={styles.baseRunnerContainer}>
-            <BaseRunner value={this.props.game.baseRunnerInt()}/>
+            <BaseRunner value={this.state.game.baseRunnerInt()}/>
           </View>
-          <Text style={styles.inningTxtContainer}>{this.props.game.inningTopString()}{this.props.game.inning}</Text>
+          <Text style={styles.inningTxtContainer}>{this.state.game.inningTopString()}{this.state.game.inning}</Text>
           <MLBTVLogo/>
         </TouchableOpacity>
       </View>
