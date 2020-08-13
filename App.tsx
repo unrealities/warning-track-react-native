@@ -11,46 +11,6 @@ export default function App() {
   let [fontsLoaded] = useFonts({
     Lobster_400Regular,
   });
-  
-  var games: Game[];
-  games = [];
-
-  // Test Data
-  let game1 = new Game(5, 3, 3, false, false, false, 6, 4, 8, false, 3, 1, 2, 'https://mlb.tv');
-  let game2 = new Game(1, 1, 3, true, false, false, 7, 2, 4, true, 0, 1, 2, 'https://mlb.tv');
-  games = [game1, game2];
-
-  // TODO: pull this out into it's own function
-  GetGameDataByDay().then(function(result:gameDataResponseGame[]) {
-    if (!result || result.length == 0 ) { // check for empty result
-      console.log("no games");
-      return;
-    }
-    result.map(
-      game => {
-        let awayScore = game.status.score.away;
-        let awayTeam = convertTeamID(game.teams.away);
-        let balls = game.status.count.balls;
-        let base1 = game.status.baseState.First;
-        let base2 = game.status.baseState.Second;
-        let base3 = game.status.baseState.Third;
-        let homeScore = game.status.score.home;
-        let homeTeam = convertTeamID(game.teams.home);
-        let inning = game.status.inning;
-        let inningTop = game.status.topOfInning;
-        let leverageIndex = game.leverageIndex;
-        let outs = game.status.outs;
-        let strikes = game.status.count.strikes;
-        let uri = game.mlbTVLink;
-    
-        let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, leverageIndex, outs, strikes, uri);
-        games.push(newGame);
-        console.log(games);
-      }
-    );
-  })
-
-  console.log(games);
 
   return (
     <View style={styles.container}>
@@ -58,7 +18,7 @@ export default function App() {
                        source={{uri: backgroundImg}}
                        style={styles.background}>
         <Text style={styles.headerTxt}>WarningTrack</Text>
-        {games.map(game => <GameContainer game={game}/>)}
+        <Games></Games>
       </ImageBackground>
     </View>
   );
@@ -131,27 +91,48 @@ function convertTeamID(mlbID: number) {
   return 0;
 }
 
-export interface GameContainerProps {
-  game: Game;
-}
-
-export interface GameContainerState {
-  game: Game;
-}
-
-class GameContainer extends React.Component<GameContainerProps, GameContainerState> {
-  constructor(props: GameContainerProps) {
+class GamesContainer extends React.Component {
+  constructor() {
     super(props);
-    this.state = { game: props.game };
-  }
-
-  componentWillMount(){
-    this.setState({ game: this.props.game });
+    this.state = { games: [] };
   }
 
   componentDidMount(){
-    this.setState({ game: this.props.game });
+    GetGameDataByDay().then(function(result:gameDataResponseGame[]) {
+      if (!result || result.length == 0 ) { // check for empty result
+        console.log("no games");
+        return;
+      }
+      result.map(
+        game => {
+          let awayScore = game.status.score.away;
+          let awayTeam = convertTeamID(game.teams.away);
+          let balls = game.status.count.balls;
+          let base1 = game.status.baseState.First;
+          let base2 = game.status.baseState.Second;
+          let base3 = game.status.baseState.Third;
+          let homeScore = game.status.score.home;
+          let homeTeam = convertTeamID(game.teams.home);
+          let inning = game.status.inning;
+          let inningTop = game.status.topOfInning;
+          let leverageIndex = game.leverageIndex;
+          let outs = game.status.outs;
+          let strikes = game.status.count.strikes;
+          let uri = game.mlbTVLink;
+      
+          let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, leverageIndex, outs, strikes, uri);
+          let newGames = this.state.games.push(newGame);
+          this.setState({ games: newGames});
+          console.log(games);
+        }
+      );
+  })
+
+  console.log(games);
   }
+}
+
+class GameContainer extends React.Component {
 
   render() {
     return (
