@@ -94,11 +94,12 @@ function convertTeamID(mlbID: number) {
 class GamesContainer extends React.Component {
   constructor() {
     super({});
-    this.state = { games: [] };
-    let newGames:Game[];
+    this.state = { games: {} };
   }
 
   componentDidMount(){
+    let newGames:Game[];
+    newGames = [];
     GetGameDataByDay().then(function(result:gameDataResponseGame[]) {
       if (!result || result.length == 0 ) { // check for empty result
         console.log("no games");
@@ -122,12 +123,13 @@ class GamesContainer extends React.Component {
           let uri = game.mlbTVLink;
       
           let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, leverageIndex, outs, strikes, uri);
-          this.state.games.push(newGame);
-          this.setState(this.state.games);
-          console.log(this.state.games);
+          newGames.push(newGame);
         }
       );
     })
+
+    this.setState({games: newGames});
+    console.log(this.state.games);
   }
 }
 
