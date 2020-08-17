@@ -133,7 +133,11 @@ class GamesContainer extends React.Component {
   }
 }
 
-class GameContainer extends React.Component {
+class GameContainer extends React.Component<Game> {
+  constructor(props:Game){
+    super(props);
+    this.state = { game: this.props };
+  }
   render() {
     return (
       <View style={styles.gameContainer}>
