@@ -133,10 +133,18 @@ class GamesContainer extends React.Component {
   }
 }
 
-class GameContainer extends React.Component<Game> {
-  constructor(props:Game){
+export interface GameProps {
+  game: Game;
+}
+
+export interface GameState {
+  game: Game;
+}
+
+class GameContainer extends React.Component<GameProps, GameState> {
+  constructor(props:GameProps){
     super(props);
-    this.state = { game: this.props };
+    this.state = { game: this.props.game };
   }
   render() {
     return (
