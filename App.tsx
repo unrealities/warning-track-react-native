@@ -91,10 +91,14 @@ function convertTeamID(mlbID: number) {
   return 0;
 }
 
-class GamesContainer extends React.Component {
+export interface GamesState {
+  games: Game[];
+}
+
+class GamesContainer extends React.Component<{}, GamesState> {
   constructor() {
     super({});
-    this.state = { games: {} };
+    this.state = { games: [] };
   }
 
   componentDidMount(){
