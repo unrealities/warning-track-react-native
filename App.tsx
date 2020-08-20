@@ -127,13 +127,25 @@ class GamesContainer extends React.Component<{}, GamesState> {
           let uri = game.mlbTVLink;
       
           let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, leverageIndex, outs, strikes, uri);
+          console.log(newGame);
           newGames.push(newGame);
         }
       );
     })
 
+    console.log(newGames);
     this.setState({games: newGames});
     console.log(this.state.games);
+  }
+
+  render(){
+    return (
+      this.state.games.map(
+        game => {
+          <GameContainer game={game}/>
+        }
+      )
+    );
   }
 }
 
