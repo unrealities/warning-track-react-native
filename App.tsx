@@ -81,45 +81,6 @@ async function GetGameDataByDay() {
   );
 }
 
-function getGames(): Game[] {
-  let newGames:Game[];
-  newGames = [];
-
-  GetGameDataByDay()
-    .then(function(result:gameDataResponseGame[]) {
-    
-      if (!result || result.length == 0 ) { // check for empty result
-        console.log("no games");
-        return;
-      }
-      result.map(
-        game => {
-          let awayScore = game.status.score.away;
-          let awayTeam = convertTeamID(game.teams.away);
-          let balls = game.status.count.balls;
-          let base1 = game.status.baseState.First;
-          let base2 = game.status.baseState.Second;
-          let base3 = game.status.baseState.Third;
-          let homeScore = game.status.score.home;
-          let homeTeam = convertTeamID(game.teams.home);
-          let inning = game.status.inning;
-          let inningTop = game.status.topOfInning;
-          let leverageIndex = game.leverageIndex;
-          let outs = game.status.outs;
-          let strikes = game.status.count.strikes;
-          let uri = game.mlbTVLink;
-      
-          let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, leverageIndex, outs, strikes, uri);
-          newGames.push(newGame);
-        }
-      );
-      console.log(newGames);
-    });
-
-  console.log(newGames);
-  return newGames;
-}
-
 function convertTeamID(mlbID: number): number {
   const teams = require('./team.json');
   for (let team of teams) {
@@ -141,7 +102,40 @@ class GamesContainer extends React.Component<{}, GamesState> {
   }
 
   componentDidMount(){
-    this.setState({games: getGames()});
+    let newGames:Game[];
+    newGames = [];
+
+    GetGameDataByDay()
+      .then(function(result:gameDataResponseGame[]) {
+      
+        if (!result || result.length == 0 ) { // check for empty result
+          console.log("no games");
+          return newGames;
+        }
+        result.map(
+          game => {
+            let awayScore = game.status.score.away;
+            let awayTeam = convertTeamID(game.teams.away);
+            let balls = game.status.count.balls;
+            let base1 = game.status.baseState.First;
+            let base2 = game.status.baseState.Second;
+            let base3 = game.status.baseState.Third;
+            let homeScore = game.status.score.home;
+            let homeTeam = convertTeamID(game.teams.home);
+            let inning = game.status.inning;
+            let inningTop = game.status.topOfInning;
+            let leverageIndex = game.leverageIndex;
+            let outs = game.status.outs;
+            let strikes = game.status.count.strikes;
+            let uri = game.mlbTVLink;
+        
+            let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, leverageIndex, outs, strikes, uri);
+            newGames.push(newGame);
+          }
+        );
+        return newGames;
+      }).then(result => this.setState({games: result}));
+
   }
 
   render(){
