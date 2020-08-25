@@ -141,7 +141,7 @@ class GamesContainer extends React.Component<{}, GamesState> {
   render(){
     console.log(this.state.games);
     return (
-      this.state.games.length > 0 ?  this.state.games.map(game => {<GameContainer game={game}/>}) : 'loading games'
+      this.state.games.length > 0 ?  this.state.games.map(game => {<GameContainer game={game} />}) : 'loading games'
     );
   }
 }
@@ -150,46 +150,38 @@ export interface GameProps {
   game: Game;
 }
 
-export interface GameState {
-  game: Game;
-}
-
-class GameContainer extends React.Component<GameProps, GameState> {
+class GameContainer extends React.Component<GameProps> {
   constructor(props:GameProps){
     super(props);
-    this.state = { game: this.props.game };
-  }
-
-  componentDidMount(){
-    this.setState({game: this.props.game});
   }
 
   render() {
+    console.log(this.props.game);
     return (
       <View style={styles.gameContainer}>
-        <LeverageIndex value={this.state.game.leverageIndex} />
+        <LeverageIndex value={this.props.game.leverageIndex} />
         <View style={styles.gameStateContainer}>
-          <Score awayScore={this.state.game.awayScore} awayTeam={this.state.game.awayTeam} homeScore={this.state.game.homeScore} homeTeam={this.state.game.homeTeam} />
+          <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
           <View style={styles.bsos}>
             <View style={styles.bsoContainer}>
               <Text>B:</Text>
-              <BallsStrikesOuts value={this.state.game.balls} />
+              <BallsStrikesOuts value={this.props.game.balls} />
             </View>
             <View style={styles.bsoContainer}>
               <Text>S:</Text>
-              <BallsStrikesOuts value={this.state.game.strikes} />
+              <BallsStrikesOuts value={this.props.game.strikes} />
             </View>
             <View style={styles.bsoContainer}>
               <Text>O:</Text>
-              <BallsStrikesOuts value={this.state.game.outs} />
+              <BallsStrikesOuts value={this.props.game.outs} />
             </View>
           </View>
         </View>
-        <TouchableOpacity style={styles.inningStateContainer} onPress={() => Linking.openURL(this.state.game.url)}>
+        <TouchableOpacity style={styles.inningStateContainer} onPress={() => Linking.openURL(this.props.game.url)}>
           <View style={styles.baseRunnerContainer}>
-            <BaseRunner value={this.state.game.baseRunnerInt()}/>
+            <BaseRunner value={this.props.game.baseRunnerInt()}/>
           </View>
-          <Text style={styles.inningTxtContainer}>{this.state.game.inningTopString()}{this.state.game.inning}</Text>
+          <Text style={styles.inningTxtContainer}>{this.props.game.inningTopString()}{this.props.game.inning}</Text>
           <MLBTVLogo/>
         </TouchableOpacity>
       </View>
