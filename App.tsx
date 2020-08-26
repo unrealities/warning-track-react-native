@@ -141,7 +141,7 @@ class GamesContainer extends React.Component<{}, GamesState> {
   render(){
     console.log(this.state.games);
     return (
-      this.state.games.length > 0 ?  this.state.games.map(game => {<GameContainer game={game} />}) : 'loading games'
+      this.state.games.length > 0 ?  this.state.games.map(game => <GameContainer game={game} />) : 'loading games'
     );
   }
 }
@@ -155,8 +155,11 @@ class GameContainer extends React.Component<GameProps> {
     super(props);
   }
 
-  render() {
+  componentDidMount(){
     console.log(this.props.game);
+  }
+
+  render() {
     return (
       <View style={styles.gameContainer}>
         <LeverageIndex value={this.props.game.leverageIndex} />
