@@ -141,7 +141,7 @@ class GamesContainer extends React.Component<{}, GamesState> {
   render(){
     console.log(this.state.games);
     return (
-      this.state.games.length > 0 ?  this.state.games.map(game => <GameContainer game={game} />) : 'loading games'
+      this.state.games.length > 0 ?  this.state.games.map(game => <GameContainer game={game} />) : <LoadingGames />
     );
   }
 }
@@ -238,6 +238,14 @@ const LeverageIndex: React.FC<LIProps> = (props) => {
           <path d="m2.08791,89.15311l7.57237,0l2.33991,-7.19372l2.33993,7.19372l7.57236,0l-6.12616,4.4459l2.34004,7.19373l-6.12617,-4.44604l-6.12616,4.44604l2.34004,-7.19373l-6.12616,-4.4459l0,0z" stroke-width="NaN" stroke={stroke[4]} fill={fill[4]}/>
         </g>
       </Svg>
+    </View>
+  )
+}
+
+const LoadingGames: React.FC<{}> = (props) => {
+  return (
+    <View style={styles.loadingGamesContainer}>
+      <Text style={styles.loadingGamesText}>Loading Games...</Text>
     </View>
   )
 }
@@ -481,6 +489,14 @@ const styles = StyleSheet.create({
   leverageIndex: {
     flex: 1,
     flexDirection: 'column'
+  },
+  loadingGamesContainer: {
+    marginTop: 20,
+    textAlign: 'center'
+  },
+  loadingGamesText: {
+    fontSize: 36,
+    fontWeight: 'bold'
   },
   logo: {
     justifyContent: 'center',
