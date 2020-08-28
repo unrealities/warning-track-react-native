@@ -222,8 +222,8 @@ const LeverageIndex: React.FC<LIProps> = (props) => {
       fill = ["#ffffff", "#f5d800", "#f5d800", "#f5d800", "#f5d800"];
       break;
     default:
-      stroke = ["#baa400", "#baa400", "#baa400", "#baa400", "#baa400"];
-      fill = ["#f5d800", "#f5d800", "#f5d800", "#f5d800", "#f5d800"];
+      stroke = ["#e6db8a", "#e6db8a", "#e6db8a", "#e6db8a", "#e6db8a"];
+      fill = ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"];
       break;
   }
 
@@ -364,8 +364,8 @@ const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
       fill = ["#f5d800","#f5d800","#f5d800"];
       break;
     default:
-      stroke = ["#baa400","#baa400","#baa400"];
-      fill = ["#f5d800","#f5d800","#f5d800"];
+      stroke = ["#225500","#225500","#225500"];
+      fill = ["#ffffff","#ffffff","#ffffff"];
       break;
   }
   return (
