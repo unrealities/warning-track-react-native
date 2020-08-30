@@ -124,12 +124,13 @@ class GamesContainer extends React.Component<{}, GamesState> {
             let homeTeam = convertTeamID(game.teams.home);
             let inning = game.status.inning;
             let inningTop = game.status.topOfInning;
+            let inProgress = game.status.inProgress;
             let leverageIndex = game.leverageIndex;
             let outs = game.status.outs;
             let strikes = game.status.count.strikes;
             let uri = game.mlbTVLink;
         
-            let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, leverageIndex, outs, strikes, uri);
+            let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, inProgress, leverageIndex, outs, strikes, uri);
             newGames.push(newGame);
           }
         );
@@ -141,7 +142,7 @@ class GamesContainer extends React.Component<{}, GamesState> {
   render(){
     console.log(this.state.games);
     return (
-      this.state.games.length > 0 ?  this.state.games.map(game => <GameContainer game={game} />) : <LoadingGames />
+      this.state.games.length > 0 ? this.state.games.map(game => game.inProgress ? <GameContainer game={game} /> : <PreGameContainer game={game} />) : <LoadingGames />
     );
   }
 }
@@ -187,6 +188,30 @@ class GameContainer extends React.Component<GameProps> {
           <Text style={styles.inningTxtContainer}>{this.props.game.inningTopString()}{this.props.game.inning}</Text>
           <MLBTVLogo/>
         </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+export interface PreGameProps {
+  game: Game;
+}
+
+class PreGameContainer extends React.Component<PreGameProps> {
+  constructor(props:PreGameProps){
+    super(props);
+  }
+
+  componentDidMount(){
+    console.log(this.props.game);
+  }
+
+  render() {
+    return (
+      <View style={styles.gameContainer}>
+        <View style={styles.gameStateContainer}>
+          <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
+        </View>
       </View>
     );
   }
