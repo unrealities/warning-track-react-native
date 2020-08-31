@@ -394,7 +394,7 @@ const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
       break;
   }
   return (
-    <View style={styles.BaseRunner}>
+    <View style={styles.baseRunner}>
       <Svg viewBox="0 0 34 26" width="68" height="52">
         <G>
           <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke={stroke[0]} fill={fill[0]}/>
@@ -524,13 +524,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   logo: {
+    alignContent: 'center',
     justifyContent: 'center',
     height: 60,
+    overflow: 'visible',
     width: '100%'
   },
   logoContainer: {
+    height: '100%',
     marginHorizontal: 8,
-    width: 60
+    width: 80
   },
   mlbTVContainer: {
     padding: 8
