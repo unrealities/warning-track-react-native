@@ -162,7 +162,7 @@ class GameContainer extends React.Component<GameProps> {
 
   render() {
     return (
-      <View style={styles.gameContainer}>
+      <View style={styles.gameContainer} key={this.props.game.url}>
         <LeverageIndex value={this.props.game.leverageIndex} />
         <View style={styles.gameStateContainer}>
           <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
@@ -208,7 +208,7 @@ class PreGameContainer extends React.Component<PreGameProps> {
 
   render() {
     return (
-      <View style={styles.gameContainer}>
+      <View style={styles.gameContainer} key={this.props.game.url}>
         <View style={styles.gameStateContainer}>
           <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
         </View>
@@ -516,18 +516,18 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   loadingGamesContainer: {
-    marginTop: 20,
-    textAlign: 'center'
+    marginTop: 20
   },
   loadingGamesText: {
     fontSize: 36,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   logo: {
     alignContent: 'center',
     justifyContent: 'center',
     height: 60,
-    overflow: 'visible',
+    minWidth: 80,
     width: '100%'
   },
   logoContainer: {
