@@ -475,7 +475,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     margin: 10,
-    maxHeight: 140,
+    minHeight: 120,
     padding: 10,
     paddingTop: 50,
     justifyContent: 'center',
@@ -527,13 +527,14 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     height: 60,
-    minWidth: 80,
+    minWidth: 60,
+    resizeMode: 'contain',
     width: '100%'
   },
   logoContainer: {
     height: '100%',
     marginHorizontal: 8,
-    width: 80
+    width: 60
   },
   mlbTVContainer: {
     padding: 8
