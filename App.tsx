@@ -475,14 +475,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     margin: 10,
+    maxWidth: 420,
     minHeight: 120,
+    minWidth: 280,
     padding: 10,
     paddingTop: 50,
     justifyContent: 'center',
     shadowColor: '#225500',
     shadowOffset: {height: 4, width: 4},
     shadowOpacity: 0.5,
-    width: 400
   },
   gameStateContainer: {
     marginTop: -20
@@ -540,16 +541,17 @@ const styles = StyleSheet.create({
     padding: 8
   },
   score: {
-    fontSize: 56,
+    fontSize: 64,
     fontWeight: 'bold',
-    marginHorizontal: 6,
+    marginHorizontal: 10,
+    marginTop: -4,
     textAlign: 'center'
   },
   scoreContainer: {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: -10
+    marginTop: -20
   },
   team: {
     fontWeight: 'bold',
