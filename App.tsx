@@ -128,9 +128,10 @@ class GamesContainer extends React.Component<{}, GamesState> {
             let leverageIndex = game.leverageIndex;
             let outs = game.status.outs;
             let strikes = game.status.count.strikes;
+            let time = Date.parse(game.gameTime);
             let uri = game.mlbTVLink;
-        
-            let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, inProgress, leverageIndex, outs, strikes, uri);
+
+            let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, inProgress, leverageIndex, outs, strikes, time, uri);
             newGames.push(newGame);
           }
         );
@@ -210,6 +211,7 @@ class PreGameContainer extends React.Component<PreGameProps> {
     return (
       <View style={styles.gameContainer} key={this.props.game.url}>
         <View style={styles.gameStateContainer}>
+          <Text>{this.props.game.time.getHours()}:{this.props.game.time.getMinutes()}</Text>
           <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
         </View>
       </View>

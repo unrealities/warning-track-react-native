@@ -13,6 +13,7 @@ export interface IGame {
     leverageIndex: number;
     outs: number;
     strikes: number;
+    time: Date;
     url: string;
 }
 
@@ -31,6 +32,7 @@ export class Game implements IGame {
         public leverageIndex: number,
         public outs: number,
         public strikes: number,
+        public time: Date,
         public url: string) {
         this.awayScore = awayScore;
         this.awayTeam = awayTeam;
@@ -46,6 +48,7 @@ export class Game implements IGame {
         this.leverageIndex = leverageIndex;
         this.outs = outs;
         this.strikes = strikes;
+        this.time = time;
         this.url = url;
     }
 
