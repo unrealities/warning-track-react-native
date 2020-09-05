@@ -128,7 +128,7 @@ class GamesContainer extends React.Component<{}, GamesState> {
             let leverageIndex = game.leverageIndex;
             let outs = game.status.outs;
             let strikes = game.status.count.strikes;
-            let time = Date.parse(game.gameTime);
+            let time = new Date(game.gameTime);
             let uri = game.mlbTVLink;
 
             let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, inProgress, leverageIndex, outs, strikes, time, uri);
@@ -211,8 +211,8 @@ class PreGameContainer extends React.Component<PreGameProps> {
     return (
       <View style={styles.gameContainer} key={this.props.game.url}>
         <View style={styles.gameStateContainer}>
-          <Text>{this.props.game.time.getHours()}:{this.props.game.time.getMinutes()}</Text>
           <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
+          <Text style={styles.preGameTime}>{this.props.game.time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</Text>
         </View>
       </View>
     );
@@ -541,6 +541,11 @@ const styles = StyleSheet.create({
   },
   mlbTVContainer: {
     padding: 8
+  },
+  preGameTime: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   score: {
     fontSize: 64,
