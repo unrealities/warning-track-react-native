@@ -207,12 +207,22 @@ class PreGameContainer extends React.Component<PreGameProps> {
     console.log(this.props.game);
   }
 
-  render() {
+  render() {    
+    let awayTeamLogoURI = 'https://warningtrack.co/img/team_logos/' + this.props.game.awayTeam + '.svg';
+    let homeTeamLogoURI = 'https://warningtrack.co/img/team_logos/' + this.props.game.homeTeam + '.svg';
+
     return (
       <View style={styles.gameContainer} key={this.props.game.url}>
         <View style={styles.gameStateContainer}>
-          <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
-          <Text style={styles.preGameTime}>{this.props.game.time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</Text>
+          <View style={styles.scoreContainer}>
+            <View style={styles.logoContainer}>
+              <Image style={styles.logo} source={{uri: awayTeamLogoURI}} />
+            </View>
+            <View style={styles.logoContainer}>
+              <Image style={styles.logo} source={{uri: homeTeamLogoURI}} />
+            </View>
+            <Text style={styles.preGameTime}>{this.props.game.time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</Text>
+          </View>
         </View>
       </View>
     );
@@ -545,6 +555,7 @@ const styles = StyleSheet.create({
   preGameTime: {
     fontSize: 18,
     fontWeight: 'bold',
+    marginLeft: 10,
     textAlign: 'center'
   },
   score: {
