@@ -445,6 +445,7 @@ class MLBTVLogo extends React.Component {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    height: '100%',
     justifyContent: 'center',
     width: '100%'
   },
@@ -503,7 +504,7 @@ const styles = StyleSheet.create({
   headerTxt: {
     color: '#225500',
     fontFamily: 'Lobster_400Regular',
-    fontSize: 32,
+    fontSize: 48,
     textAlign: 'center'
   },
   inningStateContainer: {
