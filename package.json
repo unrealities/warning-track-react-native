@@ -11,6 +11,7 @@
     "@expo-google-fonts/lobster": "^0.1.0",
     "@react-native-community/masked-view": "0.1.6",
     "@react-navigation/native": "^5.7.3",
+    "@react-navigation/stack": "^5.9.0",
     "expo": "^37.0.12",
     "expo-font": "^8.1.1",
     "expo-updates": "~0.2.1",
