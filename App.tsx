@@ -17,13 +17,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/>
+        <Stack.Screen name="Games" component={GamesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-function HomeScreen() {
+function GamesScreen() {
   let backgroundImg = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MCIgaGVpZ2h0PSI3MCI+CjxyZWN0IHdpZHRoPSI3MCIgaGVpZ2h0PSI3MCIgZmlsbD0iIzQ0YWEwMCI+PC9yZWN0Pgo8ZyB0cmFuc2Zvcm09InJvdGF0ZSg0NSkiPgo8cmVjdCB3aWR0aD0iOTkiIGhlaWdodD0iMjUiIGZpbGw9IiM1NWQ0MDAiPjwvcmVjdD4KPHJlY3QgeT0iLTUwIiB3aWR0aD0iOTkiIGhlaWdodD0iMjUiIGZpbGw9IiM1NWQ0MDAiPjwvcmVjdD4KPC9nPgo8L3N2Zz4=';
 
   return (
@@ -31,11 +32,18 @@ function HomeScreen() {
       <ImageBackground imageStyle={styles.backgroundImg}
                        source={{uri: backgroundImg}}
                        style={styles.background}>
-        <Text style={styles.headerTxt}>WarningTrack</Text>
         <GamesContainer/>
       </ImageBackground>
     </View>
   );
+}
+
+function HomeScreen() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.headerTxt}>WarningTrack</Text>
+    </View>
+  );  
 }
 
 export interface gameDataResponseGame {
