@@ -4,24 +4,58 @@ import Svg, { Ellipse, G, Path, Polygon, Rect } from 'react-native-svg';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
+import * as SplashScreen from 'expo-splash-screen';
 
 import { Game } from './game';
+import { fetchUpdateAsync } from 'expo-updates';
 
 const Stack = createStackNavigator();
 
-export default function App() {
-  let [fontsLoaded] = useFonts({
-    Lobster_400Regular,
-  });
+export default class App extends React.Component {
+  state = {
+    appIsReady: false,
+  };
 
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/>
-        <Stack.Screen name="Games" component={GamesScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  async componentDidMount() {
+    // Prevent native splash screen from autohiding
+    try {
+      await SplashScreen.preventAutoHideAsync();
+    } catch (e) {
+      console.warn(e);
+    }
+    this.prepareResources();
+  }
+
+  prepareResources = async () => {
+    try {
+      // TODO: await fetchData();
+    } catch (e) {
+      console.warn(e);
+    } finally {
+      this.setState({ appIsReady: true }, async () => {
+        await SplashScreen.hideAsync();
+      });
+    }
+  };
+
+  render() {
+    let [fontsLoaded] = useFonts({
+      Lobster_400Regular,
+    });
+
+    if (!this.state.appIsReady) {
+      return null;
+    }
+
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/>
+          <Stack.Screen name="Games" component={GamesScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
 }
 
 function GamesScreen() {
