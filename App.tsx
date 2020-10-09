@@ -39,10 +39,6 @@ export default class App extends React.Component {
   };
 
   render() {
-    let [fontsLoaded] = useFonts({
-      Lobster_400Regular,
-    });
-
     if (!this.state.appIsReady) {
       return null;
     }
@@ -50,7 +46,7 @@ export default class App extends React.Component {
     return (
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/>
+          {/* <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/> */}
           <Stack.Screen name="Games" component={GamesScreen} />
         </Stack.Navigator>
       </NavigationContainer>
@@ -73,6 +69,10 @@ function GamesScreen() {
 }
 
 function HomeScreen() {
+  let [fontsLoaded] = useFonts({
+    Lobster_400Regular,
+  });
+
   return (
     <View style={styles.container}>
       <Text style={styles.headerTxt}>WarningTrack</Text>
