@@ -14,6 +14,7 @@ const Stack = createStackNavigator();
 export default class App extends React.Component {
   state = {
     appIsReady: false,
+    games: [],
   };
 
   async componentDidMount() {
@@ -28,7 +29,41 @@ export default class App extends React.Component {
 
   prepareResources = async () => {
     try {
-      // TODO: await fetchData();
+      let newGames:Game[];
+      newGames = [];
+  
+      GetGameDataByDay()
+        .then(function(result:gameDataResponseGame[]) {
+        
+          if (!result || result.length == 0 ) { // check for empty result
+            console.log("no games");
+            return newGames;
+          }
+          result.map(
+            game => {
+              let awayScore = game.status.score.away;
+              let awayTeam = convertTeamID(game.teams.away);
+              let balls = game.status.count.balls;
+              let base1 = game.status.baseState.First;
+              let base2 = game.status.baseState.Second;
+              let base3 = game.status.baseState.Third;
+              let homeScore = game.status.score.home;
+              let homeTeam = convertTeamID(game.teams.home);
+              let inning = game.status.inning;
+              let inningTop = game.status.topOfInning;
+              let inProgress = game.status.inProgress;
+              let leverageIndex = game.leverageIndex;
+              let outs = game.status.outs;
+              let strikes = game.status.count.strikes;
+              let time = new Date(game.gameTime);
+              let uri = game.mlbTVLink;
+  
+              let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, inProgress, leverageIndex, outs, strikes, time, uri);
+              newGames.push(newGame);
+            }
+          );
+          return newGames;
+        }).then(result => this.setState({games: result}));
     } catch (e) {
       console.warn(e);
     } finally {
@@ -47,25 +82,37 @@ export default class App extends React.Component {
       <NavigationContainer>
         <Stack.Navigator>
           {/* <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/> */}
-          <Stack.Screen name="Games" component={GamesScreen} />
+          <Stack.Screen name="Games">
+            {props => <GamesScreen {...props} games={this.state.games} />}
+          </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     );
   }
 }
 
-function GamesScreen() {
-  let backgroundImg = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MCIgaGVpZ2h0PSI3MCI+CjxyZWN0IHdpZHRoPSI3MCIgaGVpZ2h0PSI3MCIgZmlsbD0iIzQ0YWEwMCI+PC9yZWN0Pgo8ZyB0cmFuc2Zvcm09InJvdGF0ZSg0NSkiPgo8cmVjdCB3aWR0aD0iOTkiIGhlaWdodD0iMjUiIGZpbGw9IiM1NWQ0MDAiPjwvcmVjdD4KPHJlY3QgeT0iLTUwIiB3aWR0aD0iOTkiIGhlaWdodD0iMjUiIGZpbGw9IiM1NWQ0MDAiPjwvcmVjdD4KPC9nPgo8L3N2Zz4=';
+export interface GamesProps {
+  games: Game[];
+}
 
-  return (
-    <View style={styles.container}>
-      <ImageBackground imageStyle={styles.backgroundImg}
-                       source={{uri: backgroundImg}}
-                       style={styles.background}>
-        <GamesContainer/>
-      </ImageBackground>
-    </View>
-  );
+class GamesScreen extends React.Component<GameProps> {
+  constructor(props:GameProps){
+    super(props);
+  }
+
+  render(){
+    let backgroundImg = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MCIgaGVpZ2h0PSI3MCI+CjxyZWN0IHdpZHRoPSI3MCIgaGVpZ2h0PSI3MCIgZmlsbD0iIzQ0YWEwMCI+PC9yZWN0Pgo8ZyB0cmFuc2Zvcm09InJvdGF0ZSg0NSkiPgo8cmVjdCB3aWR0aD0iOTkiIGhlaWdodD0iMjUiIGZpbGw9IiM1NWQ0MDAiPjwvcmVjdD4KPHJlY3QgeT0iLTUwIiB3aWR0aD0iOTkiIGhlaWdodD0iMjUiIGZpbGw9IiM1NWQ0MDAiPjwvcmVjdD4KPC9nPgo8L3N2Zz4=';
+
+    return (
+      <View style={styles.container}>
+        <ImageBackground imageStyle={styles.backgroundImg}
+                        source={{uri: backgroundImg}}
+                        style={styles.background}>
+          <GamesContainer games={this.props.games}/>
+        </ImageBackground>
+      </View>
+    );
+  }
 }
 
 function HomeScreen() {
@@ -151,49 +198,12 @@ export interface GamesState {
   games: Game[];
 }
 
-class GamesContainer extends React.Component<{}, GamesState> {
-  constructor() {
-    super({});
-    this.state = { games: [] };
-  }
-
-  componentDidMount(){
-    let newGames:Game[];
-    newGames = [];
-
-    GetGameDataByDay()
-      .then(function(result:gameDataResponseGame[]) {
-      
-        if (!result || result.length == 0 ) { // check for empty result
-          console.log("no games");
-          return newGames;
-        }
-        result.map(
-          game => {
-            let awayScore = game.status.score.away;
-            let awayTeam = convertTeamID(game.teams.away);
-            let balls = game.status.count.balls;
-            let base1 = game.status.baseState.First;
-            let base2 = game.status.baseState.Second;
-            let base3 = game.status.baseState.Third;
-            let homeScore = game.status.score.home;
-            let homeTeam = convertTeamID(game.teams.home);
-            let inning = game.status.inning;
-            let inningTop = game.status.topOfInning;
-            let inProgress = game.status.inProgress;
-            let leverageIndex = game.leverageIndex;
-            let outs = game.status.outs;
-            let strikes = game.status.count.strikes;
-            let time = new Date(game.gameTime);
-            let uri = game.mlbTVLink;
-
-            let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, inProgress, leverageIndex, outs, strikes, time, uri);
-            newGames.push(newGame);
-          }
-        );
-        return newGames;
-      }).then(result => this.setState({games: result}));
-
+class GamesContainer extends React.Component<GamesProps, GamesState> {
+  constructor(props:GamesProps){
+    super(props);
+    this.state = { games: this.props.games };
+    console.log("GamesContainer");
+    console.log(this.state.games);
   }
 
   render(){
