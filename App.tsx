@@ -75,19 +75,23 @@ export default class App extends React.Component {
 
   render() {
     if (!this.state.appIsReady) {
+      console.log("app not ready");
       return null;
+    } else {
+      console.log("app is ready");
+      console.log(this.state.appIsReady);
+      console.log(this.state.games);
+      return (
+        <NavigationContainer>
+          <Stack.Navigator>
+            {/* <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/> */}
+            <Stack.Screen name="Games">
+              {props => <GamesScreen {...props} games={this.state.games} />}
+            </Stack.Screen>
+          </Stack.Navigator>
+        </NavigationContainer>
+      );
     }
-
-    return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          {/* <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/> */}
-          <Stack.Screen name="Games">
-            {props => <GamesScreen {...props} games={this.state.games} />}
-          </Stack.Screen>
-        </Stack.Navigator>
-      </NavigationContainer>
-    );
   }
 }
 
