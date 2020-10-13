@@ -63,13 +63,13 @@ export default class App extends React.Component {
             }
           );
           return newGames;
-        }).then(result => this.setState({games: result}));
+        }).then(result => this.setState({games: result, appIsReady: true}));
     } catch (e) {
       console.warn(e);
     } finally {
-      this.setState({ appIsReady: true }, async () => {
+      async () => {
         await SplashScreen.hideAsync();
-      });
+      };
     }
   };
 
