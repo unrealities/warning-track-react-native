@@ -4,6 +4,7 @@ import Svg, { Ellipse, G, Path, Polygon, Rect } from 'react-native-svg';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
+import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 
 import { Game } from './game';
@@ -75,8 +76,14 @@ export default class App extends React.Component {
 
   render() {
     if (!this.state.appIsReady) {
-      console.log("app not ready");
-      return null;
+      return (
+        <View style={{ flex: 1 }}>
+          <Image
+            source={require('./assets/images/loading.gif')}
+            onLoad={this._cacheSplashResourcesAsync}
+          />
+        </View>
+      );
     } else {
       console.log("app is ready");
       console.log(this.state.appIsReady);
@@ -93,6 +100,11 @@ export default class App extends React.Component {
       );
     }
   }
+
+  _cacheSplashResourcesAsync = async () => {
+    const gif = require('./assets/images/loading.gif');
+    return Asset.fromModule(gif).downloadAsync();
+  };
 }
 
 export interface GamesProps {
