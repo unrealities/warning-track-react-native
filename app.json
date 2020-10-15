@@ -4,6 +4,10 @@
   "expo": {
     "name": "WarningTrack",
     "slug": "WarningTrack",
+    "splash": {
+      "image": "./assets/images/wt.png",
+      "resizeMode": "cover"
+    },
     "version": "1.0.0",
     "platforms": [
       "ios",
