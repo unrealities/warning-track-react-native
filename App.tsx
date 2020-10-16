@@ -8,7 +8,6 @@ import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 
 import { Game } from './game';
-import { fetchUpdateAsync } from 'expo-updates';
 
 const Stack = createStackNavigator();
 
@@ -79,7 +78,7 @@ export default class App extends React.Component {
       return (
         <View style={{ flex: 1 }}>
           <Image
-            source={require('./assets/images/loading.gif')}
+            source={require('./assets/images/wt.png')}
             onLoad={this._cacheSplashResourcesAsync}
           />
         </View>

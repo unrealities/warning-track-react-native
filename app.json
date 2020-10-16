@@ -2,6 +2,7 @@
   "name": "WarningTrack",
   "displayName": "WarningTrack",
   "expo": {
+    "icon": "./assets/images/wt.png",
     "name": "WarningTrack",
     "slug": "WarningTrack",
     "splash": {
