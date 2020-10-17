@@ -2,21 +2,28 @@
   "name": "WarningTrack",
   "displayName": "WarningTrack",
   "expo": {
+    "android": {
+      "icon": "./assets/images/wt.png"
+    },
+    "assetBundlePatterns": [
+      "./assets/images/*"
+    ],
     "icon": "./assets/images/wt.png",
     "name": "WarningTrack",
-    "slug": "WarningTrack",
-    "splash": {
-      "image": "./assets/images/wt.png",
-      "resizeMode": "cover"
-    },
-    "version": "1.0.0",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "slug": "WarningTrack",
+    "splash": {
+      "backgroundColor": "#44aa00",
+      "image": "./assets/images/wt.png",
+      "resizeMode": "contain"
+    },
+    "version": "1.0.0",
+    "web": {
+      "favicon": "./assets/images/wt.png"
+    }
   }
 }
