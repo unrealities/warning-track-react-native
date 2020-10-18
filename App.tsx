@@ -123,7 +123,7 @@ class GamesScreen extends React.Component<GameProps> {
         <ImageBackground imageStyle={styles.backgroundImg}
                         source={{uri: backgroundImg}}
                         style={styles.background}>
-          <GamesContainer games={this.props.games}/>
+          <GamesContainer games={this.props.games} />
         </ImageBackground>
       </View>
     );
@@ -224,7 +224,9 @@ class GamesContainer extends React.Component<GamesProps, GamesState> {
   render(){
     console.log(this.state.games);
     return (
-      this.state.games.length > 0 ? this.state.games.map(game => game.inProgress ? <GameContainer game={game} /> : <PreGameContainer game={game} />) : <LoadingGames />
+      <View>
+        { this.state.games.length > 0 ? this.state.games.map(game => game.inProgress ? <GameContainer game={game} key={game.url}/> : <PreGameContainer game={game} key={game.url}/>) : <LoadingGames /> }
+      </View>
     );
   }
 }

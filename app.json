@@ -6,7 +6,7 @@
       "icon": "./assets/images/wt.png"
     },
     "assetBundlePatterns": [
-      "./assets/images/*"
+      "assets/images/*"
     ],
     "icon": "./assets/images/wt.png",
     "name": "WarningTrack",
