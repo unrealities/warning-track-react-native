@@ -225,7 +225,7 @@ class GamesContainer extends React.Component<GamesProps, GamesState> {
     console.log(this.state.games);
     return (
       <View>
-        { this.state.games.length > 0 ? this.state.games.map(game => game.inProgress ? <GameContainer game={game} key={game.url}/> : <PreGameContainer game={game} key={game.url}/>) : <LoadingGames /> }
+        { this.state.games.length > 0 ? this.state.games.map(game => game.inProgress ? <GameContainer game={game} key={game.url}/> : <PreGameContainer game={game} key={game.url}/>) : <NoGames /> }
       </View>
     );
   }
@@ -362,10 +362,10 @@ const LeverageIndex: React.FC<LIProps> = (props) => {
   )
 }
 
-const LoadingGames: React.FC<{}> = (props) => {
+const NoGames: React.FC<{}> = (props) => {
   return (
-    <View style={styles.loadingGamesContainer}>
-      <Text style={styles.loadingGamesText}>Loading Games...</Text>
+    <View style={styles.noGamesContainer}>
+      <Text style={styles.noGamesText}>No Games Today</Text>
     </View>
   )
 }
@@ -612,10 +612,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column'
   },
-  loadingGamesContainer: {
+  noGamesContainer: {
     marginTop: 20
   },
-  loadingGamesText: {
+  noGamesText: {
     fontSize: 36,
     fontWeight: 'bold',
     textAlign: 'center'
