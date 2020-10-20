@@ -78,7 +78,7 @@ export default class App extends React.Component {
       return (
         <View style={{ flex: 1 }}>
           <Image
-            source={require('./assets/images/wt.png')}
+            source={require('./assets/images/wt_splash.png')}
             onLoad={this._cacheSplashResourcesAsync}
           />
         </View>
@@ -101,8 +101,8 @@ export default class App extends React.Component {
   }
 
   _cacheSplashResourcesAsync = async () => {
-    const gif = require('./assets/images/loading.gif');
-    return Asset.fromModule(gif).downloadAsync();
+    const img = require('./assets/images/wt_splash.png');
+    return Asset.fromModule(img).downloadAsync();
   };
 }
 

@@ -6,7 +6,7 @@
       "icon": "./assets/images/wt.png"
     },
     "assetBundlePatterns": [
-      "assets/images/*"
+      "**/*"
     ],
     "icon": "./assets/images/wt.png",
     "name": "WarningTrack",
@@ -18,8 +18,11 @@
     "slug": "WarningTrack",
     "splash": {
       "backgroundColor": "#44aa00",
-      "image": "./assets/images/wt.png",
+      "image": "./assets/images/wt_splash.png",
       "resizeMode": "contain"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
     "version": "1.0.0",
     "web": {
