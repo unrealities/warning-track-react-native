@@ -4,6 +4,7 @@ import Svg, { Ellipse, G, Path, Polygon, Rect } from 'react-native-svg';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
+import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 
@@ -76,12 +77,11 @@ export default class App extends React.Component {
   render() {
     if (!this.state.appIsReady) {
       return (
-        <View style={{ flex: 1 }}>
-          <Image
-            source={require('./assets/images/wt_splash.png')}
-            onLoad={this._cacheSplashResourcesAsync}
-          />
-        </View>
+        <AppLoading
+          startAsync={this.prepareResources}
+          onFinish={() => this.setState({ isReady: true })}
+          onError={console.warn}
+        />
       );
     } else {
       console.log("app is ready");
