@@ -32,6 +32,8 @@ export default class App extends React.Component {
     try {
       let newGames:Game[];
       newGames = [];
+
+      console.log("preparing resources");
   
       GetGameDataByDay()
         .then(function(result:gameDataResponseGame[]) {
@@ -64,7 +66,7 @@ export default class App extends React.Component {
             }
           );
           return newGames;
-        }).then(result => this.setState({games: result, appIsReady: true}));
+        }).then(result => this.setState({games: result}));
     } catch (e) {
       console.warn(e);
     } finally {
@@ -79,7 +81,7 @@ export default class App extends React.Component {
       return (
         <AppLoading
           startAsync={this.prepareResources}
-          onFinish={() => this.setState({ isReady: true })}
+          onFinish={() => this.setState({ appIsReady: true })}
           onError={console.warn}
         />
       );
