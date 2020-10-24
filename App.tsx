@@ -70,6 +70,7 @@ export default class App extends React.Component {
     } catch (e) {
       console.warn(e);
     } finally {
+      console.log("reached finally");
       async () => {
         await SplashScreen.hideAsync();
       };
@@ -78,6 +79,7 @@ export default class App extends React.Component {
 
   render() {
     if (!this.state.appIsReady) {
+      console.log("app is loading")
       return (
         <AppLoading
           startAsync={this.prepareResources}
