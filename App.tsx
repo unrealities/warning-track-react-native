@@ -35,13 +35,14 @@ export default class App extends React.Component {
 
       console.log("preparing resources");
   
-      GetGameDataByDay()
+      await GetGameDataByDay()
         .then(function(result:gameDataResponseGame[]) {
         
           if (!result || result.length == 0 ) { // check for empty result
             console.log("no games");
             return newGames;
           }
+
           result.map(
             game => {
               let awayScore = game.status.score.away;
