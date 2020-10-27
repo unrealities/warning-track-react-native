@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, ImageBackground, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Svg, { Ellipse, G, Path, Polygon, Rect } from 'react-native-svg';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,6 +7,7 @@ import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
 import { Game } from './game';
 
@@ -32,8 +33,6 @@ export default class App extends React.Component {
     try {
       let newGames:Game[];
       newGames = [];
-
-      console.log("preparing resources");
   
       await GetGameDataByDay()
         .then(function(result:gameDataResponseGame[]) {
