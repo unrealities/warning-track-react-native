@@ -12,3 +12,13 @@ The ultimate purpose is create front-end functionality for the firebase `warning
 
 `npm install yarn`
 `yarn add expo`
+
+## React Native Firebase
+
+[React Native Firebase](https://rnfirebase.io/) is the officially recommended collection of packages that brings React Native support for all Firebase services on both Android and iOS apps.
+
+This allows us to easily access the backend in Firebase
+
+`expo install @react-native-firebase/app`
+
+There are credentials that you need to get from Google that are stored in `/android/app/google-services.json` that are excluded from this repo.
