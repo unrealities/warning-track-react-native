@@ -64,3 +64,6 @@ web-build/
 
 # IntelliJ / AndroidStudio
 /.idea
+
+# Firebase
+/android/app/google-services.json
