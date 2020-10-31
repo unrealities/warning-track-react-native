@@ -7,7 +7,7 @@ import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import functions from '@react-native-firebase/functions';
 
 import { Game } from './game';
 
@@ -177,8 +177,7 @@ export interface gameDataResponseGame {
 }
 
 async function GetGameDataByDay() {
-  const proxy = 'https://cors-anywhere.herokuapp.com/'; // TODO: Remove this
-  const gameDayData = 'https://us-central1-warning-track-backend.cloudfunctions.net/GetGameDataByDay';
+  const functionName = 'GetGameDataByDay';
 
   let d = new Date();
   let date = [
@@ -187,20 +186,14 @@ async function GetGameDataByDay() {
     d.getFullYear()
   ].join('-');
 
-  return fetch((proxy + gameDayData), {
-      body: JSON.stringify({date: date}),
-      headers: { Accept: 'application/json', 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-      method: 'POST',
-      mode: 'cors'
-    })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      return responseJson.games;
-    })
-    .catch((error) => {
-      console.error(error);
-    }
-  );
+  useEffect(() => {
+    functions()
+      .httpsCallable(functionName)({ date: date })
+      .then(response => {
+        return response.data.games;
+      });
+  }, []);
+
 }
 
 function convertTeamID(mlbID: number): number {
