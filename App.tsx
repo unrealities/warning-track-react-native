@@ -186,19 +186,14 @@ async function GetGameDataByDay() {
     d.getFullYear()
   ].join('-');
 
-  console.log("before useEffect");
-
-  useEffect(() => {
-    console.log("making call to GetGameDataByDay");
-    functions()
-      .httpsCallable(functionName)({ date: date })
-      .then(response => {
-        console.log("returned GetGameDataByDay");
-        console.log(response);
-        return response.data.games;
-      });
-  }, []);
-
+  console.log("making call to GetGameDataByDay");
+  functions()
+    .httpsCallable(functionName)({ date: date })
+    .then(response => {
+      console.log("returned GetGameDataByDay");
+      console.log(response);
+      return response.data.games;
+    });
 }
 
 function convertTeamID(mlbID: number): number {
