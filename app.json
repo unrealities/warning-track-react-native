@@ -3,6 +3,7 @@
   "displayName": "WarningTrack",
   "expo": {
     "android": {
+      "googleServicesFile": "./android/app/google-services.json",
       "icon": "./assets/images/wt.png",
       "splash": {
         "backgroundColor": "#44aa00",
@@ -38,6 +39,17 @@
     },
     "version": "1.0.0",
     "web": {
+      "config": {
+        "firebase": {
+          "apiKey": "XXXX",
+          "authDomain": "XXXX",
+          "databaseURL": "XXXX",
+          "projectId": "XXXX",
+          "storageBucket": "XXXX",
+          "messagingSenderId": "XXXX",
+          "appId": "XXXX"
+        }
+      }
       "favicon": "./assets/images/wt.png"
     }
   }
