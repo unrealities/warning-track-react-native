@@ -49,7 +49,7 @@
           "messagingSenderId": "XXXX",
           "appId": "XXXX"
         }
-      }
+      },
       "favicon": "./assets/images/wt.png"
     }
   }

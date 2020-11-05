@@ -8,6 +8,7 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 import functions from '@react-native-firebase/functions';
+import * as firebase from 'firebase';
 
 import { Game } from './game';
 
@@ -177,6 +178,15 @@ export interface gameDataResponseGame {
 }
 
 async function GetGameDataByDay() {
+  const firebaseConfig = {
+    apiKey: "todo",
+    authDomain: "todo",
+    databaseURL: "todo",
+    storageBucket: "",
+    messagingSenderId: "todo"
+  };  
+  firebase.initializeApp(firebaseConfig);
+
   const functionName = 'GetGameDataByDay';
 
   let d = new Date();
