@@ -178,6 +178,7 @@ export interface gameDataResponseGame {
 }
 
 async function GetGameDataByDay() {
+  // TODO: https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public
   const firebaseConfig = {
     apiKey: "todo",
     authDomain: "todo",
