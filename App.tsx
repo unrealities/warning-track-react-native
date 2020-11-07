@@ -178,15 +178,13 @@ export interface gameDataResponseGame {
 }
 
 async function GetGameDataByDay() {
-  // TODO: https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public
-  const firebaseConfig = {
-    apiKey: "todo",
-    authDomain: "todo",
-    databaseURL: "todo",
-    storageBucket: "",
-    messagingSenderId: "todo"
-  };  
-  firebase.initializeApp(firebaseConfig);
+  // setup Firebase connection
+  var admin = require('firebase-admin');
+  var serviceAccount = require('./android/app/firebase-key.json');
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: 'https://warning-track-backend.firebaseio.com'
+  });
 
   const functionName = 'GetGameDataByDay';
 
