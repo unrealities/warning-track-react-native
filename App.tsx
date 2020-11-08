@@ -8,7 +8,7 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 import functions from '@react-native-firebase/functions';
-import * as firebase from 'firebase';
+import { firebase, firestore, storage } from "./android/app/firebase";
 
 import { Game } from './game';
 
@@ -178,14 +178,6 @@ export interface gameDataResponseGame {
 }
 
 async function GetGameDataByDay() {
-  // setup Firebase connection
-  var admin = require('firebase-admin');
-  var serviceAccount = require('./android/app/firebase-key.json');
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: 'https://warning-track-backend.firebaseio.com'
-  });
-
   const functionName = 'GetGameDataByDay';
 
   let d = new Date();
