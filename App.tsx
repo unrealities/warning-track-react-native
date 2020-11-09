@@ -7,8 +7,9 @@ import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
-import functions from '@react-native-firebase/functions';
-import { firebase, firestore, storage } from "./android/app/firebase";
+import functions from 'firebase/functions';
+import * as firebase from 'firebase/app';
+import firebaseConfig from './android/app/firebase';
 
 import { Game } from './game';
 
@@ -178,6 +179,8 @@ export interface gameDataResponseGame {
 }
 
 async function GetGameDataByDay() {
+  firebase.initializeApp(firebaseConfig);
+
   const functionName = 'GetGameDataByDay';
 
   let d = new Date();
