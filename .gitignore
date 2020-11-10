@@ -68,3 +68,4 @@ web-build/
 # Firebase
 /android/app/google-services.json
 /android/app/firebase-key.json
+/android/app/firebase.js
