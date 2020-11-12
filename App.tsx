@@ -7,8 +7,9 @@ import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
-import functions from 'firebase/functions';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
+import 'firebase/auth';
+import 'firebase/functions';
 import firebaseConfig from './android/app/firebase';
 
 import { Game } from './game';
@@ -191,7 +192,7 @@ async function GetGameDataByDay() {
   ].join('-');
 
   console.log("making call to GetGameDataByDay");
-  functions()
+  firebase.functions()
     .httpsCallable(functionName)({ date: date })
     .then(response => {
       console.log("returned GetGameDataByDay");
