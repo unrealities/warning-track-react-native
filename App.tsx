@@ -7,9 +7,7 @@ import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
-import * as firebase from 'firebase';
-import 'firebase/auth';
-import 'firebase/functions';
+import firebase from 'firebase';
 import firebaseConfig from './android/app/firebase';
 
 import { Game } from './game';
@@ -181,6 +179,9 @@ export interface gameDataResponseGame {
 
 async function GetGameDataByDay() {
   firebase.initializeApp(firebaseConfig);
+
+  console.log('firebase');
+  console.log(firebase);
 
   const functionName = 'GetGameDataByDay';
 
