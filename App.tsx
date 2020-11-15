@@ -187,6 +187,9 @@ async function GetGameDataByDay() {
   ].join('-');
 
   console.log("making call to GetGameDataByDay");
+  // TODO:
+  // CORS
+  // https://stackoverflow.com/questions/53997577/trying-to-connect-to-firebase-function-from-react-app-cors-issue
   Firebase.functions()
     .httpsCallable(functionName)({ date: date })
     .then(response => {
