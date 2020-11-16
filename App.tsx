@@ -7,6 +7,9 @@ import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
+
+import * as cors from 'cors';
+
 import Firebase from './android/app/firebase';
 
 import { Game } from './game';
@@ -187,15 +190,16 @@ async function GetGameDataByDay() {
   ].join('-');
 
   console.log("making call to GetGameDataByDay");
-  // TODO:
-  // CORS
-  // https://stackoverflow.com/questions/53997577/trying-to-connect-to-firebase-function-from-react-app-cors-issue
+  const corsHandler = cors({ origin: true });
+
   Firebase.functions()
     .httpsCallable(functionName)({ date: date })
     .then(response => {
-      console.log("returned GetGameDataByDay");
-      console.log(response);
-      return response.data.games;
+      corsHandler(_, response, async () => {
+        console.log("returned GetGameDataByDay");
+        console.log(response);
+        return response.data.games;
+      })
     });
 }
 
