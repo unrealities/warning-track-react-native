@@ -8,8 +8,6 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 
-import * as cors from 'cors';
-
 import Firebase from './android/app/firebase';
 
 import { Game } from './game';
@@ -190,16 +188,13 @@ async function GetGameDataByDay() {
   ].join('-');
 
   console.log("making call to GetGameDataByDay");
-  const corsHandler = cors({ origin: true });
 
   Firebase.functions()
     .httpsCallable(functionName)({ date: date })
     .then(response => {
-      corsHandler(_, response, async () => {
-        console.log("returned GetGameDataByDay");
-        console.log(response);
-        return response.data.games;
-      })
+      console.log("returned GetGameDataByDay");
+      console.log(response);
+      return response.data.games;
     });
 }
 
