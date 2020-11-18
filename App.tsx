@@ -186,12 +186,15 @@ async function GetGameDataByDay() {
     ('0' + d.getDate()).slice(-2),
     d.getFullYear()
   ].join('-');
+  date = "\"" + date + "\"";
 
   console.log("making call to GetGameDataByDay");
+  console.log(date);
 
   Firebase.functions()
     .httpsCallable(functionName)({ date: date })
     .then(response => {
+      response.set('Access-Control-Allow-Origin', '*');
       console.log("returned GetGameDataByDay");
       console.log(response);
       return response.data.games;
