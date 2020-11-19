@@ -186,7 +186,6 @@ async function GetGameDataByDay() {
     ('0' + d.getDate()).slice(-2),
     d.getFullYear()
   ].join('-');
-  date = "\"" + date + "\"";
 
   console.log("making call to GetGameDataByDay");
   console.log(date);
