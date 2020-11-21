@@ -180,20 +180,22 @@ export interface gameDataResponseGame {
 async function GetGameDataByDay() {
   const functionName = 'GetGameDataByDay';
 
-  let d = new Date();
-  let date = [
-    ('0' + (d.getMonth() + 1)).slice(-2),
-    ('0' + d.getDate()).slice(-2),
-    d.getFullYear()
-  ].join('-');
+  // TODO: If no games on the date may give error
+  // let d = new Date();
+  // let date = [
+  //   ('0' + (d.getMonth() + 1)).slice(-2),
+  //   ('0' + d.getDate()).slice(-2),
+  //   d.getFullYear()
+  // ].join('-');
 
   console.log("making call to GetGameDataByDay");
+  let date = "08-08-2020";
   console.log(date);
 
   Firebase.functions()
-    .httpsCallable(functionName)({ date: date })
+    .httpsCallable(functionName)({ data: { date: date }})
     .then(response => {
-      response.set('Access-Control-Allow-Origin', '*');
+      response.set('Access-Control-Allow-Headers','Content-Type');
       console.log("returned GetGameDataByDay");
       console.log(response);
       return response.data.games;
