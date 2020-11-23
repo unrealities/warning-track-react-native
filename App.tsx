@@ -201,7 +201,7 @@ async function GetGameDataByDay() {
       return response.data.games;
     })
     .catch(function(error){
-      console.log('received error in firebase function call: ' + error.message);
+      console.log('received error in firebase function call: ' + error.name + error.message + error.stack);
       throw error;
     });
 }
