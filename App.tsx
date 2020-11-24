@@ -202,7 +202,7 @@ async function GetGameDataByDay() {
     })
     .catch(function(error){
       console.log('received error in firebase function call: ' + error.name + error.message + error.stack);
-      throw error;
+      throw new Firebase.functions().https.HttpsError(error.name, error.message);
     });
 }
 
