@@ -188,14 +188,12 @@ async function GetGameDataByDay() {
   //   d.getFullYear()
   // ].join('-');
 
-  console.log("making call to GetGameDataByDay");
   let date = "08-08-2020";
-  console.log(date);
+  console.log("making call to GetGameDataByDay: " + date);
 
   Firebase.functions()
     .httpsCallable(functionName)({ data: { date: date }})
     .then(response => {
-      response.set('Access-Control-Allow-Headers','Content-Type');
       console.log("returned GetGameDataByDay");
       console.log(response);
       return response.data.games;
