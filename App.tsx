@@ -200,6 +200,7 @@ async function GetGameDataByDay() {
     })
     .catch(error => {
       console.log(`error: ${JSON.stringify(error)}`);
+      console.log(`error: ${error.stack}`)
     });
 }
 
