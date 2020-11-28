@@ -201,6 +201,18 @@ async function GetGameDataByDay() {
     .catch(error => {
       console.log(`error: ${JSON.stringify(error)}`);
       console.log(`error: ${error.stack}`)
+      /*
+      Access to fetch at 'https://us-central1-warning-track-backend.cloudfunctions.net/GetGameDataByDay' from origin 'http://localhost:19007' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+us-central1-warning-track-backend.cloudfunctions.net/GetGameDataByDay:1 Failed to load resource: net::ERR_FAILED
+App.tsx:202 error: {"code":"internal"}
+App.tsx:203 error: Error: internal
+    at new HttpsErrorImpl (http://localhost:19007/static/js/bundle.js:4386:28)
+    at _errorForResponse (http://localhost:19007/static/js/bundle.js:4481:12)
+    at Service.<anonymous> (http://localhost:19007/static/js/bundle.js:4866:33)
+    at step (http://localhost:19007/static/js/bundle.js:85491:23)
+    at Object.next (http://localhost:19007/static/js/bundle.js:85472:53)
+    at fulfilled (http://localhost:19007/static/js/bundle.js:85462:58)
+    */
     });
 }
 
