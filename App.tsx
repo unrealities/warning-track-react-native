@@ -8,7 +8,7 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 
-import Firebase from './android/app/firebase';
+import firebaseConfig from './android/app/firebase';
 
 import { Game } from './game';
 
