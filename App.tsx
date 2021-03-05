@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Image, ImageBackground, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Svg, { Ellipse, G, Path, Polygon, Rect } from 'react-native-svg';
 import { NavigationContainer } from '@react-navigation/native';
@@ -8,7 +8,7 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 
-import firebaseConfig from './android/app/firebase';
+// import firebaseConfig from './android/app/firebase';
 
 import { Game } from './game';
 
