@@ -4,7 +4,7 @@ import Svg, { Ellipse, G, Path, Polygon, Rect } from 'react-native-svg';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
-import { AppLoading } from 'expo';
+import AppLoading from 'expo-app-loading';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 
