@@ -8,7 +8,7 @@ import AppLoading from 'expo-app-loading';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 
-// import firebaseConfig from './android/app/firebase';
+import { db } from './android/app/firebase';
 
 import { Game } from './game';
 
@@ -191,7 +191,7 @@ async function GetGameDataByDay() {
   let date = "08-08-2020";
   console.log("making call to GetGameDataByDay: " + date);
 
-  Firebase.functions()
+  db.functions()
     .httpsCallable(functionName)({ data: { date: date }})
     .then(response => {
       console.log("returned GetGameDataByDay");
