@@ -8,7 +8,7 @@ import AppLoading from 'expo-app-loading';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 
-import { db } from './android/app/firebase';
+import { app } from './android/app/firebase';
 
 import { Game } from './game';
 
@@ -191,9 +191,10 @@ async function GetGameDataByDay() {
   let date = "08-08-2020";
   console.log("making call to GetGameDataByDay: " + date);
 
-  db.functions()
+  app.functions()
     .httpsCallable(functionName)({ data: { date: date }})
     .then(response => {
+      response.set('Access-Control-Allow-Origin', "*")
       console.log("returned GetGameDataByDay");
       console.log(response);
       return response.data.games;
