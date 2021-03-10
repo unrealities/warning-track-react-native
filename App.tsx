@@ -12,6 +12,8 @@ import { app } from './android/app/firebase';
 
 import { Game } from './game';
 
+// const cors = require('cors')({ origin: true });
+
 const Stack = createStackNavigator();
 
 export default class App extends React.Component {
@@ -179,6 +181,7 @@ export interface gameDataResponseGame {
 
 async function GetGameDataByDay() {
   const functionName = 'GetGameDataByDay';
+  let functions = app.functions('us-central1');
 
   // TODO: If no games on the date may give error
   // let d = new Date();
@@ -188,13 +191,12 @@ async function GetGameDataByDay() {
   //   d.getFullYear()
   // ].join('-');
 
-  let date = "08-08-2020";
+  let date = "03-08-2021";
   console.log("making call to GetGameDataByDay: " + date);
 
   app.functions()
     .httpsCallable(functionName)({ data: { date: date }})
     .then(response => {
-      response.set('Access-Control-Allow-Origin', "*")
       console.log("returned GetGameDataByDay");
       console.log(response);
       return response.data.games;
