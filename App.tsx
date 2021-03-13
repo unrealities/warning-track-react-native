@@ -10,8 +10,6 @@ import * as SplashScreen from 'expo-splash-screen';
 
 import { Game } from './game';
 
-// const cors = require('cors')({ origin: true });
-
 const Stack = createStackNavigator();
 
 export default class App extends React.Component {
@@ -178,39 +176,42 @@ export interface gameDataResponseGame {
 }
 
 async function GetGameDataByDay() {
+  // https://us-central1-warning-track-backend.cloudfunctions.net/GetGameDataByDay
   const functionName = 'GetGameDataByDay';
   const projectName = 'warning-track-backend';
   const region = 'us-central1';
   const url = 'https://' + region + '-' + projectName + '.cloudfunctions.net/' + functionName;
-  // https://us-central1-warning-track-backend.cloudfunctions.net/GetGameDataByDay
+  
 
   // TODO: If no games on the date may give error
   let d = new Date();
-  let date = [
+  let rDate = [
     ('0' + (d.getMonth() + 1)).slice(-2),
     ('0' + d.getDate()).slice(-2),
     d.getFullYear()
   ].join('-');
 
-  console.log("making call to GetGameDataByDay: " + date);
-
-  fetch(url, {
+  console.log("making call to GetGameDataByDay: " + url);
+  const requestOptions = {
     method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ data: { date: date } })
-  })
-    .then(response => {
-      console.log("returned GetGameDataByDay");
-      console.log(response);
-      return response.data.games;
-    })
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data: { date: rDate } })
+  };
+  console.log("requestOptions: " + JSON.stringify(requestOptions));
+
+  let games = [];
+  console.log('games before fetch:' + games);
+  fetch(url, requestOptions)
+    .then(response => response.json())
+    .then(data => games = data.games)
     .catch(error => {
       console.log(`error: ${JSON.stringify(error)}`);
       console.log(`error: ${error.stack}`)
     });
+
+  console.log('games after fetch: ' + games);
+  return games;
 }
 
 function convertTeamID(mlbID: number): number {
