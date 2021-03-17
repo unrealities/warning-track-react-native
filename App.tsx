@@ -200,12 +200,14 @@ async function GetGameDataByDay() {
   };
   console.log("requestOptions: " + JSON.stringify(requestOptions));
 
-  let games = [];
+  let games:Game[] = [];
   console.log('games before fetch:' + games);
   fetch(url, requestOptions)
     .then(response => response.json())
     .then(data => {
       console.log(`data: ${JSON.stringify(data["games"])}`);
+      let jsonGames = data['games'];
+      // TODO: create Games objects and load in games variable
     })
     .catch(error => {
       console.log(`error: ${JSON.stringify(error)}`);
