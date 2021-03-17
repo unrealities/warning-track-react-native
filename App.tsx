@@ -204,7 +204,9 @@ async function GetGameDataByDay() {
   console.log('games before fetch:' + games);
   fetch(url, requestOptions)
     .then(response => response.json())
-    .then(data => games = data.games)
+    .then(data => {
+      console.log(`data: ${JSON.stringify(data["games"])}`);
+    })
     .catch(error => {
       console.log(`error: ${JSON.stringify(error)}`);
       console.log(`error: ${error.stack}`)
