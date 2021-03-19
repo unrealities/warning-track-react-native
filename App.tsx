@@ -207,7 +207,10 @@ async function GetGameDataByDay() {
     .then(data => {
       console.log(`data: ${JSON.stringify(data["games"])}`);
       let jsonGames = data['games'];
-      // TODO: create Games objects and load in games variable
+      jsonGames.forEach(function(game) {
+        // TODO: error parsing JSON
+        games.push(JSON.parse(game));
+      });
     })
     .catch(error => {
       console.log(`error: ${JSON.stringify(error)}`);
