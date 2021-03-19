@@ -35,6 +35,7 @@ export default class App extends React.Component {
 
       await GetGameDataByDay()
         .then(function (result: gameDataResponseGame[]) {
+          console.log(`GetGameDataByDay result : ${result}`);
 
           if (!result || result.length == 0) { // check for empty result
             console.log("no games");
@@ -200,24 +201,17 @@ async function GetGameDataByDay() {
   };
   console.log("requestOptions: " + JSON.stringify(requestOptions));
 
-  let games:Game[] = [];
-  console.log('games before fetch:' + games);
+  let games:gameDataResponseGame[] = [];
   fetch(url, requestOptions)
     .then(response => response.json())
     .then(data => {
-      console.log(`data: ${JSON.stringify(data["games"])}`);
-      let jsonGames = data['games'];
-      jsonGames.forEach(function(game) {
-        // TODO: error parsing JSON
-        games.push(JSON.parse(game));
-      });
+      games = data['games'];
     })
     .catch(error => {
       console.log(`error: ${JSON.stringify(error)}`);
       console.log(`error: ${error.stack}`)
     });
 
-  console.log('games after fetch: ' + games);
   return games;
 }
 
