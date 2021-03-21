@@ -34,13 +34,18 @@ export default class App extends React.Component {
       newGames = [];
 
       await GetGameDataByDay()
-        .then(function (result: gameDataResponseGame[]) {
-          console.log(`GetGameDataByDay result : ${result}`);
-
-          if (!result || result.length == 0) { // check for empty result
-            console.log("no games");
-            return newGames;
-          }
+        .then(response => {
+          // TODO: the result is undefined
+          console.log(`GetGameDataByDay result: ${JSON.stringify(response)}`);
+          // TODO: check response
+          // if (!response.ok) {
+          //   throw new Error(`HTTP error! status: ${response.status}`);
+          // }
+          // TODO: check for empty result
+          // if (response.blob().length == 0) {
+          //   console.log("no games");
+          //   return newGames;
+          // }
 
           result.map(
             game => {
@@ -201,18 +206,15 @@ async function GetGameDataByDay() {
   };
   console.log("requestOptions: " + JSON.stringify(requestOptions));
 
-  let games:gameDataResponseGame[] = [];
-  fetch(url, requestOptions)
+  return await fetch(url, requestOptions)
     .then(response => response.json())
     .then(data => {
-      games = data['games'];
+      return data['games'];
     })
     .catch(error => {
       console.log(`error: ${JSON.stringify(error)}`);
       console.log(`error: ${error.stack}`)
     });
-
-  return games;
 }
 
 function convertTeamID(mlbID: number): number {
