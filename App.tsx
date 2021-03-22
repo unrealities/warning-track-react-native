@@ -34,18 +34,11 @@ export default class App extends React.Component {
       newGames = [];
 
       await GetGameDataByDay()
-        .then(response => {
-          // TODO: the result is undefined
-          console.log(`GetGameDataByDay result: ${JSON.stringify(response)}`);
-          // TODO: check response
-          // if (!response.ok) {
-          //   throw new Error(`HTTP error! status: ${response.status}`);
-          // }
-          // TODO: check for empty result
-          // if (response.blob().length == 0) {
-          //   console.log("no games");
-          //   return newGames;
-          // }
+        .then(result => {
+          if (!result || result.length == 0) {
+            console.log("no games");
+            return newGames;
+          }
 
           result.map(
             game => {
