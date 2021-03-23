@@ -25,7 +25,6 @@ export default class App extends React.Component {
     } catch (e) {
       console.warn(e);
     }
-    this.prepareResources();
   }
 
   prepareResources = async () => {
@@ -68,7 +67,6 @@ export default class App extends React.Component {
     } catch (e) {
       console.warn(e);
     } finally {
-      console.log("reached finally");
       async () => {
         await SplashScreen.hideAsync();
       };
@@ -77,7 +75,6 @@ export default class App extends React.Component {
 
   render() {
     if (!this.state.appIsReady) {
-      console.log("app is loading")
       return (
         <AppLoading
           startAsync={this.prepareResources}
@@ -86,8 +83,6 @@ export default class App extends React.Component {
         />
       );
     } else {
-      console.log("app is ready");
-      console.log(this.state.appIsReady);
       console.log(this.state.games);
       return (
         <NavigationContainer>
@@ -190,14 +185,12 @@ async function GetGameDataByDay() {
     d.getFullYear()
   ].join('-');
 
-  console.log("making call to GetGameDataByDay: " + url);
   const requestOptions = {
     method: 'POST',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ data: { date: rDate } })
   };
-  console.log("requestOptions: " + JSON.stringify(requestOptions));
 
   return await fetch(url, requestOptions)
     .then(response => response.json())
@@ -228,12 +221,9 @@ class GamesContainer extends React.Component<GamesProps, GamesState> {
   constructor(props: GamesProps) {
     super(props);
     this.state = { games: this.props.games };
-    console.log("GamesContainer");
-    console.log(this.state.games);
   }
 
   render() {
-    console.log(this.state.games);
     return (
       <View>
         { this.state.games.length > 0 ? this.state.games.map(game => game.inProgress ? <GameContainer game={game} key={game.url} /> : <PreGameContainer game={game} key={game.url} />) : <NoGames />}
@@ -249,10 +239,6 @@ export interface GameProps {
 class GameContainer extends React.Component<GameProps> {
   constructor(props: GameProps) {
     super(props);
-  }
-
-  componentDidMount() {
-    console.log(this.props.game);
   }
 
   render() {
@@ -295,10 +281,6 @@ export interface PreGameProps {
 class PreGameContainer extends React.Component<PreGameProps> {
   constructor(props: PreGameProps) {
     super(props);
-  }
-
-  componentDidMount() {
-    console.log(this.props.game);
   }
 
   render() {
