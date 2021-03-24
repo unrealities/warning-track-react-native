@@ -284,8 +284,8 @@ class PreGameContainer extends React.Component<PreGameProps> {
   }
 
   render() {
-    let awayTeamLogoURI = 'https://warningtrack.co/img/team_logos/' + this.props.game.awayTeam + '.svg';
-    let homeTeamLogoURI = 'https://warningtrack.co/img/team_logos/' + this.props.game.homeTeam + '.svg';
+    let awayTeamLogoURI = './assets/images/team_logos/' + this.props.game.awayTeam + '.svg';
+    let homeTeamLogoURI = './assets/images/team_logos/' + this.props.game.homeTeam + '.svg';
 
     return (
       <View style={styles.gameContainer} key={this.props.game.url}>
