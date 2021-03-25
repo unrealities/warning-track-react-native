@@ -284,18 +284,18 @@ class PreGameContainer extends React.Component<PreGameProps> {
   }
 
   render() {
-    let awayTeamLogoURI = './assets/images/team_logos/' + this.props.game.awayTeam + '.svg';
-    let homeTeamLogoURI = './assets/images/team_logos/' + this.props.game.homeTeam + '.svg';
+    let awayTeamLogoURI = 'assets/images/team_logos/' + this.props.game.awayTeam + '.svg';
+    let homeTeamLogoURI = 'assets/images/team_logos/' + this.props.game.homeTeam + '.svg';
 
     return (
       <View style={styles.gameContainer} key={this.props.game.url}>
         <View style={styles.gameStateContainer}>
           <View style={styles.scoreContainer}>
             <View style={styles.logoContainer}>
-              <Image style={styles.logo} source={{ uri: awayTeamLogoURI }} />
+              <Image style={styles.logo} source={require('./'+awayTeamLogoURI)} />
             </View>
             <View style={styles.logoContainer}>
-              <Image style={styles.logo} source={{ uri: homeTeamLogoURI }} />
+              <Image style={styles.logo} source={require('./'+homeTeamLogoURI)} />
             </View>
             <Text style={styles.preGameTime}>{this.props.game.time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</Text>
           </View>
@@ -371,16 +371,17 @@ export interface ScoreProps {
 }
 
 const Score: React.FC<ScoreProps> = (props) => {
-  let awayTeamLogoURI = 'https://warningtrack.co/img/team_logos/' + props.awayTeam + '.svg';
-  let homeTeamLogoURI = 'https://warningtrack.co/img/team_logos/' + props.homeTeam + '.svg';
+  let awayTeamLogoURI = 'assets/images/team_logos/' + props.awayTeam + '.svg';
+  let homeTeamLogoURI = 'assets/images/team_logos/' + props.homeTeam + '.svg';
+
   return (
     <View style={styles.scoreContainer}>
       <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={{ uri: awayTeamLogoURI }} />
+        <Image style={styles.logo} source={require('./'+awayTeamLogoURI)} />
       </View>
       <Text style={styles.score}>{props.awayScore}</Text>
       <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={{ uri: homeTeamLogoURI }} />
+        <Image style={styles.logo} source={require('./'+homeTeamLogoURI)} />
       </View>
       <Text style={styles.score}>{props.homeScore}</Text>
     </View>
