@@ -565,7 +565,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     margin: 10,
-    maxWidth: 420,
+    maxWidth: 410,
     minHeight: 120,
     minWidth: 280,
     padding: 10,
