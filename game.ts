@@ -52,7 +52,7 @@ export class Game implements IGame {
         this.url = url;
     }
 
-    baseRunnerInt() : number {
+    baseRunnerInt(): number {
         if (!this.base1 && !this.base2 && !this.base3) {       // bases empty
             return 0;
         } else if (this.base1 && !this.base2 && !this.base3) { // first base
@@ -72,7 +72,7 @@ export class Game implements IGame {
         }
     }
 
-    inningTopString() : string {
+    inningTopString(): string {
         return this.inningTop ? 'T' : 'B';
     }
 }

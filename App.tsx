@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageBackground, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import Svg, { Ellipse, G, Rect } from 'react-native-svg';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,7 +9,7 @@ import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 
 import { Game } from './game';
-import { MLBTVLogo } from './src/components/logo';
+import { GameContainer, GameProps, PreGameContainer } from './src/components/game';
 
 const Stack = createStackNavigator();
 
@@ -176,7 +176,7 @@ async function GetGameDataByDay() {
   const projectName = 'warning-track-backend';
   const region = 'us-central1';
   const url = 'https://' + region + '-' + projectName + '.cloudfunctions.net/' + functionName;
-  
+
 
   // TODO: If no games on the date may give error
   let d = new Date();
@@ -228,79 +228,6 @@ class GamesContainer extends React.Component<GamesProps, GamesState> {
     return (
       <View>
         { this.state.games.length > 0 ? this.state.games.map(game => game.inProgress ? <GameContainer game={game} key={game.url} /> : <PreGameContainer game={game} key={game.url} />) : <NoGames />}
-      </View>
-    );
-  }
-}
-
-export interface GameProps {
-  game: Game;
-}
-
-class GameContainer extends React.Component<GameProps> {
-  constructor(props: GameProps) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <View style={styles.gameContainer} key={this.props.game.url}>
-        <LeverageIndex value={this.props.game.leverageIndex} />
-        <View style={styles.gameStateContainer}>
-          <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
-          <View style={styles.bsos}>
-            <View style={styles.bsoContainer}>
-              <Text>B:</Text>
-              <BallsStrikesOuts value={this.props.game.balls} />
-            </View>
-            <View style={styles.bsoContainer}>
-              <Text>S:</Text>
-              <BallsStrikesOuts value={this.props.game.strikes} />
-            </View>
-            <View style={styles.bsoContainer}>
-              <Text>O:</Text>
-              <BallsStrikesOuts value={this.props.game.outs} />
-            </View>
-          </View>
-        </View>
-        <TouchableOpacity style={styles.inningStateContainer} onPress={() => Linking.openURL(this.props.game.url)}>
-          <View style={styles.baseRunnerContainer}>
-            <BaseRunner value={this.props.game.baseRunnerInt()} />
-          </View>
-          <Text style={styles.inningTxtContainer}>{this.props.game.inningTopString()}{this.props.game.inning}</Text>
-          <MLBTVLogo />
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}
-
-export interface PreGameProps {
-  game: Game;
-}
-
-class PreGameContainer extends React.Component<PreGameProps> {
-  constructor(props: PreGameProps) {
-    super(props);
-  }
-
-  render() {
-    let awayTeamLogoURI = 'assets/images/team_logos/' + this.props.game.awayTeam + '.svg';
-    let homeTeamLogoURI = 'assets/images/team_logos/' + this.props.game.homeTeam + '.svg';
-
-    return (
-      <View style={styles.gameContainer} key={this.props.game.url}>
-        <View style={styles.gameStateContainer}>
-          <View style={styles.scoreContainer}>
-            <View style={styles.logoContainer}>
-              <Image style={styles.logo} source={require('./'+awayTeamLogoURI)} />
-            </View>
-            <View style={styles.logoContainer}>
-              <Image style={styles.logo} source={require('./'+homeTeamLogoURI)} />
-            </View>
-            <Text style={styles.preGameTime}>{this.props.game.time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</Text>
-          </View>
-        </View>
       </View>
     );
   }
@@ -378,11 +305,11 @@ const Score: React.FC<ScoreProps> = (props) => {
   return (
     <View style={styles.scoreContainer}>
       <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={require('./'+awayTeamLogoURI)} />
+        <Image style={styles.logo} source={require('./' + awayTeamLogoURI)} />
       </View>
       <Text style={styles.score}>{props.awayScore}</Text>
       <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={require('./'+homeTeamLogoURI)} />
+        <Image style={styles.logo} source={require('./' + homeTeamLogoURI)} />
       </View>
       <Text style={styles.score}>{props.homeScore}</Text>
     </View>
@@ -533,28 +460,6 @@ const styles = StyleSheet.create({
   container: {
     height: '100%'
   },
-  gameContainer: {
-    alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#ECE2C2',
-    borderWidth: 2,
-    borderRadius: 20,
-    flex: 1,
-    flexDirection: 'row',
-    margin: 10,
-    maxWidth: 410,
-    minHeight: 120,
-    minWidth: 280,
-    padding: 10,
-    paddingTop: 50,
-    justifyContent: 'center',
-    shadowColor: '#225500',
-    shadowOffset: { height: 4, width: 4 },
-    shadowOpacity: 0.5,
-  },
-  gameStateContainer: {
-    marginTop: -20
-  },
   headerTxt: {
     color: '#225500',
     fontFamily: 'Lobster_400Regular',
@@ -591,40 +496,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center'
   },
-  logo: {
-    alignContent: 'center',
-    justifyContent: 'center',
-    height: 60,
-    minWidth: 60,
-    resizeMode: 'contain',
-    width: '100%'
-  },
-  logoContainer: {
-    height: '100%',
-    marginHorizontal: 8,
-    width: 60
-  },
-  mlbTVContainer: {
-    padding: 8
-  },
-  preGameTime: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginLeft: 10,
-    textAlign: 'center'
-  },
   score: {
     fontSize: 64,
     fontWeight: 'bold',
     marginHorizontal: 10,
     marginTop: -4,
     textAlign: 'center'
-  },
-  scoreContainer: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: -20
   },
   team: {
     fontWeight: 'bold',
