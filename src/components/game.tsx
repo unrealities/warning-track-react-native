@@ -4,6 +4,9 @@ import { Image, Linking, Text, TouchableOpacity, View } from 'react-native';
 import { GameStyles } from '../styles/game';
 import { LogoStyles } from '../styles/logo';
 import { Game } from '../../game';
+import { LeverageIndex } from './leverageIndex';
+import { MLBTVLogo } from './logo';
+import { Score } from './score';
 
 export interface GameProps {
     game: Game;
