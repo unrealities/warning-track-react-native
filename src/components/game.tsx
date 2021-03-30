@@ -1,8 +1,13 @@
 import React from 'react';
 import { Image, Linking, Text, TouchableOpacity, View } from 'react-native';
 
+import { BSOStyles } from '../styles/ballsStrikesOuts';
+import { BaseRunnerStyles } from '../styles/baseRunner';
 import { GameStyles } from '../styles/game';
 import { LogoStyles } from '../styles/logo';
+
+import { BallsStrikesOuts } from '../components/ballsStrikesOuts';
+import { BaseRunner } from '../components/baseRunner';
 import { Game } from '../../game';
 import { LeverageIndex } from './leverageIndex';
 import { MLBTVLogo } from './logo';
@@ -29,10 +34,10 @@ export class PreGameContainer extends React.Component<PreGameProps> {
                 <View style={GameStyles.gameStateContainer}>
                     <View style={GameStyles.scoreContainer}>
                         <View style={LogoStyles.logoContainer}>
-                            <Image style={LogoStyles.logo} source={require('./' + awayTeamLogoURI)} />
+                            <Image style={LogoStyles.logo} source={require('../../' + awayTeamLogoURI)} />
                         </View>
                         <View style={LogoStyles.logoContainer}>
-                            <Image style={LogoStyles.logo} source={require('./' + homeTeamLogoURI)} />
+                            <Image style={LogoStyles.logo} source={require('../../' + homeTeamLogoURI)} />
                         </View>
                         <Text style={GameStyles.preGameTime}>{this.props.game.time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</Text>
                     </View>
@@ -53,26 +58,26 @@ export class GameContainer extends React.Component<GameProps> {
                 <LeverageIndex value={this.props.game.leverageIndex} />
                 <View style={GameStyles.gameStateContainer}>
                     <Score awayScore={this.props.game.awayScore} awayTeam={this.props.game.awayTeam} homeScore={this.props.game.homeScore} homeTeam={this.props.game.homeTeam} />
-                    <View style={styles.bsos}>
-                        <View style={styles.bsoContainer}>
+                    <View style={BSOStyles.bsos}>
+                        <View style={BSOStyles.bsoContainer}>
                             <Text>B:</Text>
                             <BallsStrikesOuts value={this.props.game.balls} />
                         </View>
-                        <View style={styles.bsoContainer}>
+                        <View style={BSOStyles.bsoContainer}>
                             <Text>S:</Text>
                             <BallsStrikesOuts value={this.props.game.strikes} />
                         </View>
-                        <View style={styles.bsoContainer}>
+                        <View style={BSOStyles.bsoContainer}>
                             <Text>O:</Text>
                             <BallsStrikesOuts value={this.props.game.outs} />
                         </View>
                     </View>
                 </View>
-                <TouchableOpacity style={styles.inningStateContainer} onPress={() => Linking.openURL(this.props.game.url)}>
-                    <View style={styles.baseRunnerContainer}>
+                <TouchableOpacity style={GameStyles.inningStateContainer} onPress={() => Linking.openURL(this.props.game.url)}>
+                    <View style={BaseRunnerStyles.baseRunnerContainer}>
                         <BaseRunner value={this.props.game.baseRunnerInt()} />
                     </View>
-                    <Text style={styles.inningTxtContainer}>{this.props.game.inningTopString()}{this.props.game.inning}</Text>
+                    <Text style={GameStyles.inningTxtContainer}>{this.props.game.inningTopString()}{this.props.game.inning}</Text>
                     <MLBTVLogo />
                 </TouchableOpacity>
             </View>

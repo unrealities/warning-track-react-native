@@ -23,6 +23,24 @@ export const GameStyles = StyleSheet.create({
     gameStateContainer: {
         marginTop: -20
     },
+    inningStateContainer: {
+        backgroundColor: '#55D400',
+        borderColor: '#225500',
+        borderRadius: 20,
+        borderWidth: 1,
+        height: 110,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: -42,
+        paddingTop: 2,
+        width: 80
+    },
+    inningTxtContainer: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        justifyContent: 'center',
+        textAlign: 'center'
+    },
     preGameTime: {
         fontSize: 18,
         fontWeight: 'bold',

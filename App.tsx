@@ -1,6 +1,5 @@
 import React from 'react';
-import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
-import Svg, { Ellipse, G, Rect } from 'react-native-svg';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
@@ -240,112 +239,6 @@ const NoGames: React.FC<{}> = (props) => {
     </View>
   )
 }
-export interface BSOProps {
-  value: number;
-}
-
-const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
-  let stroke = [];
-  let fill = [];
-
-  switch (props.value) {
-    case 0:
-      stroke = ["#e6db8a", "#e6db8a", "#e6db8a", "#e6db8a"];
-      fill = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"];
-      break;
-    case 1:
-      stroke = ["#baa400", "#e6db8a", "#e6db8a", "#e6db8a"];
-      fill = ["#f5d800", "#ffffff", "#ffffff", "#ffffff"];
-      break;
-    case 2:
-      stroke = ["#baa400", "#baa400", "#e6db8a", "#e6db8a"];
-      fill = ["#f5d800", "#f5d800", "#ffffff", "#ffffff"];
-      break;
-    case 3:
-      stroke = ["#baa400", "#baa400", "#baa400", "#e6db8a"];
-      fill = ["#f5d800", "#f5d800", "#f5d800", "#ffffff"];
-      break;
-    case 4:
-      stroke = ["#baa400", "#baa400", "#baa400", "#baa400"];
-      fill = ["#f5d800", "#f5d800", "#f5d800", "#f5d800"];
-      break;
-    default:
-      stroke = ["#e6db8a", "#e6db8a", "#e6db8a", "#e6db8a"];
-      fill = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"];
-      break;
-  }
-  return (
-    <View style={styles.bso}>
-      <Svg viewBox="0 0 68 25" width="50" height="18.38">
-        <G>
-          <Ellipse ry="10" rx="10" cy="12" cx="12" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[0]} fill={fill[0]} />
-          <Ellipse ry="10" rx="10" cy="12" cx="34" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[1]} fill={fill[1]} />
-          <Ellipse ry="10" rx="10" cy="12" cx="56" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[2]} fill={fill[2]} />
-          <Ellipse ry="10" rx="10" cy="12" cx="78" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[3]} fill={fill[3]} />
-        </G>
-      </Svg>
-    </View>
-  )
-}
-
-export interface BaseRunnerProps {
-  value: number;
-}
-
-const BaseRunner: React.FC<BaseRunnerProps> = (props) => {
-  let stroke = [];
-  let fill = [];
-
-  switch (props.value) {
-    case 0:
-      stroke = ["#225500", "#225500", "#225500"];
-      fill = ["#ffffff", "#ffffff", "#ffffff"];
-      break;
-    case 1:
-      stroke = ["#baa400", "#225500", "#225500"];
-      fill = ["#f5d800", "#ffffff", "#ffffff"];
-      break;
-    case 2:
-      stroke = ["#225500", "#baa400", "#225500"];
-      fill = ["#ffffff", "#f5d800", "#ffffff"];
-      break;
-    case 3:
-      stroke = ["#225500", "#225500", "#baa400"];
-      fill = ["#ffffff", "#ffffff", "#f5d800"];
-      break;
-    case 4:
-      stroke = ["#baa400", "#baa400", "#225500"];
-      fill = ["#f5d800", "#f5d800", "#ffffff"];
-      break;
-    case 5:
-      stroke = ["#baa400", "#225500", "#baa400"];
-      fill = ["#f5d800", "#ffffff", "#f5d800"];
-      break;
-    case 6:
-      stroke = ["#225500", "#baa400", "#baa400"];
-      fill = ["#ffffff", "#f5d800", "#f5d800"];
-      break;
-    case 7:
-      stroke = ["#baa400", "#baa400", "#baa400"];
-      fill = ["#f5d800", "#f5d800", "#f5d800"];
-      break;
-    default:
-      stroke = ["#225500", "#225500", "#225500"];
-      fill = ["#ffffff", "#ffffff", "#ffffff"];
-      break;
-  }
-  return (
-    <View style={styles.baseRunner}>
-      <Svg viewBox="0 0 34 26" width="68" height="52">
-        <G>
-          <Rect transform="rotate(45 25.07106781005859,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="20.07107" stroke={stroke[0]} fill={fill[0]} />
-          <Rect transform="rotate(45 17.071067810058594,9.071067810058592) " ry="1" rx="1" height="10" width="10" y="4.07107" x="12.07107" stroke={stroke[1]} fill={fill[1]} />
-          <Rect transform="rotate(45 9.071067810058596,17.071067810058594) " ry="1" rx="1" height="10" width="10" y="12.07107" x="4.07107" stroke={stroke[2]} fill={fill[2]} />
-        </G>
-      </Svg>
-    </View>
-  )
-}
 
 const styles = StyleSheet.create({
   background: {
@@ -360,27 +253,6 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     resizeMode: 'repeat'
   },
-  baseRunner: {
-    flexDirection: 'column',
-    justifyContent: 'center'
-  },
-  baseRunnerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center'
-  },
-  bso: {
-    flexDirection: 'column'
-  },
-  bsos: {
-    flexDirection: 'row',
-    justifyContent: 'space-around'
-  },
-  bsoContainer: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    margin: 10
-  },
   container: {
     height: '100%'
   },
@@ -388,24 +260,6 @@ const styles = StyleSheet.create({
     color: '#225500',
     fontFamily: 'Lobster_400Regular',
     fontSize: 48,
-    textAlign: 'center'
-  },
-  inningStateContainer: {
-    backgroundColor: '#55D400',
-    borderColor: '#225500',
-    borderRadius: 20,
-    borderWidth: 1,
-    height: 110,
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: -42,
-    paddingTop: 2,
-    width: 80
-  },
-  inningTxtContainer: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    justifyContent: 'center',
     textAlign: 'center'
   },
   noGamesContainer: {
