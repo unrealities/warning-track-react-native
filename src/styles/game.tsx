@@ -1,6 +1,21 @@
 import { StyleSheet } from 'react-native';
 
 export const GameStyles = StyleSheet.create({
+    background: {
+        flex: 1,
+        height: '100%',
+        justifyContent: 'center',
+        width: '100%'
+    },
+    backgroundImg: {
+        alignItems: 'center',
+        backgroundColor: '#44aa00',
+        borderRadius: 0,
+        resizeMode: 'repeat'
+    },
+    container: {
+        height: '100%'
+    },
     gameContainer: {
         alignItems: 'center',
         alignSelf: 'center',
@@ -39,6 +54,14 @@ export const GameStyles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         justifyContent: 'center',
+        textAlign: 'center'
+    },
+    noGamesContainer: {
+        marginTop: 20
+    },
+    noGamesText: {
+        fontSize: 36,
+        fontWeight: 'bold',
         textAlign: 'center'
     },
     preGameTime: {

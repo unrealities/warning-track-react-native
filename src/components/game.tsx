@@ -16,6 +16,14 @@ import { Score } from './score';
 export interface GameProps {
     game: Game;
 }
+
+export interface GamesProps {
+    games: Game[];
+}
+
+export interface GamesState {
+    games: Game[];
+}
 export interface PreGameProps {
     game: Game;
 }
@@ -83,4 +91,27 @@ export class GameContainer extends React.Component<GameProps> {
             </View>
         );
     }
+}
+
+export class GamesContainer extends React.Component<GamesProps, GamesState> {
+    constructor(props: GamesProps) {
+        super(props);
+        this.state = { games: this.props.games };
+    }
+
+    render() {
+        return (
+            <View>
+                { this.state.games.length > 0 ? this.state.games.map(game => game.inProgress ? <GameContainer game={game} key={game.url} /> : <PreGameContainer game={game} key={game.url} />) : <NoGames />}
+            </View>
+        );
+    }
+}
+
+const NoGames: React.FC<{}> = (props) => {
+    return (
+        <View style={GameStyles.noGamesContainer}>
+            <Text style={GameStyles.noGamesText}>No Games Today</Text>
+        </View>
+    )
 }
