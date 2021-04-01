@@ -1,4 +1,5 @@
-interface gameDataResponseGame {
+// TODO: implement this interface
+interface GameDataResponseGame {
     gameTime: string;
     leverageIndex: number;
     mlbID: number;

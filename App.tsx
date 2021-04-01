@@ -9,7 +9,7 @@ import { Game } from './game';
 import { GamesScreen } from './src/screens/games';
 // import { HomeScreen } from './src/screens/home';
 
-import { ConvertTeamID } from './src/utilties/teams';
+import { ConvertTeamID } from './src/utilities/teams';
 import { GetGameDataByDay } from './src/api/getGameDataByDay';
 
 const Stack = createStackNavigator();
@@ -21,7 +21,6 @@ export default class App extends React.Component {
   };
 
   async componentDidMount() {
-    // Prevent native splash screen from autohiding
     try {
       await SplashScreen.preventAutoHideAsync();
     } catch (e) {
@@ -37,7 +36,6 @@ export default class App extends React.Component {
       await GetGameDataByDay()
         .then(result => {
           if (!result || result.length == 0) {
-            console.log("no games");
             return newGames;
           }
 
