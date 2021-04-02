@@ -10,7 +10,7 @@ import { GamesScreen } from './src/screens/games';
 // import { HomeScreen } from './src/screens/home';
 
 import { ConvertTeamID } from './src/utilities/teams';
-import { GetGameDataByDay } from './src/api/getGameDataByDay';
+import { GameDataResponseGame, GetGameDataByDay } from './src/api/getGameDataByDay'; // TODO: implement GameDataResponseGame
 
 const Stack = createStackNavigator();
 
