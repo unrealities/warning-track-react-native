@@ -5,12 +5,12 @@ import AppLoading from 'expo-app-loading';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 
-import { Game } from './game';
+import { Game } from './src/utilities/game';
 import { GamesScreen } from './src/screens/games';
 // import { HomeScreen } from './src/screens/home';
 
 import { ConvertTeamID } from './src/utilities/teams';
-import { GameDataResponseGame, GetGameDataByDay } from './src/api/getGameDataByDay'; // TODO: implement GameDataResponseGame
+import { GetGameDataByDay } from './src/services/getGameDataByDay';
 
 const Stack = createStackNavigator();
 

@@ -1,4 +1,4 @@
-interface GameDataResponseGame {
+export interface GameDataResponseGame {
     gameTime: string;
     leverageIndex: number;
     mlbID: number;
@@ -39,7 +39,8 @@ export async function GetGameDataByDay() {
     return await fetch(getGameDataByDayURI(), requestOptions)
         .then(response => response.json())
         .then(data => {
-            return data['games'];
+            let games:GameDataResponseGame[] = data['games'];
+            return games;
         })
         .catch(error => {
             console.log(`error: ${JSON.stringify(error)}`);
