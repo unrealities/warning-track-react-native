@@ -39,7 +39,7 @@ export async function GetGameDataByDay() {
     return await fetch(getGameDataByDayURI(), requestOptions)
         .then(response => response.json())
         .then(data => {
-            let games:GameDataResponseGame[] = data['games'];
+            let games: GameDataResponseGame[] = data['games'];
             return games;
         })
         .catch(error => {

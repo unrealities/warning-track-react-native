@@ -5,14 +5,12 @@ import AppLoading from 'expo-app-loading';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 
-import { Game } from './src/utilities/game';
+import { ConvertGames } from './src/utilities/game';
 import { GamesScreen } from './src/screens/games';
 // import { HomeScreen } from './src/screens/home';
 
-import { ConvertTeamID } from './src/utilities/teams';
-import { GetGameDataByDay } from './src/services/getGameDataByDay';
-
 const Stack = createStackNavigator();
+const splashImage = require('./assets/images/wt_splash.png');
 
 export default class App extends React.Component {
   state = {
@@ -30,40 +28,8 @@ export default class App extends React.Component {
 
   prepareResources = async () => {
     try {
-      let newGames: Game[];
-      newGames = [];
-
-      await GetGameDataByDay()
-        .then(result => {
-          if (!result || result.length == 0) {
-            return newGames;
-          }
-
-          result.map(
-            game => {
-              let awayScore = game.status.score.away;
-              let awayTeam = ConvertTeamID(game.teams.away);
-              let balls = game.status.count.balls;
-              let base1 = game.status.baseState.First;
-              let base2 = game.status.baseState.Second;
-              let base3 = game.status.baseState.Third;
-              let homeScore = game.status.score.home;
-              let homeTeam = ConvertTeamID(game.teams.home);
-              let inning = game.status.inning;
-              let inningTop = game.status.topOfInning;
-              let inProgress = game.status.inProgress;
-              let leverageIndex = game.leverageIndex;
-              let outs = game.status.outs;
-              let strikes = game.status.count.strikes;
-              let time = new Date(game.gameTime);
-              let uri = game.mlbTVLink;
-
-              let newGame = new Game(awayScore, awayTeam, balls, base1, base2, base3, homeScore, homeTeam, inning, inningTop, inProgress, leverageIndex, outs, strikes, time, uri);
-              newGames.push(newGame);
-            }
-          );
-          return newGames;
-        }).then(result => this.setState({ games: result }));
+      await ConvertGames()
+        .then(result => this.setState({ games: result }));
     } catch (e) {
       console.warn(e);
     } finally {
@@ -83,7 +49,6 @@ export default class App extends React.Component {
         />
       );
     } else {
-      console.log(this.state.games);
       return (
         <NavigationContainer>
           <Stack.Navigator>
@@ -98,7 +63,6 @@ export default class App extends React.Component {
   }
 
   _cacheSplashResourcesAsync = async () => {
-    const img = require('./assets/images/wt_splash.png');
-    return Asset.fromModule(img).downloadAsync();
+    return Asset.fromModule(splashImage).downloadAsync();
   };
 }
