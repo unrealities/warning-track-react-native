@@ -4,7 +4,7 @@ import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
 
 import { ScreenStyles } from '../styles/screen';
 
-function HomeScreen() {
+export function HomeScreen() {
   let [fontsLoaded] = useFonts({
     Lobster_400Regular,
   });

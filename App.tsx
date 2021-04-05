@@ -7,7 +7,7 @@ import * as SplashScreen from 'expo-splash-screen';
 
 import { ConvertGames } from './src/utilities/game';
 import { GamesScreen } from './src/screens/games';
-// import { HomeScreen } from './src/screens/home';
+import { HomeScreen } from './src/screens/home';
 
 const Stack = createStackNavigator();
 const splashImage = require('./assets/images/wt_splash.png');
@@ -52,7 +52,7 @@ export default class App extends React.Component {
       return (
         <NavigationContainer>
           <Stack.Navigator>
-            {/* <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/> */}
+            <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/>
             <Stack.Screen name="Games">
               {props => <GamesScreen {...props} games={this.state.games} />}
             </Stack.Screen>
