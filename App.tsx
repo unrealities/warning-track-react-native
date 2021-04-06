@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AppLoading from 'expo-app-loading';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
@@ -9,8 +9,8 @@ import { ConvertGames } from './src/utilities/game';
 import { GamesScreen } from './src/screens/games';
 import { HomeScreen } from './src/screens/home';
 
-const Stack = createStackNavigator();
 const splashImage = require('./assets/images/wt_splash.png');
+const Tab = createBottomTabNavigator();
 
 export default class App extends React.Component {
   state = {
@@ -51,12 +51,12 @@ export default class App extends React.Component {
     } else {
       return (
         <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/>
-            <Stack.Screen name="Games">
+          <Tab.Navigator>
+            <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/>
+            <Tab.Screen name="Games">
               {props => <GamesScreen {...props} games={this.state.games} />}
-            </Stack.Screen>
-          </Stack.Navigator>
+            </Tab.Screen>
+          </Tab.Navigator>
         </NavigationContainer>
       );
     }
