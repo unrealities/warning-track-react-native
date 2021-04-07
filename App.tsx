@@ -7,7 +7,7 @@ import * as SplashScreen from 'expo-splash-screen';
 
 import { ConvertGames } from './src/utilities/game';
 import { GamesScreen } from './src/screens/games';
-import { HomeScreen } from './src/screens/home';
+import { SettingsScreen } from './src/screens/settings';
 
 const splashImage = require('./assets/images/wt_splash.png');
 const Tab = createBottomTabNavigator();
@@ -52,10 +52,10 @@ export default class App extends React.Component {
       return (
         <NavigationContainer>
           <Tab.Navigator>
-            <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'WarningTrack' }}/>
             <Tab.Screen name="Games">
               {props => <GamesScreen {...props} games={this.state.games} />}
             </Tab.Screen>
+            <Tab.Screen name="Settings" component={SettingsScreen} options={{ title: 'Settings' }}/>
           </Tab.Navigator>
         </NavigationContainer>
       );
