@@ -9,5 +9,9 @@ export const ScreenStyles = StyleSheet.create({
         fontFamily: 'Lobster_400Regular',
         fontSize: 48,
         textAlign: 'center'
+    },
+    settingsTxt: {
+        fontSize: 24,
+        textAlign: 'center'
     }
 });

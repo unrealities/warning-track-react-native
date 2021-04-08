@@ -2,8 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export const GameStyles = StyleSheet.create({
     background: {
-        flex: 1,
-        height: '100%',
         justifyContent: 'center',
         width: '100%'
     },
@@ -22,7 +20,6 @@ export const GameStyles = StyleSheet.create({
         backgroundColor: '#ECE2C2',
         borderWidth: 2,
         borderRadius: 20,
-        flex: 1,
         flexDirection: 'row',
         margin: 10,
         maxWidth: 410,
