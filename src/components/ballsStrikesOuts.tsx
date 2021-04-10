@@ -42,10 +42,10 @@ export const BallsStrikesOuts: React.FC<BSOProps> = (props) => {
         <View style={BSOStyles.bso}>
             <Svg viewBox="0 0 68 25" width="50" height="18.38">
                 <G>
-                    <Ellipse ry="10" rx="10" cy="12" cx="12" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[0]} fill={fill[0]} />
-                    <Ellipse ry="10" rx="10" cy="12" cx="34" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[1]} fill={fill[1]} />
-                    <Ellipse ry="10" rx="10" cy="12" cx="56" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[2]} fill={fill[2]} />
-                    <Ellipse ry="10" rx="10" cy="12" cx="78" stroke-linecap="null" stroke-linejoin="null" stroke={stroke[3]} fill={fill[3]} />
+                    <Ellipse ry="10" rx="10" cy="12" cx="12" stroke={stroke[0]} fill={fill[0]} />
+                    <Ellipse ry="10" rx="10" cy="12" cx="34" stroke={stroke[1]} fill={fill[1]} />
+                    <Ellipse ry="10" rx="10" cy="12" cx="56" stroke={stroke[2]} fill={fill[2]} />
+                    <Ellipse ry="10" rx="10" cy="12" cx="78" stroke={stroke[3]} fill={fill[3]} />
                 </G>
             </Svg>
         </View>
