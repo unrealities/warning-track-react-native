@@ -36,16 +36,16 @@ export async function GetGameDataByDay() {
         body: JSON.stringify({ data: { date: getGameDataByDayDate() } })
     };
 
-    return await fetch(getGameDataByDayURI(), requestOptions)
-        .then(response => response.json())
-        .then(data => {
-            let games: GameDataResponseGame[] = data['games'];
-            return games;
-        })
-        .catch(error => {
-            console.log(`error: ${JSON.stringify(error)}`);
-            console.log(`error: ${error.stack}`)
-        });
+    try {
+        return await fetch(getGameDataByDayURI(), requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                let games: GameDataResponseGame[] = data['games'];
+                return games;
+            })
+    } catch (e) {
+        return `caught error: ${JSON.stringify(e)}`;
+    }
 }
 
 // ex. 04-23-2021
