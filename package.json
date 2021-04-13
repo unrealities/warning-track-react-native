@@ -19,6 +19,7 @@
     "expo": "^40.0.0",
     "expo-app-loading": "^1.0.1",
     "expo-font": "~8.4.0",
+    "expo-notifications": "~0.8.2",
     "expo-splash-screen": "~0.8.1",
     "expo-updates": "~0.4.1",
     "firebase": "7.9.0",
