@@ -19,12 +19,8 @@ export default class App extends React.Component {
     games: [],
   };
 
-  async componentDidMount() {
-    try {
-      await SplashScreen.preventAutoHideAsync();
-    } catch (e) {
-      console.warn(e);
-    }
+  componentDidMount() {
+    SplashScreen.preventAutoHideAsync().catch((e) => console.warn(e));
   }
 
   prepareResources = async () => {
