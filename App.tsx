@@ -30,7 +30,7 @@ export default class App extends React.Component {
     } catch (e) {
       console.warn(e);
     } finally {
-      SplashScreen.hideAsync();
+      SplashScreen.hideAsync().catch((e) => console.warn(e));
     }
   };
 
