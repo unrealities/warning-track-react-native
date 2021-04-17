@@ -24,14 +24,9 @@ export default class App extends React.Component {
   }
 
   prepareResources = async () => {
-    try {
-      await ConvertGames()
-        .then(result => this.setState({ games: result }));
-    } catch (e) {
-      console.warn(e);
-    } finally {
-      SplashScreen.hideAsync().catch((e) => console.warn(e));
-    }
+    let games = await ConvertGames().catch((e) => console.warn(e));
+    this.setState({ games: games });
+    await SplashScreen.hideAsync().catch((e) => console.warn(e));
   };
 
   render() {
