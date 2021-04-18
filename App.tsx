@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AppLoading from 'expo-app-loading';
 import { Asset } from 'expo-asset';
-import * as SplashScreen from 'expo-splash-screen';
+import { hideAsync, preventAutoHideAsync } from 'expo-splash-screen'
 
 import { ConvertGames } from './src/utilities/game';
 import { GamesScreen } from './src/screens/games';
@@ -20,13 +20,14 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    SplashScreen.preventAutoHideAsync().catch((e) => console.warn(e));
+    async () => await preventAutoHideAsync().catch(e => console.warn(e));
   }
 
   prepareResources = async () => {
-    let games = await ConvertGames().catch((e) => console.warn(e));
-    this.setState({ games: games });
-    await SplashScreen.hideAsync().catch((e) => console.warn(e));
+    await ConvertGames()
+      .then(result => this.setState({ games: result }))
+      .catch((e) => console.warn(e));
+    async () => await hideAsync().catch(e => console.warn(e));
   };
 
   render() {
