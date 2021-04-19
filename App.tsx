@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AppLoading from 'expo-app-loading';
@@ -19,15 +19,15 @@ export default class App extends React.Component {
     games: [],
   };
 
-  componentDidMount() {
-    async () => await preventAutoHideAsync().catch(e => console.warn(e));
+  componentDidMount = async () => {
+    await preventAutoHideAsync().catch(e => console.warn(e));
   }
 
   prepareResources = async () => {
     await ConvertGames()
       .then(result => this.setState({ games: result }))
       .catch((e) => console.warn(e));
-    async () => await hideAsync().catch(e => console.warn(e));
+    await hideAsync().catch(e => console.warn(e));
   };
 
   render() {
