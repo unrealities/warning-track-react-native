@@ -51,6 +51,8 @@
         }
       },
       "favicon": "./assets/images/wt.png"
-    }
+    },
+    "description": "Mobile version of warningtrack.co",
+    "githubUrl": "https://github.com/unrealities/warning-track-react-native"
   }
 }

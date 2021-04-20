@@ -3,6 +3,7 @@ import { Image, Text, View } from 'react-native';
 
 import { LogoStyles } from '../styles/logo';
 import { ScoreStyles } from '../styles/score';
+import { Logos } from '../utilities/logos';
 
 export interface ScoreProps {
     awayScore: number;
@@ -12,17 +13,14 @@ export interface ScoreProps {
 }
 
 export const Score: React.FC<ScoreProps> = (props) => {
-    let awayTeamLogoURI = 'assets/images/team_logos/' + props.awayTeam + '.svg'; 
-    let homeTeamLogoURI = 'assets/images/team_logos/' + props.homeTeam + '.svg';
-
     return (
         <View style={ScoreStyles.scoreContainer}>
             <View style={LogoStyles.logoContainer}>
-                <Image style={LogoStyles.logo} source={require('../../' + awayTeamLogoURI)} />
+                <Image style={LogoStyles.logo} source={Logos[this.props.awayTeam]} />
             </View>
             <Text style={ScoreStyles.score}>{props.awayScore}</Text>
             <View style={LogoStyles.logoContainer}>
-                <Image style={LogoStyles.logo} source={require('../../' + homeTeamLogoURI)} />
+                <Image style={LogoStyles.logo} source={Logos[this.props.homeTeam]} />
             </View>
             <Text style={ScoreStyles.score}>{props.homeScore}</Text>
         </View>
