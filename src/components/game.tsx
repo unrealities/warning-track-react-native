@@ -42,7 +42,7 @@ export class PreGameContainer extends React.Component<PreGameProps> {
                         <View style={LogoStyles.logoContainer}>
                             <Image style={LogoStyles.logo} source={Logos[this.props.game.awayTeam]} />
                         </View>
-                        <View style={LogoStyles.logoContainer}>s
+                        <View style={LogoStyles.logoContainer}>
                             <Image style={LogoStyles.logo} source={Logos[this.props.game.homeTeam]} />
                         </View>
                         <Text style={GameStyles.preGameTime}>{this.props.game.time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</Text>

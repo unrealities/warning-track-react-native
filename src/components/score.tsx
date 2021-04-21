@@ -16,11 +16,11 @@ export const Score: React.FC<ScoreProps> = (props) => {
     return (
         <View style={ScoreStyles.scoreContainer}>
             <View style={LogoStyles.logoContainer}>
-                <Image style={LogoStyles.logo} source={Logos[this.props.awayTeam]} />
+                <Image style={LogoStyles.logo} source={Logos[props.awayTeam]} />
             </View>
             <Text style={ScoreStyles.score}>{props.awayScore}</Text>
             <View style={LogoStyles.logoContainer}>
-                <Image style={LogoStyles.logo} source={Logos[this.props.homeTeam]} />
+                <Image style={LogoStyles.logo} source={Logos[props.homeTeam]} />
             </View>
             <Text style={ScoreStyles.score}>{props.homeScore}</Text>
         </View>
