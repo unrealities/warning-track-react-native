@@ -9,7 +9,8 @@
         "backgroundColor": "#44aa00",
         "image": "./assets/images/wt_splash.png",
         "resizeMode": "contain"
-      }
+      },
+      "package": "com.warningtrack"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,7 +21,8 @@
         "backgroundColor": "#44aa00",
         "image": "./assets/images/wt_splash.png",
         "resizeMode": "contain"
-      }
+      },
+      "bundleIdentifier": "org.reactjs.native.example.WarningTrack"
     },
     "name": "WarningTrack",
     "platforms": [
