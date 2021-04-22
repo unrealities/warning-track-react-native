@@ -5574,6 +5574,11 @@ expo-splash-screen@~0.10.2:
   dependencies:
     "@expo/configure-splash-screen" "0.3.4"
 
+expo-status-bar@~1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.0.4.tgz#d8a4c4418b5868c1606969b12bdee85b6fa7d8a4"
+  integrity sha512-s7nc496D/Zn1NGiMJ5wu6HyIdXxbgGtmZZtbHm7rpbcmLdf28GmMSNHDx7M0t00BMhky7VAurTCUo+BJs8ugsw==
+
 expo-structured-headers@~1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/expo-structured-headers/-/expo-structured-headers-1.0.1.tgz#2f3117fc9480e01aa6705493d3213060c2dcf683"
@@ -9110,7 +9115,7 @@ react-native-web@~0.13.12:
     prop-types "^15.6.0"
     react-timer-mixin "^0.13.4"
 
-react-native@0.63.4:
+react-native@~0.63.4:
   version "0.63.4"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.4.tgz#2210fdd404c94a5fa6b423c6de86f8e48810ec36"
   integrity sha512-I4kM8kYO2mWEYUFITMcpRulcy4/jd+j9T6PbIzR0FuMcz/xwd+JwHoLPa1HmCesvR1RDOw9o4D+OFLwuXXfmGw==

@@ -3,7 +3,7 @@
   "displayName": "WarningTrack",
   "expo": {
     "android": {
-      "googleServicesFile": "./android/app/google-services.json",
+      "googleServicesFile": "./google-services.json",
       "icon": "./assets/images/wt.png",
       "splash": {
         "backgroundColor": "#44aa00",

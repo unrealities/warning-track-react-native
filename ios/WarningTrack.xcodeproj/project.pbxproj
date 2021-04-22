@@ -13,6 +13,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7B0C5784998A29E517983E0C /* libPods-WarningTrack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2502ACF51380E8237829647D /* libPods-WarningTrack.a */; };
+		A54EBA027A1B476B9DD1B69D /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93429C230D5A43C489D055D3 /* SplashScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		E40B1F720DE0D29BF6B90074 /* Pods-WarningTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WarningTrack.release.xcconfig"; path = "Target Support Files/Pods-WarningTrack/Pods-WarningTrack.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		93429C230D5A43C489D055D3 /* SplashScreen.storyboard */ = {isa = PBXFileReference; name = "SplashScreen.storyboard"; path = "WarningTrack/SplashScreen.storyboard"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = file.storyboard; };
+		3ECE3365020F4A3B9B6E19CC /* WarningTrack-Bridging-Header.h */ = {isa = PBXFileReference; name = "WarningTrack-Bridging-Header.h"; path = "WarningTrack/WarningTrack-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,8 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				0731D3BB24204D9B009CAE85 /* Expo.plist */,
+				93429C230D5A43C489D055D3 /* SplashScreen.storyboard */,
+				3ECE3365020F4A3B9B6E19CC /* WarningTrack-Bridging-Header.h */,
 			);
 			name = WarningTrack;
 			sourceTree = "<group>";
@@ -139,7 +144,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -174,6 +179,8 @@
 				0731D3BE24204D9B009CAE85 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				A54EBA027A1B476B9DD1B69D /* SplashScreen.storyboard in Resources */,
+				847E03D0268F4EDEBAFD8BFC /* WarningTrack-Bridging-Header.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,9 +283,12 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.WarningTrack";
 				PRODUCT_NAME = WarningTrack;
 				VERSIONING_SYSTEM = "apple-generic";
+				TARGETED_DEVICE_FAMILY = "1";
+				SWIFT_OBJC_BRIDGING_HEADER = WarningTrack/WarningTrack-Bridging-Header.h;
+				CODE_SIGN_ENTITLEMENTS = WarningTrack/WarningTrack.entitlements;
 			};
 			name = Debug;
 		};
@@ -295,9 +305,12 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.WarningTrack";
 				PRODUCT_NAME = WarningTrack;
 				VERSIONING_SYSTEM = "apple-generic";
+				TARGETED_DEVICE_FAMILY = "1";
+				SWIFT_OBJC_BRIDGING_HEADER = WarningTrack/WarningTrack-Bridging-Header.h;
+				CODE_SIGN_ENTITLEMENTS = WarningTrack/WarningTrack.entitlements;
 			};
 			name = Release;
 		};
@@ -351,6 +364,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				CODE_SIGN_ENTITLEMENTS = WarningTrack/WarningTrack.entitlements;
 			};
 			name = Debug;
 		};
@@ -397,6 +411,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				CODE_SIGN_ENTITLEMENTS = WarningTrack/WarningTrack.entitlements;
 			};
 			name = Release;
 		};
