@@ -72,8 +72,6 @@
     <string>Give WarningTrack periences permission to access your photos</string>
     <key>NSRemindersUsageDescription</key>
     <string>Allow WarningTrack to access your reminders</string>
-    <key>UIUserInterfaceStyle</key>
-    <string>Light</string>
     <key>CFBundleURLTypes</key>
     <array>
       <dict>
@@ -85,6 +83,8 @@
     </array>
     <key>UIRequiresFullScreen</key>
     <true/>
+    <key>UIUserInterfaceStyle</key>
+    <string>Light</string>
     <key>CFBundleDisplayName</key>
     <string>WarningTrack</string>
   </dict>

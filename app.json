@@ -13,7 +13,8 @@
       "package": "com.warningtrack"
     },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/images/*",
+      "assets/images/team_logos/*"
     ],
     "icon": "./assets/images/wt.png",
     "ios": {
