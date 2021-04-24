@@ -1,6 +1,8 @@
 import React from 'react';
 import { Image, Linking, Text, TouchableOpacity, View } from 'react-native';
 
+import moment from 'moment';
+
 import { BSOStyles } from '../styles/ballsStrikesOuts';
 import { BaseRunnerStyles } from '../styles/baseRunner';
 import { GameStyles } from '../styles/game';
@@ -45,7 +47,7 @@ export class PreGameContainer extends React.Component<PreGameProps> {
                         <View style={LogoStyles.logoContainer}>
                             <Image style={LogoStyles.logo} source={Logos[this.props.game.homeTeam]} />
                         </View>
-                        <Text style={GameStyles.preGameTime}>{this.props.game.time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</Text>
+                        <Text style={GameStyles.preGameTime}>{moment(this.props.game.time).format('LT')}</Text>
                     </View>
                 </View>
             </View>
