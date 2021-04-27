@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Linking, Text, TouchableOpacity, View } from 'react-native';
+import { Linking, Text, TouchableOpacity, View } from 'react-native';
 
 import moment from 'moment';
 
@@ -12,8 +12,8 @@ import { BallsStrikesOuts } from '../components/ballsStrikesOuts';
 import { BaseRunner } from '../components/baseRunner';
 import { Game } from '../utilities/game';
 import { LeverageIndex } from './leverageIndex';
-import { Logos } from '../utilities/logos';
 import { MLBTVLogo } from './logo';
+import { TeamLogo } from '../components/teamLogo';
 import { Score } from './score';
 
 export interface GameProps {
@@ -42,10 +42,10 @@ export class PreGameContainer extends React.Component<PreGameProps> {
                 <View style={GameStyles.gameStateContainer}>
                     <View style={GameStyles.scoreContainer}>
                         <View style={LogoStyles.logoContainer}>
-                            <Image style={LogoStyles.logo} source={Logos[this.props.game.awayTeam]} />
+                            <TeamLogo id={this.props.game.awayTeam} />
                         </View>
                         <View style={LogoStyles.logoContainer}>
-                            <Image style={LogoStyles.logo} source={Logos[this.props.game.homeTeam]} />
+                            <TeamLogo id={this.props.game.homeTeam} />
                         </View>
                         <Text style={GameStyles.preGameTime}>{moment(this.props.game.time).format('LT')}</Text>
                     </View>
