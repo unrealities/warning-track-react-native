@@ -7,8 +7,6 @@ export const BackgroundStyles = StyleSheet.create({
         top: 0,
         right: 0,
         bottom: 0,
-        left: 0,
-        resizeMode: 'repeat',
-        zIndex: -1
+        left: 0
     },
 });
