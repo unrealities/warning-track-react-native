@@ -13,13 +13,7 @@ export class GamesScreen extends React.Component<GamesProps> {
   render() {
     return (
       <ScrollView style={GameStyles.container}>
-        <Background style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 16,
-          bottom: 0,
-        }} />
+        <Background />
         <GamesContainer games={this.props.games} />
       </ScrollView>
     );

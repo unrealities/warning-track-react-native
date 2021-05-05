@@ -7,7 +7,7 @@ import { BackgroundStyles } from '../styles/background';
 function Background() {
   return (
     <View style={BackgroundStyles.container}>
-      <Svg width={70} height={70}>
+      <Svg>
         <Defs>
           <Pattern
             id="GreenDiagonalStripes"
@@ -22,7 +22,7 @@ function Background() {
             <Path fill="#55d400" d="M0 0l70.004 70.004L52.326 87.68l-70.004-70.003zM35.355-35.355l70.004 70.003L87.68 52.326 17.678-17.678z" />
           </Pattern>
         </Defs>
-        <Rect fill="url(#GreenDiagonalStripes)" x="0" y="0" width="1000" height="1000" />
+        <Rect fill="url(#GreenDiagonalStripes)" x="0" y="0" width="100000" height="100000" />
       </Svg>
     </View>
   )
