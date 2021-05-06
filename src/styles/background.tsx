@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const BackgroundStyles = StyleSheet.create({
     container: {
+        flex: 1,
         position: 'absolute',
         top: 0,
         right: 0,
