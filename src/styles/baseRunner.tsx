@@ -1,12 +1,12 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const BaseRunnerStyles = StyleSheet.create({
-    baseRunner: {
-        flexDirection: 'column',
-        justifyContent: 'center'
-    },
-    baseRunnerContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center'
-    },
+  baseRunner: {
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  baseRunnerContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
 });

@@ -12,10 +12,7 @@
       },
       "package": "com.warningtrack"
     },
-    "assetBundlePatterns": [
-      "assets/images/*",
-      "assets/images/team_logos/*"
-    ],
+    "assetBundlePatterns": ["assets/images/*", "assets/images/team_logos/*"],
     "icon": "./assets/images/wt.png",
     "ios": {
       "splash": {
@@ -26,11 +23,7 @@
       "bundleIdentifier": "org.reactjs.native.example.WarningTrack"
     },
     "name": "WarningTrack",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
     "slug": "WarningTrack",
     "splash": {
       "backgroundColor": "#44aa00",

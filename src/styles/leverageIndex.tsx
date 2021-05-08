@@ -1,8 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const LIStyles = StyleSheet.create({
-    leverageIndex: {
-        flex: 1,
-        flexDirection: 'column'
-    },
+  leverageIndex: {
+    flex: 1,
+    flexDirection: "column",
+  },
 });

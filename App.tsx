@@ -1,16 +1,16 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import AppLoading from 'expo-app-loading';
-import { Asset } from 'expo-asset';
-import { hideAsync, preventAutoHideAsync } from 'expo-splash-screen'
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import AppLoading from "expo-app-loading";
+import { Asset } from "expo-asset";
+import { hideAsync, preventAutoHideAsync } from "expo-splash-screen";
 
-import { ConvertGames } from './src/utilities/game';
-import { GamesScreen } from './src/screens/games';
-import { NotificationsScreen } from './src/screens/notifications';
-import { SettingsScreen } from './src/screens/settings';
+import { ConvertGames } from "./src/utilities/game";
+import { GamesScreen } from "./src/screens/games";
+import { NotificationsScreen } from "./src/screens/notifications";
+import { SettingsScreen } from "./src/screens/settings";
 
-const splashImage = require('./assets/images/wt_splash.png');
+const splashImage = require("./assets/images/wt_splash.png");
 const Tab = createBottomTabNavigator();
 
 export default class App extends React.Component {
@@ -20,14 +20,14 @@ export default class App extends React.Component {
   };
 
   componentDidMount = async () => {
-    await preventAutoHideAsync().catch(e => console.warn(e));
-  }
+    await preventAutoHideAsync().catch((e) => console.warn(e));
+  };
 
   prepareResources = async () => {
     await ConvertGames()
-      .then(result => this.setState({ games: result }))
+      .then((result) => this.setState({ games: result }))
       .catch((e) => console.warn(e));
-    await hideAsync().catch(e => console.warn(e));
+    await hideAsync().catch((e) => console.warn(e));
   };
 
   render() {
@@ -44,10 +44,18 @@ export default class App extends React.Component {
         <NavigationContainer>
           <Tab.Navigator>
             <Tab.Screen name="Games">
-              {props => <GamesScreen {...props} games={this.state.games} />}
+              {(props) => <GamesScreen {...props} games={this.state.games} />}
             </Tab.Screen>
-            <Tab.Screen name="Notifications" component={NotificationsScreen} options={{ title: 'Notification Test' }} />
-            <Tab.Screen name="Settings" component={SettingsScreen} options={{ title: 'Settings' }} />
+            <Tab.Screen
+              name="Notifications"
+              component={NotificationsScreen}
+              options={{ title: "Notification Test" }}
+            />
+            <Tab.Screen
+              name="Settings"
+              component={SettingsScreen}
+              options={{ title: "Settings" }}
+            />
           </Tab.Navigator>
         </NavigationContainer>
       );
