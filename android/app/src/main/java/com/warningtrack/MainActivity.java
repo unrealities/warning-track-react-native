@@ -1,4 +1,4 @@
-package com.warningtrack;
+package co.warningtrack.android;
 import android.content.res.Configuration;
 import android.content.Intent;
 

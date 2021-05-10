@@ -131,7 +131,7 @@ android {
     }
 
     defaultConfig {
-        applicationId 'com.warningtrack'
+        applicationId 'co.warningtrack.android'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

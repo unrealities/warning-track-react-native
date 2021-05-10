@@ -1,4 +1,4 @@
-package com.warningtrack.generated;
+package co.warningtrack.android.generated;
 
 import java.util.Arrays;
 import java.util.List;

@@ -10,7 +10,7 @@
         "image": "./assets/images/wt_splash.png",
         "resizeMode": "contain"
       },
-      "package": "com.warningtrack"
+      "package": "co.warningtrack.android"
     },
     "assetBundlePatterns": [
       "assets/images/*"
