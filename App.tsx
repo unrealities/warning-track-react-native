@@ -1,4 +1,5 @@
 import React from "react";
+import { Alert } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppLoading from "expo-app-loading";
@@ -27,7 +28,11 @@ export default class App extends React.Component {
     await ConvertGames()
       .then((result) => this.setState({ games: result }))
       .catch((e) => console.warn(e));
-    await hideAsync().catch((e) => console.warn(e));
+    await hideAsync().catch((e) => Alert.alert(
+      'prepareResources Error',
+      'hideAsync catch',
+      [{ text: e }]
+    ));
   };
 
   render() {
