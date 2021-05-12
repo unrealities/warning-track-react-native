@@ -27,7 +27,11 @@ export default class App extends React.Component {
   prepareResources = async () => {
     await ConvertGames()
       .then((result) => this.setState({ games: result }))
-      .catch((e) => console.warn(e));
+      .catch((e) => Alert.alert(
+        'prepareResources Error',
+        'ConvertGames catch',
+        [{ text: e }]
+      ));
     await hideAsync().catch((e) => Alert.alert(
       'prepareResources Error',
       'hideAsync catch',
