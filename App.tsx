@@ -45,10 +45,10 @@ export default class App extends React.Component {
         <AppLoading
           startAsync={this.prepareResources}
           onFinish={() => this.setState({ appIsReady: true })}
-          onError={ e => Alert.alert(
+          onError={e => Alert.alert(
             'AppLoading Error',
             'onError catch',
-            [{ text: e.toString() }]) }
+            [{ text: e.toString() }])}
         />
       );
     } else {

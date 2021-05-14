@@ -39,7 +39,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "version": "1.0.0",
+    "version": "41.0.0",
     "web": {
       "config": {
         "firebase": {
