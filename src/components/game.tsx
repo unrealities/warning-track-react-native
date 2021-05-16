@@ -31,30 +31,8 @@ export interface PreGameProps {
   game: Game;
 }
 
-export class PreGameContainer extends React.Component<PreGameProps> {
-  constructor(props: PreGameProps) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <View style={GameStyles.gameContainer} key={this.props.game.url}>
-        <View style={GameStyles.gameStateContainer}>
-          <View style={GameStyles.scoreContainer}>
-            <View style={LogoStyles.logoContainer}>
-              <TeamLogo id={this.props.game.awayTeam} />
-            </View>
-            <View style={LogoStyles.logoContainer}>
-              <TeamLogo id={this.props.game.homeTeam} />
-            </View>
-            <Text style={GameStyles.preGameTime}>
-              {moment(this.props.game.time).format("LT")}
-            </Text>
-          </View>
-        </View>
-      </View>
-    );
-  }
+export interface PostGameProps {
+  game: Game;
 }
 
 export class GameContainer extends React.Component<GameProps> {
@@ -138,3 +116,53 @@ const NoGames: React.FC<{}> = (props) => {
     </View>
   );
 };
+
+export class PreGameContainer extends React.Component<PreGameProps> {
+  constructor(props: PreGameProps) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <View style={GameStyles.gameContainer} key={this.props.game.url}>
+        <View style={GameStyles.gameStateContainer}>
+          <View style={GameStyles.scoreContainer}>
+            <View style={LogoStyles.logoContainer}>
+              <TeamLogo id={this.props.game.awayTeam} />
+            </View>
+            <View style={LogoStyles.logoContainer}>
+              <TeamLogo id={this.props.game.homeTeam} />
+            </View>
+            <Text style={GameStyles.preGameTime}>
+              {moment(this.props.game.time).format("LT")}
+            </Text>
+          </View>
+        </View>
+      </View>
+    );
+  }
+}
+
+export class PostGameContainer extends React.Component<PostGameProps> {
+  constructor(props: PostGameProps) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <View style={GameStyles.gameContainer} key={this.props.game.url}>
+        <View style={GameStyles.gameStateContainer}>
+          <View style={GameStyles.scoreContainer}>
+            <Score
+              awayScore={this.props.game.awayScore}
+              awayTeam={this.props.game.awayTeam}
+              homeScore={this.props.game.homeScore}
+              homeTeam={this.props.game.homeTeam}
+            />
+            <Text style={GameStyles.inningTxtContainer}>F</Text>
+          </View>
+        </View>
+      </View>
+    );
+  }
+}
