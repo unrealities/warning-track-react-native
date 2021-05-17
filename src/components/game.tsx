@@ -92,18 +92,23 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
 
   render() {
     return (
+      // TODO: This is terrible coding style
       <View>
         {this.state.games.length > 0 ? (
           this.state.games.map((game) =>
             game.inProgress ? (
               <GameContainer game={game} key={game.url} />
             ) : (
-              <PreGameContainer game={game} key={game.url} />
-            )
+                (game.awayScore > 0 || game.homeScore > 0) ? (
+                  <PostGameContainer game={game} key={game.url} />
+                ) : (
+                    <PreGameContainer game={game} key={game.url} />
+                  )
+              )
           )
         ) : (
-          <NoGames />
-        )}
+            <NoGames />
+          )}
       </View>
     );
   }
