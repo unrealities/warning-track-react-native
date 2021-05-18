@@ -14,6 +14,12 @@ export const GameStyles = StyleSheet.create({
   container: {
     height: "100%",
   },
+  finalTxt: {
+    fontSize: 36,
+    fontWeight: "bold",
+    justifyContent: "center",
+    textAlign: "center",
+  },
   gameContainer: {
     alignItems: "center",
     alignSelf: "center",

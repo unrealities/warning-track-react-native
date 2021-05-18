@@ -164,7 +164,12 @@ export class PostGameContainer extends React.Component<PostGameProps> {
               homeScore={this.props.game.homeScore}
               homeTeam={this.props.game.homeTeam}
             />
-            <Text style={GameStyles.inningTxtContainer}>F</Text>
+            <TouchableOpacity
+              style={GameStyles.inningStateContainer}
+              onPress={() => Linking.openURL(this.props.game.url)}
+            >
+              <Text style={GameStyles.finalTxt}>F</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
