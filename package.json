@@ -5,7 +5,11 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch"
   },
   "dependencies": {
     "@expo-google-fonts/lobster": "^0.1.0",
@@ -53,6 +57,7 @@
     "preset": "react-native"
   },
   "private": true,
-  "name": "warning-track-react-native",
-  "version": "1.0.0"
+  "name": "my-webpack-project",
+  "version": "1.0.0",
+  "description": "My webpack project"
 }
