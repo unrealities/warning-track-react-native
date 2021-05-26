@@ -1,49 +1,13 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
+const createExpoWebpackConfigAsync = require('@expo/webpack-config');
+const path = require('path');
 
-const path = require("path");
-
-const isProduction = process.env.NODE_ENV == "production";
-
-const config = {
-  entry: "./index.js",
-  output: {
-    path: path.resolve(__dirname, "dist"),
-  },
-  plugins: [
-    // Add your plugins here
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.(ts|tsx)$/i,
-        loader: "ts-loader",
-        exclude: ["/node_modules/"],
-      },
-      {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: "javascript/auto",
-      },
-
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
+module.exports = async function (env, argv) {
+  const config = await createExpoWebpackConfigAsync(env, argv);
+  config.resolve = {
+    modules: [
+      path.resolve(__dirname, './src')
     ],
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-  },
-};
-
-module.exports = () => {
-  if (isProduction) {
-    config.mode = "production";
-  } else {
-    config.mode = "development";
-  }
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
+  };
   return config;
 };
