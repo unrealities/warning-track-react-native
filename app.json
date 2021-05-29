@@ -3,6 +3,7 @@
   "displayName": "WarningTrack",
   "expo": {
     "android": {
+      "enableDangerousExperimentalLeanBuilds": true,
       "googleServicesFile": "./google-services.json",
       "icon": "./assets/images/wt.png",
       "splash": {
