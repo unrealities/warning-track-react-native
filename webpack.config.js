@@ -6,6 +6,7 @@ const ManifestPlugin = require("webpack-manifest-plugin");
 
 module.exports = webpackConfig = async function(env, argv) {
   // TODO: figure out chunking to reduce file sizes
+  // TODO: anything to help Android here?
   const config = await createExpoWebpackConfigAsync(
     {
       ...env,
