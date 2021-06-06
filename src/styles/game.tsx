@@ -21,7 +21,8 @@ export const GameStyles = StyleSheet.create({
     textAlign: "center",
   },
   finalTxtContainer: {
-    width: 80,
+    marginTop: -20,
+    width: 50,
   },
   gameContainer: {
     alignItems: "center",
