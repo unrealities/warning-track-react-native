@@ -99,16 +99,16 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
             game.inProgress ? (
               <GameContainer game={game} key={game.url} />
             ) : (
-                (game.awayScore > 0 || game.homeScore > 0) ? (
-                  <PostGameContainer game={game} key={game.url} />
-                ) : (
-                    <PreGameContainer game={game} key={game.url} />
-                  )
+              (game.awayScore > 0 || game.homeScore > 0) ? (
+                <PostGameContainer game={game} key={game.url} />
+              ) : (
+                <PreGameContainer game={game} key={game.url} />
               )
+            )
           )
         ) : (
-            <NoGames />
-          )}
+          <NoGames />
+        )}
       </View>
     );
   }
@@ -130,18 +130,16 @@ export class PreGameContainer extends React.Component<PreGameProps> {
   render() {
     return (
       <View style={GameStyles.gameContainer} key={this.props.game.url}>
-        <View style={GameStyles.gameStateContainer}>
-          <View style={GameStyles.scoreContainer}>
-            <View style={LogoStyles.logoContainer}>
-              <TeamLogo id={this.props.game.awayTeam} />
-            </View>
-            <View style={LogoStyles.logoContainer}>
-              <TeamLogo id={this.props.game.homeTeam} />
-            </View>
-            <Text style={GameStyles.preGameTime}>
-              {moment(this.props.game.time).format("LT")}
-            </Text>
+        <View style={GameStyles.preGameContainer}>
+          <View style={LogoStyles.logoContainer}>
+            <TeamLogo id={this.props.game.awayTeam} />
           </View>
+          <View style={LogoStyles.logoContainer}>
+            <TeamLogo id={this.props.game.homeTeam} />
+          </View>
+          <Text style={GameStyles.preGameTime}>
+            {moment(this.props.game.time).format("LT")}
+          </Text>
         </View>
       </View>
     );
@@ -165,7 +163,7 @@ export class PostGameContainer extends React.Component<PostGameProps> {
               homeTeam={this.props.game.homeTeam}
             />
             <TouchableOpacity
-              style={GameStyles.inningStateContainer}
+              style={GameStyles.finalTxtContainer}
               onPress={() => Linking.openURL(this.props.game.url)}
             >
               <Text style={GameStyles.finalTxt}>F</Text>

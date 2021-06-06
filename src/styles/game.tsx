@@ -20,6 +20,9 @@ export const GameStyles = StyleSheet.create({
     justifyContent: "center",
     textAlign: "center",
   },
+  finalTxtContainer: {
+    width: 80,
+  },
   gameContainer: {
     alignItems: "center",
     alignSelf: "center",
@@ -40,7 +43,7 @@ export const GameStyles = StyleSheet.create({
     shadowOpacity: 0.5,
   },
   gameStateContainer: {
-    marginTop: -20,
+    marginTop: 0,
   },
   inningStateContainer: {
     backgroundColor: "#55D400",
@@ -73,6 +76,12 @@ export const GameStyles = StyleSheet.create({
     fontWeight: "bold",
     marginLeft: 10,
     textAlign: "center",
+  },
+  preGameContainer: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: -40,
   },
   scoreContainer: {
     alignItems: "center",
