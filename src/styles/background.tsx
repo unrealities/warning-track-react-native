@@ -1,12 +1,16 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+
+const win = Dimensions.get('window');
 
 export const BackgroundStyles = StyleSheet.create({
   container: {
-    flex: 1,
-    position: "absolute",
-    top: 0,
-    right: 0,
     bottom: 0,
+    flex: 1,
+    height: win.height,
     left: 0,
+    position: "absolute",
+    right: 0,
+    top: 0,
+    width: win.width,
   },
 });
