@@ -2,7 +2,6 @@ const createExpoWebpackConfigAsync = require('@expo/webpack-config');
 const path = require("path");
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
-const ManifestPlugin = require("webpack-manifest-plugin");
 
 module.exports = webpackConfig = async function(env, argv) {
   // TODO: figure out chunking to reduce file sizes
@@ -17,9 +16,6 @@ module.exports = webpackConfig = async function(env, argv) {
 
   return merge(config, {
     plugins: [
-      new ManifestPlugin({
-        fileName: "manifest.json",
-      }),
       new webpack.HashedModuleIdsPlugin(),
     ],
     optimization: {

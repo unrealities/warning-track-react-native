@@ -45,7 +45,6 @@
     "react-native-unimodules": "~0.13.3",
     "react-native-web": "~0.13.12",
     "undefined": "@expo-google-fonts/specimen/Lobster",
-    "webpack-manifest-plugin": "^2.2.0",
     "webpack-merge": "^5.7.3"
   },
   "devDependencies": {
