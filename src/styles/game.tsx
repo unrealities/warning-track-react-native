@@ -11,9 +11,6 @@ export const GameStyles = StyleSheet.create({
     borderRadius: 0,
     resizeMode: "repeat",
   },
-  container: {
-    height: "100%",
-  },
   finalTxt: {
     fontSize: 36,
     fontWeight: "bold",
