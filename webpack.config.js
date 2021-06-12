@@ -1,13 +1,14 @@
 const createExpoWebpackConfigAsync = require('@expo/webpack-config');
 const path = require("path");
 const webpack = require("webpack");
-const { merge } = require("webpack-merge");
+const {
+  merge
+} = require("webpack-merge");
 
-module.exports = webpackConfig = async function(env, argv) {
+module.exports = webpackConfig = async function (env, argv) {
   // TODO: figure out chunking to reduce file sizes
   // TODO: anything to help Android here?
-  const config = await createExpoWebpackConfigAsync(
-    {
+  const config = await createExpoWebpackConfigAsync({
       ...env,
       offline: false,
     },
@@ -41,25 +42,23 @@ module.exports = webpackConfig = async function(env, argv) {
       },
     },
     module: {
-      rules: [
-        {
-          test: /\.[jt]sx?$/,
-          use: {
-            loader: "babel-loader",
-            options: {
-              preset: ["babel-preset-expo"],
-              plugins: [
-                "@babel/plugin-proposal-class-properties",
-                "@babel/plugin-transform-modules-commonjs",
-              ],
-              cacheDirectory: true,
-            },
+      rules: [{
+        test: /\.[jt]sx?$/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            preset: ["babel-preset-expo"],
+            plugins: [
+              "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-transform-modules-commonjs",
+            ],
+            cacheDirectory: true,
           },
-          include: [
-            path.resolve("node_modules/react-navigation")
-          ]
-        }
-      ]
+        },
+        include: [
+          path.resolve("node_modules/react-navigation")
+        ]
+      }]
     },
   })
 };
