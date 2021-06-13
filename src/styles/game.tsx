@@ -31,7 +31,7 @@ export const GameStyles = StyleSheet.create({
     margin: 10,
     maxHeight: 140,
     maxWidth: 410,
-    minHeight: 90,
+    minHeight: 110,
     minWidth: 260,
     padding: 10,
     paddingTop: 50,
