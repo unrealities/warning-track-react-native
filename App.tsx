@@ -27,16 +27,16 @@ export default class App extends React.Component {
   prepareResources = async () => {
     await ConvertGames()
       .then((result) => this.setState({ games: result }))
-      .catch((e) => Alert.alert(
-        'prepareResources Error',
-        'ConvertGames catch',
-        [{ text: e.toString() }]
-      ));
-    await hideAsync().catch((e) => Alert.alert(
-      'prepareResources Error',
-      'hideAsync catch',
-      [{ text: e.toString() }]
-    ));
+      .catch((e) =>
+        Alert.alert("prepareResources Error", "ConvertGames catch", [
+          { text: e.toString() },
+        ])
+      );
+    await hideAsync().catch((e) =>
+      Alert.alert("prepareResources Error", "hideAsync catch", [
+        { text: e.toString() },
+      ])
+    );
   };
 
   render() {
@@ -45,10 +45,11 @@ export default class App extends React.Component {
         <AppLoading
           startAsync={this.prepareResources}
           onFinish={() => this.setState({ appIsReady: true })}
-          onError={e => Alert.alert(
-            'AppLoading Error',
-            'onError catch',
-            [{ text: e.toString() }])}
+          onError={(e) =>
+            Alert.alert("AppLoading Error", "onError catch", [
+              { text: e.toString() },
+            ])
+          }
         />
       );
     } else {

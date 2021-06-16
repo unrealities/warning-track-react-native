@@ -98,12 +98,10 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
           this.state.games.map((game) =>
             game.inProgress ? (
               <GameContainer game={game} key={game.url} />
+            ) : game.awayScore > 0 || game.homeScore > 0 ? (
+              <PostGameContainer game={game} key={game.url} />
             ) : (
-              (game.awayScore > 0 || game.homeScore > 0) ? (
-                <PostGameContainer game={game} key={game.url} />
-              ) : (
-                <PreGameContainer game={game} key={game.url} />
-              )
+              <PreGameContainer game={game} key={game.url} />
             )
           )
         ) : (
