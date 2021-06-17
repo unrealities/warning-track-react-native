@@ -71,9 +71,11 @@ export const GameStyles = StyleSheet.create({
     textAlign: "center",
   },
   preGameTime: {
-    fontSize: 18,
+    color: "#593811",
+    fontSize: 20,
     fontWeight: "bold",
-    marginLeft: 10,
+    marginLeft: 20,
+    minWidth: 90,
     textAlign: "center",
   },
   preGameContainer: {
