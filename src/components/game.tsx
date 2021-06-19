@@ -135,9 +135,9 @@ export class PreGameContainer extends React.Component<PreGameProps> {
           <View style={LogoStyles.logoContainer}>
             <TeamLogo id={this.props.game.homeTeam} />
           </View>
-          <Text style={GameStyles.preGameTime}>
-            {moment(this.props.game.time).format("LT")}
-          </Text>
+          <View>
+            <Text style={GameStyles.preGameTime}>{moment(this.props.game.time).format("LT")}</Text>
+          </View>
         </View>
       </View>
     );

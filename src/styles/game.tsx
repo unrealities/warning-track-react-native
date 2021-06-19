@@ -22,7 +22,7 @@ export const GameStyles = StyleSheet.create({
     width: 50,
   },
   gameContainer: {
-    alignItems: "center",
+    alignItems: "stretch",
     alignSelf: "center",
     backgroundColor: "#ECE2C2",
     borderColor: "#593811",
@@ -33,14 +33,14 @@ export const GameStyles = StyleSheet.create({
     maxHeight: 140,
     padding: 10,
     paddingTop: 50,
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     shadowColor: "#153600",
     shadowOffset: { height: 6, width: 6 },
     shadowOpacity: 0.4,
     width: 410,
   },
   gameStateContainer: {
-    marginTop: 0,
+    marginTop: 0
   },
   inningStateContainer: {
     backgroundColor: "#55D400",

@@ -10,9 +10,8 @@ export const LogoStyles = StyleSheet.create({
     width: "100%",
   },
   logoContainer: {
-    height: "100%",
-    marginHorizontal: 8,
-    width: 60,
+    flexDirection: "row",
+    height: "100%"
   },
   mlbTVContainer: {
     padding: 8,
