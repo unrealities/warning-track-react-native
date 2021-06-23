@@ -138,8 +138,6 @@ export class PreGameContainer extends React.Component<PreGameProps> {
           <TouchableOpacity onPress={() => Linking.openURL(this.props.game.url)} >
             <Text style={GameStyles.preGameTime}>{moment(this.props.game.time).format("LT")}</Text>
           </TouchableOpacity>
-          <View>
-          </View>
         </View>
       </View>
     );
