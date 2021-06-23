@@ -135,8 +135,10 @@ export class PreGameContainer extends React.Component<PreGameProps> {
           <View style={LogoStyles.logoContainer}>
             <TeamLogo id={this.props.game.homeTeam} />
           </View>
-          <View>
+          <TouchableOpacity onPress={() => Linking.openURL(this.props.game.url)} >
             <Text style={GameStyles.preGameTime}>{moment(this.props.game.time).format("LT")}</Text>
+          </TouchableOpacity>
+          <View>
           </View>
         </View>
       </View>
