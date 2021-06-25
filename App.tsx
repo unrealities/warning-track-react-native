@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppLoading from "expo-app-loading";
 import { Asset } from "expo-asset";
 import { hideAsync, preventAutoHideAsync } from "expo-splash-screen";
+import { Ionicons } from '@expo/vector-icons';
 
 import { ConvertGames } from "./src/utilities/game";
 import { GamesScreen } from "./src/screens/games";
@@ -62,7 +63,12 @@ export default class App extends React.Component {
             <Tab.Screen
               name="Notifications"
               component={NotificationsScreen}
-              options={{ title: "Notification Test" }}
+              options={{
+                tabBarLabel: "Notification Test",
+                tabBarIcon: ({ color, size }) => (
+                  <Ionicons name="md-checkmark-circle" size={32} color="green" />
+                ),
+              }}
             />
             <Tab.Screen
               name="Settings"
