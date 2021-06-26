@@ -57,7 +57,15 @@ export default class App extends React.Component {
       return (
         <NavigationContainer>
           <Tab.Navigator>
-            <Tab.Screen name="Games">
+            <Tab.Screen 
+              name="Games"
+              options={{
+                tabBarLabel: "Games",
+                tabBarIcon: ({ color, size }) => (
+                  <Ionicons name="baseball-outline" size={24} />
+                ),
+              }}
+            >
               {(props) => <GamesScreen {...props} games={this.state.games} />}
             </Tab.Screen>
             <Tab.Screen
@@ -66,14 +74,19 @@ export default class App extends React.Component {
               options={{
                 tabBarLabel: "Notification Test",
                 tabBarIcon: ({ color, size }) => (
-                  <Ionicons name="md-checkmark-circle" size={32} color="green" />
+                  <Ionicons name="alert-circle-outline" size={24} />
                 ),
               }}
             />
             <Tab.Screen
               name="Settings"
               component={SettingsScreen}
-              options={{ title: "Settings" }}
+              options={{
+                tabBarLabel: "Settings",
+                tabBarIcon: ({ color, size }) => (
+                  <Ionicons name="construct-outline" size={24} />
+                ),
+              }}
             />
           </Tab.Navigator>
         </NavigationContainer>
