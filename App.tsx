@@ -56,13 +56,19 @@ export default class App extends React.Component {
     } else {
       return (
         <NavigationContainer>
-          <Tab.Navigator>
+          <Tab.Navigator
+            tabBarOptions={{
+              labelStyle: {
+                fontSize: 18,
+              },
+            }}
+          >
             <Tab.Screen 
               name="Games"
               options={{
                 tabBarLabel: "Games",
                 tabBarIcon: ({ color, size }) => (
-                  <Ionicons name="baseball-outline" size={24} />
+                  <Ionicons name="baseball-outline" size={20} />
                 ),
               }}
             >
@@ -74,7 +80,7 @@ export default class App extends React.Component {
               options={{
                 tabBarLabel: "Notification Test",
                 tabBarIcon: ({ color, size }) => (
-                  <Ionicons name="alert-circle-outline" size={24} />
+                  <Ionicons name="alert-circle-outline" size={20} />
                 ),
               }}
             />
@@ -84,7 +90,7 @@ export default class App extends React.Component {
               options={{
                 tabBarLabel: "Settings",
                 tabBarIcon: ({ color, size }) => (
-                  <Ionicons name="construct-outline" size={24} />
+                  <Ionicons name="construct-outline" size={20} />
                 ),
               }}
             />
