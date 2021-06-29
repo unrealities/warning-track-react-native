@@ -30,7 +30,7 @@ export const GameStyles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     margin: 6,
-    maxHeight: 140,
+    maxHeight: 128,
     padding: 8,
     paddingTop: 49,
     justifyContent: "space-evenly",
@@ -40,7 +40,7 @@ export const GameStyles = StyleSheet.create({
     width: 410,
   },
   gameStateContainer: {
-    marginTop: 0
+    marginTop: -16
   },
   inningStateContainer: {
     backgroundColor: "#55D400",
