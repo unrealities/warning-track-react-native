@@ -68,6 +68,13 @@ export const GameStyles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
+  postGameContainer: {
+    alignItems: "stretch",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: -40,
+  },
   preGameTime: {
     color: "#593811",
     fontSize: 20,

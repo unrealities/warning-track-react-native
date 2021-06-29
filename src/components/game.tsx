@@ -151,7 +151,7 @@ export class PostGameContainer extends React.Component<PostGameProps> {
 
   render() {
     return (
-      <View style={GameStyles.gameContainer} key={this.props.game.url}>
+      <View style={GameStyles.postGameContainer} key={this.props.game.url}>
         <View style={GameStyles.gameStateContainer}>
           <View style={GameStyles.scoreContainer}>
             <Score
