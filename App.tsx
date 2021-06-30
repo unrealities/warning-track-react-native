@@ -61,6 +61,9 @@ export default class App extends React.Component {
               labelStyle: {
                 fontSize: 18,
               },
+              style: {
+                backgroundColor: '#ECE2C2',
+              }
             }}
           >
             <Tab.Screen 
