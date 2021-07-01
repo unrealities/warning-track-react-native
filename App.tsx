@@ -59,7 +59,8 @@ export default class App extends React.Component {
           <Tab.Navigator
             tabBarOptions={{
               labelStyle: {
-                fontSize: 18,
+                fontSize: 20,
+                fontWeight: 600,
               },
               style: {
                 backgroundColor: '#ECE2C2',
