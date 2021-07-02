@@ -58,12 +58,14 @@ export default class App extends React.Component {
         <NavigationContainer>
           <Tab.Navigator
             tabBarOptions={{
+              activeBackgroundColor: '#ede5ca',
+              activeTintColor: '#44aa00',
               labelStyle: {
-                fontSize: 20,
-                fontWeight: 600,
+                fontSize: 18,
+                fontWeight: "400",
               },
               style: {
-                backgroundColor: '#ECE2C2',
+                backgroundColor: "#ece2c2",
               }
             }}
           >
