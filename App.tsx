@@ -58,9 +58,10 @@ export default class App extends React.Component {
         <NavigationContainer>
           <Tab.Navigator
             tabBarOptions={{
-              activeBackgroundColor: '#ede5ca',
-              activeTintColor: '#44aa00',
+              activeBackgroundColor: "#ede5ca",
+              activeTintColor: "#593811",
               labelStyle: {
+                color: "#63513c",
                 fontSize: 18,
                 fontWeight: "400",
               },
@@ -74,7 +75,7 @@ export default class App extends React.Component {
               options={{
                 tabBarLabel: "Games",
                 tabBarIcon: ({ color, size }) => (
-                  <Ionicons name="baseball-outline" size={20} />
+                  <Ionicons name="baseball-outline" size={24} color={"#63513c"} />
                 ),
               }}
             >
@@ -86,7 +87,7 @@ export default class App extends React.Component {
               options={{
                 tabBarLabel: "Notification Test",
                 tabBarIcon: ({ color, size }) => (
-                  <Ionicons name="alert-circle-outline" size={20} />
+                  <Ionicons name="alert-circle-outline" size={24} color={"#63513c"} />
                 ),
               }}
             />
@@ -96,7 +97,7 @@ export default class App extends React.Component {
               options={{
                 tabBarLabel: "Settings",
                 tabBarIcon: ({ color, size }) => (
-                  <Ionicons name="construct-outline" size={20} />
+                  <Ionicons name="construct-outline" size={24} color={"#63513c"} />
                 ),
               }}
             />
