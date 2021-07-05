@@ -93,7 +93,7 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
   render() {
     return (
       // TODO: This is terrible coding style
-      <View>
+      <View style={GameStyles.gamesContainer}>
         {this.state.games.length > 0 ? (
           this.state.games.map((game) =>
             game.inProgress ? (

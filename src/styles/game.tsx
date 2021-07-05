@@ -31,13 +31,18 @@ export const GameStyles = StyleSheet.create({
     flexDirection: "row",
     margin: 6,
     maxHeight: 128,
-    padding: 8,
+    padding: 10,
     paddingTop: 49,
     justifyContent: "space-evenly",
     shadowColor: "#153600",
     shadowOffset: { height: 6, width: 6 },
     shadowOpacity: 0.4,
     width: 410,
+  },
+  gamesContainer: {
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
   gameStateContainer: {
     marginTop: -16
