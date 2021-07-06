@@ -2,8 +2,11 @@ import { StyleSheet } from "react-native";
 
 export const GameStyles = StyleSheet.create({
   background: {
-    justifyContent: "center",
-    width: "100%",
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   backgroundImg: {
     alignItems: "center",
@@ -40,9 +43,13 @@ export const GameStyles = StyleSheet.create({
     width: 410,
   },
   gamesContainer: {
+    height: "100%",
     flex: 1,
     flexDirection: "row",
+    flexGrow: 1,
     flexWrap: "wrap",
+    justifyContent: "center",
+    width: "100%",
   },
   gameStateContainer: {
     marginTop: -16

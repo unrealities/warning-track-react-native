@@ -2,6 +2,7 @@ import React from "react";
 import { ScrollView } from "react-native";
 
 import Background from "../components/background";
+import { GameStyles } from "../styles/game";
 import { GamesContainer, GamesProps } from "../components/game";
 
 export class GamesScreen extends React.Component<GamesProps> {
@@ -11,7 +12,7 @@ export class GamesScreen extends React.Component<GamesProps> {
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView contentContainerStyle={GameStyles.gamesContainer}>
         <Background />
         <GamesContainer games={this.props.games} />
       </ScrollView>
