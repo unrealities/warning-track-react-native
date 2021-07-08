@@ -1,19 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export const GameStyles = StyleSheet.create({
-  background: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-  backgroundImg: {
-    alignItems: "center",
-    backgroundColor: "#44aa00",
-    borderRadius: 0,
-    resizeMode: "repeat",
-  },
   finalTxt: {
     fontSize: 36,
     fontWeight: "bold",
