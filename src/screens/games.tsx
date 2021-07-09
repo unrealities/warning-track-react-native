@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView } from "react-native";
+import { View } from "react-native";
 
 import Background from "../components/background";
 import { GameStyles } from "../styles/game";
@@ -12,10 +12,10 @@ export class GamesScreen extends React.Component<GamesProps> {
 
   render() {
     return (
-      <ScrollView contentContainerStyle={GameStyles.gamesContainer}>
+      <View style={GameStyles.gamesContainer}>
         <Background />
         <GamesContainer games={this.props.games} />
-      </ScrollView>
+      </View>
     );
   }
 }
