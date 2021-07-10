@@ -1,5 +1,5 @@
 import React from "react";
-import { Linking, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Linking, Text, TouchableOpacity, View } from "react-native";
 
 import moment from "moment";
 
@@ -93,7 +93,7 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
   render() {
     return (
       // TODO: This is terrible coding style
-      <ScrollView contentContainerStyle={GameStyles.gamesContainer}>
+      <View style={GameStyles.gamesContainer}>
         {this.state.games.length > 0 ? (
           this.state.games.map((game) =>
             game.inProgress ? (
@@ -107,7 +107,7 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
         ) : (
           <NoGames />
         )}
-      </ScrollView>
+      </View>
     );
   }
 }

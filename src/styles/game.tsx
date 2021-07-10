@@ -33,6 +33,7 @@ export const GameStyles = StyleSheet.create({
     height: "100%",
     flex: 1,
     flexDirection: "row",
+    flexGrow: 1,
     flexWrap: "wrap",
     justifyContent: "center",
     paddingBottom: 12,
@@ -58,6 +59,9 @@ export const GameStyles = StyleSheet.create({
     fontWeight: "bold",
     justifyContent: "center",
     textAlign: "center",
+  },
+  mainContainer: {
+    flexGrow: 1,
   },
   noGamesContainer: {
     marginTop: 20,
