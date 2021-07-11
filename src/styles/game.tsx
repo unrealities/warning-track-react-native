@@ -16,7 +16,7 @@ export const GameStyles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "#ECE2C2",
     borderColor: "#593811",
-    borderWidth: 2,
+    borderWidth: 3,
     borderRadius: 20,
     flexDirection: "row",
     margin: 6,
@@ -26,7 +26,7 @@ export const GameStyles = StyleSheet.create({
     justifyContent: "space-evenly",
     shadowColor: "#153600",
     shadowOffset: { height: 6, width: 6 },
-    shadowOpacity: 0.4,
+    shadowOpacity: 0.5,
     width: 410,
   },
   gamesContainer: {

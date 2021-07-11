@@ -68,16 +68,16 @@ export default class App extends React.Component {
               style: {
                 backgroundColor: "#ece2c2",
                 borderTopColor: "63513c",
-                borderTopWidth: 2,
+                borderTopWidth: 3,
               }
             }}
           >
-            <Tab.Screen 
+            <Tab.Screen
               name="Games"
               options={{
                 tabBarLabel: "Games",
                 tabBarIcon: ({ color, size }) => (
-                  <Ionicons name="baseball-outline" size={24} color={"#63513c"} />
+                  <Ionicons name="baseball-outline" color={"#63513c"} size={24} />
                 ),
               }}
             >
