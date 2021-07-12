@@ -67,7 +67,7 @@ export default class App extends React.Component {
               },
               style: {
                 backgroundColor: "#ece2c2",
-                borderTopColor: "63513c",
+                borderTopColor: "#63513c",
                 borderTopWidth: 3,
               }
             }}

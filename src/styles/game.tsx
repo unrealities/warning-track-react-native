@@ -64,9 +64,18 @@ export const GameStyles = StyleSheet.create({
     flexGrow: 1,
   },
   noGamesContainer: {
+    alignContent: "center",
+    alignSelf: "center",
+    backgroundColor: "#ECE2C2",
+    borderColor: "#593811",
+    borderWidth: 3,
+    borderRadius: 20,
+    height: 86,
     marginTop: 20,
+    padding: 20,
   },
   noGamesText: {
+    color: "#63513c",
     fontSize: 36,
     fontWeight: "bold",
     textAlign: "center",
