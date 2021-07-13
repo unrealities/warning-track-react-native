@@ -73,6 +73,9 @@ export const GameStyles = StyleSheet.create({
     height: 86,
     marginTop: 20,
     padding: 20,
+    shadowColor: "#153600",
+    shadowOffset: { height: 6, width: 6 },
+    shadowOpacity: 0.5,
   },
   noGamesText: {
     color: "#63513c",
