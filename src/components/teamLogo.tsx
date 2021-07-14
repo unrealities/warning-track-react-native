@@ -8,8 +8,6 @@ export interface TeamLogoProps {
 
 export const TeamLogo: React.FC<TeamLogoProps> = (props) => {
   switch (props.id) {
-    // TODO: use: https://react-svgr.com/playground/ to convert all team logos
-
     // Default
     case 0:
       return (

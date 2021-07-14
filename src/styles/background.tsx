@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 
-//TODO: Background cuts off if games need to be scrolled
 export const BackgroundStyles = StyleSheet.create({
   container: {
     bottom: 0,
