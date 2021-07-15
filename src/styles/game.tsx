@@ -1,7 +1,19 @@
 import { StyleSheet } from "react-native";
 
 export const GameStyles = StyleSheet.create({
+  atContainer: {
+    marginTop: 6,
+    width: 60,
+  },
+  atTxt: {
+    color: "#63513c",
+    fontSize: 36,
+    fontWeight: "bold",
+    justifyContent: "center",
+    textAlign: "center",
+  },
   finalTxt: {
+    color: "#63513c",
     fontSize: 36,
     fontWeight: "bold",
     justifyContent: "center",

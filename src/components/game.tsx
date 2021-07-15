@@ -132,6 +132,9 @@ export class PreGameContainer extends React.Component<PreGameProps> {
           <View style={LogoStyles.logoContainer}>
             <TeamLogo id={this.props.game.awayTeam} />
           </View>
+          <View style={GameStyles.atContainer}>
+            <Text style={GameStyles.atTxt}>@</Text>
+          </View>
           <View style={LogoStyles.logoContainer}>
             <TeamLogo id={this.props.game.homeTeam} />
           </View>
