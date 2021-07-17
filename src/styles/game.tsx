@@ -108,7 +108,7 @@ export const GameStyles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginTop: 18,
-    minWidth: 120,
+    minWidth: 80,
     textAlign: "center",
   },
   preGameContainer: {
