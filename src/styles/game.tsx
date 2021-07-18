@@ -96,7 +96,7 @@ export const GameStyles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
-  postGameContainer: {
+  nonLiveGameContainer: {
     alignItems: "stretch",
     flex: 1,
     flexDirection: "row",
@@ -110,13 +110,6 @@ export const GameStyles = StyleSheet.create({
     marginTop: 18,
     minWidth: 80,
     textAlign: "center",
-  },
-  preGameContainer: {
-    alignItems: "stretch",
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    marginTop: -40,
   },
   scoreContainer: {
     alignItems: "center",

@@ -93,10 +93,11 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
   render() {
     return (
       // TODO: This is terrible coding style
+      // TODO: Properly handle suspended games. inProgress = false. leverageIndex > -1
       <View style={GameStyles.gamesContainer}>
-        {this.state.games.length > 0 ? (
-          this.state.games.map((game) =>
-            game.inProgress ? (
+        { this.state.games.length <= 0 ? ( <NoGames /> ) : null }
+        { this.state.games.map((game) =>
+            ( game.inProgress || game.leverageIndex > -1 ) ? (
               <GameContainer game={game} key={game.url} />
             ) : game.awayScore > 0 || game.homeScore > 0 ? (
               <PostGameContainer game={game} key={game.url} />
@@ -104,9 +105,7 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
               <PreGameContainer game={game} key={game.url} />
             )
           )
-        ) : (
-          <NoGames />
-        )}
+        }
       </View>
     );
   }
@@ -128,7 +127,7 @@ export class PreGameContainer extends React.Component<PreGameProps> {
   render() {
     return (
       <View style={GameStyles.gameContainer} key={this.props.game.url}>
-        <View style={GameStyles.preGameContainer}>
+        <View style={GameStyles.nonLiveGameContainer}>
           <View style={LogoStyles.logoContainer}>
             <TeamLogo id={this.props.game.awayTeam} />
           </View>
@@ -154,7 +153,7 @@ export class PostGameContainer extends React.Component<PostGameProps> {
 
   render() {
     return (
-      <View style={GameStyles.postGameContainer} key={this.props.game.url}>
+      <View style={GameStyles.nonLiveGameContainer} key={this.props.game.url}>
         <View style={GameStyles.gameStateContainer}>
           <View style={GameStyles.scoreContainer}>
             <Score
