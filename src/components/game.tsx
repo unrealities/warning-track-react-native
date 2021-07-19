@@ -91,21 +91,25 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
   }
 
   render() {
+    const gamesContainer = () => {
+      if (this.state.games.length <= 0) {
+        return <NoGames />
+      }
+
+      return this.state.games.map((game) =>
+        ( game.inProgress || game.leverageIndex > -1 ) ? (
+          <GameContainer game={game} key={game.url} />
+        ) : game.awayScore > 0 || game.homeScore > 0 ? (
+          <PostGameContainer game={game} key={game.url} />
+        ) : (
+          <PreGameContainer game={game} key={game.url} />
+        )
+      )
+    }
+
     return (
-      // TODO: This is terrible coding style
-      // TODO: Properly handle suspended games. inProgress = false. leverageIndex > -1
       <View style={GameStyles.gamesContainer}>
-        { this.state.games.length <= 0 ? ( <NoGames /> ) : null }
-        { this.state.games.map((game) =>
-            ( game.inProgress || game.leverageIndex > -1 ) ? (
-              <GameContainer game={game} key={game.url} />
-            ) : game.awayScore > 0 || game.homeScore > 0 ? (
-              <PostGameContainer game={game} key={game.url} />
-            ) : (
-              <PreGameContainer game={game} key={game.url} />
-            )
-          )
-        }
+        { gamesContainer() }
       </View>
     );
   }
