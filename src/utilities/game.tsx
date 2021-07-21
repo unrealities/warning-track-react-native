@@ -37,7 +37,8 @@ export class Game implements IGame {
     public outs: number,
     public strikes: number,
     public time: Date,
-    public url: string
+    public url: string,
+    public viewType: string,
   ) {
     this.awayScore = awayScore;
     this.awayTeam = awayTeam;
@@ -55,6 +56,7 @@ export class Game implements IGame {
     this.strikes = strikes;
     this.time = time;
     this.url = url;
+    this.viewType = viewType;
   }
 
   baseRunnerInt(): number {
@@ -117,6 +119,7 @@ export async function ConvertGames() {
         let strikes = game.status.count.strikes;
         let time = new Date(game.gameTime);
         let uri = game.mlbTVLink;
+        let viewType = ''; // TODO: logic for setting viewType needed like ConvertTeamID
 
         let newGame = new Game(
           awayScore,
@@ -134,7 +137,8 @@ export async function ConvertGames() {
           outs,
           strikes,
           time,
-          uri
+          uri,
+          viewType
         );
         newGames.push(newGame);
       });
