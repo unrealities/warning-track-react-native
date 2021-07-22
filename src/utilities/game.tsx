@@ -90,6 +90,16 @@ export class Game implements IGame {
   inningTopString(): string {
     return this.inningTop ? "T" : "B";
   }
+
+  viewTypeString(): string {
+    if (this.inProgress) {
+      return 'live'
+    }
+    if (this.awayScore > 0 || this.homeScore > 0 ) {
+      return 'post'
+    }
+    return 'pre'
+  }
 }
 
 export async function ConvertGames() {
@@ -119,7 +129,7 @@ export async function ConvertGames() {
         let strikes = game.status.count.strikes;
         let time = new Date(game.gameTime);
         let uri = game.mlbTVLink;
-        let viewType = ''; // TODO: logic for setting viewType needed like ConvertTeamID
+        let viewType = game.viewTypeString();
 
         let newGame = new Game(
           awayScore,
