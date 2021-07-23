@@ -129,7 +129,7 @@ export async function ConvertGames() {
         let strikes = game.status.count.strikes;
         let time = new Date(game.gameTime);
         let uri = game.mlbTVLink;
-        let viewType = game.viewTypeString();
+        let viewType = ''; // game.viewTypeString();
 
         let newGame = new Game(
           awayScore,

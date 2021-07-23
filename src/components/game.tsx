@@ -92,21 +92,20 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
 
   render() {
     const gamesContainer = () => {
-      // TODO: Move logic into a game class
-      // Game class should define what is pre, post or a live game
       if (this.state.games.length <= 0) {
         return <NoGames />
       }
 
-      return this.state.games.map((game) =>
-        (game.inProgress || game.leverageIndex > -1) ? (
-          <GameContainer game={game} key={game.url} />
-        ) : game.awayScore > 0 || game.homeScore > 0 ? (
-          <PostGameContainer game={game} key={game.url} />
-        ) : (
-          <PreGameContainer game={game} key={game.url} />
-        )
-      )
+      return this.state.games.map((game) => {
+        switch(game.viewType) {
+          case 'post':
+            <PostGameContainer game={game} key={game.url} />;
+          case 'pre':
+            <PreGameContainer game={game} key={game.url} />;
+          default:
+            <GameContainer game={game} key={game.url} />;
+        }
+      })
     }
 
     return (
