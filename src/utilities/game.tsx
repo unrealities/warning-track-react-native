@@ -1,5 +1,5 @@
 import { ConvertTeamID } from "./teams";
-import { GetGameDataByDay } from "../../src/services/getGameDataByDay";
+import { GetGameDataByDay, GameDataResponseGame } from "../../src/services/getGameDataByDay";
 
 export interface IGame {
   awayScore: number;
@@ -18,6 +18,7 @@ export interface IGame {
   strikes: number;
   time: Date;
   url: string;
+  viewType: string;
 }
 
 export class Game implements IGame {
@@ -93,12 +94,9 @@ export class Game implements IGame {
 
   viewTypeString(): string {
     if (this.inProgress) {
-      return 'live'
+      return 'live';
     }
-    if (this.awayScore > 0 || this.homeScore > 0 ) {
-      return 'post'
-    }
-    return 'pre'
+    return (this.awayScore > 0 || this.homeScore > 0) ? 'post' : 'pre';
   }
 }
 
@@ -112,7 +110,7 @@ export async function ConvertGames() {
         return newGames;
       }
 
-      result.map((game) => {
+      result.map((game: GameDataResponseGame) => {
         let awayScore = game.status.score.away;
         let awayTeam = ConvertTeamID(game.teams.away);
         let balls = game.status.count.balls;
@@ -129,7 +127,7 @@ export async function ConvertGames() {
         let strikes = game.status.count.strikes;
         let time = new Date(game.gameTime);
         let uri = game.mlbTVLink;
-        let viewType = ''; // game.viewTypeString();
+        let viewType = 'pre'; // game.viewTypeString();
 
         let newGame = new Game(
           awayScore,
