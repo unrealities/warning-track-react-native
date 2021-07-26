@@ -91,18 +91,18 @@ export class Game implements IGame {
   inningTopString(): string {
     return this.inningTop ? "T" : "B";
   }
-
-  viewTypeString(): string {
-    if (this.inProgress) {
-      return 'live';
-    }
-    return (this.awayScore > 0 || this.homeScore > 0) ? 'post' : 'pre';
-  }
 }
 
 export async function ConvertGames() {
   let newGames: Game[];
   newGames = [];
+
+  function viewTypeString(game: GameDataResponseGame): string {
+    if (game.status.inProgress) {
+      return 'live';
+    }
+    return (game.status.score.away > 0 || game.status.score.home > 0) ? 'post' : 'pre';
+  }
 
   try {
     return await GetGameDataByDay().then((result) => {
@@ -127,7 +127,7 @@ export async function ConvertGames() {
         let strikes = game.status.count.strikes;
         let time = new Date(game.gameTime);
         let uri = game.mlbTVLink;
-        let viewType = '';
+        let viewType = viewTypeString(game);
 
         let newGame = new Game(
           awayScore,
@@ -148,7 +148,6 @@ export async function ConvertGames() {
           uri,
           viewType
         );
-        newGame.viewType = newGame.viewTypeString();
         newGames.push(newGame);
       });
       return newGames;

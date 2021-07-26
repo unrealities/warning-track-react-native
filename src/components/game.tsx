@@ -97,6 +97,9 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
       }
 
       return this.state.games.map((game) => {
+        return <PreGameContainer game={game} key={game.url} />;
+
+        // TODO: switch statement is not working
         switch(game.viewType) {
           case 'post':
             <PostGameContainer game={game} key={game.url} />;
