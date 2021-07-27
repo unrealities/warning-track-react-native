@@ -90,30 +90,27 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
     this.state = { games: this.props.games };
   }
 
-  render() {
-    const gamesContainer = () => {
-      if (this.state.games.length <= 0) {
-        return <NoGames />
-      }
-
-      return this.state.games.map((game) => {
-        return <PreGameContainer game={game} key={game.url} />;
-
-        // TODO: switch statement is not working
-        switch(game.viewType) {
-          case 'post':
-            <PostGameContainer game={game} key={game.url} />;
-          case 'pre':
-            <PreGameContainer game={game} key={game.url} />;
-          default:
-            <GameContainer game={game} key={game.url} />;
-        }
-      })
+  gamesContainer() {
+    if (this.state.games.length <= 0) {
+      return <NoGames />
     }
 
+    return this.state.games.map((game) => {
+      switch(game.viewType) {
+        case 'post':
+          return <PostGameContainer game={game} key={game.url} />;
+        case 'pre':
+          return <PreGameContainer game={game} key={game.url} />;
+        default:
+          return <GameContainer game={game} key={game.url} />;
+      }
+    })
+  }
+
+  render() {
     return (
       <View style={GameStyles.gamesContainer}>
-        { gamesContainer()}
+        { this.gamesContainer()}
       </View>
     );
   }
