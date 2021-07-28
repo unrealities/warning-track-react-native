@@ -96,7 +96,7 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
     }
 
     return this.state.games.map((game) => {
-      switch(game.viewType) {
+      switch (game.viewType) {
         case 'post':
           return <PostGameContainer game={game} key={game.url} />;
         case 'pre':
@@ -110,7 +110,7 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
   render() {
     return (
       <View style={GameStyles.gamesContainer}>
-        { this.gamesContainer()}
+        {this.gamesContainer()}
       </View>
     );
   }
