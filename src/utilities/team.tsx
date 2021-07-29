@@ -1,2 +1,20 @@
-// todo: make team object
-// { "id": 1, "mlb_id": 109, "abbr": "ARI", "hashtag": "DBacks" }
+export interface ITeam {
+    abbreviation: string;
+    hashtag: string;
+    id: number;
+    mlbID: number;
+}
+
+export class Team implements ITeam {
+    constructor(
+        public abbreviation: string,
+        public hashtag: string,
+        public id: number,
+        public mlbID: number,
+    ) {
+        this.abbreviation = abbreviation;
+        this.hashtag = hashtag;
+        this.id = id;
+        this.mlbID = mlbID;
+    }
+}
