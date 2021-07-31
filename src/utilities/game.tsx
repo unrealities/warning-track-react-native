@@ -4,13 +4,13 @@ import { GetGameDataByDay, GameDataResponseGame } from "../../src/services/getGa
 
 export interface IGame {
   awayScore: number;
-  awayTeam: Team; // todo: should be a team object
+  awayTeam: Team;
   balls: number;
   base1: boolean;
   base2: boolean;
   base3: boolean;
   homeScore: number;
-  homeTeam: Team; // todo: should be a team object
+  homeTeam: Team;
   inning: number;
   inningTop: boolean;
   inProgress: boolean;
