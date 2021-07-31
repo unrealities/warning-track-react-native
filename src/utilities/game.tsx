@@ -1,15 +1,16 @@
 import { ConvertTeamID } from "./teams";
+import { Team } from "./team";
 import { GetGameDataByDay, GameDataResponseGame } from "../../src/services/getGameDataByDay";
 
 export interface IGame {
   awayScore: number;
-  awayTeam: number; // todo: should be a team object
+  awayTeam: Team; // todo: should be a team object
   balls: number;
   base1: boolean;
   base2: boolean;
   base3: boolean;
   homeScore: number;
-  homeTeam: number; // todo: should be a team object
+  homeTeam: Team; // todo: should be a team object
   inning: number;
   inningTop: boolean;
   inProgress: boolean;
@@ -24,13 +25,13 @@ export interface IGame {
 export class Game implements IGame {
   constructor(
     public awayScore: number,
-    public awayTeam: number,
+    public awayTeam: Team,
     public balls: number,
     public base1: boolean,
     public base2: boolean,
     public base3: boolean,
     public homeScore: number,
-    public homeTeam: number,
+    public homeTeam: Team,
     public inning: number,
     public inningTop: boolean,
     public inProgress: boolean,
