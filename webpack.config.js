@@ -15,6 +15,14 @@ module.exports = webpackConfig = async function (env, argv) {
     argv
   );
 
+  if (config.mode === 'development') {
+    config.devServer.compress = false;
+  }
+
+  if (config.mode === 'production') {
+    config.optimization.minimize = false;
+  }
+
   return merge(config, {
     plugins: [
       new webpack.HashedModuleIdsPlugin(),
