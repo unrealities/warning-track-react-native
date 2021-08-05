@@ -15,6 +15,9 @@ import { SettingsScreen } from "./src/screens/settings";
 const splashImage = require("./assets/images/wt_splash.png");
 const Tab = createBottomTabNavigator();
 
+// TODO: Auto-reload every 30-60 seconds
+// TODO: Pulse component when five stars
+
 export default class App extends React.Component {
   state = {
     appIsReady: false,

@@ -6,7 +6,6 @@ const {
 } = require("webpack-merge");
 
 module.exports = webpackConfig = async function (env, argv) {
-  // TODO: figure out chunking to reduce file sizes
   // TODO: anything to help Android here?
   const config = await createExpoWebpackConfigAsync({
       ...env,
