@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Alert } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -15,7 +15,6 @@ import { SettingsScreen } from "./src/screens/settings";
 const splashImage = require("./assets/images/wt_splash.png");
 const Tab = createBottomTabNavigator();
 
-// TODO: Auto-reload every 30-60 seconds
 // TODO: Pulse component when five stars
 
 export default class App extends React.Component {
@@ -42,6 +41,22 @@ export default class App extends React.Component {
       ])
     );
   };
+
+  // TODO: Auto-reload every 30-60 seconds
+  // useEffect(() => {
+  //   const FETCH_DELAY_MS = 30000;
+  //   const interval = setInterval(() => {
+  //     await ConvertGames()
+  //     .then((result) => this.setState({ games: result }))
+  //     .catch((e) =>
+  //       Alert.alert("prepareResources Error", "ConvertGames catch", [
+  //         { text: e.toString() },
+  //       ])
+  //     );
+  //   }, FETCH_DELAY_MS);
+  
+  //   return () => clearInterval(interval);
+  // }, []);
 
   render() {
     if (!this.state.appIsReady) {
