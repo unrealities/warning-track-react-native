@@ -42,23 +42,25 @@ export default class App extends React.Component {
     );
   };
 
-  // TODO: Auto-reload every 30-60 seconds
-  // useEffect(() => {
-  //   const FETCH_DELAY_MS = 30000;
-  //   const interval = setInterval(() => {
-  //     await ConvertGames()
-  //     .then((result) => this.setState({ games: result }))
-  //     .catch((e) =>
-  //       Alert.alert("prepareResources Error", "ConvertGames catch", [
-  //         { text: e.toString() },
-  //       ])
-  //     );
-  //   }, FETCH_DELAY_MS);
-  
-  //   return () => clearInterval(interval);
-  // }, []);
-
   render() {
+    // TODO: Auto-reload every 30 seconds
+    useEffect(() => {
+      const FETCH_DELAY_MS = 30000;
+      const interval = setInterval(() => {
+        ConvertGames()
+        .then((result) => React.useState({ games: result }))
+        .catch((e) =>
+          Alert.alert("prepareResources Error", "ConvertGames catch", [
+            { text: e.toString() },
+          ])
+        );
+      }, FETCH_DELAY_MS);
+    
+      return () => {
+        clearInterval(interval)
+      };
+    }, []);
+
     if (!this.state.appIsReady) {
       return (
         <AppLoading
