@@ -25,9 +25,15 @@ export default class App extends React.Component {
 
   componentDidMount = async () => {
     await preventAutoHideAsync().catch((e) => console.warn(e));
+    await this.fetchGames()
+    setInterval(this.fetchGames, 30000);
   };
 
   prepareResources = async () => {
+    await this.fetchGames();
+  };
+
+  async fetchGames() {
     await ConvertGames()
       .then((result) => this.setState({ games: result }))
       .catch((e) =>
@@ -40,27 +46,9 @@ export default class App extends React.Component {
         { text: e.toString() },
       ])
     );
-  };
+  }
 
   render() {
-    // TODO: Auto-reload every 30 seconds
-    useEffect(() => {
-      const FETCH_DELAY_MS = 30000;
-      const interval = setInterval(() => {
-        ConvertGames()
-        .then((result) => React.useState({ games: result }))
-        .catch((e) =>
-          Alert.alert("prepareResources Error", "ConvertGames catch", [
-            { text: e.toString() },
-          ])
-        );
-      }, FETCH_DELAY_MS);
-    
-      return () => {
-        clearInterval(interval)
-      };
-    }, []);
-
     if (!this.state.appIsReady) {
       return (
         <AppLoading
