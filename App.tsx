@@ -15,8 +15,6 @@ import { SettingsScreen } from "./src/screens/settings";
 const splashImage = require("./assets/images/wt_splash.png");
 const Tab = createBottomTabNavigator();
 
-// TODO: Pulse component when five stars
-
 export default class App extends React.Component {
   state = {
     appIsReady: false,
@@ -24,9 +22,10 @@ export default class App extends React.Component {
   };
 
   componentDidMount = async () => {
+    let FETCH_DELAY_MS = 30000;
     await preventAutoHideAsync().catch((e) => console.warn(e));
     await this.fetchGames()
-    setInterval(this.fetchGames, 30000);
+    setInterval(this.fetchGames, FETCH_DELAY_MS);
   };
 
   prepareResources = async () => {

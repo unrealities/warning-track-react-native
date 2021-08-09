@@ -35,6 +35,7 @@ export interface PostGameProps {
   game: Game;
 }
 
+// TODO: Pulse component when five stars
 export class GameContainer extends React.Component<GameProps> {
   constructor(props: GameProps) {
     super(props);
