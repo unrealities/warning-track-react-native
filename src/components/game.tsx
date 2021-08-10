@@ -1,5 +1,5 @@
 import React from "react";
-import { Linking, Text, TouchableOpacity, View } from "react-native";
+import { Animated, Easing, Linking, Text, TouchableOpacity, View } from "react-native";
 
 import moment from "moment";
 
@@ -36,6 +36,7 @@ export interface PostGameProps {
 }
 
 // TODO: Pulse component when five stars
+// TODO: https://snack.expo.dev/@fresa/animation-
 export class GameContainer extends React.Component<GameProps> {
   constructor(props: GameProps) {
     super(props);
