@@ -40,7 +40,19 @@ export interface PostGameProps {
 export class GameContainer extends React.Component<GameProps> {
   constructor(props: GameProps) {
     super(props);
+    this.scaleValue = new Animated.Value(0);
   }
+
+  scale = () =>{
+    this.scaleValue.setValue(0);
+    Animated.timing(
+        this.scaleValue,
+        {
+          toValue: 1,
+          duration: 300,
+          easing: Easing.easeOutBack
+        }
+    ).start();
 
   render() {
     return (
