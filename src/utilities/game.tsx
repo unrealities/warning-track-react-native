@@ -111,46 +111,49 @@ export async function ConvertGames() {
         return newGames;
       }
 
-      result.map((game: GameDataResponseGame) => {
-        let awayScore = game.status.score.away;
-        let awayTeam = ConvertTeamID(game.teams.away);
-        let balls = game.status.count.balls;
-        let base1 = game.status.baseState.First;
-        let base2 = game.status.baseState.Second;
-        let base3 = game.status.baseState.Third;
-        let homeScore = game.status.score.home;
-        let homeTeam = ConvertTeamID(game.teams.home);
-        let inning = game.status.inning;
-        let inningTop = game.status.topOfInning;
-        let inProgress = game.status.inProgress;
-        let leverageIndex = game.leverageIndex;
-        let outs = game.status.outs;
-        let strikes = game.status.count.strikes;
-        let time = new Date(game.gameTime);
-        let uri = game.mlbTVLink;
-        let viewType = viewTypeString(game);
+      if (result instanceof Array) {
+        result.map((game: GameDataResponseGame) => {
+          let awayScore = game.status.score.away;
+          let awayTeam = ConvertTeamID(game.teams.away);
+          let balls = game.status.count.balls;
+          let base1 = game.status.baseState.First;
+          let base2 = game.status.baseState.Second;
+          let base3 = game.status.baseState.Third;
+          let homeScore = game.status.score.home;
+          let homeTeam = ConvertTeamID(game.teams.home);
+          let inning = game.status.inning;
+          let inningTop = game.status.topOfInning;
+          let inProgress = game.status.inProgress;
+          let leverageIndex = game.leverageIndex;
+          let outs = game.status.outs;
+          let strikes = game.status.count.strikes;
+          let time = new Date(game.gameTime);
+          let uri = game.mlbTVLink;
+          let viewType = viewTypeString(game);
 
-        let newGame = new Game(
-          awayScore,
-          awayTeam,
-          balls,
-          base1,
-          base2,
-          base3,
-          homeScore,
-          homeTeam,
-          inning,
-          inningTop,
-          inProgress,
-          leverageIndex,
-          outs,
-          strikes,
-          time,
-          uri,
-          viewType
-        );
-        newGames.push(newGame);
-      });
+          let newGame = new Game(
+            awayScore,
+            awayTeam,
+            balls,
+            base1,
+            base2,
+            base3,
+            homeScore,
+            homeTeam,
+            inning,
+            inningTop,
+            inProgress,
+            leverageIndex,
+            outs,
+            strikes,
+            time,
+            uri,
+            viewType
+          );
+          newGames.push(newGame);
+        });
+      }
+      
       return newGames;
     });
   } catch (e) {
