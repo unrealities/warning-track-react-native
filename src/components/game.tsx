@@ -20,6 +20,10 @@ export interface GameProps {
   game: Game;
 }
 
+export interface GameState {
+  scaleValue: number;
+}
+
 export interface GamesProps {
   games: Game[];
 }
@@ -37,7 +41,7 @@ export interface PostGameProps {
 
 // TODO: Pulse component when five stars
 // TODO: https://snack.expo.dev/@fresa/animation-
-export class GameContainer extends React.Component<GameProps> {
+export class GameContainer extends React.Component<GameProps, GameState> {
   constructor(props: GameProps) {
     super(props);
     this.scaleValue = new Animated.Value(0);
