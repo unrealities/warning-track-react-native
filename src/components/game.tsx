@@ -59,50 +59,51 @@ export class GameContainer extends React.Component<GameProps, GameState> {
         easing: Easing.easeOutBack
       }
     ).start();
+  }
 
-    render() {
-      return (
-        <View style={GameStyles.gameContainer} key={this.props.game.url}>
-          <LeverageIndex value={this.props.game.leverageIndex} />
-          <View style={GameStyles.gameStateContainer}>
-            <Score
-              awayScore={this.props.game.awayScore}
-              awayTeam={this.props.game.awayTeam}
-              homeScore={this.props.game.homeScore}
-              homeTeam={this.props.game.homeTeam}
-            />
-            <View style={BSOStyles.bsos}>
-              <View style={BSOStyles.bsoContainer}>
-                <Text>B:</Text>
-                <BallsStrikesOuts value={this.props.game.balls} />
-              </View>
-              <View style={BSOStyles.bsoContainer}>
-                <Text>S:</Text>
-                <BallsStrikesOuts value={this.props.game.strikes} />
-              </View>
-              <View style={BSOStyles.bsoContainer}>
-                <Text>O:</Text>
-                <BallsStrikesOuts value={this.props.game.outs} />
-              </View>
+  render() {
+    return (
+      <View style={GameStyles.gameContainer} key={this.props.game.url}>
+        <LeverageIndex value={this.props.game.leverageIndex} />
+        <View style={GameStyles.gameStateContainer}>
+          <Score
+            awayScore={this.props.game.awayScore}
+            awayTeam={this.props.game.awayTeam}
+            homeScore={this.props.game.homeScore}
+            homeTeam={this.props.game.homeTeam}
+          />
+          <View style={BSOStyles.bsos}>
+            <View style={BSOStyles.bsoContainer}>
+              <Text>B:</Text>
+              <BallsStrikesOuts value={this.props.game.balls} />
+            </View>
+            <View style={BSOStyles.bsoContainer}>
+              <Text>S:</Text>
+              <BallsStrikesOuts value={this.props.game.strikes} />
+            </View>
+            <View style={BSOStyles.bsoContainer}>
+              <Text>O:</Text>
+              <BallsStrikesOuts value={this.props.game.outs} />
             </View>
           </View>
-          <TouchableOpacity
-            style={GameStyles.inningStateContainer}
-            onPress={() => Linking.openURL(this.props.game.url)}
-          >
-            <View style={BaseRunnerStyles.baseRunnerContainer}>
-              <BaseRunner value={this.props.game.baseRunnerInt()} />
-            </View>
-            <Text style={GameStyles.inningTxtContainer}>
-              {this.props.game.inningTopString()}
-              {this.props.game.inning}
-            </Text>
-            <MLBTVLogo />
-          </TouchableOpacity>
         </View>
-      );
-    }
+        <TouchableOpacity
+          style={GameStyles.inningStateContainer}
+          onPress={() => Linking.openURL(this.props.game.url)}
+        >
+          <View style={BaseRunnerStyles.baseRunnerContainer}>
+            <BaseRunner value={this.props.game.baseRunnerInt()} />
+          </View>
+          <Text style={GameStyles.inningTxtContainer}>
+            {this.props.game.inningTopString()}
+            {this.props.game.inning}
+          </Text>
+          <MLBTVLogo />
+        </TouchableOpacity>
+      </View>
+    );
   }
+}
 
 export class GamesContainer extends React.Component<GamesProps, GamesState> {
   constructor(props: GamesProps) {
