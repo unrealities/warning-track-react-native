@@ -54,9 +54,10 @@ export class GameContainer extends React.Component<GameProps, GameState> {
     Animated.timing(
       this.state.scaleValue,
       {
-        toValue: 1,
         duration: 300,
-        easing: Easing.easeOutBack
+        easing: Easing.bounce,
+        toValue: 1,
+        useNativeDriver: true
       }
     ).start();
   }
