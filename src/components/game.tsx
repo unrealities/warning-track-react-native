@@ -49,6 +49,10 @@ export class GameContainer extends React.Component<GameProps, GameState> {
     }
   }
 
+  excitingGame = () => {
+    this.props.game.leverageIndex > 4
+  }
+
   scale = () => {
     this.state.scaleValue.setValue(0);
     Animated.timing(
