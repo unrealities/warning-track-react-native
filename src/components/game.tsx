@@ -50,7 +50,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   }
 
   excitingGame = () => {
-    this.props.game.leverageIndex > 4
+    return this.props.game.leverageIndex > -2
   }
 
   scale = () => {
@@ -67,6 +67,10 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   }
 
   render() {
+    if (this.excitingGame()) {
+      this.scale();
+    }
+
     return (
       <View style={GameStyles.gameContainer} key={this.props.game.url}>
         <LeverageIndex value={this.props.game.leverageIndex} />
