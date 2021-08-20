@@ -49,6 +49,12 @@ export class GameContainer extends React.Component<GameProps, GameState> {
     }
   }
 
+  componentDidMount = () => {
+    if (this.excitingGame()) {
+      this.scale();
+    }
+  }
+
   excitingGame = () => {
     return this.props.game.leverageIndex > -2
   }
@@ -67,10 +73,6 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   }
 
   render() {
-    if (this.excitingGame()) {
-      this.scale();
-    }
-
     return (
       <View style={GameStyles.gameContainer} key={this.props.game.url}>
         <LeverageIndex value={this.props.game.leverageIndex} />
