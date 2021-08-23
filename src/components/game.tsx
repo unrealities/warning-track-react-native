@@ -74,7 +74,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
 
   render() {
     return (
-      <View style={GameStyles.gameContainer} key={this.props.game.url}>
+      <Animated.View style={GameStyles.gameContainer} key={this.props.game.url}>
         <LeverageIndex value={this.props.game.leverageIndex} />
         <View style={GameStyles.gameStateContainer}>
           <Score
@@ -111,7 +111,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
           </Text>
           <MLBTVLogo />
         </TouchableOpacity>
-      </View>
+      </Animated.View>
     );
   }
 }
