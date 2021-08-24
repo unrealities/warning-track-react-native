@@ -40,7 +40,6 @@ export interface PostGameProps {
 }
 
 // TODO: Pulse component when five stars
-// TODO: https://snack.expo.dev/@fresa/animation-
 export class GameContainer extends React.Component<GameProps, GameState> {
   constructor(props: GameProps) {
     super(props);
@@ -49,7 +48,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
     }
   }
 
-  componentDidMount = () => {
+  useEffect = () => {
     if (this.excitingGame()) {
       this.scale();
     }
