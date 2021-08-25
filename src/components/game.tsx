@@ -48,10 +48,11 @@ export class GameContainer extends React.Component<GameProps, GameState> {
     }
   }
 
-  useEffect = () => {
-    if (this.excitingGame()) {
-      this.scale();
-    }
+  componentDidMount = () => {
+    console.log("componentDidMount");
+    //if (this.excitingGame()) {
+    this.scale();
+    //}
   }
 
   excitingGame = () => {
@@ -60,6 +61,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
 
   scale = () => {
     this.state.scaleValue.setValue(0);
+    console.log("scale pre-animation");
     Animated.timing(
       this.state.scaleValue,
       {
@@ -69,6 +71,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
         useNativeDriver: true
       }
     ).start();
+    console.log("scale post-animation");
   }
 
   render() {
