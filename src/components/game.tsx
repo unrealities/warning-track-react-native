@@ -75,6 +75,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   }
 
   render() {
+    console.log("I am rendering");
     return (
       <Animated.View style={GameStyles.gameContainer} key={this.props.game.url}>
         <LeverageIndex value={this.props.game.leverageIndex} />
@@ -164,6 +165,7 @@ export class PreGameContainer extends React.Component<PreGameProps> {
   }
 
   render() {
+    console.log("it is not logging because these are not live games silly.")
     return (
       <View style={GameStyles.gameContainer} key={this.props.game.url}>
         <View style={GameStyles.nonLiveGameContainer}>
