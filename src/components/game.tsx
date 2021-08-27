@@ -159,13 +159,34 @@ const NoGames: React.FC<{}> = (props) => {
   );
 };
 
-export class PreGameContainer extends React.Component<PreGameProps> {
+export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   constructor(props: PreGameProps) {
     super(props);
+    this.state = {
+      scaleValue: new Animated.Value(0)
+    }
+  }
+
+  componentDidMount = () => {
+    this.scale();
+  }
+
+  scale = () => {
+    this.state.scaleValue.setValue(0);
+    console.log("scale pre-animation");
+    Animated.timing(
+      this.state.scaleValue,
+      {
+        duration: 300,
+        easing: Easing.bounce,
+        toValue: 1,
+        useNativeDriver: true
+      }
+    ).start();
+    console.log("scale post-animation");
   }
 
   render() {
-    console.log("it is not logging because these are not live games silly.")
     return (
       <View style={GameStyles.gameContainer} key={this.props.game.url}>
         <View style={GameStyles.nonLiveGameContainer}>
