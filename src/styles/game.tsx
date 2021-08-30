@@ -35,7 +35,7 @@ export const GameStyles = StyleSheet.create({
     margin: 6,
     maxHeight: 128,
     paddingBottom: 18,
-    paddingTop: 54,
+    paddingTop: 48,
     justifyContent: "space-evenly",
     shadowColor: "#153600",
     shadowOffset: { height: 6, width: 6 },

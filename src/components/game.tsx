@@ -49,7 +49,6 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   }
 
   componentDidMount = () => {
-    console.log("componentDidMount");
     //if (this.excitingGame()) {
     this.scale();
     //}
@@ -61,7 +60,6 @@ export class GameContainer extends React.Component<GameProps, GameState> {
 
   scale = () => {
     this.state.scaleValue.setValue(0);
-    console.log("scale pre-animation");
     Animated.timing(
       this.state.scaleValue,
       {
@@ -71,11 +69,9 @@ export class GameContainer extends React.Component<GameProps, GameState> {
         useNativeDriver: true
       }
     ).start();
-    console.log("scale post-animation");
   }
 
   render() {
-    console.log("I am rendering");
     return (
       <Animated.View style={GameStyles.gameContainer} key={this.props.game.url}>
         <LeverageIndex value={this.props.game.leverageIndex} />
@@ -173,7 +169,6 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
 
   scale = () => {
     this.state.scaleValue.setValue(0);
-    console.log("scale pre-animation");
     Animated.timing(
       this.state.scaleValue,
       {
@@ -183,7 +178,6 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
         useNativeDriver: true
       }
     ).start();
-    console.log("scale post-animation");
   }
 
   render() {

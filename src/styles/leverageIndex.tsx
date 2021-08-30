@@ -4,6 +4,7 @@ export const LIStyles = StyleSheet.create({
   leverageIndex: {
     flex: 1,
     flexDirection: "column",
-    marginTop: -40
+    marginLeft: 6,
+    marginTop: -42
   },
 });
