@@ -182,7 +182,7 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
 
   render() {
     return (
-      <View style={GameStyles.gameContainer} key={this.props.game.url}>
+      <Animated.View style={GameStyles.gameContainer} key={this.props.game.url}>
         <View style={GameStyles.nonLiveGameContainer}>
           <View style={LogoStyles.logoContainer}>
             <TeamLogo id={this.props.game.awayTeam.id} />
@@ -197,7 +197,7 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
             <Text style={GameStyles.preGameTime}>{moment(this.props.game.time).format("LT")}</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </Animated.View>
     );
   }
 }
