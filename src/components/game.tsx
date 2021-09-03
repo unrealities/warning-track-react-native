@@ -22,6 +22,7 @@ export interface GameProps {
 
 export interface GameState {
   scaleValue: Animated.Value;
+  fadeValue: Animated.Value;
 }
 
 export interface GamesProps {
@@ -159,12 +160,13 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   constructor(props: PreGameProps) {
     super(props);
     this.state = {
-      scaleValue: new Animated.Value(0)
+      scaleValue: new Animated.Value(0),
+      fadeValue: new Animated.Value(0)
     }
   }
 
   componentDidMount = () => {
-    this.scale();
+    this._fade();
   }
 
   scale = () => {
@@ -180,9 +182,19 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
     ).start();
   }
 
+  _fade = () => {
+    Animated.timing(
+      this.state.fadeValue,
+      {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true
+      }).start();
+  };
+
   render() {
     return (
-      <Animated.View style={GameStyles.gameContainer} key={this.props.game.url}>
+      <Animated.View style={GameStyles.gameContainer} style={{opacity: this.state.fadeValue}} key={this.props.game.url}>
         <View style={GameStyles.nonLiveGameContainer}>
           <View style={LogoStyles.logoContainer}>
             <TeamLogo id={this.props.game.awayTeam.id} />
