@@ -166,7 +166,7 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   }
 
   componentDidMount = () => {
-    this._fade();
+    this.scale();
   }
 
   scale = () => {
@@ -182,19 +182,22 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
     ).start();
   }
 
-  _fade = () => {
-    Animated.timing(
-      this.state.fadeValue,
-      {
-        toValue: 1,
-        duration: 1000,
-        useNativeDriver: true
-      }).start();
-  };
-
   render() {
+    const size = this.state.scaleValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 80]
+    });
+
+    const animatedGameContainerStyles = [
+      GameStyles.gameContainer,
+      {
+        width: size,
+        height: size
+      }
+    ];
+
     return (
-      <Animated.View style={GameStyles.gameContainer} style={{opacity: this.state.fadeValue}} key={this.props.game.url}>
+      <Animated.View style={animatedGameContainerStyles} key={this.props.game.url}>
         <View style={GameStyles.nonLiveGameContainer}>
           <View style={LogoStyles.logoContainer}>
             <TeamLogo id={this.props.game.awayTeam.id} />
