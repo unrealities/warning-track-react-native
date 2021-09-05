@@ -22,7 +22,6 @@ export interface GameProps {
 
 export interface GameState {
   scaleValue: Animated.Value;
-  fadeValue: Animated.Value;
 }
 
 export interface GamesProps {
@@ -50,13 +49,13 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   }
 
   componentDidMount = () => {
-    //if (this.excitingGame()) {
-    this.scale();
-    //}
+    if (this.excitingGame()) {
+      this.scale();
+    }
   }
 
   excitingGame = () => {
-    return this.props.game.leverageIndex > -2
+    return this.props.game.leverageIndex > 4
   }
 
   scale = () => {
@@ -160,8 +159,7 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   constructor(props: PreGameProps) {
     super(props);
     this.state = {
-      scaleValue: new Animated.Value(0),
-      fadeValue: new Animated.Value(0)
+      scaleValue: new Animated.Value(0)
     }
   }
 
@@ -174,7 +172,7 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
     Animated.timing(
       this.state.scaleValue,
       {
-        duration: 300,
+        duration: 500,
         easing: Easing.bounce,
         toValue: 1,
         useNativeDriver: true
@@ -183,16 +181,21 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   }
 
   render() {
-    const size = this.state.scaleValue.interpolate({
+    const height = this.state.scaleValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, 80]
+      outputRange: [100, 128]
+    });
+  
+    const width = this.state.scaleValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [380, 410]
     });
 
     const animatedGameContainerStyles = [
       GameStyles.gameContainer,
       {
-        width: size,
-        height: size
+        height: height,
+        width: width
       }
     ];
 
