@@ -183,7 +183,7 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   render() {
     const height = this.state.scaleValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [100, 128]
+      outputRange: [70, 100]
     });
   
     const width = this.state.scaleValue.interpolate({
