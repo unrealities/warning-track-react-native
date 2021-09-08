@@ -181,9 +181,10 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   }
 
   render() {
+    // bounce the games when the page is loaded
     const height = this.state.scaleValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [70, 100]
+      outputRange: [70, 100] // TODO: can this be made a variable or tied to a stylesheet?
     });
   
     const width = this.state.scaleValue.interpolate({
