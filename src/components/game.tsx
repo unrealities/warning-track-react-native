@@ -1,5 +1,12 @@
 import React from "react";
-import { Animated, Easing, Linking, Text, TouchableOpacity, View } from "react-native";
+import {
+  Animated,
+  Easing,
+  Linking,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 import moment from "moment";
 
@@ -44,36 +51,55 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   constructor(props: GameProps) {
     super(props);
     this.state = {
-      scaleValue: new Animated.Value(0)
-    }
+      scaleValue: new Animated.Value(0),
+    };
   }
 
   componentDidMount = () => {
     if (this.excitingGame()) {
       this.scale();
     }
-  }
+  };
 
   excitingGame = () => {
-    return this.props.game.leverageIndex > 4
-  }
+    return this.props.game.leverageIndex > 4;
+  };
 
   scale = () => {
     this.state.scaleValue.setValue(0);
-    Animated.timing(
-      this.state.scaleValue,
-      {
-        duration: 300,
-        easing: Easing.bounce,
-        toValue: 1,
-        useNativeDriver: true
-      }
-    ).start();
-  }
+    Animated.timing(this.state.scaleValue, {
+      duration: 500,
+      easing: Easing.bounce,
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
 
   render() {
+    // bounce the games when the page is loaded
+    const height = this.state.scaleValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [70, 100], // TODO: can this be made a variable or tied to a stylesheet?
+    });
+
+    const width = this.state.scaleValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [380, 410],
+    });
+
+    const animatedGameContainerStyles = [
+      GameStyles.gameContainer,
+      {
+        height: height,
+        width: width,
+      },
+    ];
+
     return (
-      <Animated.View style={GameStyles.gameContainer} key={this.props.game.url}>
+      <Animated.View
+        style={animatedGameContainerStyles}
+        key={this.props.game.url}
+      >
         <LeverageIndex value={this.props.game.leverageIndex} />
         <View style={GameStyles.gameStateContainer}>
           <Score
@@ -123,26 +149,24 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
 
   gamesContainer() {
     if (this.state.games.length <= 0) {
-      return <NoGames />
+      return <NoGames />;
     }
 
     return this.state.games.map((game) => {
       switch (game.viewType) {
-        case 'post':
+        case "post":
           return <PostGameContainer game={game} key={game.url} />;
-        case 'pre':
+        case "pre":
           return <PreGameContainer game={game} key={game.url} />;
         default:
           return <GameContainer game={game} key={game.url} />;
       }
-    })
+    });
   }
 
   render() {
     return (
-      <View style={GameStyles.gamesContainer}>
-        {this.gamesContainer()}
-      </View>
+      <View style={GameStyles.gamesContainer}>{this.gamesContainer()}</View>
     );
   }
 }
@@ -159,49 +183,49 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   constructor(props: PreGameProps) {
     super(props);
     this.state = {
-      scaleValue: new Animated.Value(0)
-    }
+      scaleValue: new Animated.Value(0),
+    };
   }
 
   componentDidMount = () => {
     this.scale();
-  }
+  };
 
   scale = () => {
     this.state.scaleValue.setValue(0);
-    Animated.timing(
-      this.state.scaleValue,
-      {
-        duration: 500,
-        easing: Easing.bounce,
-        toValue: 1,
-        useNativeDriver: true
-      }
-    ).start();
-  }
+    Animated.timing(this.state.scaleValue, {
+      duration: 500,
+      easing: Easing.bounce,
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
 
   render() {
     // bounce the games when the page is loaded
     const height = this.state.scaleValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [70, 100] // TODO: can this be made a variable or tied to a stylesheet?
+      outputRange: [70, 100], // TODO: can this be made a variable or tied to a stylesheet?
     });
-  
+
     const width = this.state.scaleValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [380, 410]
+      outputRange: [380, 410],
     });
 
     const animatedGameContainerStyles = [
       GameStyles.gameContainer,
       {
         height: height,
-        width: width
-      }
+        width: width,
+      },
     ];
 
     return (
-      <Animated.View style={animatedGameContainerStyles} key={this.props.game.url}>
+      <Animated.View
+        style={animatedGameContainerStyles}
+        key={this.props.game.url}
+      >
         <View style={GameStyles.nonLiveGameContainer}>
           <View style={LogoStyles.logoContainer}>
             <TeamLogo id={this.props.game.awayTeam.id} />
@@ -212,8 +236,12 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
           <View style={LogoStyles.logoContainer}>
             <TeamLogo id={this.props.game.homeTeam.id} />
           </View>
-          <TouchableOpacity onPress={() => Linking.openURL(this.props.game.url)} >
-            <Text style={GameStyles.preGameTime}>{moment(this.props.game.time).format("LT")}</Text>
+          <TouchableOpacity
+            onPress={() => Linking.openURL(this.props.game.url)}
+          >
+            <Text style={GameStyles.preGameTime}>
+              {moment(this.props.game.time).format("LT")}
+            </Text>
           </TouchableOpacity>
         </View>
       </Animated.View>
