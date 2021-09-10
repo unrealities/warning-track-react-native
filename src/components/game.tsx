@@ -68,7 +68,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   scale = () => {
     this.state.scaleValue.setValue(0);
     Animated.timing(this.state.scaleValue, {
-      duration: 500,
+      duration: 600,
       easing: Easing.bounce,
       toValue: 1,
       useNativeDriver: true,
@@ -79,12 +79,12 @@ export class GameContainer extends React.Component<GameProps, GameState> {
     // bounce the games when the page is loaded
     const height = this.state.scaleValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [70, 100], // TODO: can this be made a variable or tied to a stylesheet?
+      outputRange: [60, 100], // TODO: can this be made a variable or tied to a stylesheet?
     });
 
     const width = this.state.scaleValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [380, 410],
+      outputRange: [300, 410],
     });
 
     const animatedGameContainerStyles = [
@@ -194,7 +194,7 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   scale = () => {
     this.state.scaleValue.setValue(0);
     Animated.timing(this.state.scaleValue, {
-      duration: 500,
+      duration: 600,
       easing: Easing.bounce,
       toValue: 1,
       useNativeDriver: true,
@@ -205,12 +205,12 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
     // bounce the games when the page is loaded
     const height = this.state.scaleValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [70, 100], // TODO: can this be made a variable or tied to a stylesheet?
+      outputRange: [60, 100], // TODO: can this be made a variable or tied to a stylesheet?
     });
 
     const width = this.state.scaleValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [380, 410],
+      outputRange: [300, 410],
     });
 
     const animatedGameContainerStyles = [
