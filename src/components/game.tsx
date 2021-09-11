@@ -277,3 +277,23 @@ export class PostGameContainer extends React.Component<PostGameProps> {
     );
   }
 }
+
+let gameBounceStyle = (minHeight: number, minWidth: number, maxHeight: number, maxWidth: number, scaleValue: Animated.Value) => {
+  const height = scaleValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [minHeight, maxHeight], // TODO: can this be tied to a stylesheet?
+  });
+
+  const width = scaleValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [minWidth, maxWidth],
+  });
+
+  return [
+    GameStyles.gameContainer,
+    {
+      height: height,
+      width: width,
+    },
+  ];
+}
