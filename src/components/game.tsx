@@ -202,24 +202,13 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   };
 
   render() {
-    // bounce the games when the page is loaded
-    const height = this.state.scaleValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: [60, 100], // TODO: can this be made a variable or tied to a stylesheet?
-    });
-
-    const width = this.state.scaleValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: [300, 410],
-    });
-
-    const animatedGameContainerStyles = [
-      GameStyles.gameContainer,
-      {
-        height: height,
-        width: width,
-      },
-    ];
+    const animatedGameContainerStyles = gameBounceStyle(
+      60,
+      100,
+      300,
+      410,
+      this.state.scaleValue
+    );
 
     return (
       <Animated.View
@@ -278,7 +267,13 @@ export class PostGameContainer extends React.Component<PostGameProps> {
   }
 }
 
-let gameBounceStyle = (minHeight: number, minWidth: number, maxHeight: number, maxWidth: number, scaleValue: Animated.Value) => {
+let gameBounceStyle = (
+  minHeight: number,
+  minWidth: number,
+  maxHeight: number,
+  maxWidth: number,
+  scaleValue: Animated.Value
+) => {
   const height = scaleValue.interpolate({
     inputRange: [0, 1],
     outputRange: [minHeight, maxHeight], // TODO: can this be tied to a stylesheet?
@@ -296,4 +291,4 @@ let gameBounceStyle = (minHeight: number, minWidth: number, maxHeight: number, m
       width: width,
     },
   ];
-}
+};
