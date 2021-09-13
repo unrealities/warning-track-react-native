@@ -203,9 +203,9 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
 
   render() {
     const animatedGameContainerStyles = gameBounceStyle(
-      60,
+      80,
+      320,
       100,
-      300,
       410,
       this.state.scaleValue
     );
