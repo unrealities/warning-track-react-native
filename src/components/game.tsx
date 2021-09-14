@@ -76,24 +76,13 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   };
 
   render() {
-    // bounce the games when the page is loaded
-    const height = this.state.scaleValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: [60, 100], // TODO: can this be made a variable or tied to a stylesheet?
-    });
-
-    const width = this.state.scaleValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: [300, 410],
-    });
-
-    const animatedGameContainerStyles = [
-      GameStyles.gameContainer,
-      {
-        height: height,
-        width: width,
-      },
-    ];
+    const animatedGameContainerStyles = gameBounceStyle(
+      80,
+      320,
+      100,
+      410,
+      this.state.scaleValue
+    );
 
     return (
       <Animated.View
