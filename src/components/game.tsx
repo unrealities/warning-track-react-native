@@ -57,22 +57,13 @@ export class GameContainer extends React.Component<GameProps, GameState> {
 
   componentDidMount = () => {
     if (this.excitingGame()) {
-      this.scale();
+      this.state.scaleValue.setValue(0);
+      bounceScale(600, this.state.scaleValue);
     }
   };
 
   excitingGame = () => {
     return this.props.game.leverageIndex > 4;
-  };
-
-  scale = () => {
-    this.state.scaleValue.setValue(0);
-    Animated.timing(this.state.scaleValue, {
-      duration: 600,
-      easing: Easing.bounce,
-      toValue: 1,
-      useNativeDriver: true,
-    }).start();
   };
 
   render() {
@@ -177,17 +168,8 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   }
 
   componentDidMount = () => {
-    this.scale();
-  };
-
-  scale = () => {
     this.state.scaleValue.setValue(0);
-    Animated.timing(this.state.scaleValue, {
-      duration: 600,
-      easing: Easing.bounce,
-      toValue: 1,
-      useNativeDriver: true,
-    }).start();
+    bounceScale(600, this.state.scaleValue);
   };
 
   render() {
@@ -280,4 +262,13 @@ let gameBounceStyle = (
       width: width,
     },
   ];
+};
+
+let bounceScale = (duration: number, scaleValue: Animated.Value) => {
+  Animated.timing(scaleValue, {
+    duration: duration,
+    easing: Easing.bounce,
+    toValue: 1,
+    useNativeDriver: true,
+  }).start();
 };
