@@ -46,7 +46,6 @@ export interface PostGameProps {
   game: Game;
 }
 
-// TODO: Pulse component when five stars
 export class GameContainer extends React.Component<GameProps, GameState> {
   constructor(props: GameProps) {
     super(props);
@@ -58,7 +57,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   componentDidMount = () => {
     if (this.excitingGame()) {
       this.state.scaleValue.setValue(0);
-      bounceScale(600, this.state.scaleValue);
+      gameAnimation(600, this.state.scaleValue);
     }
   };
 
@@ -67,11 +66,9 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   };
 
   render() {
-    const animatedGameContainerStyles = gameBounceStyle(
-      80,
-      320,
-      100,
-      410,
+    const animatedGameContainerStyles = gameAnimationStyle(
+      0.8,
+      0.8,
       this.state.scaleValue
     );
 
@@ -169,15 +166,13 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
 
   componentDidMount = () => {
     this.state.scaleValue.setValue(0);
-    bounceScale(600, this.state.scaleValue);
+    gameAnimation(600, this.state.scaleValue);
   };
 
   render() {
-    const animatedGameContainerStyles = gameBounceStyle(
-      80,
-      320,
-      100,
-      410,
+    const animatedGameContainerStyles = gameAnimationStyle(
+      0.8,
+      0.8,
       this.state.scaleValue
     );
 
@@ -238,21 +233,21 @@ export class PostGameContainer extends React.Component<PostGameProps> {
   }
 }
 
-let gameBounceStyle = (
-  minHeight: number,
-  minWidth: number,
-  maxHeight: number,
-  maxWidth: number,
+let gameAnimationStyle = (
+  heightStartPercentage: number,
+  widthStartPercentage: number,
   scaleValue: Animated.Value
 ) => {
+  let maxHeight = GameStyles.gameContainer.maxHeight;
   const height = scaleValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [minHeight, maxHeight], // TODO: can this be tied to a stylesheet?
+    outputRange: [maxHeight * heightStartPercentage, maxHeight],
   });
 
+  let maxWidth = GameStyles.gameContainer.width;
   const width = scaleValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [minWidth, maxWidth],
+    outputRange: [maxWidth * widthStartPercentage, maxWidth],
   });
 
   return [
@@ -264,7 +259,7 @@ let gameBounceStyle = (
   ];
 };
 
-let bounceScale = (duration: number, scaleValue: Animated.Value) => {
+let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
   Animated.timing(scaleValue, {
     duration: duration,
     easing: Easing.bounce,
