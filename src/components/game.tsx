@@ -233,21 +233,24 @@ export class PostGameContainer extends React.Component<PostGameProps> {
   }
 }
 
+// TODO: Getting width and height from stylesheet is not working
 let gameAnimationStyle = (
   heightStartPercentage: number,
   widthStartPercentage: number,
   scaleValue: Animated.Value
 ) => {
   let maxHeight = GameStyles.gameContainer.maxHeight;
+  let minHeight = maxHeight * heightStartPercentage;
   const height = scaleValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [maxHeight * heightStartPercentage, maxHeight],
+    outputRange: [minHeight, maxHeight],
   });
 
   let maxWidth = GameStyles.gameContainer.width;
+  let minWidth = maxWidth * widthStartPercentage;
   const width = scaleValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [maxWidth * widthStartPercentage, maxWidth],
+    outputRange: [minWidth, maxWidth],
   });
 
   return [
