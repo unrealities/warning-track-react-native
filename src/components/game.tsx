@@ -240,7 +240,9 @@ let gameAnimationStyle = (
   scaleValue: Animated.Value
 ) => {
   let maxHeight = GameStyles.gameContainer.maxHeight;
+  console.log("maxHeight: " + maxHeight);
   let minHeight = maxHeight * heightStartPercentage;
+  console.log("minHeight: " + minHeight);
   const height = scaleValue.interpolate({
     inputRange: [0, 1],
     outputRange: [minHeight, maxHeight],
