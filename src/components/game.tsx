@@ -234,6 +234,7 @@ export class PostGameContainer extends React.Component<PostGameProps> {
 }
 
 // TODO: Getting width and height from stylesheet is not working
+// Why is GameStylers values undefined?
 let gameAnimationStyle = (
   heightStartPercentage: number,
   widthStartPercentage: number,
