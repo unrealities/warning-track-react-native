@@ -3,6 +3,7 @@ import {
   Animated,
   Easing,
   Linking,
+  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -240,19 +241,15 @@ let gameAnimationStyle = (
   widthStartPercentage: number,
   scaleValue: Animated.Value
 ) => {
-  let maxHeight = GameStyles.gameContainer.maxHeight;
-  console.log("GameStyles.gameContainer.maxHeight: " + maxHeight);
+  let maxHeight = StyleSheet.flatten(GameStyles.gameContainer).maxHeight;
   let minHeight = maxHeight * heightStartPercentage;
-  console.log("minHeight: " + minHeight);
   const height = scaleValue.interpolate({
     inputRange: [0, 1],
     outputRange: [minHeight, maxHeight],
   });
 
-  let maxWidth = GameStyles.gameContainer.width;
-  console.log("GameStyles.gameContainer.width: " + maxWidth);
+  let maxWidth = StyleSheet.flatten(GameStyles.gameContainer).width;
   let minWidth = maxWidth * widthStartPercentage;
-  console.log("minWidth: " + minWidth);
   const width = scaleValue.interpolate({
     inputRange: [0, 1],
     outputRange: [minWidth, maxWidth],
