@@ -238,7 +238,9 @@ export class PostGameContainer extends React.Component<PostGameProps> {
 // Why is GameStylers values undefined?
 let gameAnimationStyle = (
   heightStartPercentage: number,
+  heightFinish: number,
   widthStartPercentage: number,
+  widthFinish: number,
   scaleValue: Animated.Value
 ) => {
   let maxHeight = StyleSheet.flatten(GameStyles.gameContainer).minHeight;
