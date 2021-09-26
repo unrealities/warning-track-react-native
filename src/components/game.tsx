@@ -68,8 +68,10 @@ export class GameContainer extends React.Component<GameProps, GameState> {
 
   render() {
     const animatedGameContainerStyles = gameAnimationStyle(
-      0.8,
-      0.8,
+      0.8 * StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
+      StyleSheet.flatten(GameStyles.gameContainer).minHeight,
+      0.8 * StyleSheet.flatten(GameStyles.gameContainer).width,
+      StyleSheet.flatten(GameStyles.gameContainer).width,
       this.state.scaleValue
     );
 
@@ -172,8 +174,10 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
 
   render() {
     const animatedGameContainerStyles = gameAnimationStyle(
-      0.8,
-      0.8,
+      0.8 * StyleSheet.flatten(GameStyles.gameContainer).minHeight,
+      StyleSheet.flatten(GameStyles.gameContainer).minHeight,
+      0.8 * StyleSheet.flatten(GameStyles.gameContainer).width,
+      StyleSheet.flatten(GameStyles.gameContainer).width,
       this.state.scaleValue
     );
 
@@ -234,27 +238,20 @@ export class PostGameContainer extends React.Component<PostGameProps> {
   }
 }
 
-// TODO: Getting width and height from stylesheet is not working
-// Why is GameStylers values undefined?
 let gameAnimationStyle = (
-  heightStartPercentage: number,
+  heightStart: number,
   heightFinish: number,
-  widthStartPercentage: number,
+  widthStart: number,
   widthFinish: number,
   scaleValue: Animated.Value
 ) => {
-  let maxHeight = StyleSheet.flatten(GameStyles.gameContainer).minHeight;
-  let minHeight = maxHeight * heightStartPercentage;
   const height = scaleValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [minHeight, maxHeight],
+    outputRange: [heightStart, heightFinish],
   });
-
-  let maxWidth = StyleSheet.flatten(GameStyles.gameContainer).width;
-  let minWidth = maxWidth * widthStartPercentage;
   const width = scaleValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [minWidth, maxWidth],
+    outputRange: [widthStart, widthFinish],
   });
 
   return [
