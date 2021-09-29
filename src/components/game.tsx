@@ -57,7 +57,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
 
   componentDidMount = () => {
     if (this.excitingGame()) {
-      this.state.scaleValue.setValue(0);
+      this.state.scaleValue.setValue(1);
       gameAnimation(600, this.state.scaleValue);
     }
   };
