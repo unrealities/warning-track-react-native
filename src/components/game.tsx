@@ -67,10 +67,11 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   };
 
   render() {
+    const animationChange = 1.2;
     const animatedGameContainerStyles = gameAnimationStyle(
-      1.2 * StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
+      animationChange * StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
       StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
-      1.2 * StyleSheet.flatten(GameStyles.gameContainer).maxWidth,
+      animationChange * StyleSheet.flatten(GameStyles.gameContainer).maxWidth,
       StyleSheet.flatten(GameStyles.gameContainer).maxWidth,
       this.state.scaleValue
     );
@@ -173,10 +174,11 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   };
 
   render() {
+    const animationChange = 0.8;
     const animatedGameContainerStyles = gameAnimationStyle(
-      0.8 * StyleSheet.flatten(GameStyles.gameContainer).minHeight,
+      animationChange * StyleSheet.flatten(GameStyles.gameContainer).minHeight,
       StyleSheet.flatten(GameStyles.gameContainer).minHeight,
-      0.8 * StyleSheet.flatten(GameStyles.gameContainer).width,
+      animationChange * StyleSheet.flatten(GameStyles.gameContainer).width,
       StyleSheet.flatten(GameStyles.gameContainer).width,
       this.state.scaleValue
     );
