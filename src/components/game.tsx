@@ -169,9 +169,8 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   }
 
   componentDidMount = () => {
-    // Test no bounce
-    // this.state.scaleValue.setValue(0);
-    // gameAnimation(600, this.state.scaleValue);
+    this.state.scaleValue.setValue(0);
+    gameAnimation(600, this.state.scaleValue);
   };
 
   render() {
