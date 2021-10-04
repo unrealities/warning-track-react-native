@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   Animated,
   Easing,
@@ -267,6 +267,16 @@ let gameAnimationStyle = (
 
 let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
   Animated.timing(scaleValue, {
+    duration: duration,
+    easing: Easing.bounce,
+    toValue: 1,
+    useNativeDriver: true,
+  }).start();
+};
+
+let noGameAnimation = (duration: number) => {
+  const animatedValue = useRef(new Animated.Value(0)).current;
+  Animated.timing(animatedValue, {
     duration: duration,
     easing: Easing.bounce,
     toValue: 1,
