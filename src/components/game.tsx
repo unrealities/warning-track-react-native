@@ -152,12 +152,22 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
   }
 }
 
-const NoGames: React.FC<{}> = (props) => {
-  return (
-    <View style={GameStyles.noGamesContainer}>
-      <Text style={GameStyles.noGamesText}>No Games Today</Text>
-    </View>
-  );
+export class NoGames extends React.Component<GameProps, GameState> {
+  constructor(props: PreGameProps) {
+    super(props);
+  }
+
+  componentDidMount = () => {
+    noGameAnimation(600);
+  };
+
+  render() {
+    return (
+      <Animated.View style={GameStyles.noGamesContainer}>
+        <Text style={GameStyles.noGamesText}>No Games Today</Text>
+      </Animated.View>
+    );
+  };
 };
 
 export class PreGameContainer extends React.Component<PreGameProps, GameState> {
