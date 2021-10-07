@@ -47,6 +47,10 @@ export interface PostGameProps {
   game: Game;
 }
 
+export interface NoGameProps {}
+
+export interface NoGameState {}
+
 export class GameContainer extends React.Component<GameProps, GameState> {
   constructor(props: GameProps) {
     super(props);
@@ -152,8 +156,8 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
   }
 }
 
-export class NoGames extends React.Component<GameProps, GameState> {
-  constructor(props: PreGameProps) {
+export class NoGames extends React.Component<NoGameProps, NoGameState> {
+  constructor(props: NoGameProps) {
     super(props);
   }
 
@@ -162,9 +166,10 @@ export class NoGames extends React.Component<GameProps, GameState> {
   };
 
   render() {
+    let noGamesText = "No Games Today";
     return (
       <Animated.View style={GameStyles.noGamesContainer}>
-        <Text style={GameStyles.noGamesText}>No Games Today</Text>
+        <Text style={GameStyles.noGamesText}>{noGamesText}</Text>
       </Animated.View>
     );
   };
