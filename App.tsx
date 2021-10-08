@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Alert } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -14,6 +14,11 @@ import { SettingsScreen } from "./src/screens/settings";
 
 const splashImage = require("./assets/images/wt_splash.png");
 const Tab = createBottomTabNavigator();
+
+// TODO: 
+// Need to setup sign to allow customization of app and alerts
+// https://blog.expo.dev/firebase-github-authentication-with-react-native-2543e32697b4
+// https://docs.expo.dev/versions/latest/sdk/auth-session/
 
 export default class App extends React.Component {
   state = {
