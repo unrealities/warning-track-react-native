@@ -30,6 +30,7 @@
       "android",
       "web"
     ],
+    "scheme": "WarningTrack",
     "slug": "WarningTrack",
     "splash": {
       "backgroundColor": "#44aa00",
