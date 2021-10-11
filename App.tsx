@@ -4,6 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppLoading from "expo-app-loading";
 import { Asset } from "expo-asset";
+import * as AuthSession from 'expo-auth-session';
+import * as Google from 'expo-auth-session/providers/google';
 import { hideAsync, preventAutoHideAsync } from "expo-splash-screen";
 import { Ionicons } from '@expo/vector-icons';
 
@@ -19,6 +21,7 @@ const Tab = createBottomTabNavigator();
 // Need to setup sign to allow customization of app and alerts
 // https://blog.expo.dev/firebase-github-authentication-with-react-native-2543e32697b4
 // https://docs.expo.dev/versions/latest/sdk/auth-session/
+// https://docs.expo.dev/guides/authentication/#google
 
 export default class App extends React.Component {
   state = {
