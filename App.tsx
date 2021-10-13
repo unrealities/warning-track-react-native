@@ -4,10 +4,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppLoading from "expo-app-loading";
 import { Asset } from "expo-asset";
-import * as AuthSession from 'expo-auth-session';
+import { ResponseType } from 'expo-auth-session';
 import * as Google from 'expo-auth-session/providers/google';
 import { hideAsync, preventAutoHideAsync } from "expo-splash-screen";
+import * as WebBrowser from 'expo-web-browser';
 import { Ionicons } from '@expo/vector-icons';
+import { initializeApp } from 'firebase/app';
+import { getAuth, GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
 
 import { ConvertGames } from "./src/utilities/game";
 import { GamesScreen } from "./src/screens/games";
@@ -22,6 +25,13 @@ const Tab = createBottomTabNavigator();
 // https://blog.expo.dev/firebase-github-authentication-with-react-native-2543e32697b4
 // https://docs.expo.dev/versions/latest/sdk/auth-session/
 // https://docs.expo.dev/guides/authentication/#google
+
+// Initialize Firebase
+initializeApp({
+  /* Config */
+});
+
+WebBrowser.maybeCompleteAuthSession();
 
 export default class App extends React.Component {
   state = {
