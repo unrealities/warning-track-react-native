@@ -39,6 +39,21 @@ export default class App extends React.Component {
     games: [],
   };
 
+  const [request, response, promptAsync] = Google.useIdTokenAuthRequest(
+    { clientId: 'Your-Web-Client-ID.apps.googleusercontent.com' }
+  );
+
+  React.useEffect(() => {
+    if (response?.type === 'success') {
+      const { id_token } = response.params;
+      
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+      const credential = provider.credential(id_token);
+      signInWithCredential(auth, credential);
+    }
+  }, [response]);
+
   componentDidMount = async () => {
     let FETCH_DELAY_MS = 30000;
     await preventAutoHideAsync().catch((e) => console.warn(e));
