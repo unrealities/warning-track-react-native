@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Alert } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -40,14 +40,14 @@ export default class App extends React.Component {
     games: [],
   };
 
-  const [request, response, promptAsync] = Google.useIdTokenAuthRequest(
+  const[request, response, promptAsync] = Google.useIdTokenAuthRequest(
     clientId: 'Your-Web-Client-ID.apps.googleusercontent.com'
   );
 
   React.useEffect(() => {
     if (response?.type === 'success') {
       const { id_token } = response.params;
-      
+
       const auth = getAuth();
       const provider = new GoogleAuthProvider();
       const credential = provider.credential(id_token);
