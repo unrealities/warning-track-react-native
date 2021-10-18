@@ -41,11 +41,11 @@ export default class App extends React.Component {
   };
 
   const[request, response, promptAsync] = Google.useIdTokenAuthRequest(
-    clientId: 'Your-Web-Client-ID.apps.googleusercontent.com'
+    clientId: process.env.GOOGLE_CLIENT_ID
   );
 
   React.useEffect(() => {
-    if (response?.type === 'success') {
+    if (response?.type === "success") {
       const { id_token } = response.params;
 
       const auth = getAuth();

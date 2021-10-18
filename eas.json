@@ -2,11 +2,25 @@
   "builds": {
     "android": {
       "release": {
+        "env": {
+          "GOOGLE_CLIENT_ID" : "google.client.id"
+        },
         "workflow": "generic"
       }
     },
     "ios": {
       "release": {
+        "env": {
+          "GOOGLE_CLIENT_ID" : "google.client.id"
+        },
+        "workflow": "generic"
+      }
+    },
+    "web": {
+      "release": {
+        "env": {
+          "GOOGLE_CLIENT_ID" : "google.client.id"
+        },
         "workflow": "generic"
       }
     }
