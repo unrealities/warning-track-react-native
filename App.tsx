@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppLoading from "expo-app-loading";
 import { Asset } from "expo-asset";
 import { ResponseType } from 'expo-auth-session';
-import * as Google from 'expo-auth-session/providers/google';
+import { useIdTokenAuthRequest } as Google from 'expo-auth-session/providers/google';
 import { hideAsync, preventAutoHideAsync } from "expo-splash-screen";
 import * as WebBrowser from 'expo-web-browser';
 import { Ionicons } from '@expo/vector-icons';
@@ -78,21 +78,6 @@ export default class App extends React.Component {
     games: [],
   };
 
-  const[request, response, promptAsync] = Google.useIdTokenAuthRequest(
-    clientId: process.env.GOOGLE_CLIENT_ID
-  );
-
-  React.useEffect(() => {
-    if (response?.type === "success") {
-      const { id_token } = response.params;
-
-      const auth = getAuth();
-      const provider = new GoogleAuthProvider();
-      const credential = provider.credential(id_token);
-      signInWithCredential(auth, credential);
-    }
-  }, [response]);
-
   componentDidMount = async () => {
     let FETCH_DELAY_MS = 30000;
     await preventAutoHideAsync().catch((e) => console.warn(e));
@@ -120,6 +105,23 @@ export default class App extends React.Component {
   }
 
   render() {
+    const[request, response, promptAsync] = Google.useIdTokenAuthRequest(
+      {
+        clientId: process.env.GOOGLE_CLIENT_ID
+      },
+    );
+  
+    useEffect(() => {
+      if (response?.type === "success") {
+        const { id_token } = response.params;
+  
+        const auth = getAuth();
+        const provider = new GoogleAuthProvider();
+        const credential = provider.credential(id_token);
+        signInWithCredential(auth, credential);
+      }
+    }, [response]);
+
     if (!this.state.appIsReady) {
       return (
         <AppLoading
