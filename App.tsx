@@ -5,12 +5,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppLoading from "expo-app-loading";
 import { Asset } from "expo-asset";
 import { ResponseType } from 'expo-auth-session';
-import { useIdTokenAuthRequest } as Google from 'expo-auth-session/providers/google';
+import * as Google from 'expo-auth-session/providers/google';
 import { hideAsync, preventAutoHideAsync } from "expo-splash-screen";
 import * as WebBrowser from 'expo-web-browser';
 import { Ionicons } from '@expo/vector-icons';
-import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
+import initializeApp from 'firebase/app';
+//import { getAuth, GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
 
 import { ConvertGames } from "./src/utilities/game";
 import { GamesScreen } from "./src/screens/games";
@@ -27,10 +27,10 @@ const Tab = createBottomTabNavigator();
 // https://docs.expo.dev/guides/authentication/#google
 // https://raw.githubusercontent.com/sakshampuri/ms-monorepo/e1c0aab01422c9e79bf5b8bc4dc6b9d9fbe60eab/app/src/Components/index.ts
 
-// Initialize Firebase
-initializeApp({
-  /* Config */
-});
+// TODO: Initialize Firebase
+// initializeApp({
+//   /* Config */
+// });
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -72,6 +72,7 @@ export type authType = {
   authState: authState;
 };
 
+// TODO: issues with this being a class and not a function
 export default class App extends React.Component {
   state = {
     appIsReady: false,
@@ -110,7 +111,7 @@ export default class App extends React.Component {
         clientId: process.env.GOOGLE_CLIENT_ID
       },
     );
-  
+
     useEffect(() => {
       if (response?.type === "success") {
         const { id_token } = response.params;
