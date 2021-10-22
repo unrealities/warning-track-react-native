@@ -26,6 +26,7 @@ const Tab = createBottomTabNavigator();
 // https://docs.expo.dev/versions/latest/sdk/auth-session/
 // https://docs.expo.dev/guides/authentication/#google
 // https://raw.githubusercontent.com/sakshampuri/ms-monorepo/e1c0aab01422c9e79bf5b8bc4dc6b9d9fbe60eab/app/src/Components/index.ts
+// TODO: no such file or directory, open 'C:\Users\supermandy\go\src\github.com\unrealities\warning-track-react-native\google-services.json'
 
 // TODO: Initialize Firebase
 // initializeApp({
@@ -34,43 +35,43 @@ const Tab = createBottomTabNavigator();
 
 WebBrowser.maybeCompleteAuthSession();
 
-export const BASE_URL = "http://192.168.1.8:8000/";
+// export const BASE_URL = "http://192.168.1.8:8000/";
 
-export const showErr = (err: string) => {
-  Platform.OS === "ios"
-      ? Alert.alert("Alert", err, [{ text: "OK" }])
-      : ToastAndroid.show(err, ToastAndroid.LONG);
-};
+// export const showErr = (err: string) => {
+//   Platform.OS === "ios"
+//       ? Alert.alert("Alert", err, [{ text: "OK" }])
+//       : ToastAndroid.show(err, ToastAndroid.LONG);
+// };
 
-export const firebaseContextInfo = {
-  config: {
-      apiKey: process.env.API_KEY,
-      authDomain: process.env.AUTH_DOMAIN,
-      databaseURL: process.env.DATABASE_URL,
-      projectId: process.env.PROJECT_ID,
-      storageBucket: process.env.STORAGE_BUCKET,
-      messagingSenderId: process.env.MESSAGING_SENDER_ID,
-      appId: process.env.APP_ID,
-      measurementId: process.env.MEASUREMENT_ID,
-  },
-  firebase: {},
-};
+// export const firebaseContextInfo = {
+//   config: {
+//       apiKey: process.env.API_KEY,
+//       authDomain: process.env.AUTH_DOMAIN,
+//       databaseURL: process.env.DATABASE_URL,
+//       projectId: process.env.PROJECT_ID,
+//       storageBucket: process.env.STORAGE_BUCKET,
+//       messagingSenderId: process.env.MESSAGING_SENDER_ID,
+//       appId: process.env.APP_ID,
+//       measurementId: process.env.MEASUREMENT_ID,
+//   },
+//   firebase: {},
+// };
 
-export type userType = {
-  name: string;
-  email: string;
-  picture: string;
-};
+// export type userType = {
+//   name: string;
+//   email: string;
+//   picture: string;
+// };
 
-export type authState = {
-  state: "login" | "logout" | undefined;
-  user?: userType | undefined;
-};
+// export type authState = {
+//   state: "login" | "logout" | undefined;
+//   user?: userType | undefined;
+// };
 
-export type authType = {
-  changeAuthState: React.Dispatch<React.SetStateAction<authState>>;
-  authState: authState;
-};
+// export type authType = {
+//   changeAuthState: React.Dispatch<React.SetStateAction<authState>>;
+//   authState: authState;
+// };
 
 // TODO: issues with this being a class and not a function
 export default class App extends React.Component {
@@ -106,22 +107,22 @@ export default class App extends React.Component {
   }
 
   render() {
-    const[request, response, promptAsync] = Google.useIdTokenAuthRequest(
-      {
-        clientId: process.env.GOOGLE_CLIENT_ID
-      },
-    );
+    // const[request, response, promptAsync] = Google.useIdTokenAuthRequest(
+    //   {
+    //     clientId: process.env.GOOGLE_CLIENT_ID
+    //   },
+    // );
 
-    useEffect(() => {
-      if (response?.type === "success") {
-        const { id_token } = response.params;
+    // useEffect(() => {
+    //   if (response?.type === "success") {
+    //     const { id_token } = response.params;
   
-        const auth = getAuth();
-        const provider = new GoogleAuthProvider();
-        const credential = provider.credential(id_token);
-        signInWithCredential(auth, credential);
-      }
-    }, [response]);
+    //     const auth = getAuth();
+    //     const provider = new GoogleAuthProvider();
+    //     const credential = provider.credential(id_token);
+    //     signInWithCredential(auth, credential);
+    //   }
+    // }, [response]);
 
     if (!this.state.appIsReady) {
       return (
