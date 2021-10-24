@@ -290,7 +290,7 @@ let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
 };
 
 let noGameAnimation = (duration: number) => {
-  const animatedValue = useRef(new Animated.Value(0)).current;
+  const animatedValue = new Animated.Value(0);
   Animated.timing(animatedValue, {
     duration: duration,
     easing: Easing.bounce,
