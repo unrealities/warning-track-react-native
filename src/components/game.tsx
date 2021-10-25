@@ -47,9 +47,10 @@ export interface PostGameProps {
   game: Game;
 }
 
-export interface NoGameProps {}
+export interface NoGameProps {
+  game: Game;
+}
 
-export interface NoGameState {}
 
 export class GameContainer extends React.Component<GameProps, GameState> {
   constructor(props: GameProps) {
@@ -134,7 +135,7 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
 
   gamesContainer() {
     if (this.state.games.length <= 0) {
-      return <NoGames />;
+      return <NoGames game={this.state.games[0]} />;
     }
 
     return this.state.games.map((game) => {
@@ -156,17 +157,32 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
   }
 }
 
-export class NoGames extends React.Component<NoGameProps, NoGameState> {
-  constructor(props: NoGameProps) {
+// TODO: No Bounce
+export class NoGames extends React.Component<NoGameProps, GameState> {
+  constructor(props: PreGameProps) {
     super(props);
+    this.state = {
+      scaleValue: new Animated.Value(0),
+    };
   }
 
   componentDidMount = () => {
-    noGameAnimation(600);
+    this.state.scaleValue.setValue(0);
+    gameAnimation(600, this.state.scaleValue);
   };
 
   render() {
     let noGamesText = "No Games Today";
+
+    const animationChange = 0.8;
+    const animatedGameContainerStyles = gameAnimationStyle(
+      animationChange * StyleSheet.flatten(GameStyles.gameContainer).minHeight,
+      StyleSheet.flatten(GameStyles.gameContainer).minHeight,
+      animationChange * StyleSheet.flatten(GameStyles.gameContainer).width,
+      StyleSheet.flatten(GameStyles.gameContainer).width,
+      this.state.scaleValue
+    );
+
     return (
       <Animated.View style={GameStyles.noGamesContainer}>
         <Text style={GameStyles.noGamesText}>{noGamesText}</Text>
@@ -289,12 +305,3 @@ let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
   }).start();
 };
 
-let noGameAnimation = (duration: number) => {
-  const animatedValue = new Animated.Value(0);
-  Animated.timing(animatedValue, {
-    duration: duration,
-    easing: Easing.bounce,
-    toValue: 1,
-    useNativeDriver: true,
-  }).start();
-};
