@@ -175,7 +175,7 @@ export class NoGames extends React.Component<NoGameProps, GameState> {
     let noGamesText = "No Games Today";
 
     const animationChange = 0.8;
-    const animatedGameContainerStyles = gameAnimationStyle(
+    const animatedGameContainerStyles = noGameAnimationStyle(
       animationChange * StyleSheet.flatten(GameStyles.gameContainer).minHeight,
       StyleSheet.flatten(GameStyles.gameContainer).minHeight,
       animationChange * StyleSheet.flatten(GameStyles.gameContainer).width,
@@ -184,7 +184,7 @@ export class NoGames extends React.Component<NoGameProps, GameState> {
     );
 
     return (
-      <Animated.View style={GameStyles.noGamesContainer}>
+      <Animated.View style={GameStyles.animatedGameContainerStyles}>
         <Text style={GameStyles.noGamesText}>{noGamesText}</Text>
       </Animated.View>
     );
@@ -289,6 +289,32 @@ let gameAnimationStyle = (
 
   return [
     GameStyles.gameContainer,
+    {
+      height: height,
+      width: width,
+    },
+  ];
+};
+
+// TODO: remove duplicate code
+let noGameAnimationStyle = (
+  heightStart: number,
+  heightFinish: number,
+  widthStart: number,
+  widthFinish: number,
+  scaleValue: Animated.Value
+) => {
+  const height = scaleValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [heightStart, heightFinish],
+  });
+  const width = scaleValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [widthStart, widthFinish],
+  });
+
+  return [
+    GameStyles.noGamesContainer,
     {
       height: height,
       width: width,
