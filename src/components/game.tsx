@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ViewStyle,
 } from "react-native";
 
 import moment from "moment";
@@ -175,12 +176,13 @@ export class NoGames extends React.Component<NoGameProps, GameState> {
     let noGamesText = "No Games Today";
 
     const animationChange = 0.8;
-    const animatedGameContainerStyles = noGameAnimationStyle(
+    const animatedGameContainerStyles = gameAnimationStyle(
       animationChange * StyleSheet.flatten(GameStyles.gameContainer).minHeight,
       StyleSheet.flatten(GameStyles.gameContainer).minHeight,
       animationChange * StyleSheet.flatten(GameStyles.gameContainer).width,
       StyleSheet.flatten(GameStyles.gameContainer).width,
-      this.state.scaleValue
+      this.state.scaleValue,
+      GameStyles.noGamesContainer
     );
 
     return (
@@ -211,7 +213,8 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
       StyleSheet.flatten(GameStyles.gameContainer).minHeight,
       animationChange * StyleSheet.flatten(GameStyles.gameContainer).width,
       StyleSheet.flatten(GameStyles.gameContainer).width,
-      this.state.scaleValue
+      this.state.scaleValue,
+      GameStyles.gameContainer
     );
 
     return (
@@ -276,7 +279,8 @@ let gameAnimationStyle = (
   heightFinish: number,
   widthStart: number,
   widthFinish: number,
-  scaleValue: Animated.Value
+  scaleValue: Animated.Value,
+  style: ViewStyle
 ) => {
   const height = scaleValue.interpolate({
     inputRange: [0, 1],
@@ -288,33 +292,7 @@ let gameAnimationStyle = (
   });
 
   return [
-    GameStyles.gameContainer,
-    {
-      height: height,
-      width: width,
-    },
-  ];
-};
-
-// TODO: remove duplicate code
-let noGameAnimationStyle = (
-  heightStart: number,
-  heightFinish: number,
-  widthStart: number,
-  widthFinish: number,
-  scaleValue: Animated.Value
-) => {
-  const height = scaleValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: [heightStart, heightFinish],
-  });
-  const width = scaleValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: [widthStart, widthFinish],
-  });
-
-  return [
-    GameStyles.noGamesContainer,
+    style,
     {
       height: height,
       width: width,
