@@ -186,7 +186,7 @@ export class NoGames extends React.Component<NoGameProps, GameState> {
     );
 
     return (
-      <Animated.View style={GameStyles.animatedGameContainerStyles}>
+      <Animated.View style={animatedGameContainerStyles}>
         <Text style={GameStyles.noGamesText}>{noGamesText}</Text>
       </Animated.View>
     );
