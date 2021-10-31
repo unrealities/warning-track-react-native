@@ -26,7 +26,6 @@ const Tab = createBottomTabNavigator();
 // https://docs.expo.dev/versions/latest/sdk/auth-session/
 // https://docs.expo.dev/guides/authentication/#google
 // https://raw.githubusercontent.com/sakshampuri/ms-monorepo/e1c0aab01422c9e79bf5b8bc4dc6b9d9fbe60eab/app/src/Components/index.ts
-// TODO: no such file or directory, open 'C:\Users\supermandy\go\src\github.com\unrealities\warning-track-react-native\google-services.json'
 
 // TODO: Initialize Firebase
 // initializeApp({

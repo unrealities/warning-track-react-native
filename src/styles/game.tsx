@@ -85,7 +85,7 @@ export const GameStyles = StyleSheet.create({
     borderColor: "#593811",
     borderWidth: 3,
     borderRadius: 20,
-    height: 86,
+    minHeight: 86,
     marginTop: 20,
     padding: 20,
     shadowColor: "#153600",
