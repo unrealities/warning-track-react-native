@@ -305,7 +305,7 @@ let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
     duration: duration,
     easing: Easing.bounce,
     toValue: 1,
-    useNativeDriver: true,
+    useNativeDriver: false,
   }).start();
 };
 
