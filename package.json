@@ -12,7 +12,7 @@
     "watch": "webpack --watch"
   },
   "dependencies": {
-    "@expo-google-fonts/lobster": "^0.1.0",
+    "@expo-google-fonts/lobster": "^0.2.0",
     "@expo/webpack-config": "^0.16.2",
     "@react-native-community/masked-view": "0.1.10",
     "@react-native-firebase/app": "^9.0.0",
@@ -47,7 +47,6 @@
     "react-native-svg": "12.1.1",
     "react-native-unimodules": "~0.15.0",
     "react-native-web": "0.17.1",
-    "undefined": "@expo-google-fonts/specimen/Lobster",
     "webpack-merge": "^5.7.3"
   },
   "devDependencies": {
