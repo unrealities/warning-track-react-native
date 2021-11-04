@@ -9,7 +9,6 @@ module.exports = webpackConfig = async function (env, argv) {
   // TODO: anything to help Android here?
   const config = await createExpoWebpackConfigAsync({
       ...env,
-      offline: false,
     },
     argv
   );
