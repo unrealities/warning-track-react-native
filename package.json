@@ -31,7 +31,7 @@
     "expo-random": "~12.0.1",
     "expo-splash-screen": "~0.13.5",
     "expo-status-bar": "~1.1.0",
-    "expo-updates": "~0.10.12",
+    "expo-updates": "~0.10.13",
     "firebase": "8.2.3",
     "jimp": "^0.16.1",
     "latest": "^0.2.0",
