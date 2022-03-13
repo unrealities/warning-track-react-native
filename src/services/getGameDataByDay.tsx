@@ -1,3 +1,5 @@
+// TODO: Switch to direct firestore call
+
 export interface GameDataResponseGame {
   gameTime: string;
   leverageIndex: number;
