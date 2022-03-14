@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
 
-import * as gs from "./google-services.json"
+import * as gs from "../google-services.json"
 
 // Initialize Firebase
 // TODO: dangerous 0 index calls
@@ -15,6 +15,6 @@ const firebaseApp = initializeApp({
     appId: gs.client[0].client_info.mobilesdk_app_id
 });
 
-const db = getFirestore();
+const firestore = getFirestore();
 
-export default db;
+export default firestore;

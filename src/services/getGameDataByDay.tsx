@@ -1,4 +1,6 @@
 // TODO: Switch to direct firestore call
+import { doc, DocumentReference, DocumentSnapshot, getDoc } from "firebase/firestore"; 
+import firestore from "../firebase";
 
 export interface GameDataResponseGame {
   gameTime: string;
@@ -30,26 +32,6 @@ export interface GameDataResponseGame {
   };
 }
 
-export async function GetGameDataByDay() {
-  const requestOptions: RequestInit = {
-    method: "POST",
-    mode: "cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ data: { date: getGameDataByDayDate() } }),
-  };
-
-  try {
-    return fetch(getGameDataByDayURI(), requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        let games: GameDataResponseGame[] = data["games"];
-        return games;
-      });
-  } catch (e) {
-    return `caught error: ${JSON.stringify(e)}`;
-  }
-}
-
 // ex. 04-23-2021
 function getGameDataByDayDate() {
   let d = new Date();
@@ -61,17 +43,14 @@ function getGameDataByDayDate() {
   return rDate;
 }
 
-// https://us-central1-warning-track-backend.cloudfunctions.net/GetGameDataByDay
-function getGameDataByDayURI() {
-  const functionName = "GetGameDataByDay";
-  const projectName = "warning-track-backend";
-  const region = "us-central1";
-  const uri =
-    "https://" +
-    region +
-    "-" +
-    projectName +
-    ".cloudfunctions.net/" +
-    functionName;
-  return uri;
+export async function GetGameDataByDay(): Promise<GameDataResponseGame> {
+  const date = getGameDataByDayDate();
+  const collectionPath = "game-data-by-day";
+  const docRef: DocumentReference = doc(firestore, collectionPath, date);
+  const docData: DocumentSnapshot = await getDoc(docRef);
+  // TODO: if (!docData.exists()) return nil
+  
+  console.log("GetScores()");
+  console.log(docData.get("Games"));
+  return docData.get("Games") as GameDataResponseGame;
 }
