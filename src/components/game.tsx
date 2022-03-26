@@ -79,7 +79,8 @@ export class GameContainer extends React.Component<GameProps, GameState> {
       StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
       animationChange * StyleSheet.flatten(GameStyles.gameContainer).maxWidth,
       StyleSheet.flatten(GameStyles.gameContainer).maxWidth,
-      this.state.scaleValue
+      this.state.scaleValue,
+      GameStyles.gameStateContainer
     );
 
     return (

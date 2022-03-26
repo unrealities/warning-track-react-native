@@ -4,13 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppLoading from "expo-app-loading";
 import { Asset } from "expo-asset";
-import { ResponseType } from 'expo-auth-session';
-import * as Google from 'expo-auth-session/providers/google';
 import { hideAsync, preventAutoHideAsync } from "expo-splash-screen";
 import * as WebBrowser from 'expo-web-browser';
 import { Ionicons } from '@expo/vector-icons';
-import initializeApp from 'firebase/app';
-//import { getAuth, GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
 
 import { ConvertGames } from "./src/utilities/game";
 import { GamesScreen } from "./src/screens/games";
@@ -27,50 +23,7 @@ const Tab = createBottomTabNavigator();
 // https://docs.expo.dev/guides/authentication/#google
 // https://raw.githubusercontent.com/sakshampuri/ms-monorepo/e1c0aab01422c9e79bf5b8bc4dc6b9d9fbe60eab/app/src/Components/index.ts
 
-// TODO: Initialize Firebase
-// initializeApp({
-//   /* Config */
-// });
-
 WebBrowser.maybeCompleteAuthSession();
-
-// export const BASE_URL = "http://192.168.1.8:8000/";
-
-// export const showErr = (err: string) => {
-//   Platform.OS === "ios"
-//       ? Alert.alert("Alert", err, [{ text: "OK" }])
-//       : ToastAndroid.show(err, ToastAndroid.LONG);
-// };
-
-// export const firebaseContextInfo = {
-//   config: {
-//       apiKey: process.env.API_KEY,
-//       authDomain: process.env.AUTH_DOMAIN,
-//       databaseURL: process.env.DATABASE_URL,
-//       projectId: process.env.PROJECT_ID,
-//       storageBucket: process.env.STORAGE_BUCKET,
-//       messagingSenderId: process.env.MESSAGING_SENDER_ID,
-//       appId: process.env.APP_ID,
-//       measurementId: process.env.MEASUREMENT_ID,
-//   },
-//   firebase: {},
-// };
-
-// export type userType = {
-//   name: string;
-//   email: string;
-//   picture: string;
-// };
-
-// export type authState = {
-//   state: "login" | "logout" | undefined;
-//   user?: userType | undefined;
-// };
-
-// export type authType = {
-//   changeAuthState: React.Dispatch<React.SetStateAction<authState>>;
-//   authState: authState;
-// };
 
 // TODO: issues with this being a class and not a function
 export default class App extends React.Component {
@@ -106,23 +59,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    // const[request, response, promptAsync] = Google.useIdTokenAuthRequest(
-    //   {
-    //     clientId: process.env.GOOGLE_CLIENT_ID
-    //   },
-    // );
-
-    // useEffect(() => {
-    //   if (response?.type === "success") {
-    //     const { id_token } = response.params;
-  
-    //     const auth = getAuth();
-    //     const provider = new GoogleAuthProvider();
-    //     const credential = provider.credential(id_token);
-    //     signInWithCredential(auth, credential);
-    //   }
-    // }, [response]);
-
     if (!this.state.appIsReady) {
       return (
         <AppLoading

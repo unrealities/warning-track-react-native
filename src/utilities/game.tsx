@@ -107,7 +107,8 @@ export async function ConvertGames() {
 
   try {
     return await GetGameDataByDay().then((result) => {
-      if (!result || result.length == 0) {
+      console.log(result);
+      if (!result) {
         return newGames;
       }
 
