@@ -99,37 +99,36 @@ export async function ConvertGames() {
   newGames = [];
 
   function viewTypeString(game: GameDataResponseGame): string {
-    if (game.status.inProgress) {
+    if (game.Status.InProgress) {
       return 'live';
     }
-    return (game.status.score.away > 0 || game.status.score.home > 0) ? 'post' : 'pre';
+    return (game.Status.Score.Away > 0 || game.Status.Score.Home > 0) ? 'post' : 'pre';
   }
 
   try {
     return await GetGameDataByDay().then((result) => {
-      console.log(result);
       if (!result) {
         return newGames;
       }
 
       if (result instanceof Array) {
         result.map((game: GameDataResponseGame) => {
-          let awayScore = game.status.score.away;
-          let awayTeam = ConvertTeamID(game.teams.away);
-          let balls = game.status.count.balls;
-          let base1 = game.status.baseState.First;
-          let base2 = game.status.baseState.Second;
-          let base3 = game.status.baseState.Third;
-          let homeScore = game.status.score.home;
-          let homeTeam = ConvertTeamID(game.teams.home);
-          let inning = game.status.inning;
-          let inningTop = game.status.topOfInning;
-          let inProgress = game.status.inProgress;
-          let leverageIndex = game.leverageIndex;
-          let outs = game.status.outs;
-          let strikes = game.status.count.strikes;
-          let time = new Date(game.gameTime);
-          let uri = game.mlbTVLink;
+          let awayScore = game.Status.Score.Away;
+          let awayTeam = ConvertTeamID(game.Teams.AwayID);
+          let balls = game.Status.Count.Balls;
+          let base1 = game.Status.BaseState.First;
+          let base2 = game.Status.BaseState.Second;
+          let base3 = game.Status.BaseState.Third;
+          let homeScore = game.Status.Score.Home;
+          let homeTeam = ConvertTeamID(game.Teams.HomeID);
+          let inning = game.Status.Inning;
+          let inningTop = game.Status.TopOfInning;
+          let inProgress = game.Status.InProgress;
+          let leverageIndex = game.LeverageIndex;
+          let outs = game.Status.Outs;
+          let strikes = game.Status.Count.Strikes;
+          let time = new Date(game.GameTime.seconds*1000);
+          let uri = game.MLBTVLink;
           let viewType = viewTypeString(game);
 
           let newGame = new Game(

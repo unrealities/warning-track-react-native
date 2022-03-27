@@ -3,32 +3,35 @@ import { doc, DocumentReference, DocumentSnapshot, getDoc } from "firebase/fires
 import firestore from "../firebase";
 
 export interface GameDataResponseGame {
-  gameTime: string;
-  leverageIndex: number;
-  mlbID: number;
-  mlbTVLink: string;
-  status: {
-    baseState: {
+  GameTime: {
+    nanoseconds: number;
+    seconds: number;
+  };
+  LeverageIndex: number;
+  MLBId: number;
+  MLBTVLink: string;
+  Status: {
+    BaseState: {
       First: boolean;
       Second: boolean;
       Third: boolean;
     };
-    count: {
-      balls: number;
-      strikes: number;
+    Count: {
+      Balls: number;
+      Strikes: number;
     };
-    inning: number;
-    inProgress: boolean;
-    outs: number;
-    score: {
-      away: number;
-      home: number;
+    Inning: number;
+    InProgress: boolean;
+    Outs: number;
+    Score: {
+      Away: number;
+      Home: number;
     };
-    topOfInning: boolean;
+    TopOfInning: boolean;
   };
-  teams: {
-    away: number;
-    home: number;
+  Teams: {
+    AwayID: number;
+    HomeID: number;
   };
 }
 
@@ -47,10 +50,12 @@ export async function GetGameDataByDay(): Promise<GameDataResponseGame> {
   const date = getGameDataByDayDate();
   const collectionPath = "game-data-by-day";
   const docRef: DocumentReference = doc(firestore, collectionPath, date);
-  const docData: DocumentSnapshot = await getDoc(docRef);
-  // TODO: if (!docData.exists()) return nil
-  
-  console.log("GetScores()");
-  console.log(docData.get("Games"));
-  return docData.get("Games") as GameDataResponseGame;
+  const docSnap: DocumentSnapshot = await getDoc(docRef);
+  // TODO:
+  // if (docSnap.exists()) {
+  //   console.log("Document data:", docSnap.data());
+  // } else {
+  //   console.log("No such document");
+  // }
+  return docSnap.get("Games") as GameDataResponseGame;
 }

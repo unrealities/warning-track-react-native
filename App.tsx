@@ -45,7 +45,7 @@ export default class App extends React.Component {
 
   async fetchGames() {
     await ConvertGames()
-      .then((result) => this.setState.bind(this, { games: result }))
+      .then((result) => this.setState({ games: result }))
       .catch((e) =>
         Alert.alert("prepareResources Error", "ConvertGames catch", [
           { text: e.toString() },
