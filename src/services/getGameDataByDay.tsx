@@ -51,11 +51,8 @@ export async function GetGameDataByDay(): Promise<GameDataResponseGame> {
   const collectionPath = "game-data-by-day";
   const docRef: DocumentReference = doc(firestore, collectionPath, date);
   const docSnap: DocumentSnapshot = await getDoc(docRef);
-  // TODO:
-  // if (docSnap.exists()) {
-  //   console.log("Document data:", docSnap.data());
-  // } else {
-  //   console.log("No such document");
-  // }
+  if (!docSnap.exists()) {
+    return {} as GameDataResponseGame;
+  }
   return docSnap.get("Games") as GameDataResponseGame;
 }

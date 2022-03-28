@@ -107,7 +107,7 @@ export async function ConvertGames() {
 
   try {
     return await GetGameDataByDay().then((result) => {
-      if (!result) {
+      if (!result || result.MLBId == 0) {
         return newGames;
       }
 
