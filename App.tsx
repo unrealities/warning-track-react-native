@@ -39,36 +39,20 @@ export default class App extends React.Component {
     setInterval(this.fetchGames, FETCH_DELAY_MS);
   };
 
-  prepareResources = async () => {
-    await this.fetchGames();
-  };
-
   async fetchGames() {
     await ConvertGames()
       .then((result) => this.setState({ games: result }))
-      .catch((e) =>
-        Alert.alert("prepareResources Error", "ConvertGames catch", [
-          { text: e.toString() },
-        ])
-      );
-    await hideAsync().catch((e) =>
-      Alert.alert("prepareResources Error", "hideAsync catch", [
-        { text: e.toString() },
-      ])
-    );
+      .catch((e) => console.warn(e.toString()));
+    await hideAsync().catch((e) => console.warn(e.toString()));
   }
 
   render() {
     if (!this.state.appIsReady) {
       return (
         <AppLoading
-          startAsync={this.prepareResources}
-          onFinish={() => this.setState({ appIsReady: true })}
-          onError={(e) =>
-            Alert.alert("AppLoading Error", "onError catch", [
-              { text: e.toString() },
-            ])
-          }
+          startAsync={this.fetchGames.bind(this)}
+          onFinish={() => this.setState.bind(this, { appIsReady: true })}
+          onError={(e) => console.warn(e.toString())}
         />
       );
     } else {
