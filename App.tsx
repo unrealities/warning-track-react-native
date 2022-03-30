@@ -41,7 +41,7 @@ export default class App extends React.Component {
 
   async fetchGames() {
     await ConvertGames()
-      .then((result) => this.setState({ games: result }))
+      .then((result) => {this.setState({ games: result })})
       .catch((e) => console.warn(e.toString()));
     await hideAsync().catch((e) => console.warn(e.toString()));
   }
@@ -51,7 +51,7 @@ export default class App extends React.Component {
       return (
         <AppLoading
           startAsync={this.fetchGames.bind(this)}
-          onFinish={() => this.setState.bind(this, { appIsReady: true })}
+          onFinish={() => this.setState({ appIsReady: true })}
           onError={(e) => console.warn(e.toString())}
         />
       );
