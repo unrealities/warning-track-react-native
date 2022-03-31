@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { Alert } from "react-native";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppLoading from "expo-app-loading";
@@ -8,7 +7,7 @@ import { hideAsync, preventAutoHideAsync } from "expo-splash-screen";
 import * as WebBrowser from 'expo-web-browser';
 import { Ionicons } from '@expo/vector-icons';
 
-import { ConvertGames } from "./src/utilities/game";
+import { ConvertGames, Game } from "./src/utilities/game";
 import { GamesScreen } from "./src/screens/games";
 import { NotificationsScreen } from "./src/screens/notifications";
 import { SettingsScreen } from "./src/screens/settings";
@@ -26,11 +25,19 @@ const Tab = createBottomTabNavigator();
 WebBrowser.maybeCompleteAuthSession();
 
 // TODO: issues with this being a class and not a function
-export default class App extends React.Component {
-  state = {
-    appIsReady: false,
-    games: [],
-  };
+interface AppState {
+  appIsReady: boolean;
+  games: Game[];
+}
+export default class App extends React.Component<{},AppState> {
+  constructor(props = {}) {
+    super(props);
+    this.state = {
+      appIsReady: false,
+      games: [],
+    };
+    this.fetchGames = this.fetchGames.bind(this)
+  }
 
   componentDidMount = async () => {
     let FETCH_DELAY_MS = 30000;
@@ -41,7 +48,7 @@ export default class App extends React.Component {
 
   async fetchGames() {
     await ConvertGames()
-      .then((result) => {this.setState({ games: result })})
+      .then((result) => {this.setState({games: result})})
       .catch((e) => console.warn(e.toString()));
     await hideAsync().catch((e) => console.warn(e.toString()));
   }
@@ -50,7 +57,7 @@ export default class App extends React.Component {
     if (!this.state.appIsReady) {
       return (
         <AppLoading
-          startAsync={this.fetchGames.bind(this)}
+          startAsync={this.fetchGames}
           onFinish={() => this.setState({ appIsReady: true })}
           onError={(e) => console.warn(e.toString())}
         />
