@@ -43,14 +43,14 @@ export default class App extends React.Component<{},AppState> {
     let FETCH_DELAY_MS = 30000;
     await preventAutoHideAsync().catch((e) => console.warn(e));
     await this.fetchGames()
+    await hideAsync().catch((e) => console.warn(e.toString()));
     setInterval(this.fetchGames, FETCH_DELAY_MS);
   };
 
   async fetchGames() {
-    await ConvertGames()
-      .then((result) => {this.setState({games: result})})
-      .catch((e) => console.warn(e.toString()));
-    await hideAsync().catch((e) => console.warn(e.toString()));
+    ConvertGames().then(games => {
+      this.setState({ games: games });
+    });
   }
 
   render() {
