@@ -133,6 +133,7 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
   constructor(props: GamesProps) {
     super(props);
     this.state = { games: this.props.games };
+    console.log("GamesContainer" + this.state.games);
   }
 
   gamesContainer() {
