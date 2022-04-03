@@ -5,7 +5,7 @@ import * as WebBrowser from 'expo-web-browser';
 import { Ionicons } from '@expo/vector-icons';
 
 import { ConvertGames, Game } from "./src/utilities/game";
-import { GamesScreen } from "./src/screens/games";
+import GamesScreen from "./src/screens/games";
 import { NotificationsScreen } from "./src/screens/notifications";
 import { SettingsScreen } from "./src/screens/settings";
 
@@ -23,19 +23,17 @@ WebBrowser.maybeCompleteAuthSession();
 const App = () => {
   const [games, setGames] = useState<Game[]>([]);
 
-  useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        ConvertGames().then(cg => {setGames(cg)})
-      } catch (err) {
-        console.log(err);
-      }
+  const fetchGames = async () => {
+    try {
+      ConvertGames().then(cg => {setGames(cg)})
+    } catch (err) {
+      console.log(err);
     }
+  }
 
-    fetchGames();
-
-    const intervalId = setTimeout(() => {fetchGames();}, 30000);
-    return () => clearTimeout(intervalId);
+  useEffect(() => {
+    const intervalId = setInterval(() => {fetchGames()}, 3000);
+    return () => clearInterval(intervalId);
   }, [games]);
 
   return (

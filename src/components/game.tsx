@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Animated,
   Easing,
@@ -129,19 +129,19 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   }
 }
 
-export class GamesContainer extends React.Component<GamesProps, GamesState> {
-  constructor(props: GamesProps) {
-    super(props);
-    this.state = { games: this.props.games };
-    console.log("GamesContainer" + this.state.games);
-  }
+const GamesContainer = (props: GamesProps) => {
+  const [games] = useState(props.games)
 
-  gamesContainer() {
-    if (this.state.games.length <= 0) {
-      return <NoGames game={this.state.games[0]} />;
+  useEffect(() => {
+    console.log(games);
+  }, []);
+
+  const gamesContainer = () => {
+    if (games.length <= 0) {
+      return <NoGames />;
     }
 
-    return this.state.games.map((game) => {
+    return games.map((game) => {
       switch (game.viewType) {
         case "post":
           return <PostGameContainer game={game} key={game.url} />;
@@ -153,46 +153,35 @@ export class GamesContainer extends React.Component<GamesProps, GamesState> {
     });
   }
 
-  render() {
-    return (
-      <View style={GameStyles.gamesContainer}>{this.gamesContainer()}</View>
-    );
-  }
+  return (
+    <View style={GameStyles.gamesContainer}>{gamesContainer()}</View>
+  );
 }
 
 // TODO: No Bounce
-export class NoGames extends React.Component<NoGameProps, GameState> {
-  constructor(props: PreGameProps) {
-    super(props);
-    this.state = {
-      scaleValue: new Animated.Value(0),
-    };
-  }
+const NoGames = () => {
+  const animate = new Animated.Value(0);
+  const [scaleValue] = useState(animate);
+  let noGamesText = "No Games Today";
 
-  componentDidMount = () => {
-    this.state.scaleValue.setValue(0);
-    gameAnimation(600, this.state.scaleValue);
-  };
+  const animationChange = 0.8;
+  const animatedGameContainerStyles = gameAnimationStyle(
+    animationChange * StyleSheet.flatten(GameStyles.gameContainer).minHeight,
+    StyleSheet.flatten(GameStyles.gameContainer).minHeight,
+    animationChange * StyleSheet.flatten(GameStyles.gameContainer).width,
+    StyleSheet.flatten(GameStyles.gameContainer).width, scaleValue, GameStyles.noGamesContainer
+  );
 
-  render() {
-    let noGamesText = "No Games Today";
+  useEffect(() => {
+    scaleValue.setValue(0);
+    gameAnimation(600, scaleValue);
+  }, []);
 
-    const animationChange = 0.8;
-    const animatedGameContainerStyles = gameAnimationStyle(
-      animationChange * StyleSheet.flatten(GameStyles.gameContainer).minHeight,
-      StyleSheet.flatten(GameStyles.gameContainer).minHeight,
-      animationChange * StyleSheet.flatten(GameStyles.gameContainer).width,
-      StyleSheet.flatten(GameStyles.gameContainer).width,
-      this.state.scaleValue,
-      GameStyles.noGamesContainer
-    );
-
-    return (
-      <Animated.View style={animatedGameContainerStyles}>
-        <Text style={GameStyles.noGamesText}>{noGamesText}</Text>
-      </Animated.View>
-    );
-  };
+  return (
+    <Animated.View style={animatedGameContainerStyles}>
+      <Text style={GameStyles.noGamesText}>{noGamesText}</Text>
+    </Animated.View>
+  );
 };
 
 export class PreGameContainer extends React.Component<PreGameProps, GameState> {
@@ -311,3 +300,4 @@ let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
   }).start();
 };
 
+export default GamesContainer
