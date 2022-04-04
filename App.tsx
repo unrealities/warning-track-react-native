@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as WebBrowser from 'expo-web-browser';
 import { Ionicons } from '@expo/vector-icons';
 
-import { ConvertGames, Game } from "./src/utilities/game";
 import GamesScreen from "./src/screens/games";
 import { NotificationsScreen } from "./src/screens/notifications";
 import { SettingsScreen } from "./src/screens/settings";
@@ -21,21 +20,6 @@ const Tab = createBottomTabNavigator();
 WebBrowser.maybeCompleteAuthSession();
 
 const App = () => {
-  const [games, setGames] = useState<Game[]>([]);
-
-  const fetchGames = async () => {
-    try {
-      ConvertGames().then(cg => {setGames(cg)})
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {fetchGames()}, 3000);
-    return () => clearInterval(intervalId);
-  }, [games]);
-
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -56,15 +40,14 @@ const App = () => {
       >
         <Tab.Screen
           name="Games"
+          component={GamesScreen}
           options={{
             tabBarLabel: "Games",
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="baseball-outline" color={"#63513c"} size={24} />
             ),
           }}
-        >
-          {(props) => <GamesScreen {...props} games={games} />}
-        </Tab.Screen>
+        />
         <Tab.Screen
           name="Notifications"
           component={NotificationsScreen}

@@ -19,7 +19,7 @@ import { LogoStyles } from "../styles/logo";
 
 import { BallsStrikesOuts } from "../components/ballsStrikesOuts";
 import { BaseRunner } from "../components/baseRunner";
-import { Game } from "../utilities/game";
+import { ConvertGames, Game } from "../utilities/game";
 import { LeverageIndex } from "./leverageIndex";
 import { MLBTVLogo } from "./logo";
 import { TeamLogo } from "../components/teamLogo";
@@ -130,11 +130,20 @@ export class GameContainer extends React.Component<GameProps, GameState> {
 }
 
 const GamesContainer = (props: GamesProps) => {
-  const [games] = useState(props.games)
+  const [games, setGames] = useState<Game[]>([]);
+
+  const fetchGames = async () => {
+    try {
+      ConvertGames().then(cg => {setGames(cg)})
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   useEffect(() => {
-    console.log(games);
-  }, []);
+    const intervalId = setInterval(() => fetchGames(), 3000);
+    return () => clearInterval(intervalId);
+  }, [games]);
 
   const gamesContainer = () => {
     if (games.length <= 0) {

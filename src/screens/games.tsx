@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ScrollView } from "react-native";
 
 import Background from "../components/background";
 import { GameStyles } from "../styles/game";
 import GamesContainer, { GamesProps } from "../components/game";
 
-const GamesScreen = (props: GamesProps) => {
-  const [games] = useState(props.games)
-
-  useEffect(() => {
-    console.log(games);
-  }, []);
-
+const GamesScreen = () => {
   return (
     <ScrollView contentContainerStyle={GameStyles.mainContainer}>
       <Background />
-      <GamesContainer games={games} />
+      <GamesContainer />
     </ScrollView>
   );
 }
