@@ -62,6 +62,8 @@ export const GameStyles = StyleSheet.create({
     borderColor: "#225500",
     borderRadius: 20,
     borderWidth: 1,
+    flex: 1,
+    flexDirection: "column",
     height: 110,
     marginLeft: 10,
     marginRight: 10,

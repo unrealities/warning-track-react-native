@@ -88,8 +88,8 @@ export class GameContainer extends React.Component<GameProps, GameState> {
         style={animatedGameContainerStyles}
         key={this.props.game.url}
       >
-        <LeverageIndex value={this.props.game.leverageIndex} />
         <View style={GameStyles.gameStateContainer}>
+          <LeverageIndex value={this.props.game.leverageIndex} />
           <Score
             awayScore={this.props.game.awayScore}
             awayTeam={this.props.game.awayTeam}
@@ -129,7 +129,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   }
 }
 
-const GamesContainer = (props: GamesProps) => {
+const GamesContainer = () => {
   const [games, setGames] = useState<Game[]>([]);
 
   const fetchGames = async () => {
@@ -141,7 +141,8 @@ const GamesContainer = (props: GamesProps) => {
   }
 
   useEffect(() => {
-    const intervalId = setInterval(() => fetchGames(), 3000);
+    fetchGames();
+    const intervalId = setInterval(() => fetchGames(), 30000);
     return () => clearInterval(intervalId);
   }, [games]);
 

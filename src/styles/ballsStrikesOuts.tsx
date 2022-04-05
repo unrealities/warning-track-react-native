@@ -10,6 +10,7 @@ export const BSOStyles = StyleSheet.create({
   },
   bsoContainer: {
     alignItems: "center",
+    flex: 1,
     flexDirection: "row",
     justifyContent: "center",
     margin: 10,
