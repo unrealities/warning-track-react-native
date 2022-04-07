@@ -107,10 +107,6 @@ export async function ConvertGames() {
 
   try {
     return await GetGameDataByDay().then((result) => {
-      if (!result || result.MLBId == 0) {
-        return newGames;
-      }
-
       if (result instanceof Array) {
         result.map((game: GameDataResponseGame) => {
           let awayScore = game.Status.Score.Away;
@@ -157,6 +153,7 @@ export async function ConvertGames() {
       return newGames;
     });
   } catch (e) {
+    console.log(e);
     return newGames;
   }
 }
