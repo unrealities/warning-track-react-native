@@ -14,8 +14,8 @@ function Background() {
             patternUnits="userSpaceOnUse"
             x="0"
             y="0"
-            width="70"
-            height="70"
+            width={70}
+            height={70}
             viewBox="0 0 70 70"
           >
             <Path fill="#4a0" d="M0 0h70v70H0z" />
