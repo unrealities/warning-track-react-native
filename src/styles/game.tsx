@@ -2,9 +2,8 @@ import { StyleSheet } from "react-native";
 
 export const GameStyles = StyleSheet.create({
   atContainer: {
-    marginRight: 20,
     marginTop: 6,
-    width: 20,
+    width: 40,
   },
   atTxt: {
     color: "#63513c",
