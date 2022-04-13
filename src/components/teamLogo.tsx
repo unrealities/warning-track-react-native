@@ -1,12 +1,38 @@
 import React from "react";
 import { View } from "react-native";
-import Svg, { G, Path } from "react-native-svg";
+import Svg, { G, Path, Rect } from "react-native-svg";
 
 export interface TeamLogoProps {
   id: number;
 }
 
 export const TeamLogo: React.FC<TeamLogoProps> = (props) => {
+  return (
+    <Svg width="100%" height="100%" viewBox="0 0 50 50">
+      <Rect
+        x="12"
+        y="12"
+        width="26"
+        height="26"
+        fill="#fff"
+        strokeWidth="2"
+        rx="5"
+        stroke="#000"
+      />
+      <Path
+        fill="#fff"
+        stroke="#000"
+        strokeWidth="2"
+        d="M17 12h16c2.8 0 5 2.2 5 5v16c0 2.8-2.2 5-5 5H17c-2.8 0-5-2.2-5-5V17c0-2.8 2.2-5 5-5z"
+      />
+      <Path
+        d="M16,23l7,7,l12,-12"
+        fill="none"
+        stroke="#222"
+        strokeWidth="3"
+      />
+    </Svg>
+  );
   switch (props.id) {
     // Default
     case 0:
