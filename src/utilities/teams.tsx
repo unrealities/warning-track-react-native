@@ -1,7 +1,8 @@
-import { Team } from "./team";
+import Team from "./team";
 
-export function ConvertTeamID(mlbID: number): Team {
+export default function ConvertTeamID(mlbID: number): Team {
   const teams = require("./team.json");
+  let blankTeam = new Team("N/A", "", 0, 0);
   for (let team of teams) {
     if (team.mlb_id == mlbID) {
       let newTeam = new Team(
@@ -12,12 +13,6 @@ export function ConvertTeamID(mlbID: number): Team {
       );
       return newTeam;
     }
+    return blankTeam;
   }
-  let blankTeam = new Team(
-    "N/A",
-    "",
-    0,
-    0,
-  );
-  return blankTeam;
 }

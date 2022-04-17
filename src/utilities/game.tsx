@@ -1,5 +1,5 @@
-import { ConvertTeamID } from "./teams";
-import { Team } from "./team";
+import ConvertTeamID from "./teams";
+import Team from "./team";
 import { GetGameDataByDay, GameDataResponseGame } from "../../src/services/getGameDataByDay";
 
 export interface IGame {

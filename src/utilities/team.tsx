@@ -5,7 +5,7 @@ export interface ITeam {
     mlbID: number;
 }
 
-export class Team implements ITeam {
+export default class Team implements ITeam {
     constructor(
         public abbreviation: string,
         public hashtag: string,
