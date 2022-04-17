@@ -1,32 +1,182 @@
-[
-  { "id": 1, "mlb_id": 109, "abbr": "ARI", "hashtag": "DBacks" },
-  { "id": 2, "mlb_id": 144, "abbr": "ATL", "hashtag": "Braves" },
-  { "id": 3, "mlb_id": 110, "abbr": "BAL", "hashtag": "Orioles" },
-  { "id": 4, "mlb_id": 111, "abbr": "BOS", "hashtag": "RedSox" },
-  { "id": 5, "mlb_id": 112, "abbr": "CHC", "hashtag": "Cubs" },
-  { "id": 6, "mlb_id": 113, "abbr": "CIN", "hashtag": "Reds" },
-  { "id": 7, "mlb_id": 114, "abbr": "CLE", "hashtag": "Indians" },
-  { "id": 8, "mlb_id": 115, "abbr": "COL", "hashtag": "Rockies" },
-  { "id": 9, "mlb_id": 145, "abbr": "CWS", "hashtag": "WhiteSox" },
-  { "id": 10, "mlb_id": 116, "abbr": "DET", "hashtag": "Tigers" },
-  { "id": 11, "mlb_id": 117, "abbr": "HOU", "hashtag": "Astros" },
-  { "id": 12, "mlb_id": 118, "abbr": "KC", "hashtag": "Royals" },
-  { "id": 13, "mlb_id": 108, "abbr": "LAA", "hashtag": "Angels" },
-  { "id": 14, "mlb_id": 119, "abbr": "LAD", "hashtag": "Dodgers" },
-  { "id": 15, "mlb_id": 146, "abbr": "MIA", "hashtag": "Marlins" },
-  { "id": 16, "mlb_id": 158, "abbr": "MIL", "hashtag": "Brewers" },
-  { "id": 17, "mlb_id": 142, "abbr": "MIN", "hashtag": "Twins" },
-  { "id": 18, "mlb_id": 121, "abbr": "NYM", "hashtag": "Mets" },
-  { "id": 19, "mlb_id": 147, "abbr": "NYY", "hashtag": "Yankees" },
-  { "id": 20, "mlb_id": 133, "abbr": "OAK", "hashtag": "Athletics" },
-  { "id": 21, "mlb_id": 143, "abbr": "PHI", "hashtag": "Phillies" },
-  { "id": 22, "mlb_id": 134, "abbr": "PIT", "hashtag": "Pirates" },
-  { "id": 23, "mlb_id": 135, "abbr": "SD", "hashtag": "Padres" },
-  { "id": 24, "mlb_id": 136, "abbr": "SEA", "hashtag": "Mariners" },
-  { "id": 25, "mlb_id": 137, "abbr": "SF", "hashtag": "SFGiants" },
-  { "id": 26, "mlb_id": 138, "abbr": "STL", "hashtag": "STLCards" },
-  { "id": 27, "mlb_id": 139, "abbr": "TB", "hashtag": "Rays" },
-  { "id": 28, "mlb_id": 140, "abbr": "TEX", "hashtag": "Rangers" },
-  { "id": 29, "mlb_id": 141, "abbr": "TOR", "hashtag": "BlueJays" },
-  { "id": 30, "mlb_id": 120, "abbr": "WSH", "hashtag": "Nats" }
-]
+{
+  "109":{
+     "id":1,
+     "mlbID":109,
+     "abbr":"ARI",
+     "hashtag":"DBacks"
+  },
+  "144":{
+     "id":2,
+     "mlbID":144,
+     "abbr":"ATL",
+     "hashtag":"Braves"
+  },
+  "110":{
+     "id":3,
+     "mlbID":110,
+     "abbr":"BAL",
+     "hashtag":"Orioles"
+  },
+  "111":{
+     "id":4,
+     "mlbID":111,
+     "abbr":"BOS",
+     "hashtag":"RedSox"
+  },
+  "112":{
+     "id":5,
+     "mlbID":112,
+     "abbr":"CHC",
+     "hashtag":"Cubs"
+  },
+  "113":{
+     "id":6,
+     "mlbID":113,
+     "abbr":"CIN",
+     "hashtag":"Reds"
+  },
+  "114":{
+     "id":7,
+     "mlbID":114,
+     "abbr":"CLE",
+     "hashtag":"Indians"
+  },
+  "115":{
+     "id":8,
+     "mlbID":115,
+     "abbr":"COL",
+     "hashtag":"Rockies"
+  },
+  "145":{
+     "id":9,
+     "mlbID":145,
+     "abbr":"CWS",
+     "hashtag":"WhiteSox"
+  },
+  "116":{
+     "id":10,
+     "mlbID":116,
+     "abbr":"DET",
+     "hashtag":"Tigers"
+  },
+  "117":{
+     "id":11,
+     "mlbID":117,
+     "abbr":"HOU",
+     "hashtag":"Astros"
+  },
+  "118":{
+     "id":12,
+     "mlbID":118,
+     "abbr":"KC",
+     "hashtag":"Royals"
+  },
+  "108":{
+     "id":13,
+     "mlbID":108,
+     "abbr":"LAA",
+     "hashtag":"Angels"
+  },
+  "119":{
+     "id":14,
+     "mlbID":119,
+     "abbr":"LAD",
+     "hashtag":"Dodgers"
+  },
+  "146":{
+     "id":15,
+     "mlbID":146,
+     "abbr":"MIA",
+     "hashtag":"Marlins"
+  },
+  "158":{
+     "id":16,
+     "mlbID":158,
+     "abbr":"MIL",
+     "hashtag":"Brewers"
+  },
+  "142":{
+     "id":17,
+     "mlbID":142,
+     "abbr":"MIN",
+     "hashtag":"Twins"
+  },
+  "121":{
+     "id":18,
+     "mlbID":121,
+     "abbr":"NYM",
+     "hashtag":"Mets"
+  },
+  "147":{
+     "id":19,
+     "mlbID":147,
+     "abbr":"NYY",
+     "hashtag":"Yankees"
+  },
+  "133":{
+     "id":20,
+     "mlbID":133,
+     "abbr":"OAK",
+     "hashtag":"Athletics"
+  },
+  "143":{
+     "id":21,
+     "mlbID":143,
+     "abbr":"PHI",
+     "hashtag":"Phillies"
+  },
+  "134":{
+     "id":22,
+     "mlbID":134,
+     "abbr":"PIT",
+     "hashtag":"Pirates"
+  },
+  "135":{
+     "id":23,
+     "mlbID":135,
+     "abbr":"SD",
+     "hashtag":"Padres"
+  },
+  "136":{
+     "id":24,
+     "mlbID":136,
+     "abbr":"SEA",
+     "hashtag":"Mariners"
+  },
+  "137":{
+     "id":25,
+     "mlbID":137,
+     "abbr":"SF",
+     "hashtag":"SFGiants"
+  },
+  "138":{
+     "id":26,
+     "mlbID":138,
+     "abbr":"STL",
+     "hashtag":"STLCards"
+  },
+  "139":{
+     "id":27,
+     "mlbID":139,
+     "abbr":"TB",
+     "hashtag":"Rays"
+  },
+  "140":{
+     "id":28,
+     "mlbID":140,
+     "abbr":"TEX",
+     "hashtag":"Rangers"
+  },
+  "141":{
+     "id":29,
+     "mlbID":141,
+     "abbr":"TOR",
+     "hashtag":"BlueJays"
+  },
+  "120":{
+     "id":30,
+     "mlbID":120,
+     "abbr":"WSH",
+     "hashtag":"Nats"
+  }
+}

@@ -10721,7 +10721,7 @@ react-native-unimodules@~0.15.0:
     unimodules-app-loader "~3.0.0"
     unimodules-task-manager-interface "~7.0.0"
 
-react-native-web@0.17.1:
+react-native-web@^0.17.1:
   version "0.17.1"
   resolved "https://registry.npmjs.org/react-native-web/-/react-native-web-0.17.1.tgz"
   integrity sha512-lUnn+2O8ynQ6/gJKylSxm7DLi2vHw6AujdDV1+LSa8Epe1bYFJNUcJTEhJf0jNYUFGOujzMtuG8Mkz3HdWTkag==
