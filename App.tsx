@@ -32,7 +32,7 @@ const App = () => {
             fontWeight: "400",
           },
           style: {
-            backgroundColor: "#ece2c2",
+            backgroundColor: "#f2ebd3",
             borderTopColor: "#63513c",
             borderTopWidth: 3,
           }
