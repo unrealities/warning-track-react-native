@@ -50,6 +50,7 @@ export const GameStyles = StyleSheet.create({
     flexGrow: 1,
     flexWrap: "wrap",
     justifyContent: "center",
+    paddingTop: 18,
     paddingBottom: 12,
     width: "100%",
   },
@@ -78,6 +79,7 @@ export const GameStyles = StyleSheet.create({
   },
   mainContainer: {
     flexGrow: 1,
+    justifyContent: 'space-between',
   },
   noGamesContainer: {
     alignContent: "center",

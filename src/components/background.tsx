@@ -6,7 +6,7 @@ import { BackgroundStyles } from "../styles/background";
 
 function Background() {
   return (
-    <View style={BackgroundStyles.container}>
+    <View style={[BackgroundStyles.container, BackgroundStyles.fixed]}>
       <Svg height="100%">
         <Defs>
           <Pattern
