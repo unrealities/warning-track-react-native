@@ -7,12 +7,10 @@ import GamesContainer, { GamesProps } from "../components/game";
 
 const GamesScreen = () => {
   return (
-    <View>
+    <ScrollView contentContainerStyle={GameStyles.mainContainer}>
       <Background />
-      <ScrollView contentContainerStyle={GameStyles.mainContainer}>
-        <GamesContainer />
-      </ScrollView>
-    </View>
+      <GamesContainer />
+    </ScrollView>
   );
 }
 
