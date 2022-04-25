@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   Animated,
   Easing,
+  FlatList,
   Linking,
   StyleSheet,
   Text,
@@ -151,16 +152,24 @@ const GamesContainer = () => {
       return <NoGames />;
     }
 
-    return games.map((game) => {
-      switch (game.viewType) {
+    const renderItem = ({ item }) => {
+      switch (item.viewType) {
         case "post":
-          return <PostGameContainer game={game} key={game.url} />;
+          return <PostGameContainer game={item}/>;
         case "pre":
-          return <PreGameContainer game={game} key={game.url} />;
+          return <PreGameContainer game={item}/>;
         default:
-          return <GameContainer game={game} key={game.url} />;
+          return <GameContainer game={item}/>;
       }
-    });
+    };
+
+    return (
+      <FlatList 
+        data={games} 
+        renderItem={renderItem} 
+        keyExtractor={item => item.url}
+      />
+    )
   }
 
   return (

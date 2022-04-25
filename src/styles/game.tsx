@@ -78,7 +78,7 @@ export const GameStyles = StyleSheet.create({
     textAlign: "center",
   },
   mainContainer: {
-    flexGrow: 1,
+    flex: 1,
     justifyContent: 'space-between',
   },
   noGamesContainer: {
