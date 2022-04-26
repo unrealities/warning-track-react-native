@@ -168,6 +168,7 @@ const GamesContainer = () => {
         data={games} 
         renderItem={renderItem} 
         keyExtractor={item => item.url}
+        showsHorizontalScrollIndicator={false}
       />
     )
   }

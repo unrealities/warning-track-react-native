@@ -3,7 +3,7 @@ import { SafeAreaView } from "react-native";
 
 import Background from "../components/background";
 import { GameStyles } from "../styles/game";
-import GamesContainer, { GamesProps } from "../components/game";
+import GamesContainer from "../components/game";
 
 const GamesScreen = () => {
   return (

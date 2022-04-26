@@ -46,9 +46,6 @@ export const GameStyles = StyleSheet.create({
   gamesContainer: {
     height: "100%",
     flex: 1,
-    flexDirection: "row",
-    flexGrow: 1,
-    flexWrap: "wrap",
     justifyContent: "center",
     paddingTop: 18,
     paddingBottom: 12,
