@@ -48,7 +48,6 @@ export const GameStyles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     paddingTop: 18,
-    paddingBottom: 12,
     width: "100%",
   },
   gameStateContainer: {
