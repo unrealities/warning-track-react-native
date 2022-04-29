@@ -34,9 +34,9 @@ const App = () => {
           style: {
             backgroundColor: "#f2ebd3",
             borderTopColor: "#63513c",
-            borderTopWidth: 3,
-            shadowColor: "#153600",
-            shadowOffset: { height: -4, width: 0 },
+            borderTopWidth: 2,
+            shadowColor: "#2e261c",
+            shadowOffset: { height: -2, width: 0 },
             shadowOpacity: 0.5,
             shadowRadius: 1,
           }
