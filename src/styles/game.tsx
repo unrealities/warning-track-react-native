@@ -26,7 +26,7 @@ export const GameStyles = StyleSheet.create({
   gameContainer: {
     alignItems: "stretch",
     alignSelf: "center",
-    backgroundColor: "#f2ebd3",
+    backgroundColor: "#faf5e3",
     borderColor: "#593811",
     borderWidth: 3,
     borderRadius: 20,
@@ -80,7 +80,7 @@ export const GameStyles = StyleSheet.create({
   noGamesContainer: {
     alignContent: "center",
     alignSelf: "center",
-    backgroundColor: "#f2ebd3",
+    backgroundColor: "#faf5e3",
     borderColor: "#593811",
     borderWidth: 3,
     borderRadius: 20,

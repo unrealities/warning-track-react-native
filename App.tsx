@@ -24,7 +24,7 @@ const App = () => {
     <NavigationContainer>
       <Tab.Navigator
         tabBarOptions={{
-          activeBackgroundColor: "#ede5ca",
+          activeBackgroundColor: "#faf5e3",
           activeTintColor: "#593811",
           labelStyle: {
             color: "#63513c",
@@ -32,7 +32,7 @@ const App = () => {
             fontWeight: "400",
           },
           style: {
-            backgroundColor: "#f2ebd3",
+            backgroundColor: "#faf5e3",
             borderTopColor: "#63513c",
             borderTopWidth: 2,
             shadowColor: "#2e261c",
