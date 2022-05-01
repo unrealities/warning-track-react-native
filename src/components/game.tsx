@@ -90,7 +90,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
         key={this.props.game.url}
       >
         <View style={GameStyles.gameStateContainer}>
-          <LeverageIndex value={this.props.game.leverageIndex} />
+          {/* <LeverageIndex value={this.props.game.leverageIndex} /> */}
           <Score
             awayScore={this.props.game.awayScore}
             awayTeam={this.props.game.awayTeam}

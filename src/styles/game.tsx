@@ -63,7 +63,6 @@ export const GameStyles = StyleSheet.create({
     height: 110,
     marginLeft: 10,
     marginRight: 10,
-    marginTop: -42,
     paddingTop: 2,
     width: 80,
   },

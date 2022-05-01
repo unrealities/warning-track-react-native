@@ -4,7 +4,7 @@ import { Text, View } from "react-native";
 import { LogoStyles } from "../styles/logo";
 import { ScoreStyles } from "../styles/score";
 import { TeamLogo } from "../components/teamLogo";
-import { Team } from "../utilities/team";
+import Team from "../utilities/team";
 
 export interface ScoreProps {
   awayScore: number;

@@ -12,6 +12,5 @@ export const ScoreStyles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
-    marginTop: -20,
   },
 });
