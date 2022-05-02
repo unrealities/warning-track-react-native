@@ -41,7 +41,7 @@ export const LeverageIndex: React.FC<LIProps> = (props) => {
 
   return (
     <View style={LIStyles.leverageIndex}>
-      <Svg>
+      <Svg width={22} height={100}>
         <G>
           <Path
             d="m2.08791,8.81967l7.57237,0l2.33991,-7.19372l2.33993,7.19372l7.57236,0l-6.12615,4.44591l2.34004,7.19373l-6.12617,-4.44603l-6.12616,4.44603l2.34004,-7.19373l-6.12616,-4.44591l0,0z"

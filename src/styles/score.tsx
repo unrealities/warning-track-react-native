@@ -10,7 +10,10 @@ export const ScoreStyles = StyleSheet.create({
   },
   scoreContainer: {
     alignItems: "center",
+    flex: 1,
     flexDirection: "row",
+    height: 60,
     justifyContent: "center",
+    width: 300,
   },
 });
