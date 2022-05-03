@@ -81,7 +81,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
       animationChange * StyleSheet.flatten(GameStyles.gameContainer).maxWidth,
       StyleSheet.flatten(GameStyles.gameContainer).maxWidth,
       this.state.scaleValue,
-      GameStyles.gameStateContainer
+      GameStyles.liveGamesContainer
     );
 
     return (
@@ -89,7 +89,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
         style={animatedGameContainerStyles}
         key={this.props.game.url}
       >
-        <View >
+        <View style={GameStyles.gameStateContainer}>
           <LeverageIndex value={this.props.game.leverageIndex} />
           <Score
             awayScore={this.props.game.awayScore}

@@ -85,11 +85,9 @@ export const GameStyles = StyleSheet.create({
     textAlign: "center",
   },
   liveGamesContainer: {
-    alignItems: "stretch",
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-evenly",
-    marginTop: -34,
+    justifyContent: "space-between"
   },
   mainContainer: {
     flex: 1,
