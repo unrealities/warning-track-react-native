@@ -57,7 +57,10 @@ export const GameStyles = StyleSheet.create({
     borderColor: "#593811",
     borderWidth: 3,
     borderRadius: 20,
+    flex: 1,
+    flexDirection: "column",
     minHeight: 120,
+    minWidth: 400,
     marginTop: 20,
     padding: 20,
     shadowColor: "#153600",
@@ -84,10 +87,11 @@ export const GameStyles = StyleSheet.create({
     justifyContent: "center",
     textAlign: "center",
   },
-  liveGamesContainer: {
+  liveGameContainer: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-between"
+    flexGrow: 1,
+    justifyContent: 'space-between',
   },
   mainContainer: {
     flex: 1,
