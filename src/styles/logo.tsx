@@ -7,11 +7,10 @@ export const LogoStyles = StyleSheet.create({
     height: 60,
     minWidth: 60,
     resizeMode: "contain",
-    width: "100%",
   },
   logoContainer: {
     flexDirection: "row",
-    height: "100%",
+    height: 60,
     justifyContent: "center",
     width: 60
   },

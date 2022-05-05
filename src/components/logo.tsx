@@ -8,7 +8,7 @@ export class MLBTVLogo extends React.Component {
   render() {
     return (
       <View style={LogoStyles.mlbTVContainer}>
-        <Svg viewBox="0 0 335.85 81">
+        <Svg viewBox="0 0 335.85 81" width={80}>
           <G>
             <Path
               fill="#fff"

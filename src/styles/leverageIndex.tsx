@@ -6,6 +6,6 @@ export const LIStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: 'space-around',
     marginLeft: 6,
-    width: 24,
+    maxWidth: 24,
   },
 });
