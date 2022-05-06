@@ -15,6 +15,6 @@ export const LogoStyles = StyleSheet.create({
     width: 60
   },
   mlbTVContainer: {
-    padding: 8,
+    paddingTop: 8
   },
 });
