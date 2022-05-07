@@ -11,8 +11,9 @@ export interface LIProps {
 export const LeverageIndex: React.FC<LIProps> = (props) => {
   let stroke = [];
   let fill = [];
+  let liInt = props.value > 5 ? 5 : Math.floor(props.value);
 
-  switch (props.value) {
+  switch (liInt) {
     case 0:
       stroke = ["#e6db8a", "#e6db8a", "#e6db8a", "#e6db8a", "#e6db8a"];
       fill = ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"];
@@ -32,6 +33,10 @@ export const LeverageIndex: React.FC<LIProps> = (props) => {
     case 4:
       stroke = ["#e6db8a", "#baa400", "#baa400", "#baa400", "#baa400"];
       fill = ["#ffffff", "#f5d800", "#f5d800", "#f5d800", "#f5d800"];
+      break;
+    case 5:
+      stroke = ["#baa400", "#baa400", "#baa400", "#baa400", "#baa400"];
+      fill = ["#f5d800", "#f5d800", "#f5d800", "#f5d800", "#f5d800"];
       break;
     default:
       stroke = ["#e6db8a", "#e6db8a", "#e6db8a", "#e6db8a", "#e6db8a"];
