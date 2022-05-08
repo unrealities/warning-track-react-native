@@ -70,7 +70,7 @@ export class GameContainer extends React.Component<GameProps, GameState> {
   };
 
   excitingGame = () => {
-    return this.props.game.leverageIndex > 4;
+    return this.props.game.leverageIndex > 1;
   };
 
   render() {
@@ -78,8 +78,8 @@ export class GameContainer extends React.Component<GameProps, GameState> {
     const animatedGameContainerStyles = gameAnimationStyle(
       animationChange * StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
       StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
-      animationChange * StyleSheet.flatten(GameStyles.gameContainer).maxWidth,
-      StyleSheet.flatten(GameStyles.gameContainer).maxWidth,
+      animationChange * StyleSheet.flatten(GameStyles.gameContainer).width,
+      StyleSheet.flatten(GameStyles.gameContainer).width,
       this.state.scaleValue,
       GameStyles.gameStateContainer
     );
@@ -316,7 +316,7 @@ let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
     duration: duration,
     easing: Easing.bounce,
     toValue: 1,
-    useNativeDriver: false,
+    useNativeDriver: true,
   }).start();
 };
 
