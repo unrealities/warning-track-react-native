@@ -62,10 +62,19 @@ export class GameContainer extends React.Component<GameProps, GameState> {
     };
   }
 
+  gameAnimation = (duration: number, scaleValue: Animated.Value) => {
+    Animated.timing(scaleValue, {
+      duration: duration,
+      easing: Easing.bounce,
+      toValue: 1,
+      useNativeDriver: false,
+    }).start();
+  };
+
   componentDidMount = () => {
     if (this.excitingGame()) {
       this.state.scaleValue.setValue(1);
-      gameAnimation(600, this.state.scaleValue);
+      this.gameAnimation(600, this.state.scaleValue);
     }
   };
 
@@ -192,6 +201,15 @@ const NoGames = () => {
     StyleSheet.flatten(GameStyles.gameContainer).width, scaleValue, GameStyles.noGamesContainer
   );
 
+  let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
+    Animated.timing(scaleValue, {
+      duration: duration,
+      easing: Easing.bounce,
+      toValue: 1,
+      useNativeDriver: false,
+    }).start();
+  };
+
   useEffect(() => {
     scaleValue.setValue(0);
     gameAnimation(600, scaleValue);
@@ -212,9 +230,18 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
     };
   }
 
+  gameAnimation = (duration: number, scaleValue: Animated.Value) => {
+    Animated.timing(scaleValue, {
+      duration: duration,
+      easing: Easing.bounce,
+      toValue: 1,
+      useNativeDriver: false,
+    }).start();
+  };
+
   componentDidMount = () => {
     this.state.scaleValue.setValue(0);
-    gameAnimation(600, this.state.scaleValue);
+    this.gameAnimation(600, this.state.scaleValue);
   };
 
   render() {
@@ -309,15 +336,6 @@ let gameAnimationStyle = (
       width: width,
     },
   ];
-};
-
-let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
-  Animated.timing(scaleValue, {
-    duration: duration,
-    easing: Easing.bounce,
-    toValue: 1,
-    useNativeDriver: true,
-  }).start();
 };
 
 export default GamesContainer
