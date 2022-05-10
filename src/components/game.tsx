@@ -54,15 +54,19 @@ export interface NoGameProps {
 }
 
 
-export class GameContainer extends React.Component<GameProps, GameState> {
-  constructor(props: GameProps) {
-    super(props);
-    this.state = {
-      scaleValue: new Animated.Value(0),
-    };
-  }
+const GameContainer = (props:GameProps) => {
+  const animate = new Animated.Value(0);
+  const [scaleValue] = useState(animate);
 
-  gameAnimation = (duration: number, scaleValue: Animated.Value) => {
+  const animationChange = 1.2;
+  const animatedGameContainerStyles = gameAnimationStyle(
+    animationChange * StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
+    StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
+    animationChange * StyleSheet.flatten(GameStyles.gameContainer).minWidth,
+    StyleSheet.flatten(GameStyles.gameContainer).minWidth, scaleValue, GameStyles.noGamesContainer
+  );
+
+  let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
     Animated.timing(scaleValue, {
       duration: duration,
       easing: Easing.bounce,
@@ -71,72 +75,60 @@ export class GameContainer extends React.Component<GameProps, GameState> {
     }).start();
   };
 
-  componentDidMount = () => {
-    if (this.excitingGame()) {
-      this.state.scaleValue.setValue(1);
-      this.gameAnimation(600, this.state.scaleValue);
+  useEffect(() => {
+    if (excitingGame()) {
+      scaleValue.setValue(0);
+      gameAnimation(600, scaleValue);
     }
+  }, []);
+
+  let excitingGame = () => {
+    return props.game.leverageIndex > 1;
   };
 
-  excitingGame = () => {
-    return this.props.game.leverageIndex > 1;
-  };
-
-  render() {
-    const animationChange = 1.2;
-    const animatedGameContainerStyles = gameAnimationStyle(
-      animationChange * StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
-      StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
-      animationChange * StyleSheet.flatten(GameStyles.gameContainer).width,
-      StyleSheet.flatten(GameStyles.gameContainer).width,
-      this.state.scaleValue,
-      GameStyles.gameStateContainer
-    );
-
-    return (
-      <Animated.View
-        style={animatedGameContainerStyles}
-        key={this.props.game.url}
-      >
-        <LeverageIndex value={this.props.game.leverageIndex} />
-        <View style={GameStyles.liveGameContainer}>
-          <Score
-            awayScore={this.props.game.awayScore}
-            awayTeam={this.props.game.awayTeam}
-            homeScore={this.props.game.homeScore}
-            homeTeam={this.props.game.homeTeam}
-          />
-          <View style={BSOStyles.bsos}>
-            <View style={BSOStyles.bsoContainer}>
-              <Text>B:</Text>
-              <BallsStrikesOuts value={this.props.game.balls} />
-            </View>
-            <View style={BSOStyles.bsoContainer}>
-              <Text>S:</Text>
-              <BallsStrikesOuts value={this.props.game.strikes} />
-            </View>
-            <View style={BSOStyles.bsoContainer}>
-              <Text>O:</Text>
-              <BallsStrikesOuts value={this.props.game.outs} />
-            </View>
+  return (
+    <Animated.View
+      style={animatedGameContainerStyles}
+      key={props.game.url}
+    >
+      <LeverageIndex value={props.game.leverageIndex} />
+      <View style={GameStyles.liveGameContainer}>
+        <Score
+          awayScore={props.game.awayScore}
+          awayTeam={props.game.awayTeam}
+          homeScore={props.game.homeScore}
+          homeTeam={props.game.homeTeam}
+        />
+        <View style={BSOStyles.bsos}>
+          <View style={BSOStyles.bsoContainer}>
+            <Text>B:</Text>
+            <BallsStrikesOuts value={props.game.balls} />
+          </View>
+          <View style={BSOStyles.bsoContainer}>
+            <Text>S:</Text>
+            <BallsStrikesOuts value={props.game.strikes} />
+          </View>
+          <View style={BSOStyles.bsoContainer}>
+            <Text>O:</Text>
+            <BallsStrikesOuts value={props.game.outs} />
           </View>
         </View>
-        <TouchableOpacity
-          style={GameStyles.inningStateContainer}
-          onPress={() => Linking.openURL(this.props.game.url)}
-        >
-          <View style={BaseRunnerStyles.baseRunnerContainer}>
-            <BaseRunner value={this.props.game.baseRunnerInt()} />
-          </View>
-          <Text style={GameStyles.inningTxtContainer}>
-            {this.props.game.inningTopString()}
-            {this.props.game.inning}
-          </Text>
-          <MLBTVLogo />
-        </TouchableOpacity>
-      </Animated.View>
-    );
-  }
+      </View>
+      <TouchableOpacity
+        style={GameStyles.inningStateContainer}
+        onPress={() => Linking.openURL(props.game.url)}
+      >
+        <View style={BaseRunnerStyles.baseRunnerContainer}>
+          <BaseRunner value={props.game.baseRunnerInt()} />
+        </View>
+        <Text style={GameStyles.inningTxtContainer}>
+          {props.game.inningTopString()}
+          {props.game.inning}
+        </Text>
+        <MLBTVLogo />
+      </TouchableOpacity>
+    </Animated.View>
+  );
 }
 
 const GamesContainer = () => {
@@ -187,7 +179,6 @@ const GamesContainer = () => {
   );
 }
 
-// TODO: No Bounce
 const NoGames = () => {
   const animate = new Animated.Value(0);
   const [scaleValue] = useState(animate);
