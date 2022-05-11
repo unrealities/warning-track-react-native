@@ -58,12 +58,12 @@ const GameContainer = (props:GameProps) => {
   const animate = new Animated.Value(0);
   const [scaleValue] = useState(animate);
 
-  const animationChange = 1.2;
+  const animationChange = 1.0;
   const animatedGameContainerStyles = gameAnimationStyle(
     animationChange * StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
     StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
     animationChange * StyleSheet.flatten(GameStyles.gameContainer).minWidth,
-    StyleSheet.flatten(GameStyles.gameContainer).minWidth, scaleValue, GameStyles.noGamesContainer
+    StyleSheet.flatten(GameStyles.gameContainer).minWidth, scaleValue, GameStyles.gameContainer
   );
 
   let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
