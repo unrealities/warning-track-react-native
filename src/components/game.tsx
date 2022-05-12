@@ -58,12 +58,12 @@ const GameContainer = (props:GameProps) => {
   const animate = new Animated.Value(0);
   const [scaleValue] = useState(animate);
 
-  const animationChange = 1.0;
+  const animationChange = 1.2;
   const animatedGameContainerStyles = gameAnimationStyle(
-    animationChange * StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
+    animationChange * StyleSheet.flatten(GameStyles.gameContainer).minHeight,
     StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
     animationChange * StyleSheet.flatten(GameStyles.gameContainer).minWidth,
-    StyleSheet.flatten(GameStyles.gameContainer).minWidth, scaleValue, GameStyles.gameContainer
+    StyleSheet.flatten(GameStyles.gameContainer).width, scaleValue, GameStyles.gameContainer
   );
 
   let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
@@ -76,11 +76,10 @@ const GameContainer = (props:GameProps) => {
   };
 
   useEffect(() => {
-    if (excitingGame()) {
-      scaleValue.setValue(0);
-      gameAnimation(600, scaleValue);
-    }
-  }, []);
+    scaleValue.setValue(0);
+    let animationTime = excitingGame() ? 500 : 0
+    gameAnimation(animationTime, scaleValue);
+  }, [scaleValue]);
 
   let excitingGame = () => {
     return props.game.leverageIndex > 1;

@@ -33,7 +33,7 @@ export const GameStyles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 12,
     minHeight: 96,
-    minWidth: 420,
+    minWidth: 400,
     maxHeight: 122,
     paddingBottom: 18,
     paddingTop: 8,
