@@ -33,7 +33,7 @@ export const GameStyles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 12,
     minHeight: 96,
-    minWidth: 400,
+    minWidth: 360,
     maxHeight: 122,
     paddingBottom: 18,
     paddingTop: 8,
@@ -41,7 +41,7 @@ export const GameStyles = StyleSheet.create({
     shadowColor: "#153600",
     shadowOffset: { height: 6, width: 6 },
     shadowOpacity: 0.5,
-    width: 420,
+    width: 360,
   },
   gamesContainer: {
     height: "100%",

@@ -6059,10 +6059,10 @@ expo-asset@~8.5.0:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
-expo-auth-session@~3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/expo-auth-session/-/expo-auth-session-3.6.0.tgz#764955fdea32ee9341e4cbb68708a70632654260"
-  integrity sha512-BBDCpwtEiZrfWxL4toU8/JTerLQqjI8D0bv//cmFSBPn0EdbzvSLFQnAMEzgzwBq99YvsloCCeVKWiK1gc9jZQ==
+expo-auth-session@~3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/expo-auth-session/-/expo-auth-session-3.6.1.tgz#f31d62487f55e9947ead147999d3099e860cf9fc"
+  integrity sha512-6TNtzlp4Ot83hBpJL9qZRmmqGpIUK5eF6GzG9w7NblkaxM0cHOxqtK3gmgfr8ezFl7lMQMkKax+RPbTo/vhzzA==
   dependencies:
     expo-constants "~13.1.0"
     expo-crypto "~10.2.0"

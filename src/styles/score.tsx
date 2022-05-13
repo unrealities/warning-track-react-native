@@ -2,9 +2,8 @@ import { StyleSheet } from "react-native";
 
 export const ScoreStyles = StyleSheet.create({
   score: {
-    fontSize: 64,
-    fontWeight: "bold",
-    marginHorizontal: 20,
+    fontSize: 48,
+    marginHorizontal: 10,
     marginTop: -4,
     textAlign: "center",
   },
@@ -14,6 +13,6 @@ export const ScoreStyles = StyleSheet.create({
     flexDirection: "row",
     height: 60,
     justifyContent: "center",
-    width: 300,
+    width: 230,
   },
 });
