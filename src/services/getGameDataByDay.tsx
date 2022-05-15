@@ -37,7 +37,6 @@ export interface GameDataResponseGame {
 // ex. 04-23-2021
 function getGameDataByDayDate() {
   let d = new Date();
-  return "03-26-2021";
   let rDate = [
     ("0" + (d.getMonth() + 1)).slice(-2),
     ("0" + d.getDate()).slice(-2),
