@@ -82,7 +82,7 @@ const GameContainer = (props:GameProps) => {
   }, [scaleValue]);
 
   let excitingGame = () => {
-    return props.game.leverageIndex > 1;
+    return props.game.leverageIndex > 4;
   };
 
   return (
