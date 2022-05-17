@@ -17,6 +17,7 @@
     ],
     "icon": "./assets/images/wt.png",
     "ios": {
+      "googleServicesFile": "./GoogleService-Info.plist",
       "splash": {
         "backgroundColor": "#44aa00",
         "image": "./assets/images/wt_splash.png",
@@ -30,6 +31,7 @@
       "android",
       "web"
     ],
+    "plugins": ["@react-native-google-signin/google-signin"],
     "scheme": "warning-track",
     "slug": "WarningTrack",
     "splash": {
