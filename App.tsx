@@ -12,10 +12,6 @@ const Tab = createBottomTabNavigator();
 
 // TODO: 
 // Need to setup sign to allow customization of app and alerts
-// https://blog.expo.dev/firebase-github-authentication-with-react-native-2543e32697b4
-// https://docs.expo.dev/versions/latest/sdk/auth-session/
-// https://docs.expo.dev/guides/authentication/#google
-// https://raw.githubusercontent.com/sakshampuri/ms-monorepo/e1c0aab01422c9e79bf5b8bc4dc6b9d9fbe60eab/app/src/Components/index.ts
 
 WebBrowser.maybeCompleteAuthSession();
 
