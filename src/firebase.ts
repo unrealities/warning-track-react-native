@@ -6,7 +6,7 @@ import * as gs from "../google-services.json"
 // Initialize Firebase
 // TODO: dangerous 0 index calls
 // TODO: measurementId for google-analytics
-export const firebaseApp = initializeApp({
+const firebaseApp = initializeApp({
     apiKey: gs.client[0].api_key[0].current_key,
     authDomain: gs.project_info.project_id + ".firebaseapp.com",
     projectId: gs.project_info.project_id,
@@ -16,6 +16,6 @@ export const firebaseApp = initializeApp({
 });
 
 // Initialize Firestore
-const firestore = getFirestore();
+export const firestore = getFirestore();
 
-export default firestore;
+export default firebaseApp;

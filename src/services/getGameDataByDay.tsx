@@ -1,5 +1,5 @@
 import { doc, DocumentReference, DocumentSnapshot, getDoc } from "firebase/firestore"; 
-import firestore from "../firebase";
+import { firestore } from "../firebase";
 
 export interface GameDataResponseGame {
   GameTime: {
