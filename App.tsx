@@ -1,19 +1,44 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import * as WebBrowser from 'expo-web-browser';
-import { Ionicons } from '@expo/vector-icons';
+import React, { useEffect, useState } from 'react'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { NavigationContainer } from '@react-navigation/native'
+import * as SplashScreen from 'expo-splash-screen'
+import * as WebBrowser from 'expo-web-browser'
+import * as Network from 'expo-network'
+import { Ionicons } from '@expo/vector-icons'
 
-import GamesScreen from "./src/screens/games";
-import { NotificationsScreen } from "./src/screens/notifications";
-import { SettingsScreen } from "./src/screens/settings";
+import GamesScreen from './src/screens/games'
+import { NotificationsScreen } from './src/screens/notifications'
+import { SettingsScreen } from './src/screens/settings'
 
-import RootNavigation from './src/navigation';
+import { firebaseConfig } from './src/config/firebase'
+import { initializeApp } from 'firebase/app'
+import { getFirestore } from 'firebase/firestore'
+import { getAnalytics, isSupported } from 'firebase/analytics'
 
-const Tab = createBottomTabNavigator();
+const app = initializeApp(firebaseConfig)
+const db = getFirestore(app)
+const analytics = isSupported().then(yes => yes ? getAnalytics(app) : null)
+WebBrowser.maybeCompleteAuthSession()
 
+SplashScreen.preventAutoHideAsync()
 
 const App = () => {
+  const [isNetworkConnected, setIsNetworkConnected] = useState<boolean>(true)
+  const Tab = createBottomTabNavigator()
+
+  useEffect(() => {
+    const networkConnected = async () => {
+      try {
+        await Network.getNetworkStateAsync().then((networkState) => {
+          networkState.isInternetReachable ? setIsNetworkConnected(true) : setIsNetworkConnected(false)
+        })
+      } catch (e) {
+        console.error("No network connection")
+      }
+    }
+    networkConnected()
+  })
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -68,7 +93,7 @@ const App = () => {
         />
       </Tab.Navigator>
     </NavigationContainer>
-  );
+  )
 }
 
 export default App
