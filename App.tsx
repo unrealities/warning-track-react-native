@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
+import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import * as WebBrowser from 'expo-web-browser'
 import * as Network from 'expo-network'
+import { initializeApp } from 'firebase/app'
+import { getFirestore } from 'firebase/firestore'
+import { getAnalytics, isSupported } from 'firebase/analytics'
 import { Ionicons } from '@expo/vector-icons'
 
 import GamesScreen from './src/screens/games'
 import { NotificationsScreen } from './src/screens/notifications'
 import { SettingsScreen } from './src/screens/settings'
-
 import { firebaseConfig } from './src/config/firebase'
-import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
-import { getAnalytics, isSupported } from 'firebase/analytics'
 
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
@@ -23,6 +23,17 @@ WebBrowser.maybeCompleteAuthSession()
 SplashScreen.preventAutoHideAsync()
 
 const App = () => {
+  const { user } = useAuthentication()
+
+  let [fontsLoaded] = useFonts({
+    'Lobster-Regular': require('./assets/fonts/Lobster-Regular.ttf')
+  })
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync()
+    }
+  }, [fontsLoaded])
+
   const [isNetworkConnected, setIsNetworkConnected] = useState<boolean>(true)
   const Tab = createBottomTabNavigator()
 
