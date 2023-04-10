@@ -23,7 +23,7 @@ WebBrowser.maybeCompleteAuthSession()
 SplashScreen.preventAutoHideAsync()
 
 const App = () => {
-  const { user } = useAuthentication()
+  // const { user } = useAuthentication()
 
   let [fontsLoaded] = useFonts({
     'Lobster-Regular': require('./assets/fonts/Lobster-Regular.ttf')
