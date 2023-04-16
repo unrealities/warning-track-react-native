@@ -1,29 +1,30 @@
-// TODO: from: https://blog.logrocket.com/integrating-firebase-authentication-expo-mobile-app/
-import React from 'react';
-import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
-import { firebaseApp } from '../../firebase';
+import React, { useEffect, useState } from 'react'
+import { initializeApp } from 'firebase/app'
+import { getAuth, onAuthStateChanged, User } from 'firebase/auth'
+import { firebaseConfig } from '../../config/firebase'
 
-const auth = getAuth(firebaseApp);
+const app = initializeApp(firebaseConfig)
+const auth = getAuth(app)
 
 export function useAuthentication() {
-  const [user, setUser] = React.useState<User>();
+    const [user, setUser] = useState<User>()
 
-  React.useEffect(() => {
-    const unsubscribeFromAuthStatuChanged = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        setUser(user);
-      } else {
-        // User is signed out
-        setUser(undefined);
-      }
-    });
+    useEffect(() => {
+        const unsubscribeFromAuthStatusChanged = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/firebase.User
+                setUser(user)
+            } else {
+                // User is signed out
+                setUser(undefined)
+            }
+        })
 
-    return unsubscribeFromAuthStatuChanged;
-  }, []);
+        return unsubscribeFromAuthStatusChanged
+    }, [])
 
-  return {
-    user
-  };
+    return {
+        user
+    }
 }

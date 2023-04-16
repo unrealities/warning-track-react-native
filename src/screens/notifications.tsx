@@ -6,10 +6,6 @@ import * as Notifications from "expo-notifications"
 import { ScreenStyles } from "../styles/screen"
 
 export function NotificationsScreen() {
-  let [fontsLoaded] = useFonts({
-    Lobster_400Regular,
-  })
-
   const [expoPushToken, setExpoPushToken] = useState("")
   const [notification, setNotification] = useState(false)
   const notificationListener = useRef()
@@ -110,12 +106,12 @@ export function NotificationsScreen() {
       <Text>Your expo push token: {expoPushToken}</Text>
       <View style={{ alignItems: "center", justifyContent: "center" }}>
         <Text>
-          Title: {notification && notification.request.content.title}{" "}
+          Title: {notification?.request.content.title}{" "}
         </Text>
-        <Text>Body: {notification && notification.request.content.body}</Text>
+        <Text>Body: {notification?.request.content.body}</Text>
         <Text>
           Data:{" "}
-          {notification && JSON.stringify(notification.request.content.data)}
+          {JSON.stringify(notification?.request.content.data)}
         </Text>
       </View>
       <Button
