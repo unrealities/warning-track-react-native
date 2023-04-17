@@ -1,12 +1,23 @@
 import React, { useEffect } from "react"
-import { Pressable, StyleSheet, Text, View } from "react-native"
+import { Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native"
 import { GoogleAuthProvider, getAuth, signInWithCredential, signOut } from "firebase/auth"
 import * as Google from 'expo-auth-session/providers/google'
 import Constants from 'expo-constants'
 
 import { useAuthentication } from '../utilities/hooks/useAuthentication'
+import { GameStyles } from "../styles/game"
+import Background from "../components/background"
 
-export function SettingsScreen() {
+export const SettingsScreen = () => {
+  return (
+    <SafeAreaView style={GameStyles.mainContainer}>
+      <Background />
+      <SettingsContainer />
+    </SafeAreaView>
+  )
+}
+
+function SettingsContainer() {
   const { user } = useAuthentication()
 
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({

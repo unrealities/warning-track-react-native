@@ -1,9 +1,9 @@
-import React from "react";
-import { SafeAreaView } from "react-native";
+import React from "react"
+import { SafeAreaView } from "react-native"
 
-import Background from "../components/background";
-import { GameStyles } from "../styles/game";
-import GamesContainer from "../components/game";
+import Background from "../components/background"
+import { GameStyles } from "../styles/game"
+import GamesContainer from "../components/game"
 
 const GamesScreen = () => {
   return (
@@ -11,7 +11,7 @@ const GamesScreen = () => {
       <Background />
       <GamesContainer />
     </SafeAreaView>
-  );
+  )
 }
 
 export default GamesScreen
