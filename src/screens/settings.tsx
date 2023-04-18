@@ -56,7 +56,7 @@ function SettingsContainer() {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: 'green',
     borderRadius: 10,
     flex: 1,
     maxHeight: 40,
@@ -65,15 +65,15 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
-    fontFamily: 'Arvo-Bold',
+    fontFamily: 'Lobster-Regular',
     textAlign: 'center'
   },
   container: {
-    alignItems: 'center',
-    alignSelf: 'center',
+    alignItems: "center",
+    height: "100%",
     flex: 1,
-    maxHeight: 60,
-    padding: 8,
-    width: 300
+    justifyContent: "center",
+    paddingTop: 16,
+    width: "100%",
   }
 })

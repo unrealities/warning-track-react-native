@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 import {
   Animated,
   Easing,
@@ -9,62 +9,62 @@ import {
   TouchableOpacity,
   View,
   ViewStyle,
-} from "react-native";
+} from "react-native"
 
-import moment from "moment";
+import moment from "moment"
 
-import { BSOStyles } from "../styles/ballsStrikesOuts";
-import { BaseRunnerStyles } from "../styles/baseRunner";
-import { GameStyles } from "../styles/game";
-import { LogoStyles } from "../styles/logo";
+import { BSOStyles } from "../styles/ballsStrikesOuts"
+import { BaseRunnerStyles } from "../styles/baseRunner"
+import { GameStyles } from "../styles/game"
+import { LogoStyles } from "../styles/logo"
 
-import { BallsStrikesOuts } from "../components/ballsStrikesOuts";
-import { BaseRunner } from "../components/baseRunner";
-import { ConvertGames, Game } from "../utilities/game";
-import { LeverageIndex } from "./leverageIndex";
-import { MLBTVLogo } from "./logo";
-import { TeamLogo } from "../components/teamLogo";
-import { Score } from "./score";
+import { BallsStrikesOuts } from "../components/ballsStrikesOuts"
+import { BaseRunner } from "../components/baseRunner"
+import { ConvertGames, Game } from "../utilities/game"
+import { LeverageIndex } from "./leverageIndex"
+import { MLBTVLogo } from "./logo"
+import { TeamLogo } from "../components/teamLogo"
+import { Score } from "./score"
 
 export interface GameProps {
-  game: Game;
+  game: Game
 }
 
 export interface GameState {
-  scaleValue: Animated.Value;
+  scaleValue: Animated.Value
 }
 
 export interface GamesProps {
-  games: Game[];
+  games: Game[]
 }
 
 export interface GamesState {
-  games: Game[];
+  games: Game[]
 }
 export interface PreGameProps {
-  game: Game;
+  game: Game
 }
 
 export interface PostGameProps {
-  game: Game;
+  game: Game
 }
 
 export interface NoGameProps {
-  game: Game;
+  game: Game
 }
 
 
 const GameContainer = (props:GameProps) => {
-  const animate = new Animated.Value(0);
-  const [scaleValue] = useState(animate);
+  const animate = new Animated.Value(0)
+  const [scaleValue] = useState(animate)
 
-  const animationChange = 1.2;
+  const animationChange = 1.2
   const animatedGameContainerStyles = gameAnimationStyle(
     animationChange * StyleSheet.flatten(GameStyles.gameContainer).minHeight,
     StyleSheet.flatten(GameStyles.gameContainer).maxHeight,
     animationChange * StyleSheet.flatten(GameStyles.gameContainer).minWidth,
     StyleSheet.flatten(GameStyles.gameContainer).width, scaleValue, GameStyles.gameContainer
-  );
+  )
 
   let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
     Animated.timing(scaleValue, {
@@ -72,18 +72,18 @@ const GameContainer = (props:GameProps) => {
       easing: Easing.bounce,
       toValue: 1,
       useNativeDriver: false,
-    }).start();
-  };
+    }).start()
+  }
 
   useEffect(() => {
-    scaleValue.setValue(0);
+    scaleValue.setValue(0)
     let animationTime = excitingGame() ? 500 : 0
-    gameAnimation(animationTime, scaleValue);
-  }, [scaleValue]);
+    gameAnimation(animationTime, scaleValue)
+  }, [scaleValue])
 
   let excitingGame = () => {
-    return props.game.leverageIndex > 4;
-  };
+    return props.game.leverageIndex > 4
+  }
 
   return (
     <Animated.View
@@ -127,41 +127,41 @@ const GameContainer = (props:GameProps) => {
         <MLBTVLogo />
       </TouchableOpacity>
     </Animated.View>
-  );
+  )
 }
 
 const GamesContainer = () => {
-  const [games, setGames] = useState<Game[]>([]);
+  const [games, setGames] = useState<Game[]>([])
 
   const fetchGames = async () => {
     try {
       ConvertGames().then(cg => {setGames(cg)})
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   }
 
   useEffect(() => {
-    fetchGames();
-    const intervalId = setInterval(() => fetchGames(), 30000);
-    return () => clearInterval(intervalId);
-  }, [games]);
+    fetchGames()
+    const intervalId = setInterval(() => fetchGames(), 30000)
+    return () => clearInterval(intervalId)
+  }, [])
 
   const gamesContainer = () => {
     if (games.length <= 0) {
-      return <NoGames />;
+      return <NoGames />
     }
 
     const renderItem = ({ item }) => {
       switch (item.viewType) {
         case "post":
-          return <PostGameContainer game={item}/>;
+          return <PostGameContainer game={item}/>
         case "pre":
-          return <PreGameContainer game={item}/>;
+          return <PreGameContainer game={item}/>
         default:
-          return <GameContainer game={item}/>;
+          return <GameContainer game={item}/>
       }
-    };
+    }
 
     return (
       <FlatList 
@@ -175,21 +175,21 @@ const GamesContainer = () => {
 
   return (
     <View style={GameStyles.gamesContainer}>{gamesContainer()}</View>
-  );
+  )
 }
 
 const NoGames = () => {
-  const animate = new Animated.Value(0);
-  const [scaleValue] = useState(animate);
-  let noGamesText = "No Games Today";
+  const animate = new Animated.Value(0)
+  const [scaleValue] = useState(animate)
+  let noGamesText = "No Games Today"
 
-  const animationChange = 0.8;
+  const animationChange = 0.8
   const animatedGameContainerStyles = gameAnimationStyle(
     animationChange * StyleSheet.flatten(GameStyles.gameContainer).minHeight,
     StyleSheet.flatten(GameStyles.gameContainer).minHeight,
     animationChange * StyleSheet.flatten(GameStyles.gameContainer).width,
     StyleSheet.flatten(GameStyles.gameContainer).width, scaleValue, GameStyles.noGamesContainer
-  );
+  )
 
   let gameAnimation = (duration: number, scaleValue: Animated.Value) => {
     Animated.timing(scaleValue, {
@@ -197,27 +197,27 @@ const NoGames = () => {
       easing: Easing.bounce,
       toValue: 1,
       useNativeDriver: false,
-    }).start();
-  };
+    }).start()
+  }
 
   useEffect(() => {
-    scaleValue.setValue(0);
-    gameAnimation(600, scaleValue);
-  }, []);
+    scaleValue.setValue(0)
+    gameAnimation(600, scaleValue)
+  }, [])
 
   return (
     <Animated.View style={animatedGameContainerStyles}>
       <Text style={GameStyles.noGamesText}>{noGamesText}</Text>
     </Animated.View>
-  );
-};
+  )
+}
 
 export class PreGameContainer extends React.Component<PreGameProps, GameState> {
   constructor(props: PreGameProps) {
-    super(props);
+    super(props)
     this.state = {
       scaleValue: new Animated.Value(0),
-    };
+    }
   }
 
   gameAnimation = (duration: number, scaleValue: Animated.Value) => {
@@ -226,16 +226,16 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
       easing: Easing.bounce,
       toValue: 1,
       useNativeDriver: false,
-    }).start();
-  };
+    }).start()
+  }
 
   componentDidMount = () => {
-    this.state.scaleValue.setValue(0);
-    this.gameAnimation(600, this.state.scaleValue);
-  };
+    this.state.scaleValue.setValue(0)
+    this.gameAnimation(600, this.state.scaleValue)
+  }
 
   render() {
-    const animationChange = 0.8;
+    const animationChange = 0.8
     const animatedGameContainerStyles = gameAnimationStyle(
       animationChange * StyleSheet.flatten(GameStyles.gameContainer).minHeight,
       StyleSheet.flatten(GameStyles.gameContainer).minHeight,
@@ -243,7 +243,7 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
       StyleSheet.flatten(GameStyles.gameContainer).width,
       this.state.scaleValue,
       GameStyles.gameContainer
-    );
+    )
 
     return (
       <Animated.View
@@ -269,13 +269,13 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
           </TouchableOpacity>
         </View>
       </Animated.View>
-    );
+    )
   }
 }
 
 export class PostGameContainer extends React.Component<PostGameProps> {
   constructor(props: PostGameProps) {
-    super(props);
+    super(props)
   }
 
   render() {
@@ -298,7 +298,7 @@ export class PostGameContainer extends React.Component<PostGameProps> {
           </View>
         </View>
       </View>
-    );
+    )
   }
 }
 
@@ -313,11 +313,11 @@ let gameAnimationStyle = (
   const height = scaleValue.interpolate({
     inputRange: [0, 1],
     outputRange: [heightStart, heightFinish],
-  });
+  })
   const width = scaleValue.interpolate({
     inputRange: [0, 1],
     outputRange: [widthStart, widthFinish],
-  });
+  })
 
   return [
     style,
@@ -325,7 +325,7 @@ let gameAnimationStyle = (
       height: height,
       width: width,
     },
-  ];
-};
+  ]
+}
 
 export default GamesContainer
