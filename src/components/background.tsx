@@ -1,11 +1,11 @@
-import * as React from "react";
-import { Dimensions } from "react-native";
-import Svg, { Defs, Path, Pattern, Rect } from "react-native-svg";
+import * as React from "react"
+import { Dimensions } from "react-native"
+import Svg, { Defs, Path, Pattern, Rect } from "react-native-svg"
 
-import { BackgroundStyles } from "../styles/background";
+import { BackgroundStyles } from "../styles/background"
 
 function Background() {
-  const { width, height } = Dimensions.get("window");
+  const { width, height } = Dimensions.get("window")
   return (
     <Svg 
       height={height}
@@ -37,7 +37,7 @@ function Background() {
         height="100%"
       />
     </Svg>
-  );
+  )
 }
 
-export default Background;
+export default Background

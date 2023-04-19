@@ -56,24 +56,27 @@ function SettingsContainer() {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'green',
-    borderRadius: 10,
-    flex: 1,
-    maxHeight: 40,
-    padding: 10,
-    width: 280
+    alignContent: "center",
+    alignSelf: "center",
+    backgroundColor: "#faf5e3",
+    borderColor: "#593811",
+    borderWidth: 3,
+    borderRadius: 20,
+    minHeight: 46,
+    marginTop: 20,
+    padding: 20,
+    shadowColor: "#153600",
+    shadowOffset: { height: 6, width: 6 },
+    shadowOpacity: 0.5
   },
   buttonText: {
-    color: 'white',
-    fontFamily: 'Lobster-Regular',
-    textAlign: 'center'
+    color: "#63513c",
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
   },
   container: {
     alignItems: "center",
-    height: "100%",
-    flex: 1,
-    justifyContent: "center",
-    paddingTop: 16,
-    width: "100%",
+    flex: 1
   }
 })
