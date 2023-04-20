@@ -1,19 +1,15 @@
 import React, { useEffect } from "react"
-import { Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native"
+import { Pressable, StyleSheet, Text, View } from "react-native"
 import { GoogleAuthProvider, getAuth, signInWithCredential, signOut } from "firebase/auth"
 import * as Google from 'expo-auth-session/providers/google'
 import Constants from 'expo-constants'
 
 import { useAuthentication } from '../utilities/hooks/useAuthentication'
-import { GameStyles } from "../styles/game"
-import Background from "../components/background"
+import withBackground from "../utilities/background"
 
 export const SettingsScreen = () => {
   return (
-    <SafeAreaView style={GameStyles.mainContainer}>
-      <Background />
-      <SettingsContainer />
-    </SafeAreaView>
+    withBackground(SettingsContainer)
   )
 }
 

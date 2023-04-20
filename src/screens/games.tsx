@@ -1,16 +1,9 @@
-import React from "react"
-import { SafeAreaView } from "react-native"
-
-import Background from "../components/background"
-import { GameStyles } from "../styles/game"
 import GamesContainer from "../components/game"
+import withBackground from "../utilities/background"
 
 const GamesScreen = () => {
   return (
-    <SafeAreaView style={GameStyles.mainContainer}>
-      <Background />
-      <GamesContainer />
-    </SafeAreaView>
+    withBackground(GamesContainer)
   )
 }
 
