@@ -53,6 +53,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        initialRouteName="Games"
         tabBarOptions={{
           activeBackgroundColor: "#faf5e3",
           activeTintColor: "#593811",
@@ -73,22 +74,22 @@ const App = () => {
         }}
       >
         <Tab.Screen
-          name="Games"
-          component={GamesScreen}
-          options={{
-            tabBarLabel: "Games",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="baseball-outline" color={"#63513c"} size={24} />
-            ),
-          }}
-        />
-        <Tab.Screen
           name="Notifications"
           component={NotificationsScreen}
           options={{
             tabBarLabel: "Notification Test",
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="alert-circle-outline" size={24} color={"#63513c"} />
+            ),
+          }}
+        />        
+        <Tab.Screen
+          name="Games"
+          component={GamesScreen}
+          options={{
+            tabBarLabel: "Games",
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="baseball-outline" color={"#63513c"} size={24} />
             ),
           }}
         />
