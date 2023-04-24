@@ -1,16 +1,14 @@
 import * as React from "react"
-import { Dimensions } from "react-native"
 import Svg, { Defs, Path, Pattern, Rect } from "react-native-svg"
 
 import { BackgroundStyles } from "../styles/background"
 
 function Background() {
-  const { width, height } = Dimensions.get("window")
   return (
     <Svg 
-      height={height}
+      height={'100%'}
       style={BackgroundStyles.fixed}
-      width={width}
+      width={'100%'}
     >
       <Defs>
         <Pattern
