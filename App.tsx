@@ -74,15 +74,15 @@ const App = () => {
         }}
       >
         <Tab.Screen
-          name="Notifications"
-          component={NotificationsScreen}
+          name="Settings"
+          component={SettingsScreen}
           options={{
-            tabBarLabel: "Notification Test",
+            tabBarLabel: "Settings",
             tabBarIcon: ({ color, size }) => (
-              <Ionicons name="alert-circle-outline" size={24} color={"#63513c"} />
+              <Ionicons name="construct-outline" size={24} color={"#63513c"} />
             ),
           }}
-        />        
+        />
         <Tab.Screen
           name="Games"
           component={GamesScreen}
@@ -90,16 +90,6 @@ const App = () => {
             tabBarLabel: "Games",
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="baseball-outline" color={"#63513c"} size={24} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Settings"
-          component={SettingsScreen}
-          options={{
-            tabBarLabel: "Settings",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="construct-outline" size={24} color={"#63513c"} />
             ),
           }}
         />

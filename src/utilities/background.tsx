@@ -6,7 +6,7 @@ import Background from "../components/background"
 export default function withBackground(WrappedComponent: Function) {
     return (
         <SafeAreaView style={GameStyles.mainContainer}>
-            <WrappedComponent {...this.props} />
+            <WrappedComponent />
             <Background />
         </SafeAreaView>
     )
