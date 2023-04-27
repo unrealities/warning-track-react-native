@@ -86,7 +86,7 @@ const GameContainer = (props:GameProps) => {
   }
 
   return (
-    <Animated.View
+    <View
       style={animatedGameContainerStyles}
       key={props.game.url}
     >
@@ -126,7 +126,7 @@ const GameContainer = (props:GameProps) => {
         </Text>
         <MLBTVLogo />
       </TouchableOpacity>
-    </Animated.View>
+    </View>
   )
 }
 
