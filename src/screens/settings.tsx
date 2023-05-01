@@ -41,6 +41,7 @@ function SettingsContainer() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>Grape Juice: {user}</Text>
       <Pressable
         onPress={() => { user?.displayName != '' ? signOut(getAuth()) : promptAsync() }}
         style={styles.button}>
@@ -75,5 +76,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 1
-  }
+  },
+  text: {
+    flex: 1,
+    fontFamily: 'Lobster-Regular',
+    fontSize: 30,
+    minHeight: 100,
+    textAlign: 'center'
+}
 })
