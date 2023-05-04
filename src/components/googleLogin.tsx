@@ -4,14 +4,11 @@ import { GoogleAuthProvider, getAuth, signInWithCredential, signOut } from "fire
 import * as Google from 'expo-auth-session/providers/google'
 import Constants from 'expo-constants'
 
-import { colors } from '../styles/global'
-import Player from "../models/player"
+import { useAuthentication } from '../utilities/hooks/useAuthentication'
 
-interface GoogleLoginProps {
-    player: Player
-}
+const GoogleLogin = () => {
+    const { user } = useAuthentication()
 
-const GoogleLogin = (props: GoogleLoginProps) => {
     const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
         androidClientId: Constants?.expoConfig?.extra?.androidClientId,
         expoClientId: Constants?.expoConfig?.extra?.expoClientId,
@@ -37,10 +34,11 @@ const GoogleLogin = (props: GoogleLoginProps) => {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.text}>Grape Juice: {user}</Text>
             <Pressable
-                onPress={() => {props.player.name != '' ? signOut(getAuth()) : promptAsync()}}
+                onPress={() => { user && user?.displayName != '' ? signOut(getAuth()) : promptAsync() }}
                 style={styles.button}>
-                <Text style={styles.buttonText}>{props.player.name != '' ? 'Sign Out' : 'Sign In'}</Text>
+                <Text style={styles.buttonText}>{user && user?.displayName != '' ? 'Sign Out' : 'Sign In'}</Text>
             </Pressable>
         </View>
     )
@@ -48,17 +46,24 @@ const GoogleLogin = (props: GoogleLoginProps) => {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: colors.primary,
-        borderRadius: 10,
-        flex: 1,
-        maxHeight: 40,
-        padding: 10,
-        width: 280
+        alignContent: "center",
+        alignSelf: "center",
+        backgroundColor: "#faf5e3",
+        borderColor: "#593811",
+        borderWidth: 3,
+        borderRadius: 20,
+        minHeight: 46,
+        marginTop: 20,
+        padding: 20,
+        shadowColor: "#153600",
+        shadowOffset: { height: 6, width: 6 },
+        shadowOpacity: 0.5
     },
     buttonText: {
-        color: colors.secondary,
-        fontFamily: 'Arvo-Bold',
-        textAlign: 'center'
+        color: "#63513c",
+        fontSize: 24,
+        fontWeight: "bold",
+        textAlign: "center",
     },
     container: {
         alignItems: 'center',
@@ -66,6 +71,13 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 8,
         width: 300
+    },
+    text: {
+        flex: 1,
+        fontFamily: 'Lobster-Regular',
+        fontSize: 30,
+        minHeight: 100,
+        textAlign: 'center'
     }
 })
 
