@@ -6,8 +6,6 @@ import Constants from 'expo-constants'
 
 import { useAuthentication } from '../utilities/hooks/useAuthentication'
 
-// TODO: Error when logging in
-// Uncaught Error: Objects are not valid as a React child (found: object with keys {providerId, proactiveRefresh, reloadUserInfo, reloadListener, uid, auth, stsTokenManager, accessToken, displayName, email, emailVerified, phoneNumber, photoURL, isAnonymous, tenantId, providerData, metadata}). If you meant to render a collection of children, use an array instead.
 const GoogleLogin = () => {
     const { user } = useAuthentication()
 
@@ -36,7 +34,7 @@ const GoogleLogin = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Grape Juice: {user}</Text>
+            <Text style={styles.text}>{ user ? user?.displayName : 'Please Sign In'}</Text>
             <Pressable
                 onPress={() => { user && user?.displayName != '' ? signOut(getAuth()) : promptAsync() }}
                 style={styles.button}>
