@@ -4,6 +4,13 @@ import { FlatList, View } from "react-native"
 import withBackground from "../utilities/background"
 import GoogleLogin from "../components/googleLogin"
 
+const settings = [
+  {
+    id: 'notifications',
+    title: 'notifications'
+  }
+]
+
 const SettingsContainer = () => {
   const [settings, setSettings] = useState<Settings>(null)
 
@@ -11,8 +18,10 @@ const SettingsContainer = () => {
     <View>
       <GoogleLogin /> 
       <FlatList 
-      data={settings}
-      showsHorizontalScrollIndicator={false} />
+        data={settings}
+        renderItem={({item}) => <Setting title={item.title} />}
+        keyExtractor={item => item.id}
+        showsHorizontalScrollIndicator={false} />
     </View>
   )
 }
