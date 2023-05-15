@@ -1,10 +1,11 @@
 import React, { useState } from "react"
-import { FlatList, StyleSheet, View, Text } from "react-native"
+import { FlatList, StyleSheet, Switch, Text, View } from "react-native"
 
 import withBackground from "../utilities/background"
 import GoogleLogin from "../components/googleLogin"
 
 export interface SettingContainerProps {
+  isEnabled: Boolean,
   name: String
 }
 
@@ -30,10 +31,18 @@ const SettingsContainer = () => {
 
 const SettingContainer = (props: SettingContainerProps) => {
   const [name] = useState<String>(props.name)
+  const [enabled, setEnabled] = useState<Boolean>(props.isEnabled)
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{name}</Text>
+      <Switch
+        trackColor={{false: '#767577', true: '#81b0ff'}}
+        thumbColor={enabled ? '#f5dd4b' : '#f4f3f4'}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={setEnabled}
+        value={enabled}
+      />
     </View>
   )
 }
