@@ -33,6 +33,11 @@ const SettingContainer = (props: SettingContainerProps) => {
   const [name] = useState<String>(props.name)
   const [enabled, setEnabled] = useState<Boolean>(props.isEnabled)
 
+  const updateSetting = () => {
+    setEnabled(!enabled)
+    console.log(enabled)
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{name}</Text>
@@ -40,7 +45,7 @@ const SettingContainer = (props: SettingContainerProps) => {
         trackColor={{false: '#767577', true: '#81b0ff'}}
         thumbColor={enabled ? '#f5dd4b' : '#f4f3f4'}
         ios_backgroundColor="#3e3e3e"
-        onValueChange={setEnabled}
+        onValueChange={updateSetting}
         value={enabled}
       />
     </View>
