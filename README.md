@@ -22,3 +22,7 @@ This allows us to easily access the backend in Firebase
 `expo install @react-native-firebase/app`
 
 There are credentials that you need to get from Google that are stored in `/android/app/google-services.json` that are excluded from this repo.
+
+## dotenv
+
+[dotenv](https://www.npmjs.com/package/dotenv) is used to to store environment variables in `.env` that is excluded from this repo. This data is read in via `app.config.js`
