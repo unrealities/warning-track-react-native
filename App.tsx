@@ -6,14 +6,18 @@ import * as SplashScreen from 'expo-splash-screen'
 import * as WebBrowser from 'expo-web-browser'
 import * as Network from 'expo-network'
 import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
+import { doc, getDoc, getFirestore, setDoc, updateDoc } from 'firebase/firestore'
+
 import { getAnalytics, isSupported } from 'firebase/analytics'
 import { Ionicons } from '@expo/vector-icons'
+import uuid from 'react-native-uuid'
 
 import GamesScreen from './src/screens/games'
-import { NotificationsScreen } from './src/screens/notifications'
 import { SettingsScreen } from './src/screens/settings'
 import { firebaseConfig } from './src/config/firebase'
+import { UserConverter } from './src/utilities/firestore/converters/user'
+import { getUserID } from './src/utilities/hooks/localStorage'
+
 
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
@@ -34,7 +38,13 @@ const App = () => {
     }
   }, [fontsLoaded])
 
+  let u: User = {
+    id: uuid.v4().toString(),
+    name: ''
+  }
+
   const [isNetworkConnected, setIsNetworkConnected] = useState<boolean>(true)
+  const [user, setUser] = useState<User>(u)
   const Tab = createBottomTabNavigator()
 
   useEffect(() => {
@@ -47,6 +57,24 @@ const App = () => {
         console.error("No network connection")
       }
     }
+    const updateUser = async (userToUpdate:User) => {
+      const docRef = doc(db, 'users', userToUpdate.id).withConverter(UserConverter)
+      const docSnap = await getDoc(docRef)
+
+      try {
+        if (!docSnap.exists()) {
+          getUserID().then(id => {
+            userToUpdate.id = id
+            setUser(userToUpdate)
+          })
+          await setDoc(doc(db, 'users', userToUpdate.id).withConverter(UserConverter), userToUpdate)
+        }
+      } catch (e) {
+        console.error("Error adding document: ", e)
+      }
+    }
+
+    updateUser(user)
     networkConnected()
   })
 
