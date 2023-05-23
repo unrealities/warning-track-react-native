@@ -15,6 +15,7 @@ import uuid from 'react-native-uuid'
 import GamesScreen from './src/screens/games'
 import { SettingsScreen } from './src/screens/settings'
 import { firebaseConfig } from './src/config/firebase'
+import User from './src/models/user'
 import { UserConverter } from './src/utilities/firestore/converters/user'
 import { getUserID } from './src/utilities/hooks/localStorage'
 

@@ -3,10 +3,12 @@ import { FlatList, StyleSheet, Switch, Text, View } from "react-native"
 
 import withBackground from "../utilities/background"
 import GoogleLogin from "../components/googleLogin"
+import UserSettings from "../models/userSettings"
 
 export interface SettingContainerProps {
   isEnabled: Boolean,
-  name: String
+  name: String,
+  user: User
 }
 
 const settings = [
@@ -32,6 +34,26 @@ const SettingsContainer = () => {
 const SettingContainer = (props: SettingContainerProps) => {
   const [name] = useState<String>(props.name)
   const [enabled, setEnabled] = useState<Boolean>(props.isEnabled)
+
+  const updateUserSettings = async (userToUpdate:User, notificationsEnabled:boolean) => {
+    const userSettings: UserSettings = new UserSettings()
+    userSettings.userID = userToUpdate.id
+    userSettings.notificationsEnabled = notificationsEnabled
+    const docRef = doc(db, 'userSettings', userSettings).withConverter(UserSettingsConverter)
+    const docSnap = await getDoc(docRef)
+
+    try {
+      if (!docSnap.exists()) {
+          getUserID().then(id => {
+          userToUpdate.id = id
+          setUser(userToUpdate)
+        })
+        await setDoc(doc(db, 'userSettings', userSettings).withConverter(UserSettingsConverter), userSettings)
+      }
+    } catch (e) {
+      console.error("Error adding document: ", e)
+    }
+  }
 
   const updateSetting = () => {
     setEnabled(!enabled)
