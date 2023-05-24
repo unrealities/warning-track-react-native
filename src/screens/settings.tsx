@@ -1,16 +1,21 @@
 import React, { useState } from "react"
 import { FlatList, StyleSheet, Switch, Text, View } from "react-native"
 
+import { initializeApp } from 'firebase/app'
+import { doc, getDoc, getFirestore, setDoc, updateDoc } from 'firebase/firestore'
+
 import withBackground from "../utilities/background"
 import GoogleLogin from "../components/googleLogin"
 import UserSettings from "../models/userSettings"
+import { firebaseConfig } from "../config/firebase"
 
 export interface SettingContainerProps {
   isEnabled: Boolean,
   name: String,
   user: User
 }
-
+const app = initializeApp(firebaseConfig)
+const db = getFirestore(app)
 const settings = [
   {
     id: 'notifications',
