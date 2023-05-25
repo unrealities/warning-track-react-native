@@ -8,6 +8,7 @@ import withBackground from "../utilities/background"
 import GoogleLogin from "../components/googleLogin"
 import UserSettings from "../models/userSettings"
 import { firebaseConfig } from "../config/firebase"
+import { getUserID } from './src/utilities/hooks/localStorage'
 
 export interface SettingContainerProps {
   isEnabled: Boolean,
@@ -45,16 +46,9 @@ const SettingContainer = (props: SettingContainerProps) => {
     userSettings.userID = userToUpdate.id
     userSettings.notificationsEnabled = notificationsEnabled
     const docRef = doc(db, 'userSettings', userSettings).withConverter(UserSettingsConverter)
-    const docSnap = await getDoc(docRef)
 
     try {
-      if (!docSnap.exists()) {
-          getUserID().then(id => {
-          userToUpdate.id = id
-          setUser(userToUpdate)
-        })
-        await setDoc(doc(db, 'userSettings', userSettings).withConverter(UserSettingsConverter), userSettings)
-      }
+      await setDoc(doc(db, 'userSettings', userSettings).withConverter(UserSettingsConverter), userSettings)
     } catch (e) {
       console.error("Error adding document: ", e)
     }
