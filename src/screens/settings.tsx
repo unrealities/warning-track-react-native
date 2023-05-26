@@ -8,13 +8,17 @@ import withBackground from "../utilities/background"
 import GoogleLogin from "../components/googleLogin"
 import UserSettings from "../models/userSettings"
 import { firebaseConfig } from "../config/firebase"
-import { getUserID } from './src/utilities/hooks/localStorage'
 
 export interface SettingContainerProps {
   isEnabled: Boolean,
   name: String,
   user: User
 }
+
+export interface SettingsContainerProps {
+  user: User
+}
+
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 const settings = [
@@ -24,13 +28,13 @@ const settings = [
   }
 ]
 
-const SettingsContainer = () => {
+const SettingsContainer = (props: SettingsContainerProps) => {
   return (
     <View>
       <GoogleLogin /> 
       <FlatList 
         data={settings}
-        renderItem={({item}) => <SettingContainer name={item.name} />}
+        renderItem={({item}) => <SettingContainer name={item.name} isEnabled={false} user={props.user} />}
         keyExtractor={item => item.id}
         showsHorizontalScrollIndicator={false} />
     </View>
@@ -73,9 +77,9 @@ const SettingContainer = (props: SettingContainerProps) => {
   )
 }
 
-export const SettingsScreen = () => {
+export const SettingsScreen = (props: SettingsScreenProps) => {
   return (
-    withBackground(SettingsContainer)
+    withBackground(SettingsContainer user={props.user})
   )
 }
 

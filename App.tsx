@@ -58,7 +58,7 @@ const App = () => {
         console.error("No network connection")
       }
     }
-    const updateUser = async (userToUpdate:User) => {
+    const updateUser = async (userToUpdate: User) => {
       const docRef = doc(db, 'users', userToUpdate.id).withConverter(UserConverter)
       const docSnap = await getDoc(docRef)
 

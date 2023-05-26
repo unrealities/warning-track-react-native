@@ -15,7 +15,7 @@ export default function withBackground(WrappedComponent: Function) {
             }}>
                 <Background />
             </View>
-            <WrappedComponent />
+            <WrappedComponent props={...this.props}/>
         </SafeAreaView>
     )
 }
