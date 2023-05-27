@@ -1,4 +1,4 @@
 export default class UserSettings {
-    userID: number
-    notificationsEnabled: boolean
+    userID: String
+    notificationsEnabled: Boolean
 }

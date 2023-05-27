@@ -12,11 +12,7 @@ import { firebaseConfig } from "../config/firebase"
 export interface SettingContainerProps {
   isEnabled: Boolean,
   name: String,
-  user: User
-}
-
-export interface SettingsContainerProps {
-  user: User
+  userID: String
 }
 
 const app = initializeApp(firebaseConfig)
@@ -28,13 +24,15 @@ const settings = [
   }
 ]
 
-const SettingsContainer = (props: SettingsContainerProps) => {
+const SettingsContainer = () => {
+  const { user } = useAuthentication()
+
   return (
     <View>
       <GoogleLogin /> 
       <FlatList 
         data={settings}
-        renderItem={({item}) => <SettingContainer name={item.name} isEnabled={false} user={props.user} />}
+        renderItem={({item}) => <SettingContainer name={item.name} isEnabled={false} userID={user.id} />}
         keyExtractor={item => item.id}
         showsHorizontalScrollIndicator={false} />
     </View>
@@ -45,9 +43,9 @@ const SettingContainer = (props: SettingContainerProps) => {
   const [name] = useState<String>(props.name)
   const [enabled, setEnabled] = useState<Boolean>(props.isEnabled)
 
-  const updateUserSettings = async (userToUpdate:User, notificationsEnabled:boolean) => {
+  const updateUserSettings = async (userIDToUpdate:String, notificationsEnabled:Boolean) => {
     const userSettings: UserSettings = new UserSettings()
-    userSettings.userID = userToUpdate.id
+    userSettings.userID = userIDToUpdate
     userSettings.notificationsEnabled = notificationsEnabled
     const docRef = doc(db, 'userSettings', userSettings).withConverter(UserSettingsConverter)
 
@@ -60,6 +58,7 @@ const SettingContainer = (props: SettingContainerProps) => {
 
   const updateSetting = () => {
     setEnabled(!enabled)
+    updateUserSettings(props.userID, props.isEnabled)
     console.log(enabled)
   }
 
@@ -79,7 +78,7 @@ const SettingContainer = (props: SettingContainerProps) => {
 
 export const SettingsScreen = (props: SettingsScreenProps) => {
   return (
-    withBackground(SettingsContainer user={props.user})
+    withBackground(SettingsContainer)
   )
 }
 
