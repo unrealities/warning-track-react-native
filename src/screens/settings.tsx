@@ -5,6 +5,7 @@ import { initializeApp } from 'firebase/app'
 import { doc, getDoc, getFirestore, setDoc, updateDoc } from 'firebase/firestore'
 
 import withBackground from "../utilities/background"
+import { useAuthentication } from '../utilities/hooks/useAuthentication'
 import GoogleLogin from "../components/googleLogin"
 import UserSettings from "../models/userSettings"
 import { firebaseConfig } from "../config/firebase"
@@ -26,13 +27,14 @@ const settings = [
 
 const SettingsContainer = () => {
   const { user } = useAuthentication()
+  const userID = user ? user.uid : '0'
 
   return (
     <View>
       <GoogleLogin /> 
       <FlatList 
         data={settings}
-        renderItem={({item}) => <SettingContainer name={item.name} isEnabled={false} userID={user.id} />}
+        renderItem={({item}) => <SettingContainer name={item.name} isEnabled={false} userID={userID} />}
         keyExtractor={item => item.id}
         showsHorizontalScrollIndicator={false} />
     </View>
