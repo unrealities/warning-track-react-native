@@ -27,16 +27,20 @@ const settings = [
 
 const SettingsContainer = () => {
   const { user } = useAuthentication()
-  const userID = user ? user.uid : '0'
+  let body = <Text style={styles.text}>{ user ? user?.displayName : 'Please Sign In to Access Settings'}</Text>
+  
+  if (user) {
+    body = <FlatList 
+      data={settings}
+      renderItem={({item}) => <SettingContainer name={item.name} isEnabled={false} userID={userID} />}
+      keyExtractor={item => item.id}
+      showsHorizontalScrollIndicator={false} />
+  }
 
   return (
     <View>
-      <GoogleLogin /> 
-      <FlatList 
-        data={settings}
-        renderItem={({item}) => <SettingContainer name={item.name} isEnabled={false} userID={userID} />}
-        keyExtractor={item => item.id}
-        showsHorizontalScrollIndicator={false} />
+      <GoogleLogin />
+      { body }
     </View>
   )
 }
@@ -97,6 +101,7 @@ const styles = StyleSheet.create({
       fontFamily: 'Lobster-Regular',
       fontSize: 30,
       minHeight: 100,
+      paddingTop: 10,
       textAlign: 'center'
   }
 })

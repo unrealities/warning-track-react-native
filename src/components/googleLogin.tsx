@@ -34,7 +34,6 @@ const GoogleLogin = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>{ user ? user?.displayName : 'Please Sign In'}</Text>
             <Pressable
                 onPress={() => { user && user?.displayName != '' ? signOut(getAuth()) : promptAsync() }}
                 style={styles.button}>
