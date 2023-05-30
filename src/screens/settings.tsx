@@ -32,15 +32,15 @@ const SettingsContainer = () => {
   if (user) {
     body = <FlatList 
       data={settings}
-      renderItem={({item}) => <SettingContainer name={item.name} isEnabled={false} userID={userID} />}
+      renderItem={({item}) => <SettingContainer name={item.name} isEnabled={false} userID={user.uid} />}
       keyExtractor={item => item.id}
       showsHorizontalScrollIndicator={false} />
   }
 
   return (
     <View>
-      <GoogleLogin />
       { body }
+      <GoogleLogin />
     </View>
   )
 }
