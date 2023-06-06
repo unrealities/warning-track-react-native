@@ -6,7 +6,7 @@ import * as SplashScreen from 'expo-splash-screen'
 import * as WebBrowser from 'expo-web-browser'
 import * as Network from 'expo-network'
 import { initializeApp } from 'firebase/app'
-import { doc, getDoc, getFirestore, setDoc, updateDoc } from 'firebase/firestore'
+import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
 
 import { getAnalytics, isSupported } from 'firebase/analytics'
 import { Ionicons } from '@expo/vector-icons'

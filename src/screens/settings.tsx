@@ -2,13 +2,14 @@ import React, { useState } from "react"
 import { FlatList, StyleSheet, Switch, Text, View } from "react-native"
 
 import { initializeApp } from 'firebase/app'
-import { doc, getDoc, getFirestore, setDoc, updateDoc } from 'firebase/firestore'
+import { doc, getFirestore, setDoc } from 'firebase/firestore'
 
 import withBackground from "../utilities/background"
 import { useAuthentication } from '../utilities/hooks/useAuthentication'
 import GoogleLogin from "../components/googleLogin"
 import UserSettings from "../models/userSettings"
 import { firebaseConfig } from "../config/firebase"
+import { UserSettingsConverter } from '..utilities/firestore/converters/userSettings'
 
 export interface SettingContainerProps {
   isEnabled: Boolean,
@@ -54,7 +55,6 @@ const SettingContainer = (props: SettingContainerProps) => {
     const userSettings: UserSettings = new UserSettings()
     userSettings.userID = userIDToUpdate
     userSettings.notificationsEnabled = notificationsEnabled
-    const docRef = doc(db, 'userSettings', userSettings).withConverter(UserSettingsConverter)
 
     try {
       await setDoc(doc(db, 'userSettings', userSettings).withConverter(UserSettingsConverter), userSettings)
