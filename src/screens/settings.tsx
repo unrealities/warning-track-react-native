@@ -9,7 +9,7 @@ import { useAuthentication } from '../utilities/hooks/useAuthentication'
 import GoogleLogin from "../components/googleLogin"
 import UserSettings from "../models/userSettings"
 import { firebaseConfig } from "../config/firebase"
-import { UserSettingsConverter } from '..utilities/firestore/converters/userSettings'
+import { UserSettingsConverter } from '../utilities/firestore/converters/settings'
 
 export interface SettingContainerProps {
   isEnabled: Boolean,
