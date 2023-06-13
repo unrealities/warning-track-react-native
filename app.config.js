@@ -3,6 +3,12 @@ require("dotenv").config();
 const myValue = 'warning-track-backend'
 
 export default {
+    android: {
+      package: "com.unrealities.warningtrackbackend"
+    },
+    ios: {
+      bundleIdentifier: "com.unrealities.warningtrackbackend"
+    },
     name: myValue,
     version: process.env.MY_CUSTOM_PROJECT_VERSION || '1.0.0',
     extra: {
