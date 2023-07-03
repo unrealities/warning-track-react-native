@@ -28,7 +28,7 @@ const settings = [
 
 const SettingsContainer = () => {
   const { user } = useAuthentication()
-  let body = <Text style={styles.text}>{ user ? user?.displayName : 'Please Sign In to Access Settings'}</Text>
+  let body = <Text style={styles.text}>{ user ? user?.displayName : 'Sign In to Access Settings'}</Text>
   
   if (user) {
     body = <FlatList 
