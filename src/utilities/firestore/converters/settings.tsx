@@ -1,4 +1,4 @@
-import settings from '../../../models/userSettings'
+import UserSettings from '../../../models/userSettings'
 
 export const UserSettingsConverter = {
     toFirestore: (settings) => {

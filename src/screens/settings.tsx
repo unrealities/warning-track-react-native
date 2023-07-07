@@ -12,9 +12,9 @@ import { firebaseConfig } from "../config/firebase"
 import { UserSettingsConverter } from '../utilities/firestore/converters/settings'
 
 export interface SettingContainerProps {
-  isEnabled: Boolean,
-  name: String,
-  userID: String
+  isEnabled: boolean,
+  name: string,
+  userID: string
 }
 
 const app = initializeApp(firebaseConfig)
@@ -47,17 +47,17 @@ const SettingsContainer = () => {
 }
 
 const SettingContainer = (props: SettingContainerProps) => {
-  const [name] = useState<String>(props.name)
-  const [enabled, setEnabled] = useState<Boolean>(props.isEnabled)
+  const [name] = useState<string>(props.name)
+  const [enabled, setEnabled] = useState<boolean>(props.isEnabled)
   console.log(props.userID)
 
-  const updateUserSettings = async (userIDToUpdate:String, notificationsEnabled:Boolean) => {
+  const updateUserSettings = async (userIDToUpdate:string, notificationsEnabled:boolean) => {
     const userSettings: UserSettings = new UserSettings()
     userSettings.userID = userIDToUpdate
     userSettings.notificationsEnabled = notificationsEnabled
 
     try {
-      await setDoc(doc(db, 'userSettings', userSettings).withConverter(UserSettingsConverter), userSettings)
+      await setDoc(doc(db, 'userSettings', userSettings.userID).withConverter(UserSettingsConverter), userSettings)
     } catch (e) {
       console.error("Error adding document: ", e)
     }
