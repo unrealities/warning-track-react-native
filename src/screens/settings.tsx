@@ -63,10 +63,9 @@ const SettingContainer = (props: SettingContainerProps) => {
     }
   }
 
-  const updateSetting = () => {
-    setEnabled(!enabled)
-    updateUserSettings(props.userID, props.isEnabled)
-    console.log(enabled)
+  const updateSetting = (isEnabled:boolean) => {
+    setEnabled(isEnabled)
+    updateUserSettings(props.userID, isEnabled)
   }
 
   return (
