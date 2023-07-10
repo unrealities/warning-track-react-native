@@ -18,6 +18,7 @@ import { firebaseConfig } from './src/config/firebase'
 import User from './src/models/user'
 import { UserConverter } from './src/utilities/firestore/converters/user'
 import { getUserID } from './src/utilities/hooks/localStorage'
+import { useAuthentication } from './src/utilities/hooks/useAuthentication'
 
 
 const app = initializeApp(firebaseConfig)
@@ -28,7 +29,7 @@ WebBrowser.maybeCompleteAuthSession()
 SplashScreen.preventAutoHideAsync()
 
 const App = () => {
-  // const { user } = useAuthentication()
+  const { gUser } = useAuthentication()
 
   let [fontsLoaded] = useFonts({
     'Lobster-Regular': require('./assets/fonts/Lobster-Regular.ttf')
@@ -41,7 +42,7 @@ const App = () => {
 
   let u: User = {
     id: uuid.v4().toString(),
-    name: ''
+    name: gUser? gUser.displayName : ''
   }
 
   const [isNetworkConnected, setIsNetworkConnected] = useState<boolean>(true)
