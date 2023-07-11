@@ -67,6 +67,7 @@ const App = () => {
         if (!docSnap.exists()) {
           getUserID().then(id => {
             userToUpdate.id = id
+            userToUpdate.name = gUser? gUser.displayName : ''
             setUser(userToUpdate)
           })
           await setDoc(doc(db, 'users', userToUpdate.id).withConverter(UserConverter), userToUpdate)
