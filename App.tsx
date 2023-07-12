@@ -42,6 +42,7 @@ const App = () => {
 
   let u: User = {
     id: uuid.v4().toString(),
+    googleId: gUser? gUser.getIdToken() : '',
     name: gUser? gUser.displayName : ''
   }
 
