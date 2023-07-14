@@ -49,7 +49,6 @@ const SettingsContainer = () => {
 const SettingContainer = (props: SettingContainerProps) => {
   const [name] = useState<string>(props.name)
   const [enabled, setEnabled] = useState<boolean>(props.isEnabled)
-  console.log(props.userID)
 
   const updateUserSettings = async (userIDToUpdate:string, notificationsEnabled:boolean) => {
     const userSettings: UserSettings = new UserSettings()
