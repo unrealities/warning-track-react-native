@@ -68,7 +68,6 @@ const App = () => {
         if (!docSnap.exists()) {
           getUserID().then(id => {
             userToUpdate.id = id
-            userToUpdate.name = gUser? gUser.displayName : ''
             setUser(userToUpdate)
           })
           await setDoc(doc(db, 'users', userToUpdate.id).withConverter(UserConverter), userToUpdate)
@@ -76,6 +75,11 @@ const App = () => {
       } catch (e) {
         console.error("Error adding document: ", e)
       }
+    }
+
+    if (gUser) {
+      user.googleId = gUser.gUser.getIdToken()
+      user.name = gUser.displayName
     }
 
     updateUser(user)
