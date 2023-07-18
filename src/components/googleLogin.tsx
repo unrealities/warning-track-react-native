@@ -10,14 +10,6 @@ const GoogleLogin = () => {
     const auth = getAuth()
     const user = auth.currentUser
 
-    user.providerData.forEach((profile) => {
-        console.log("Sign-in provider: " + profile.providerId)
-        console.log("  Provider-specific UID: " + profile.uid)
-        console.log("  Name: " + profile.displayName)
-        console.log("  Email: " + profile.email)
-        console.log("  Photo URL: " + profile.photoURL)
-    })
-
     const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
         androidClientId: Constants?.expoConfig?.extra?.androidClientId,
         expoClientId: Constants?.expoConfig?.extra?.expoClientId,

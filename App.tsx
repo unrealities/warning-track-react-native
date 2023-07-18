@@ -29,6 +29,8 @@ WebBrowser.maybeCompleteAuthSession()
 SplashScreen.preventAutoHideAsync()
 
 const App = () => {
+  // maybe user anonymous user first?
+  // https://firebase.google.com/docs/auth/web/anonymous-auth
   const { gUser } = useAuthentication()
 
   let [fontsLoaded] = useFonts({
