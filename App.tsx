@@ -15,6 +15,7 @@ import uuid from 'react-native-uuid'
 import GamesScreen from './src/screens/games'
 import { SettingsScreen } from './src/screens/settings'
 import { firebaseConfig } from './src/config/firebase'
+import { getAuth, signInAnonymously } from 'firebase/auth'
 import User from './src/models/user'
 import { UserConverter } from './src/utilities/firestore/converters/user'
 import { getUserID } from './src/utilities/hooks/localStorage'
@@ -29,9 +30,11 @@ WebBrowser.maybeCompleteAuthSession()
 SplashScreen.preventAutoHideAsync()
 
 const App = () => {
-  // maybe user anonymous user first?
-  // https://firebase.google.com/docs/auth/web/anonymous-auth
   const { gUser } = useAuthentication()
+  if ( gUser == null ) {
+    const auth = getAuth(app)
+    signInAnonymously(auth)
+  }
 
   let [fontsLoaded] = useFonts({
     'Lobster-Regular': require('./assets/fonts/Lobster-Regular.ttf')
