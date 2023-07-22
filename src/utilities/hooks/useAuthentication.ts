@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { initializeApp } from 'firebase/app'
-import { getAuth, onAuthStateChanged, User } from 'firebase/auth'
+import { getAuth, initializeAuth, onAuthStateChanged, User } from 'firebase/auth'
+import { getReactNativePersistence } from "firebase/auth/react-native"
 import { firebaseConfig } from '../../config/firebase'
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 const app = initializeApp(firebaseConfig)
+initializeAuth(app, {
+    persistence: getReactNativePersistence(AsyncStorage)
+  })
 const auth = getAuth(app)
 
 export function useAuthentication() {
