@@ -29,6 +29,16 @@ WebBrowser.maybeCompleteAuthSession()
 
 SplashScreen.preventAutoHideAsync()
 
+// TODO
+//
+// The app starts
+// Check to see if a user exists locally
+// If user does not exist. Create local anonymouse user with local ID
+// Push anonymous user to firebase
+// If user exists in firebase. Offer option to connect Google account
+// Connect Google account if logged in
+//
+
 const App = () => {
   const { gUser } = useAuthentication()
   if ( gUser == null ) {
