@@ -40,12 +40,6 @@ SplashScreen.preventAutoHideAsync()
 //
 
 const App = () => {
-  const { gUser } = useAuthentication()
-  if ( gUser == null ) {
-    const auth = getAuth(app)
-    signInAnonymously(auth)
-  }
-
   let [fontsLoaded] = useFonts({
     'Lobster-Regular': require('./assets/fonts/Lobster-Regular.ttf')
   })
@@ -57,8 +51,8 @@ const App = () => {
 
   let u: User = {
     id: uuid.v4().toString(),
-    googleId: gUser? gUser.getIdToken() : '',
-    name: gUser? gUser.displayName : ''
+    googleId: '',
+    name: ''
   }
 
   const [isNetworkConnected, setIsNetworkConnected] = useState<boolean>(true)
@@ -95,6 +89,10 @@ const App = () => {
     if (gUser) {
       user.googleId = gUser.gUser.getIdToken()
       user.name = gUser.displayName
+    }
+
+    const getUser = () => {
+      // TODO: check local storage to see if a user exists
     }
 
     updateUser(user)
