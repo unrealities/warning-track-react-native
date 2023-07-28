@@ -18,11 +18,11 @@ import { firebaseConfig } from './src/config/firebase'
 import { getAuth, signInAnonymously } from 'firebase/auth'
 import User from './src/models/user'
 import { UserConverter } from './src/utilities/firestore/converters/user'
-import { getUserID } from './src/utilities/hooks/localStorage'
+import { getName, getUserID } from './src/utilities/hooks/localStorage'
 import { useAuthentication } from './src/utilities/hooks/useAuthentication'
 
-
 const app = initializeApp(firebaseConfig)
+const auth = getAuth()
 const db = getFirestore(app)
 const analytics = isSupported().then(yes => yes ? getAnalytics(app) : null)
 WebBrowser.maybeCompleteAuthSession()
@@ -91,8 +91,14 @@ const App = () => {
       user.name = gUser.displayName
     }
 
-    const getUser = () => {
-      // TODO: check local storage to see if a user exists
+    const getLocalUser = async () => {
+      u.id = await getUserID()
+      u.name = await getName()
+      setUser(u)
+    }
+
+    const setCloudUser = async () => {
+      signInAnonymously(auth)
     }
 
     updateUser(user)
