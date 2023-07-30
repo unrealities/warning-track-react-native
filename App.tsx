@@ -86,12 +86,7 @@ const App = () => {
       }
     }
 
-    if (gUser) {
-      user.googleId = gUser.gUser.getIdToken()
-      user.name = gUser.displayName
-    }
-
-    const getLocalUser = async () => {
+    const setLocalUser = async () => {
       u.id = await getUserID()
       u.name = await getName()
       setUser(u)
