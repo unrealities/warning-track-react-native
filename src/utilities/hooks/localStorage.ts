@@ -1,8 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import uuid from 'react-native-uuid'
 
+const googleID = 'googleID'
 const name = 'name'
 const userID = 'userID'
+
+async function setGoogleID(id: string) {
+  await AsyncStorage.setItem(googleID, id)
+}
 
 async function setName(name: string) {
   await AsyncStorage.setItem(name, name)
@@ -10,6 +15,15 @@ async function setName(name: string) {
 
 async function setUserID(id: string) {
   await AsyncStorage.setItem(userID, id)
+}
+
+export async function getGoogleID() {
+  let id = await AsyncStorage.getItem(googleID)
+  if (id) {
+    return id
+  } else {
+    return ''
+  }
 }
 
 export async function getName() {
