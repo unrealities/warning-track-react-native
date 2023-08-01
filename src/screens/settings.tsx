@@ -26,6 +26,7 @@ const settings = [
   }
 ]
 
+// TODO: This needs to update when a user signs in and reflect current status
 const SettingsContainer = () => {
   const { user } = useAuthentication()
   let body = <Text style={styles.text}>{ user ? user?.displayName : 'Sign In to Access Settings'}</Text>
