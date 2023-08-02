@@ -29,16 +29,6 @@ WebBrowser.maybeCompleteAuthSession()
 
 SplashScreen.preventAutoHideAsync()
 
-// TODO
-//
-// The app starts
-// Check to see if a user exists locally
-// If user does not exist. Create local anonymouse user with local ID
-// Push anonymous user to firebase
-// If user exists in firebase. Offer option to connect Google account
-// Connect Google account if logged in
-//
-
 const App = () => {
   let [fontsLoaded] = useFonts({
     'Lobster-Regular': require('./assets/fonts/Lobster-Regular.ttf')
@@ -69,6 +59,7 @@ const App = () => {
         console.error("No network connection")
       }
     }
+
     const updateUser = async (userToUpdate: User) => {
       const docRef = doc(db, 'users', userToUpdate.id).withConverter(UserConverter)
       const docSnap = await getDoc(docRef)
@@ -96,8 +87,12 @@ const App = () => {
       signInAnonymously(auth)
     }
 
-    updateUser(user)
     networkConnected()
+    setLocalUser()
+    if (isNetworkConnected) {
+      setCloudUser()
+      updateUser(user)
+    }
   })
 
   return (
