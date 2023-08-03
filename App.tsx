@@ -92,6 +92,7 @@ const App = () => {
     if (isNetworkConnected) {
       setCloudUser()
       updateUser(user)
+      // TODO: set user settings
     }
   })
 
