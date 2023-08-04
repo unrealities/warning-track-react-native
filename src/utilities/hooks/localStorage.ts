@@ -1,9 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import uuid from 'react-native-uuid'
+import UserSettings from '../../models/userSettings'
 
 const googleID = 'googleID'
 const name = 'name'
 const userID = 'userID'
+const userSettingsNotificationsEnabled = 'userSettingsNotificationsEnabled'
 
 async function setGoogleID(id: string) {
   await AsyncStorage.setItem(googleID, id)
@@ -15,6 +17,10 @@ async function setName(name: string) {
 
 async function setUserID(id: string) {
   await AsyncStorage.setItem(userID, id)
+}
+
+async function setUserSettings(us: UserSettings) {
+  await AsyncStorage.setItem(userSettingsNotificationsEnabled, us.notificationsEnabled.toString())
 }
 
 export async function getGoogleID() {
