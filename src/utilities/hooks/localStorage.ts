@@ -56,11 +56,12 @@ export async function getUserID() {
 
 export async function getUserSettings() {
   let userSettings: UserSettings = new UserSettings()
-  userSettings.userID = await AsyncStorage.getItem(userID)
+  let uID = await AsyncStorage.getItem(userID)
   userSettings.notificationsEnabled = false
-  let userSettingsNotificationsEnabled = await AsyncStorage.getItem(userSettingsNotificationsEnabled)
-  if (userSettingsNotificationsEnabled) {
-    userSettings.notificationsEnabled = userSettingsNotificationsEnabled
+  userSettings.userID = uID || ''
+  let usne = await AsyncStorage.getItem(userSettingsNotificationsEnabled)
+  if (usne) {
+    userSettings.notificationsEnabled = usne === 'true'
     return userSettings
   } else {
     return userSettings
