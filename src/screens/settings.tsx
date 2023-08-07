@@ -10,6 +10,7 @@ import GoogleLogin from "../components/googleLogin"
 import UserSettings from "../models/userSettings"
 import { firebaseConfig } from "../config/firebase"
 import { UserSettingsConverter } from '../utilities/firestore/converters/settings'
+import { setUserSettings } from '../utilities/hooks/localStorage'
 
 export interface SettingContainerProps {
   isEnabled: boolean,
@@ -57,6 +58,7 @@ const SettingContainer = (props: SettingContainerProps) => {
     userSettings.notificationsEnabled = notificationsEnabled
 
     try {
+      setUserSettings(userSettings)
       await setDoc(doc(db, 'userSettings', userSettings.userID).withConverter(UserSettingsConverter), userSettings)
     } catch (e) {
       console.error("Error adding document: ", e)

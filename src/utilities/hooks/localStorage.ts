@@ -7,7 +7,7 @@ const name = 'name'
 const userID = 'userID'
 const userSettingsNotificationsEnabled = 'userSettingsNotificationsEnabled'
 
-async function setGoogleID(id: string) {
+export async function setGoogleID(id: string) {
   await AsyncStorage.setItem(googleID, id)
 }
 
@@ -19,7 +19,7 @@ async function setUserID(id: string) {
   await AsyncStorage.setItem(userID, id)
 }
 
-async function setUserSettings(us: UserSettings) {
+export async function setUserSettings(us: UserSettings) {
   await AsyncStorage.setItem(userSettingsNotificationsEnabled, us.notificationsEnabled.toString())
 }
 
