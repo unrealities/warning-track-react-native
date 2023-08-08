@@ -90,8 +90,9 @@ const App = () => {
     networkConnected()
     setLocalUser()
     if (isNetworkConnected) {
-      setCloudUser()
-      updateUser(user)
+      // TODO: infinite loop 
+      // setCloudUser()
+      // updateUser(user)
       // TODO: set user settings
     }
   })

@@ -56,9 +56,9 @@ const SettingContainer = (props: SettingContainerProps) => {
     const userSettings: UserSettings = new UserSettings()
     userSettings.userID = userIDToUpdate
     userSettings.notificationsEnabled = notificationsEnabled
+    // TODO: infinite loop checking setUserSettings(userSettings)
 
     try {
-      setUserSettings(userSettings)
       await setDoc(doc(db, 'userSettings', userSettings.userID).withConverter(UserSettingsConverter), userSettings)
     } catch (e) {
       console.error("Error adding document: ", e)

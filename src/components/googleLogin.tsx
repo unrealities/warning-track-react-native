@@ -7,8 +7,7 @@ import Constants from 'expo-constants'
 import { useAuthentication } from '../utilities/hooks/useAuthentication'
 
 const GoogleLogin = () => {
-    const auth = getAuth()
-    const user = auth.currentUser
+    const { user } = useAuthentication
 
     const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
         androidClientId: Constants?.expoConfig?.extra?.androidClientId,
