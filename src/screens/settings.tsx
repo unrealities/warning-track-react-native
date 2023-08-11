@@ -7,6 +7,7 @@ import { doc, getFirestore, setDoc } from 'firebase/firestore'
 import withBackground from "../utilities/background"
 import { useAuthentication } from '../utilities/hooks/useAuthentication'
 import GoogleLogin from "../components/googleLogin"
+import UserInfo from "../components/userInfo"
 import UserSettings from "../models/userSettings"
 import { firebaseConfig } from "../config/firebase"
 import { UserSettingsConverter } from '../utilities/firestore/converters/settings'
@@ -43,6 +44,7 @@ const SettingsContainer = () => {
   return (
     <View>
       { body }
+      <UserInfo />
       <GoogleLogin />
     </View>
   )
