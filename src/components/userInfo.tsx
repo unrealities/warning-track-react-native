@@ -1,10 +1,30 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { StyleSheet, Text, View } from "react-native"
+import { getName, getGoogleID, getUserID } from '../utilities/hooks/localStorage'
 
 const UserInfo = () => {
+    let u: User = {
+        id: '',
+        googleId: '',
+        name: ''
+    }
+
+    const getUser = async () => {
+        u.id = await getUserID()
+        u.googleId = await getGoogleID()
+        u.name = await getName()
+    }
+
+    useEffect(() => {
+        getUser()
+    })
+
     return (
         <View style={styles.container}>
             <Text>User Info</Text>
+            <Text>{u.id}</Text>
+            <Text>{u.googleId}</Text>
+            <Text>{u.name}</Text>
         </View>
     )
 }
