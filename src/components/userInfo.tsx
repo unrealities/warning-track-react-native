@@ -17,6 +17,7 @@ const UserInfo = () => {
 
     useEffect(() => {
         getUser()
+        console.log(u)
     })
 
     return (
