@@ -9,23 +9,26 @@ const UserInfo = () => {
         name: ''
     }
 
-    const getUser = async () => {
-        u.id = await getUserID()
-        u.googleId = await getGoogleID()
-        u.name = await getName()
-    }
-
     useEffect(() => {
+        const getUser = async () => {
+            u.id = await getUserID()
+            u.googleId = await getGoogleID()
+            u.name = await getName()
+        }
+        
         getUser()
-        console.log(u)
+        
+        console.log(u.id)
+        console.log(u.googleId)
+        console.log(u.name)
     })
 
     return (
         <View style={styles.container}>
             <Text>User Info</Text>
-            <Text>{u.id}</Text>
-            <Text>{u.googleId}</Text>
-            <Text>{u.name}</Text>
+            <Text>User ID: {u.id}</Text>
+            <Text>Google ID: {u.googleId}</Text>
+            <Text>Name: {u.name}</Text>
         </View>
     )
 }
