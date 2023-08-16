@@ -18,6 +18,7 @@ const UserInfo = () => {
         
         getUser()
         
+        console.log(u)
         console.log(u.id)
         console.log(u.googleId)
         console.log(u.name)
