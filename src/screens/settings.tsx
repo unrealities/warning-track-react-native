@@ -31,19 +31,19 @@ const settings = [
 // TODO: This needs to update when a user signs in and reflect current status
 const SettingsContainer = () => {
   const { user } = useAuthentication()
-  let body = <Text style={styles.text}>{ user ? user?.displayName : 'Sign In to Access Settings'}</Text>
-  
+  let body = <Text style={styles.text}>{user ? user?.displayName : 'Sign In to Access Settings'}</Text>
+
   if (user) {
-    body = <FlatList 
+    body = <FlatList
       data={settings}
-      renderItem={({item}) => <SettingContainer name={item.name} isEnabled={false} userID={user.uid} />}
+      renderItem={({ item }) => <SettingContainer name={item.name} isEnabled={false} userID={user.uid} />}
       keyExtractor={item => item.id}
       showsHorizontalScrollIndicator={false} />
   }
 
   return (
     <View>
-      { body }
+      {body}
       <UserInfo />
       <GoogleLogin />
     </View>
@@ -54,11 +54,10 @@ const SettingContainer = (props: SettingContainerProps) => {
   const [name] = useState<string>(props.name)
   const [enabled, setEnabled] = useState<boolean>(props.isEnabled)
 
-  const updateUserSettings = async (userIDToUpdate:string, notificationsEnabled:boolean) => {
+  const updateUserSettings = async (userIDToUpdate: string, notificationsEnabled: boolean) => {
     const userSettings: UserSettings = new UserSettings()
     userSettings.userID = userIDToUpdate
     userSettings.notificationsEnabled = notificationsEnabled
-    // TODO: infinite loop checking setUserSettings(userSettings)
 
     try {
       await setDoc(doc(db, 'userSettings', userSettings.userID).withConverter(UserSettingsConverter), userSettings)
@@ -67,7 +66,7 @@ const SettingContainer = (props: SettingContainerProps) => {
     }
   }
 
-  const updateSetting = (isEnabled:boolean) => {
+  const updateSetting = (isEnabled: boolean) => {
     setEnabled(isEnabled)
     updateUserSettings(props.userID, isEnabled)
   }
@@ -76,7 +75,7 @@ const SettingContainer = (props: SettingContainerProps) => {
     <View style={styles.container}>
       <Text style={styles.text}>{name}</Text>
       <Switch
-        trackColor={{false: '#767577', true: '#81b0ff'}}
+        trackColor={{ false: '#767577', true: '#81b0ff' }}
         thumbColor={enabled ? '#f5dd4b' : '#f4f3f4'}
         ios_backgroundColor="#3e3e3e"
         onValueChange={updateSetting}
@@ -94,19 +93,19 @@ export const SettingsScreen = (props: SettingsScreenProps) => {
 
 const styles = StyleSheet.create({
   container: {
-      alignItems: 'center',
-      alignSelf: 'center',
-      flex: 1,
-      padding: 8,
-      width: 300
+    alignItems: 'center',
+    alignSelf: 'center',
+    flex: 1,
+    padding: 8,
+    width: 300
   },
   text: {
-      flex: 1,
-      fontFamily: 'Lobster-Regular',
-      fontSize: 30,
-      minHeight: 100,
-      paddingTop: 10,
-      textAlign: 'center'
+    flex: 1,
+    fontFamily: 'Lobster-Regular',
+    fontSize: 30,
+    minHeight: 100,
+    paddingTop: 10,
+    textAlign: 'center'
   }
 })
 

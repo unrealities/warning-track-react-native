@@ -89,6 +89,8 @@ const App = () => {
 
     networkConnected()
     setLocalUser()
+    // TODO : this causes infinite requests
+    // updateUser(user)
     if (isNetworkConnected) {
       // TODO: infinite loop 
       // setCloudUser()
