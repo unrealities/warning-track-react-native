@@ -88,15 +88,16 @@ const App = () => {
     }
 
     networkConnected()
-    setLocalUser()
-    // TODO : this causes infinite requests
-    // updateUser(user)
     if (isNetworkConnected) {
-      // TODO: infinite loop 
+      // TODO: this causes infinte requests
       // setCloudUser()
-      // updateUser(user)
-      // TODO: set user settings
     }
+    setLocalUser()
+
+    // TODO : this causes infinite requests
+    // should only call after google login or known change
+    // updateUser(user)
+
   })
 
   return (
