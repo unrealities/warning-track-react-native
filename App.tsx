@@ -50,6 +50,16 @@ const App = () => {
   const Tab = createBottomTabNavigator()
 
   useEffect(() => {
+    const setLocalUser = async () => {
+      u.id = await getUserID()
+      u.name = await getName()
+      setUser(u)
+    }
+
+    setLocalUser()
+  })
+
+  useEffect(() => {
     const networkConnected = async () => {
       try {
         await Network.getNetworkStateAsync().then((networkState) => {
@@ -77,28 +87,17 @@ const App = () => {
       }
     }
 
-    const setLocalUser = async () => {
-      u.id = await getUserID()
-      u.name = await getName()
-      setUser(u)
-    }
-
     const setCloudUser = async () => {
       signInAnonymously(auth)
     }
 
     networkConnected()
-    if (isNetworkConnected) {
-      // TODO: this causes infinte requests
-      // setCloudUser()
-    }
-    setLocalUser()
-
-    // TODO : this causes infinite requests
-    // should only call after google login or known change
-    // updateUser(user)
-
-  })
+    // TODO: still infinite
+    // if (isNetworkConnected) {
+    //   setCloudUser()
+    //   updateUser(user)
+    // }
+  }, [user])
 
   return (
     <NavigationContainer>
