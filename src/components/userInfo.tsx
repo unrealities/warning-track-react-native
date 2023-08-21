@@ -15,9 +15,9 @@ const UserInfo = () => {
             u.googleId = await getGoogleID()
             u.name = await getName()
         }
-        
+
         getUser()
-        
+
         console.log(u)
         console.log(u.id)
         console.log(u.googleId)
