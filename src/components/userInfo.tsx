@@ -22,7 +22,7 @@ const UserInfo = () => {
         console.log(u.id)
         console.log(u.googleId)
         console.log(u.name)
-    })
+    }, [u])
 
     return (
         <View style={styles.container}>
