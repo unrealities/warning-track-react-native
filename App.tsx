@@ -57,7 +57,7 @@ const App = () => {
     }
 
     setLocalUser()
-  })
+  },[])
 
   useEffectDebugger(() => {
     const networkConnected = async () => {
@@ -95,9 +95,9 @@ const App = () => {
     if (isNetworkConnected) {
       // TODO: still infinite
       //  setCloudUser()
-      // updateUser(user)
+      updateUser(user)
+      console.log(user)
     }
-    // console.log(user)
   }, [user])
 
   return (
