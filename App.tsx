@@ -94,7 +94,7 @@ const App = () => {
     networkConnected()
     if (isNetworkConnected) {
       // TODO: still infinite
-      setCloudUser()
+      // setCloudUser()
       updateUser(user)
       console.log(user)
     }

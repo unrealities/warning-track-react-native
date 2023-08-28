@@ -29,12 +29,9 @@ const GoogleLogin = () => {
             const auth = getAuth()
             const credential = GoogleAuthProvider.credential(id_token)
             signInWithCredential(auth, credential)
-            // TODO: Update firebase user data
-            //
-            //     if (gUser) {
-            //       user.googleId = gUser.gUser.getIdToken()
-            //       user.name = gUser.displayName
-            //     }
+            console.log(response)
+            // console.log(user.getIdToken())
+            // console.log(user.displayName)
         }
     }, [response])
 
