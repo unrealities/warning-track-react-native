@@ -6,9 +6,15 @@ import Constants from 'expo-constants'
 
 import { useAuthentication } from '../utilities/hooks/useAuthentication'
 
-const GoogleLogin = () => {
-    const { user } = useAuthentication
+interface IGoogleLoginProps {
+    onLoginStarted: () => any
+    onLoginEnded: () => any
+    onLoginSucceeded: (token: string) => any
+    onLoginFailed: (e: any) => any
+}
 
+const GoogleLogin: FC<IGoogleLoginProps> = ({ onLoginStarted, onLoginEnded, onLoginSucceeded, onLoginFailed }) => {
+    const user = useAuthentication
     const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
         androidClientId: Constants?.expoConfig?.extra?.androidClientId,
         expoClientId: Constants?.expoConfig?.extra?.expoClientId,
@@ -24,16 +30,29 @@ const GoogleLogin = () => {
     })
 
     useEffect(() => {
-        if (response?.type === 'success') {
-            const { id_token } = response.params
-            const auth = getAuth()
-            const credential = GoogleAuthProvider.credential(id_token)
-            signInWithCredential(auth, credential)
-            console.log(response)
-            // console.log(user.getIdToken())
-            // console.log(user.displayName)
+    const googleLogIn = async () => {
+        onLoginStarted()
+        const auth = getAuth()
+    
+        try {
+            const result = await promptAsync()
+            if (!result) {
+                throw new Error('failed to login')
+            }
+            const creds = GoogleAuthProvider.credential(result!.params.id_token)
+            const res = await signInWithCredential(auth, creds)
+            const token = await res.user.getIdToken()
+            console.log('google login res', res, 'token', token)
+            onLoginSucceeded(token)
+        } catch (e: any) {
+            console.error(e)
+            onLoginFailed(e)
+        } finally {
+            onLoginEnded()
         }
-    }, [response])
+    }
+    googleLogIn()
+    })
 
     return (
         <View style={styles.container}>
