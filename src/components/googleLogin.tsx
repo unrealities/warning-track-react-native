@@ -30,28 +30,28 @@ const GoogleLogin: FC<IGoogleLoginProps> = ({ onLoginStarted, onLoginEnded, onLo
     })
 
     useEffect(() => {
-    const googleLogIn = async () => {
-        onLoginStarted()
-        const auth = getAuth()
-    
-        try {
-            const result = await promptAsync()
-            if (!result) {
-                throw new Error('failed to login')
+        const googleLogIn = async () => {
+            // onLoginStarted()
+            const auth = getAuth()
+
+            try {
+                const result = await promptAsync()
+                if (!result) {
+                    throw new Error('failed to login')
+                }
+                const creds = GoogleAuthProvider.credential(result!.params.id_token)
+                const res = await signInWithCredential(auth, creds)
+                const token = await res.user.getIdToken()
+                console.log('google login res', res, 'token', token)
+                onLoginSucceeded(token)
+            } catch (e: any) {
+                console.error(e)
+                onLoginFailed(e)
+            } finally {
+                onLoginEnded()
             }
-            const creds = GoogleAuthProvider.credential(result!.params.id_token)
-            const res = await signInWithCredential(auth, creds)
-            const token = await res.user.getIdToken()
-            console.log('google login res', res, 'token', token)
-            onLoginSucceeded(token)
-        } catch (e: any) {
-            console.error(e)
-            onLoginFailed(e)
-        } finally {
-            onLoginEnded()
         }
-    }
-    googleLogIn()
+        googleLogIn()
     })
 
     return (
