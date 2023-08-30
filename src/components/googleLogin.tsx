@@ -52,7 +52,7 @@ const GoogleLogin: FC<IGoogleLoginProps> = ({ onLoginStarted, onLoginEnded, onLo
             }
         }
         googleLogIn()
-    })
+    },[response])
 
     return (
         <View style={styles.container}>
