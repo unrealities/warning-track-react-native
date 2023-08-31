@@ -35,20 +35,20 @@ const GoogleLogin: FC<IGoogleLoginProps> = ({ onLoginStarted, onLoginEnded, onLo
             const auth = getAuth()
 
             try {
-                const result = await promptAsync()
-                if (!result) {
-                    throw new Error('failed to login')
+                if (response?.type === 'success') {
+                    const { id_token } = response.params
+                    const auth = getAuth()
+                    const creds = GoogleAuthProvider.credential(id_token)
+                    const res = await signInWithCredential(auth, creds)
+                    const token = await res.user.getIdToken()
+                    console.log('google login res', res, 'token', token)
+                    onLoginSucceeded(token)
                 }
-                const creds = GoogleAuthProvider.credential(result!.params.id_token)
-                const res = await signInWithCredential(auth, creds)
-                const token = await res.user.getIdToken()
-                console.log('google login res', res, 'token', token)
-                onLoginSucceeded(token)
             } catch (e: any) {
                 console.error(e)
-                onLoginFailed(e)
+                // onLoginFailed(e)
             } finally {
-                onLoginEnded()
+                // onLoginEnded()
             }
         }
         googleLogIn()
