@@ -52,6 +52,7 @@ const GoogleLogin: FC<IGoogleLoginProps> = ({ onLoginStarted, onLoginEnded, onLo
             }
         }
         googleLogIn()
+        console.log(user)
     },[response])
 
     return (
