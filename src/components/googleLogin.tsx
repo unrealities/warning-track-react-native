@@ -42,7 +42,7 @@ const GoogleLogin: FC<IGoogleLoginProps> = ({ onLoginStarted, onLoginEnded, onLo
                     const res = await signInWithCredential(auth, creds)
                     const token = await res.user.getIdToken()
                     console.log('google login res', res, 'token', token)
-                    onLoginSucceeded(token)
+                    // onLoginSucceeded(token)
                 }
             } catch (e: any) {
                 console.error(e)
@@ -58,9 +58,9 @@ const GoogleLogin: FC<IGoogleLoginProps> = ({ onLoginStarted, onLoginEnded, onLo
     return (
         <View style={styles.container}>
             <Pressable
-                onPress={() => { user && user?.displayName != '' ? signOut(getAuth()) : promptAsync() }}
+                onPress={() => { user && user?.displayName ? signOut(getAuth()) : promptAsync() }}
                 style={styles.button}>
-                <Text style={styles.buttonText}>{user && user?.displayName != '' ? 'Sign Out ' + user.displayName : 'Sign In'}</Text>
+                <Text style={styles.buttonText}>{user && user?.displayName ? 'Sign Out ' + user.displayName : 'Sign In'}</Text>
             </Pressable>
         </View>
     )
