@@ -13,6 +13,10 @@ interface IGoogleLoginProps {
     onLoginFailed: (e: any) => any
 }
 
+const onLoginSucceeded = (token: string) => {
+    // TODO: set local user
+}
+
 const GoogleLogin: FC<IGoogleLoginProps> = ({ onLoginStarted, onLoginEnded, onLoginSucceeded, onLoginFailed }) => {
     const user = useAuthentication
     const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
@@ -42,7 +46,7 @@ const GoogleLogin: FC<IGoogleLoginProps> = ({ onLoginStarted, onLoginEnded, onLo
                     const res = await signInWithCredential(auth, creds)
                     const token = await res.user.getIdToken()
                     console.log('google login res', res, 'token', token)
-                    // onLoginSucceeded(token)
+                    onLoginSucceeded(token)
                 }
             } catch (e: any) {
                 console.error(e)
