@@ -5,6 +5,7 @@ import * as Google from 'expo-auth-session/providers/google'
 import Constants from 'expo-constants'
 
 import { useAuthentication } from '../utilities/hooks/useAuthentication'
+import { setGoogleID, setName } from '../utilities/hooks/localStorage'
 
 interface IGoogleLoginProps {
     onLoginStarted: () => any
@@ -14,7 +15,9 @@ interface IGoogleLoginProps {
 }
 
 const onLoginSucceeded = (token: string) => {
-    // TODO: set local user
+    // TODO: Parse token to get these values
+    // setGoogleID()
+    // setName()
 }
 
 const GoogleLogin: FC<IGoogleLoginProps> = ({ onLoginStarted, onLoginEnded, onLoginSucceeded, onLoginFailed }) => {

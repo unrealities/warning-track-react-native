@@ -11,7 +11,7 @@ export async function setGoogleID(id: string) {
   await AsyncStorage.setItem(googleID, id)
 }
 
-async function setName(name: string) {
+export async function setName(name: string) {
   await AsyncStorage.setItem(name, name)
 }
 
