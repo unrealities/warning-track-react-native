@@ -7,20 +7,7 @@ import Constants from 'expo-constants'
 import { useAuthentication } from '../utilities/hooks/useAuthentication'
 import { setGoogleID, setName } from '../utilities/hooks/localStorage'
 
-interface IGoogleLoginProps {
-    onLoginStarted: () => any
-    onLoginEnded: () => any
-    onLoginSucceeded: (token: string) => any
-    onLoginFailed: (e: any) => any
-}
-
-const onLoginSucceeded = (token: string) => {
-    // TODO: Parse token to get these values
-    // setGoogleID()
-    // setName()
-}
-
-const GoogleLogin: FC<IGoogleLoginProps> = ({ onLoginStarted, onLoginEnded, onLoginSucceeded, onLoginFailed }) => {
+const GoogleLogin = () => {
     const user = useAuthentication
     const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
         androidClientId: Constants?.expoConfig?.extra?.androidClientId,
@@ -35,6 +22,15 @@ const GoogleLogin: FC<IGoogleLoginProps> = ({ onLoginStarted, onLoginEnded, onLo
             'https://www.googleapis.com/auth/userinfo.profile',
         ],
     })
+
+    const onLoginSucceeded = (token: string) => {
+        // TODO: Parse token to get these values
+        console.log(token)
+        let parsedToken = JSON.parse(token)
+        console.log(parsedToken)
+        // setGoogleID()
+        // setName()
+    }
 
     useEffect(() => {
         const googleLogIn = async () => {
