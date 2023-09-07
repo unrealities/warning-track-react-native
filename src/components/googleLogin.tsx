@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { Pressable, StyleSheet, Text, View } from "react-native"
-import { GoogleAuthProvider, getAuth, signInWithCredential, signOut } from "firebase/auth"
+import { GoogleAuthProvider, UserCredential, getAuth, signInWithCredential, signOut } from "firebase/auth"
 import * as Google from 'expo-auth-session/providers/google'
 import Constants from 'expo-constants'
 
@@ -23,13 +23,12 @@ const GoogleLogin = () => {
         ],
     })
 
-    const onLoginSucceeded = (token: string) => {
-        // TODO: Parse token to get these values
-        console.log(token)
-        let parsedToken = JSON.parse(token)
-        console.log(parsedToken)
-        // setGoogleID()
-        // setName()
+    const onLoginSucceeded = (token: string, res: UserCredential) => {
+        console.log('google login res', res, 'token', token)
+        setGoogleID(res.user.uid)
+        if (res.user.displayName) {
+            setName(res.user.displayName)
+        }
     }
 
     useEffect(() => {
@@ -44,8 +43,7 @@ const GoogleLogin = () => {
                     const creds = GoogleAuthProvider.credential(id_token)
                     const res = await signInWithCredential(auth, creds)
                     const token = await res.user.getIdToken()
-                    console.log('google login res', res, 'token', token)
-                    onLoginSucceeded(token)
+                    onLoginSucceeded(token, res)
                 }
             } catch (e: any) {
                 console.error(e)
