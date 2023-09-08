@@ -24,7 +24,6 @@ const GoogleLogin = () => {
     })
 
     const onLoginSucceeded = (token: string, res: UserCredential) => {
-        console.log('google login res', res, 'token', token)
         setGoogleID(res.user.uid)
         if (res.user.displayName) {
             setName(res.user.displayName)
@@ -33,7 +32,6 @@ const GoogleLogin = () => {
 
     useEffect(() => {
         const googleLogIn = async () => {
-            // onLoginStarted()
             const auth = getAuth()
 
             try {
@@ -47,14 +45,11 @@ const GoogleLogin = () => {
                 }
             } catch (e: any) {
                 console.error(e)
-                // onLoginFailed(e)
-            } finally {
-                // onLoginEnded()
-            }
+            }   
         }
         googleLogIn()
         console.log(user)
-    },[response])
+    }, [response])
 
     return (
         <View style={styles.container}>

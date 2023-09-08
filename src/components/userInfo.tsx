@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { StyleSheet, Text, View } from "react-native"
 import { getName, getGoogleID, getUserID } from '../utilities/hooks/localStorage'
 
+//TODO: This needs to be dumb and take a user from settings
 const UserInfo = () => {
     let u: User = {
         id: '',
@@ -15,14 +16,8 @@ const UserInfo = () => {
             u.googleId = await getGoogleID()
             u.name = await getName()
         }
-
         getUser()
-
-        console.log(u)
-        console.log(u.id)
-        console.log(u.googleId)
-        console.log(u.name)
-    }, [u])
+    })
 
     return (
         <View style={styles.container}>
