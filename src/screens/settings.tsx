@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { FlatList, StyleSheet, Switch, Text, View } from "react-native"
 
 import { initializeApp } from 'firebase/app'
@@ -11,7 +11,7 @@ import UserInfo from "../components/userInfo"
 import UserSettings from "../models/userSettings"
 import { firebaseConfig } from "../config/firebase"
 import { UserSettingsConverter } from '../utilities/firestore/converters/settings'
-import { setUserSettings } from '../utilities/hooks/localStorage'
+import { getName, getGoogleID, getUserID } from '../utilities/hooks/localStorage'
 
 export interface SettingContainerProps {
   isEnabled: boolean,
@@ -41,10 +41,25 @@ const SettingsContainer = () => {
       showsHorizontalScrollIndicator={false} />
   }
 
+  let u: User = {
+    id: '',
+    googleId: '',
+    name: ''
+  }
+
+  useEffect(() => {
+    const getUser = async () => {
+      u.id = await getUserID()
+      u.googleId = await getGoogleID()
+      u.name = await getName()
+    }
+    getUser()
+  })
+
   return (
     <View>
       {body}
-      <UserInfo />
+      <UserInfo user={u} />
       <GoogleLogin />
     </View>
   )
