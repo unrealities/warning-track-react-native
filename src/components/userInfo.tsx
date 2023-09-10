@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native"
 
 //TODO: This needs to be dumb and take a user from settings
 const UserInfo = (user: User) => {
+    console.log(user["id"])
     return (
         <View style={styles.container}>
             <Text>User Info</Text>

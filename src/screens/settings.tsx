@@ -54,6 +54,7 @@ const SettingsContainer = () => {
       u.name = await getName()
     }
     getUser()
+    console.log(u)
   })
 
   return (
