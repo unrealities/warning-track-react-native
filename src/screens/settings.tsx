@@ -31,6 +31,12 @@ const settings = [
 // TODO: This needs to update when a user signs in and reflect current status
 const SettingsContainer = () => {
   const { user } = useAuthentication()
+  let u: User = {
+    id: '',
+    googleId: '',
+    name: ''
+  }
+  const [localUser, setLocalUser] = useState<User>(u)
   let body = <Text style={styles.text}>{user ? user?.displayName : 'Sign In to Access Settings'}</Text>
 
   if (user) {
@@ -41,12 +47,6 @@ const SettingsContainer = () => {
       showsHorizontalScrollIndicator={false} />
   }
 
-  let u: User = {
-    id: '',
-    googleId: '',
-    name: ''
-  }
-
   useEffect(() => {
     const getUser = async () => {
       u.id = await getUserID()
@@ -54,13 +54,13 @@ const SettingsContainer = () => {
       u.name = await getName()
     }
     getUser()
-    console.log(u)
-  })
+    setLocalUser(u)
+  },[localUser])
 
   return (
     <View>
       {body}
-      <UserInfo user={u} />
+      <UserInfo user={localUser} />
       <GoogleLogin />
     </View>
   )
