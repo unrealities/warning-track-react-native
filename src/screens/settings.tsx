@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { FlatList, StyleSheet, Switch, Text, View } from "react-native"
 
 import { initializeApp } from 'firebase/app'
@@ -11,7 +11,6 @@ import UserInfo from "../components/userInfo"
 import UserSettings from "../models/userSettings"
 import { firebaseConfig } from "../config/firebase"
 import { UserSettingsConverter } from '../utilities/firestore/converters/settings'
-import { getName, getGoogleID, getUserID } from '../utilities/hooks/localStorage'
 
 export interface SettingContainerProps {
   isEnabled: boolean,
@@ -31,12 +30,6 @@ const settings = [
 // TODO: This needs to update when a user signs in and reflect current status
 const SettingsContainer = () => {
   const { user } = useAuthentication()
-  let u: User = {
-    id: '',
-    googleId: '',
-    name: ''
-  }
-  const [localUser, setLocalUser] = useState<User>(u)
   let body = <Text style={styles.text}>{user ? user?.displayName : 'Sign In to Access Settings'}</Text>
 
   if (user) {
@@ -47,20 +40,10 @@ const SettingsContainer = () => {
       showsHorizontalScrollIndicator={false} />
   }
 
-  useEffect(() => {
-    const getUser = async () => {
-      u.id = await getUserID()
-      u.googleId = await getGoogleID()
-      u.name = await getName()
-    }
-    getUser()
-    setLocalUser(u)
-  },[localUser])
-
   return (
     <View>
       {body}
-      <UserInfo user={localUser} />
+      <UserInfo />
       <GoogleLogin />
     </View>
   )

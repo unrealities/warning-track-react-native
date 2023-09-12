@@ -1,16 +1,39 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { StyleSheet, Text, View } from "react-native"
+import { getName, getGoogleID, getUserID } from '../utilities/hooks/localStorage'
+import User from '../models/user'
 
 //TODO: This needs to be dumb and take a user from settings
-const UserInfo = (props: User) => {
-    const [u] = useState<User>(props.user)
-    console.log(u)
+const UserInfo = () => {
+    const [user, setUser] = useState<User>()
+
+    useEffect(() => {
+        let u = {
+            id: '',
+            googleId: '',
+            name: ''
+        }
+
+        async function fetchUser() {
+            return {getUserID, getGoogleID, getName}
+        }
+
+        fetchUser().then((id, gid, name) => {
+            let user:User = {
+                id: id,
+                googleId: gid,
+                name: name
+            }
+            setUser(user)
+        })
+    }, [])
+
     return (
         <View style={styles.container}>
             <Text>User Info</Text>
-            <Text>User ID: {u.id}</Text>
-            <Text>Google ID: {u.googleId}</Text>
-            <Text>Name: {u.name}</Text>
+            <Text>User ID: {user.id}</Text>
+            <Text>Google ID: {user.googleId}</Text>
+            <Text>Name: {user.name}</Text>
         </View>
     )
 }
