@@ -5,28 +5,35 @@ import User from '../models/user'
 
 //TODO: This needs to be dumb and take a user from settings
 const UserInfo = () => {
-    const [user, setUser] = useState<User>()
+    let u:User = {
+        id: '',
+        googleId: '',
+        name: ''
+    }
+    const [user, setUser] = useState<User>(u)
 
     useEffect(() => {
-        let u = {
-            id: '',
-            googleId: '',
-            name: ''
-        }
-
-        async function fetchUser() {
-            return {getUserID, getGoogleID, getName}
-        }
-
-        fetchUser().then((id, gid, name) => {
-            let user:User = {
+        const fetchUser = async () => {
+            let id = await getUserID()
+            let gid = await getGoogleID()
+            let name = await getName()
+            let u = {
                 id: id,
                 googleId: gid,
                 name: name
             }
-            setUser(user)
+            return u
+        }
+
+        fetchUser().then((u) => {
+            let foundUser:User = {
+                id: u.id,
+                googleId: u.googleId,
+                name: u.name
+            }
+            setUser(foundUser)
         })
-    }, [])
+    }, [user])
 
     return (
         <View style={styles.container}>
