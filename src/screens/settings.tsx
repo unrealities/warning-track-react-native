@@ -1,16 +1,17 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { FlatList, StyleSheet, Switch, Text, View } from "react-native"
 
 import { initializeApp } from 'firebase/app'
 import { doc, getFirestore, setDoc } from 'firebase/firestore'
 
+import User from '../models/user'
 import withBackground from "../utilities/background"
-import { useAuthentication } from '../utilities/hooks/useAuthentication'
 import GoogleLogin from "../components/googleLogin"
 import UserInfo from "../components/userInfo"
 import UserSettings from "../models/userSettings"
 import { firebaseConfig } from "../config/firebase"
 import { UserSettingsConverter } from '../utilities/firestore/converters/settings'
+import { getName, getGoogleID, getUserID } from '../utilities/hooks/localStorage'
 
 export interface SettingContainerProps {
   isEnabled: boolean,
@@ -29,21 +30,42 @@ const settings = [
 
 // TODO: This needs to update when a user signs in and reflect current status
 const SettingsContainer = () => {
-  const { user } = useAuthentication()
-  let body = <Text style={styles.text}>{user ? user?.displayName : 'Sign In to Access Settings'}</Text>
+  let u:User = {
+    id: '',
+    googleId: '',
+    name: ''
+  }
+  const [user, setUser] = useState<User>(u)
+  let body = <Text style={styles.text}>{user.id.length > 0 ? user.name : 'Sign In to Access Settings'}</Text>
 
   if (user) {
     body = <FlatList
       data={settings}
-      renderItem={({ item }) => <SettingContainer name={item.name} isEnabled={false} userID={user.uid} />}
+      renderItem={({ item }) => <SettingContainer name={item.name} isEnabled={false} userID={user.id} />}
       keyExtractor={item => item.id}
       showsHorizontalScrollIndicator={false} />
   }
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      let id = await getUserID()
+      let gid = await getGoogleID()
+      let name = await getName()
+      let u:User = {
+        id: id,
+        googleId: gid,
+        name: name
+      }
+      setUser(u)
+    }
+
+    fetchUser()
+  }, []) // if this is [user] => infinite loop
+
   return (
     <View>
       {body}
-      <UserInfo />
+      <UserInfo user={user} />
       <GoogleLogin />
     </View>
   )
