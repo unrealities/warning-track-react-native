@@ -59,8 +59,12 @@ const SettingsContainer = () => {
       setUser(u)
     }
 
-    fetchUser()
-  }, []) // if this is [user] => infinite loop
+    window.addEventListener('storage', fetchUser)
+
+    return () => {
+      window.removeEventListener('storage', fetchUser)
+    }
+  }, [user]) // if this is [user] => infinite loop
 
   return (
     <View>
