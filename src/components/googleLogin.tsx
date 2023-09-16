@@ -4,11 +4,14 @@ import { GoogleAuthProvider, UserCredential, getAuth, signInWithCredential, sign
 import * as Google from 'expo-auth-session/providers/google'
 import Constants from 'expo-constants'
 
-import { useAuthentication } from '../utilities/hooks/useAuthentication'
 import { setGoogleID, setName } from '../utilities/hooks/localStorage'
+import User from '../models/user'
 
-const GoogleLogin = () => {
-    const user = useAuthentication
+interface IGoogleLoginProps {
+    user: User,
+}
+
+const GoogleLogin: React.FC<IGoogleLoginProps> = (props:IGoogleLoginProps) => {
     const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
         androidClientId: Constants?.expoConfig?.extra?.androidClientId,
         expoClientId: Constants?.expoConfig?.extra?.expoClientId,
@@ -48,15 +51,14 @@ const GoogleLogin = () => {
             }   
         }
         googleLogIn()
-        console.log(user)
     }, [response])
 
     return (
         <View style={styles.container}>
             <Pressable
-                onPress={() => { user && user?.displayName ? signOut(getAuth()) : promptAsync() }}
+                onPress={() => { props.user.googleId ? signOut(getAuth()) : promptAsync() }}
                 style={styles.button}>
-                <Text style={styles.buttonText}>{user && user?.displayName ? 'Sign Out ' + user.displayName : 'Sign In'}</Text>
+                <Text style={styles.buttonText}>{props.user.googleId ? 'Sign Out ' + props.user.name : 'Sign In'}</Text>
             </Pressable>
         </View>
     )

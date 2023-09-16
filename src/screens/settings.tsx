@@ -64,13 +64,13 @@ const SettingsContainer = () => {
     return () => {
       window.removeEventListener('storage', fetchUser)
     }
-  }, [user]) // if this is [user] => infinite loop
+  }, [])
 
   return (
     <View>
       {body}
       <UserInfo user={user} />
-      <GoogleLogin />
+      <GoogleLogin user={user} />
     </View>
   )
 }
