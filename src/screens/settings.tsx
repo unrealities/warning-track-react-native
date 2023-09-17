@@ -64,7 +64,7 @@ const SettingsContainer = () => {
     return () => {
       window.removeEventListener('storage', fetchUser)
     }
-  }, [])
+  })
 
   return (
     <View>
