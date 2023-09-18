@@ -5082,9 +5082,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001517:
-  version "1.0.30001534"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001534.tgz"
-  integrity sha512-vlPVrhsCS7XaSh2VvWluIQEzVhefrUQcEsQWSS5A5V+dM07uv1qHeQzAOTGIMy9i3e9bH15+muvI/UHojVgS/Q==
+  version "1.0.30001535"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001535.tgz"
+  integrity sha512-48jLyUkiWFfhm/afF7cQPqPjaUmSraEhK4j+FCTJpgnGGEZHqyLe3hmWH7lIooZdSzXL0ReMvHz0vKDoTBsrwg==
 
 caseless@~0.11.0:
   version "0.11.0"
@@ -8622,9 +8622,9 @@ jodid25519@^1.0.0:
     jsbn "~0.1.0"
 
 joi@^17.2.1:
-  version "17.10.1"
-  resolved "https://registry.npmjs.org/joi/-/joi-17.10.1.tgz"
-  integrity sha512-vIiDxQKmRidUVp8KngT8MZSOcmRVm2zV7jbMjNYWuHcJWI0bUck3nRTGQjhpPlQenIQIBC5Vp9AhcnHbWQqafw==
+  version "17.10.2"
+  resolved "https://registry.npmjs.org/joi/-/joi-17.10.2.tgz"
+  integrity sha512-hcVhjBxRNW/is3nNLdGLIjkgXetkeGc2wyhydhz8KumG23Aerk4HPjU5zaPAMRqXQFc0xNqXTC7+zQjxr0GlKA==
   dependencies:
     "@hapi/hoek" "^9.0.0"
     "@hapi/topo" "^5.0.0"

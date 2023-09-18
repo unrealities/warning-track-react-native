@@ -60,10 +60,6 @@ const SettingsContainer = () => {
     }
 
     window.addEventListener('storage', fetchUser)
-
-    return () => {
-      window.removeEventListener('storage', fetchUser)
-    }
   })
 
   return (
