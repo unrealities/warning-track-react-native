@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Pressable, StyleSheet, Text, View } from "react-native"
 import { GoogleAuthProvider, UserCredential, getAuth, signInWithCredential, signOut } from "firebase/auth"
 import * as Google from 'expo-auth-session/providers/google'
@@ -11,7 +11,8 @@ interface IGoogleLoginProps {
     user: User,
 }
 
-const GoogleLogin: React.FC<IGoogleLoginProps> = (props:IGoogleLoginProps) => {
+const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
+    const [user, setUser] = useState<User>(props.user)
     const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
         androidClientId: Constants?.expoConfig?.extra?.androidClientId,
         expoClientId: Constants?.expoConfig?.extra?.expoClientId,
@@ -27,10 +28,13 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props:IGoogleLoginProps) => {
     })
 
     const onLoginSucceeded = (token: string, res: UserCredential) => {
-        setGoogleID(res.user.uid)
+        user.googleId = res.user.uid
+        setGoogleID(user.googleId)
         if (res.user.displayName) {
+            user.name = res.user.displayName
             setName(res.user.displayName)
         }
+        setUser(user)
     }
 
     useEffect(() => {
@@ -48,7 +52,7 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props:IGoogleLoginProps) => {
                 }
             } catch (e: any) {
                 console.error(e)
-            }   
+            }
         }
         googleLogIn()
     }, [response])
@@ -56,9 +60,9 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props:IGoogleLoginProps) => {
     return (
         <View style={styles.container}>
             <Pressable
-                onPress={() => { props.user.googleId != '' ? signOut(getAuth()) : promptAsync() }}
+                onPress={() => { user.googleId != '' ? signOut(getAuth()) : promptAsync() }}
                 style={styles.button}>
-                <Text style={styles.buttonText}>{props.user.googleId != '' ? 'Sign Out ' + props.user.name : 'Sign In'}</Text>
+                <Text style={styles.buttonText}>{user.googleId != '' ? 'Sign Out ' + user.name : 'Sign In'}</Text>
             </Pressable>
         </View>
     )
