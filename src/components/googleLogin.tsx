@@ -4,7 +4,7 @@ import { GoogleAuthProvider, UserCredential, getAuth, signInWithCredential, sign
 import * as Google from 'expo-auth-session/providers/google'
 import Constants from 'expo-constants'
 
-import { setGoogleID, setName } from '../utilities/hooks/localStorage'
+import { getGoogleID, getUserID, setGoogleID, setName } from '../utilities/hooks/localStorage'
 import User from '../models/user'
 
 interface IGoogleLoginProps {
@@ -27,7 +27,9 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
         ],
     })
 
-    const onLoginSucceeded = (token: string, res: UserCredential) => {
+    const onLoginSucceeded = async (token: string, res: UserCredential) => {
+        user.id = await getUserID()
+        user.name = await getGoogleID()
         user.googleId = res.user.uid
         setGoogleID(user.googleId)
         if (res.user.displayName) {
@@ -62,7 +64,7 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
             <Pressable
                 onPress={() => { user.googleId != '' ? signOut(getAuth()) : promptAsync() }}
                 style={styles.button}>
-                <Text style={styles.buttonText}>{user.googleId != '' ? 'Sign Out ' + user.name : 'Sign In'}</Text>
+                <Text style={styles.buttonText}>{props.user.name}</Text>
             </Pressable>
         </View>
     )
