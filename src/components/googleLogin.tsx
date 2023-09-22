@@ -36,6 +36,7 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
             user.name = res.user.displayName
             setName(res.user.displayName)
         }
+        console.log(user)
         setUser(user)
     }
 

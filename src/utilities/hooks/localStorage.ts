@@ -3,7 +3,7 @@ import uuid from 'react-native-uuid'
 import UserSettings from '../../models/userSettings'
 
 const googleID = 'googleID'
-const name = 'name'
+const userName = 'name'
 const userID = 'userID'
 const userSettingsNotificationsEnabled = 'userSettingsNotificationsEnabled'
 
@@ -12,7 +12,7 @@ export async function setGoogleID(id: string) {
 }
 
 export async function setName(name: string) {
-  await AsyncStorage.setItem(name, name)
+  await AsyncStorage.setItem(userName, name)
 }
 
 async function setUserID(id: string) {
@@ -33,7 +33,7 @@ export async function getGoogleID() {
 }
 
 export async function getName() {
-  let n = await AsyncStorage.getItem(name)
+  let n = await AsyncStorage.getItem(userName)
   if (n) {
     return n
   } else {

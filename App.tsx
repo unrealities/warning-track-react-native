@@ -42,7 +42,7 @@ const App = () => {
   let u: User = {
     id: uuid.v4().toString(),
     googleId: '',
-    name: ''
+    name: 'default'
   }
 
   const [isNetworkConnected, setIsNetworkConnected] = useState<boolean>(true)

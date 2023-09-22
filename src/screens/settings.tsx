@@ -60,7 +60,7 @@ const SettingsContainer = () => {
     }
 
     window.addEventListener('storage', fetchUser)
-  })
+  },[user])
 
   return (
     <View>
