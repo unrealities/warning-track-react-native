@@ -28,7 +28,6 @@ const settings = [
   }
 ]
 
-// TODO: This needs to update when a user signs in and reflect current status
 const SettingsContainer = () => {
   let u:User = {
     id: '',
@@ -58,9 +57,8 @@ const SettingsContainer = () => {
       }
       setUser(u)
     }
-
-    window.addEventListener('storage', fetchUser)
-  },[user])
+    fetchUser()
+  },[])
 
   return (
     <View>
