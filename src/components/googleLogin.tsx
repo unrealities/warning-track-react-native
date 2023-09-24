@@ -65,7 +65,7 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
             <Pressable
                 onPress={() => { user.googleId != '' ? signOut(getAuth()) : promptAsync() }}
                 style={styles.button}>
-                <Text style={styles.buttonText}>{props.user.name}</Text>
+                <Text style={styles.buttonText}>{user.googleId != '' ? props.user.name : 'Sign Out'}</Text>
             </Pressable>
         </View>
     )
