@@ -35,7 +35,7 @@ const SettingsContainer = () => {
     name: ''
   }
   const [user, setUser] = useState<User>(u)
-  let body = <Text style={styles.text}>{user.id.length > 0 ? user.name : 'Sign In to Access Settings'}</Text>
+  let body = <Text style={styles.text}>{user.id != '' ? user.name : 'Sign In to Access Settings'}</Text>
 
   if (user) {
     body = <FlatList
