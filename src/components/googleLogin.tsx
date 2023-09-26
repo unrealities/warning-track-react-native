@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Pressable, StyleSheet, Text, View } from "react-native"
-import { GoogleAuthProvider, UserCredential, getAuth, signInWithCredential, signOut } from "firebase/auth"
+import { GoogleAuthProvider, UserCredential, getAuth, onAuthStateChanged, signInWithCredential, signOut } from "firebase/auth"
 import * as Google from 'expo-auth-session/providers/google'
 import Constants from 'expo-constants'
 
@@ -13,6 +13,7 @@ interface IGoogleLoginProps {
 
 const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
     const [user, setUser] = useState<User>(props.user)
+    const [signedInUser, setSignedInUser] = useState<boolean>(false)
     const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
         androidClientId: Constants?.expoConfig?.extra?.androidClientId,
         expoClientId: Constants?.expoConfig?.extra?.expoClientId,
@@ -56,6 +57,9 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
             } catch (e: any) {
                 console.error(e)
             }
+            onAuthStateChanged(auth, (user) => {
+                if (user) { setSignedInUser(true) }
+            })
         }
         googleLogIn()
     }, [response])
@@ -67,9 +71,9 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
     return (
         <View style={styles.container}>
             <Pressable
-                onPress={() => { user.googleId != '' ? signOut(getAuth()) : promptAsync() }}
+                onPress={() => { signedInUser ? signOut(getAuth()) : promptAsync() }}
                 style={styles.button}>
-                <Text style={styles.buttonText}>{user.googleId != '' ? 'Sign Out' + props.user.name : 'Sign In'}</Text>
+                <Text style={styles.buttonText}>{ signedInUser ? 'Sign Out ' + props.user.name : 'Sign In'}</Text>
             </Pressable>
         </View>
     )
