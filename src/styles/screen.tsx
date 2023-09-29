@@ -6,7 +6,7 @@ export const ScreenStyles = StyleSheet.create({
   },
   headerTxt: {
     color: "#225500",
-    fontFamily: "Lobster_400Regular",
+    fontFamily: "Lobster-Regular",
     fontSize: 48,
     textAlign: "center",
   },

@@ -64,10 +64,6 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
         googleLogIn()
     }, [response])
 
-    useEffect(() => {
-        console.log(user)
-    }, [])
-
     const signOutUser = async() => {
         const auth = getAuth()
         const result = await signOut(auth)

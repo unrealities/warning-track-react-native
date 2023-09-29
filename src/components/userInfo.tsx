@@ -9,10 +9,7 @@ interface IUserInfoProps {
 const UserInfo: React.FC<IUserInfoProps> = (props:IUserInfoProps) => {
     return (
         <View style={styles.container}>
-            <Text>User Info</Text>
-            <Text>User ID: {props.user.id}</Text>
-            <Text>Google ID: {props.user.googleId}</Text>
-            <Text>Name: {props.user.name}</Text>
+            <Text style={styles.text}>{props.user.name}</Text>
         </View>
     )
 }
