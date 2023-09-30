@@ -8,7 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 const app = initializeApp(firebaseConfig)
 initializeAuth(app, {
     persistence: getReactNativePersistence(AsyncStorage)
-  })
+})
 const auth = getAuth(app)
 
 export function useAuthentication() {

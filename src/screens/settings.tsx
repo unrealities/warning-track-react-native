@@ -29,7 +29,7 @@ const settings = [
 ]
 
 const SettingsContainer = () => {
-  let u:User = {
+  let u: User = {
     id: '',
     googleId: '',
     name: ''
@@ -50,7 +50,7 @@ const SettingsContainer = () => {
       let id = await getUserID()
       let gid = await getGoogleID()
       let name = await getName()
-      let u:User = {
+      let u: User = {
         id: id,
         googleId: gid,
         name: name
@@ -58,12 +58,12 @@ const SettingsContainer = () => {
       setUser(u)
     }
     fetchUser()
-  },[])
+  }, [])
 
   return (
     <View>
-      {body}
       <UserInfo user={user} />
+      {body}
       <GoogleLogin user={user} />
     </View>
   )
@@ -98,6 +98,7 @@ const SettingContainer = (props: SettingContainerProps) => {
         thumbColor={enabled ? '#f5dd4b' : '#f4f3f4'}
         ios_backgroundColor="#3e3e3e"
         onValueChange={updateSetting}
+        style={styles.switch}
         value={enabled}
       />
     </View>
@@ -115,16 +116,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     flex: 1,
+    flexDirection: 'row',
     padding: 8,
-    width: 300
+    maxWidth: 300
+  },
+  switch: {
+    float: 'left',
+    flex: 1,
+    maxWidth: 36
   },
   text: {
     flex: 1,
     fontFamily: 'Lobster-Regular',
-    fontSize: 30,
-    minHeight: 100,
-    paddingTop: 10,
-    textAlign: 'center'
+    fontSize: 24,
+    paddingRight: 10,
+    minWidth: 160,
+    maxWidth: 160
   }
 })
 

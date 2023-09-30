@@ -64,7 +64,7 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
         googleLogIn()
     }, [response])
 
-    const signOutUser = async() => {
+    const signOutUser = async () => {
         const auth = getAuth()
         const result = await signOut(auth)
         setSignedInUser(false)
@@ -75,7 +75,7 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
             <Pressable
                 onPress={() => { signedInUser ? signOutUser() : promptAsync() }}
                 style={styles.button}>
-                <Text style={styles.buttonText}>{ signedInUser ? 'Sign Out ' + props.user.name : 'Sign In'}</Text>
+                <Text style={styles.buttonText}>{signedInUser ? 'Sign Out ' + props.user.name : 'Sign In'}</Text>
             </Pressable>
         </View>
     )

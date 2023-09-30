@@ -57,7 +57,7 @@ const App = () => {
     }
 
     setLocalUser()
-  },[])
+  }, [])
 
   useEffectDebugger(() => {
     const networkConnected = async () => {

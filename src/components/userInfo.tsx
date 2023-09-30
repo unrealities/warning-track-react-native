@@ -6,7 +6,7 @@ interface IUserInfoProps {
     user: User,
 }
 
-const UserInfo: React.FC<IUserInfoProps> = (props:IUserInfoProps) => {
+const UserInfo: React.FC<IUserInfoProps> = (props: IUserInfoProps) => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>{props.user.name}</Text>
