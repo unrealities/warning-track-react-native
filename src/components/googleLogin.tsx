@@ -4,7 +4,7 @@ import { GoogleAuthProvider, UserCredential, getAuth, onAuthStateChanged, signIn
 import * as Google from 'expo-auth-session/providers/google'
 import Constants from 'expo-constants'
 
-import { getGoogleID, getUserID, setGoogleID, setName } from '../utilities/hooks/localStorage'
+import { getGoogleID, getUserID, getUserSettings, setGoogleID, setName, setUserSettings } from '../utilities/hooks/localStorage'
 import User from '../models/user'
 
 interface IGoogleLoginProps {
@@ -37,8 +37,9 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
             user.name = res.user.displayName
             setName(res.user.displayName)
         }
-        console.log(user)
         setUser(user)
+        const userSettings = await getUserSettings()
+        setUserSettings(userSettings)
     }
 
     useEffect(() => {
@@ -68,6 +69,7 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
         const auth = getAuth()
         const result = await signOut(auth)
         setSignedInUser(false)
+        setGoogleID('')
     }
 
     return (
