@@ -39,6 +39,7 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
         }
         setUser(user)
         const userSettings = await getUserSettings()
+        console.log(userSettings)
         setUserSettings(userSettings)
     }
 
