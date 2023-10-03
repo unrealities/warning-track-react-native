@@ -42,6 +42,14 @@ const SettingsContainer = () => {
     fetchUserSettings()
   }, [])
 
+  useEffect(() => {
+    const fetchUserSettings = async () => {
+      let us = await getUserSettings()
+      setUserSettings(us)
+    }
+    fetchUserSettings()
+  }, [user])
+
   return (
     <View>
       <UserInfo user={user} />
