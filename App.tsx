@@ -19,7 +19,6 @@ import { getAuth, signInAnonymously } from 'firebase/auth'
 import User from './src/models/user'
 import { UserConverter } from './src/utilities/firestore/converters/user'
 import { getName, getUserID } from './src/utilities/hooks/localStorage'
-import { useEffectDebugger } from './src/utilities/debugger'
 
 const app = initializeApp(firebaseConfig)
 const auth = getAuth()
@@ -59,7 +58,7 @@ const App = () => {
     setLocalUser()
   }, [])
 
-  useEffectDebugger(() => {
+  useEffect(() => {
     const networkConnected = async () => {
       try {
         await Network.getNetworkStateAsync().then((networkState) => {
@@ -96,7 +95,6 @@ const App = () => {
       // TODO: still infinite
       // setCloudUser()
       updateUser(user)
-      console.log(user)
     }
   }, [user])
 
