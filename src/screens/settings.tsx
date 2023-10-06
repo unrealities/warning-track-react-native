@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { View } from "react-native"
+import { StyleSheet, View } from "react-native"
 
 import User from '../models/user'
 import withBackground from "../utilities/background"
@@ -51,7 +51,7 @@ const SettingsContainer = () => {
   }, [user])
 
   return (
-    <View>
+    <View style={styles.container}>
       <UserInfo user={user} />
       <UserSettingsInfo userSettings={userSettings} />
       <GoogleLogin user={user} />
@@ -64,5 +64,13 @@ export const SettingsScreen = (props: SettingsScreenProps) => {
     withBackground(SettingsContainer)
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+      alignItems: 'stretch',
+      flex: 1,
+      flexDirection: 'column'
+  }
+})
 
 export default SettingsScreen
