@@ -10,6 +10,7 @@ export default {
       bundleIdentifier: "com.unrealities.warningtrackbackend"
     },
     name: myValue,
+    plugins: ["expo-router"],
     version: process.env.MY_CUSTOM_PROJECT_VERSION || '1.0.0',
     extra: {
       firebaseApiKey: process.env.FIREBASE_APIKEY,
