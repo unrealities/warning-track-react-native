@@ -20,6 +20,7 @@ export default {
       firebaseProjectId: process.env.FIREBASE_PROJECTID,
       themoviedb_key: process.env.THEMOVIEDB_APIKEY,
       expoClientId: process.env.CLIENTID_EXPO,
+      iosClientId: process.env.CLIENTID_IOS,
       webClientId: process.env.CLIENTID_WEB
     }
   }
