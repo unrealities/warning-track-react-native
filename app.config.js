@@ -7,7 +7,14 @@ export default {
       package: "com.unrealities.warningtrackbackend"
     },
     ios: {
-      bundleIdentifier: "com.unrealities.warningtrackbackend"
+      bundleIdentifier: "com.unrealities.warningtrackbackend",
+      "infoPlist": {
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": [process.env.CLIENTID_IOS]
+          }
+        ]
+      }
     },
     name: myValue,
     plugins: ["expo-router"],
