@@ -23,7 +23,7 @@
         "image": "./assets/images/wt_splash.png",
         "resizeMode": "contain"
       },
-      "bundleIdentifier": "org.reactjs.native.example.WarningTrack"
+      "bundleIdentifier": "com.unrealities.warningtrackbackend"
     },
     "name": "WarningTrack",
     "platforms": [

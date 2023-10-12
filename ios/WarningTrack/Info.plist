@@ -4,6 +4,8 @@
   <dict>
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
+    <key>CFBundleDisplayName</key>
+    <string>warning-track-backend</string>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
@@ -18,27 +20,19 @@
     <string>1.0.0</string>
     <key>CFBundleSignature</key>
     <string>????</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>203219271972-nk1npk5abbooaqd1ro577us4lcjde9ff.apps.googleusercontent.com</string>
+        </array>
+      </dict>
+    </array>
     <key>CFBundleVersion</key>
     <string>1</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Allow WarningTrack to use your location</string>
-    <key>UILaunchStoryboardName</key>
-    <string>SplashScreen</string>
-    <key>UIRequiredDeviceCapabilities</key>
-    <array>
-      <string>armv7</string>
-    </array>
-    <key>UISupportedInterfaceOrientations</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationPortraitUpsideDown</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    <key>UIViewControllerBasedStatusBarAppearance</key>
-    <false/>
     <key>NSAppTransportSecurity</key>
     <dict>
       <key>NSAllowsArbitraryLoads</key>
@@ -62,6 +56,8 @@
     <string>Allow WarningTrack to use your location</string>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>Allow WarningTrack to use your location</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Allow WarningTrack to use your location</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>Allow WarningTrack to access your microphone</string>
     <key>NSMotionUsageDescription</key>
@@ -72,20 +68,36 @@
     <string>Give WarningTrack periences permission to access your photos</string>
     <key>NSRemindersUsageDescription</key>
     <string>Allow WarningTrack to access your reminders</string>
-    <key>CFBundleURLTypes</key>
+    <key>NSUserActivityTypes</key>
     <array>
-      <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>org.reactjs.native.example.WarningTrack</string>
-        </array>
-      </dict>
+      <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
+      <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
+    </array>
+    <key>UILaunchStoryboardName</key>
+    <string>SplashScreen</string>
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+      <string>armv7</string>
     </array>
     <key>UIRequiresFullScreen</key>
-    <true/>
+    <false/>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationPortraitUpsideDown</string>
+      <string>UIInterfaceOrientationLandscapeLeft</string>
+      <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationPortraitUpsideDown</string>
+      <string>UIInterfaceOrientationLandscapeLeft</string>
+      <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
     <key>UIUserInterfaceStyle</key>
     <string>Light</string>
-    <key>CFBundleDisplayName</key>
-    <string>WarningTrack</string>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <false/>
   </dict>
 </plist>

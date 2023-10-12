@@ -1,4 +1,4 @@
-rootProject.name = 'WarningTrack'
+rootProject.name = 'warning-track-backend'
 
 apply from: '../node_modules/react-native-unimodules/gradle.groovy'
 includeUnimodulesProjects()
