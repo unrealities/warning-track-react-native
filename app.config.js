@@ -28,6 +28,7 @@ export default {
       themoviedb_key: process.env.THEMOVIEDB_APIKEY,
       expoClientId: process.env.CLIENTID_EXPO,
       iosClientId: process.env.CLIENTID_IOS,
+      iosURLConfig: process.env.IOS_URLSCHEME,
       webClientId: process.env.CLIENTID_WEB
     }
   }

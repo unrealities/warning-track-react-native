@@ -23,6 +23,10 @@ This allows us to easily access the backend in Firebase
 
 There are credentials that you need to get from Google that are stored in `/android/app/google-services.json` that are excluded from this repo.
 
+## iOS Build
+
+`npx expo prebuild`
+
 ## dotenv
 
 [dotenv](https://www.npmjs.com/package/dotenv) is used to to store environment variables in `.env` that is excluded from this repo. This data is read in via `app.config.js`
