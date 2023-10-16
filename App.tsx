@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import { useFonts } from 'expo-font'
+import * as Notifications from "expo-notifications"
 import * as SplashScreen from 'expo-splash-screen'
 import * as WebBrowser from 'expo-web-browser'
 import * as Network from 'expo-network'
@@ -26,6 +27,14 @@ const auth = getAuth()
 const db = getFirestore(app)
 const analytics = isSupported().then(yes => yes ? getAnalytics(app) : null)
 WebBrowser.maybeCompleteAuthSession()
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: true,
+  }),
+})
 
 SplashScreen.preventAutoHideAsync()
 
