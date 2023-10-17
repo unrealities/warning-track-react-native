@@ -12,8 +12,8 @@ Notifications.setNotificationHandler({
 })
 
 export default function App() {
-  const [expoPushToken, setExpoPushToken] = useState('')
-  const [notification, setNotification] = useState(false)
+  const [expoPushToken, setExpoPushToken] = useState<string>('')
+  const [notification, setNotification] = useState<boolean>(false)
   const notificationListener = useRef()
   const responseListener = useRef()
 

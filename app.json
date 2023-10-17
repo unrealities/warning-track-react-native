@@ -5,12 +5,13 @@
     "android": {
       "googleServicesFile": "./google-services.json",
       "icon": "./assets/images/wt.png",
+      "package": "co.warningtrack.android",
       "splash": {
         "backgroundColor": "#44aa00",
         "image": "./assets/images/wt_splash.png",
         "resizeMode": "contain"
       },
-      "package": "co.warningtrack.android"
+      "useNextNotificationsApi": true
     },
     "assetBundlePatterns": [
       "assets/images/*"

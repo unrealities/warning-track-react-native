@@ -39,6 +39,7 @@
     "expo-modules-autolinking": "~1.5.0",
     "expo-network": "~5.4.0",
     "expo-notifications": "~0.20.1",
+    "expo-permissions": "~14.2.1",
     "expo-random": "~13.2.0",
     "expo-router": "^2.0.0",
     "expo-splash-screen": "~0.20.5",
