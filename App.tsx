@@ -60,6 +60,19 @@ const App = () => {
   const Tab = createBottomTabNavigator()
 
   useEffect(() => {
+    Permissions.getAsync(Permissions.NOTIFICATIONS).then((statusObj) => {
+      if (statusObj.status !== 'granted') {
+        return Permissions.askAsync(Permissions.NOTIFICATIONS)
+      }
+      return statusObj
+    }).then((statusObj) => {
+      if (statusObj.status !== 'granted') {
+        return
+      }
+    })
+  }, [])
+
+  useEffect(() => {
     const setLocalUser = async () => {
       u.id = await getUserID()
       u.name = await getName()

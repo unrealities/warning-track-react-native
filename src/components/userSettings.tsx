@@ -1,9 +1,11 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 import { initializeApp } from 'firebase/app'
 import { doc, getFirestore, setDoc } from 'firebase/firestore'
-import { FlatList, StyleSheet, Switch, Text, View } from "react-native"
+import { Button, FlatList, StyleSheet, Switch, Text, View } from 'react-native'
+import * as Notifications from 'expo-notifications'
+
 import UserSettings from '../models/userSettings'
-import { firebaseConfig } from "../config/firebase"
+import { firebaseConfig } from '../config/firebase'
 import { UserSettingsConverter } from '../utilities/firestore/converters/settings'
 
 const app = initializeApp(firebaseConfig)
@@ -58,8 +60,20 @@ const SettingContainer = (props: SettingContainerProps) => {
         updateUserSettings(props.userID, isEnabled)
     }
 
+    const triggerNotifications = async () => {
+        await Notifications.scheduleNotificationAsync({
+            content: {
+                title: 'You’ve got mail! 📬',
+                body: 'Here is the notification body',
+                data: { data: 'goes here' },
+            },
+            trigger: { seconds: 2 },
+        })
+    }
+
     return (
         <View style={styles.container}>
+            <Button onPress={triggerNotifications} title="Trigger Local Notifications" color="#841584" accessibilityLabel="Trigger Local Notifications" />
             <Text style={styles.text}>{name}</Text>
             <Switch
                 trackColor={{ false: '#767577', true: '#81b0ff' }}
