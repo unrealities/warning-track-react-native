@@ -32,7 +32,16 @@
       "android",
       "web"
     ],
-    "plugins": ["@react-native-google-signin/google-signin"],
+    "plugins": [
+      [ "@react-native-google-signin/google-signin"],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/wt.png",
+          "color": "#ffffff"
+        }
+      ]
+    ],
     "scheme": "warning-track",
     "slug": "WarningTrack",
     "splash": {
