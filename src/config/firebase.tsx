@@ -1,5 +1,7 @@
 import Constants from 'expo-constants'
 
+console.log(Constants)
+
 export const firebaseConfig = {
     apiKey: Constants?.expoConfig?.extra?.firebaseApiKey,
     authDomain: `${Constants?.expoConfig?.extra?.firebaseProjectId}.firebaseapp.com`,

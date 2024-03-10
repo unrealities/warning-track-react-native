@@ -23,6 +23,8 @@ import User from './src/models/user'
 import { UserConverter } from './src/utilities/firestore/converters/user'
 import { getName, getUserID } from './src/utilities/hooks/localStorage'
 
+console.log(firebaseConfig)
+
 const app = initializeApp(firebaseConfig)
 const auth = getAuth()
 const db = getFirestore(app)
