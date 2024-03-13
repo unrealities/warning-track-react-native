@@ -1,28 +1,15 @@
 {
-  "builds": {
-    "android": {
-      "release": {
-        "env": {
-          "GOOGLE_CLIENT_ID" : "google.client.id"
-        },
-        "workflow": "generic"
+  "build": {
+    "development-simulator": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
       }
     },
-    "ios": {
-      "release": {
-        "env": {
-          "GOOGLE_CLIENT_ID" : "google.client.id"
-        },
-        "workflow": "generic"
-      }
+    "preview": {
+      "distribution": "internal"
     },
-    "web": {
-      "release": {
-        "env": {
-          "GOOGLE_CLIENT_ID" : "google.client.id"
-        },
-        "workflow": "generic"
-      }
-    }
+    "production": {}
   }
 }

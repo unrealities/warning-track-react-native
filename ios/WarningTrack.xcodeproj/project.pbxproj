@@ -15,6 +15,7 @@
 		7B0C5784998A29E517983E0C /* libPods-WarningTrack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2502ACF51380E8237829647D /* libPods-WarningTrack.a */; };
 		A54EBA027A1B476B9DD1B69D /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93429C230D5A43C489D055D3 /* SplashScreen.storyboard */; };
 		CDECEF7829ED4D2286EE3B5D /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483A95B9A2640E784B12F87 /* noop-file.swift */; };
+		B9BABFF301644526A1D6F010 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 462DEE6BE478433BAF9E8000 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		93429C230D5A43C489D055D3 /* SplashScreen.storyboard */ = {isa = PBXFileReference; name = "SplashScreen.storyboard"; path = "WarningTrack/SplashScreen.storyboard"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = file.storyboard; };
 		3ECE3365020F4A3B9B6E19CC /* WarningTrack-Bridging-Header.h */ = {isa = PBXFileReference; name = "WarningTrack-Bridging-Header.h"; path = "WarningTrack/WarningTrack-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		A483A95B9A2640E784B12F87 /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "WarningTrack/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		462DEE6BE478433BAF9E8000 /* GoogleService-Info.plist */ = {isa = PBXFileReference; name = "GoogleService-Info.plist"; path = "WarningTrack/GoogleService-Info.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				93429C230D5A43C489D055D3 /* SplashScreen.storyboard */,
 				3ECE3365020F4A3B9B6E19CC /* WarningTrack-Bridging-Header.h */,
 				A483A95B9A2640E784B12F87 /* noop-file.swift */,
+				462DEE6BE478433BAF9E8000 /* GoogleService-Info.plist */,
 			);
 			name = WarningTrack;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				A54EBA027A1B476B9DD1B69D /* SplashScreen.storyboard in Resources */,
 				847E03D0268F4EDEBAFD8BFC /* WarningTrack-Bridging-Header.h in Resources */,
+				B9BABFF301644526A1D6F010 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

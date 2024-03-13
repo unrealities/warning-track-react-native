@@ -11,6 +11,6 @@
     <key>EXUpdatesReleaseChannel</key>
     <string>default</string>
     <key>EXUpdatesSDKVersion</key>
-    <string>49.0.0</string>
+    <string>50.0.0</string>
   </dict>
 </plist>

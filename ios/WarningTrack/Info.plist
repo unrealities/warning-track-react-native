@@ -24,8 +24,18 @@
     <array>
       <dict>
         <key>CFBundleURLSchemes</key>
+        <array/>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
         <array>
-          <string>203219271972-nk1npk5abbooaqd1ro577us4lcjde9ff.apps.googleusercontent.com</string>
+          <string>com.googleusercontent.apps.203219271972-nnvtu4me50p7nvb431j6f61ackkgl579</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>exp+warning-track-backend</string>
         </array>
       </dict>
     </array>
@@ -70,6 +80,8 @@
     <string>Allow WarningTrack to access your reminders</string>
     <key>NSUserActivityTypes</key>
     <array>
+      <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
+      <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
     </array>
