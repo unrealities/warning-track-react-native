@@ -129,15 +129,15 @@ const App = () => {
       <NavigationContainer >
         <Tab.Navigator
           initialRouteName="Games"
-          tabBarOptions={{
-            activeBackgroundColor: "#faf5e3",
-            activeTintColor: "#593811",
-            labelStyle: {
+          screenOptions={{
+            tabBarActiveBackgroundColor: "#faf5e3",
+            tabBarActiveTintColor: "#593811",
+            tabBarLabelStyle: {
               color: "#63513c",
               fontSize: 18,
               fontWeight: "400",
             },
-            style: {
+            tabBarStyle: {
               backgroundColor: "#faf5e3",
               borderTopColor: "#63513c",
               borderTopWidth: 2,
