@@ -3,7 +3,6 @@ import {
   Animated,
   Easing,
   FlatList,
-  Linking,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -11,6 +10,7 @@ import {
   ViewStyle,
 } from "react-native"
 
+import * as Linking from 'expo-linking';
 import moment from "moment"
 
 import { BSOStyles } from "../styles/ballsStrikesOuts"
