@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import { useFonts } from 'expo-font'
 import * as Notifications from 'expo-notifications'
-import * as Permissions from 'expo-permissions'
 import * as SplashScreen from 'expo-splash-screen'
 import * as WebBrowser from 'expo-web-browser'
 import * as Network from 'expo-network'
@@ -60,19 +59,6 @@ const App = () => {
   const [isNetworkConnected, setIsNetworkConnected] = useState<boolean>(true)
   const [user, setUser] = useState<User>(u)
   const Tab = createBottomTabNavigator()
-
-  useEffect(() => {
-    Permissions.getAsync(Permissions.NOTIFICATIONS).then((statusObj) => {
-      if (statusObj.status !== 'granted') {
-        return Permissions.askAsync(Permissions.NOTIFICATIONS)
-      }
-      return statusObj
-    }).then((statusObj) => {
-      if (statusObj.status !== 'granted') {
-        return
-      }
-    })
-  }, [])
 
   useEffect(() => {
     const setLocalUser = async () => {
