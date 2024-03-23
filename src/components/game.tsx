@@ -280,21 +280,23 @@ export class PostGameContainer extends React.Component<PostGameProps> {
 
   render() {
     return (
-      <View style={GameStyles.nonLiveGameContainer} key={this.props.game.url}>
-        <View style={GameStyles.gameStateContainer}>
-          <View style={GameStyles.scoreContainer}>
-            <Score
-              awayScore={this.props.game.awayScore}
-              awayTeam={this.props.game.awayTeam}
-              homeScore={this.props.game.homeScore}
-              homeTeam={this.props.game.homeTeam}
-            />
-            <TouchableOpacity
-              style={GameStyles.finalTxtContainer}
-              onPress={() => Linking.openURL(this.props.game.url)}
-            >
-              <Text style={GameStyles.finalTxt}>F</Text>
-            </TouchableOpacity>
+      <View style={GameStyles.postGameContainer}>
+        <View style={GameStyles.nonLiveGameContainer} key={this.props.game.url}>
+          <View style={GameStyles.gameStateContainer}>
+            <View style={GameStyles.scoreContainer}>
+              <Score
+                awayScore={this.props.game.awayScore}
+                awayTeam={this.props.game.awayTeam}
+                homeScore={this.props.game.homeScore}
+                homeTeam={this.props.game.homeTeam}
+              />
+              <TouchableOpacity
+                style={GameStyles.finalTxtContainer}
+                onPress={() => Linking.openURL(this.props.game.url)}
+              >
+                <Text style={GameStyles.finalTxt}>F</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
