@@ -54,7 +54,7 @@ export interface NoGameProps {
 }
 
 
-const GameContainer = (props:GameProps) => {
+const GameContainer = (props: GameProps) => {
   const animate = new Animated.Value(0)
   const [scaleValue] = useState(animate)
 
@@ -135,7 +135,7 @@ const GamesContainer = () => {
 
   const fetchGames = async () => {
     try {
-      ConvertGames().then(cg => {setGames(cg)})
+      ConvertGames().then(cg => { setGames(cg) })
     } catch (err) {
       console.log(err)
     }
@@ -155,18 +155,18 @@ const GamesContainer = () => {
     const renderItem = ({ item }) => {
       switch (item.viewType) {
         case "post":
-          return <PostGameContainer game={item}/>
+          return <PostGameContainer game={item} />
         case "pre":
-          return <PreGameContainer game={item}/>
+          return <PreGameContainer game={item} />
         default:
-          return <GameContainer game={item}/>
+          return <GameContainer game={item} />
       }
     }
 
     return (
-      <FlatList 
-        data={games} 
-        renderItem={renderItem} 
+      <FlatList
+        data={games}
+        renderItem={renderItem}
         keyExtractor={item => item.url}
         showsHorizontalScrollIndicator={false}
       />
@@ -252,13 +252,13 @@ export class PreGameContainer extends React.Component<PreGameProps, GameState> {
       >
         <View style={GameStyles.nonLiveGameContainer}>
           <View style={LogoStyles.logoContainer}>
-            <TeamLogo id={this.props.game.awayTeam.id} />
+            {this.props.game.awayTeam ? <TeamLogo id={this.props.game.awayTeam.id} /> : <TeamLogo id={0} />}
           </View>
           <View style={GameStyles.atContainer}>
             <Text style={GameStyles.atTxt}>@</Text>
           </View>
           <View style={LogoStyles.logoContainer}>
-            <TeamLogo id={this.props.game.homeTeam.id} />
+            {this.props.game.homeTeam ? <TeamLogo id={this.props.game.homeTeam.id} /> : <TeamLogo id={0} />}
           </View>
           <TouchableOpacity
             onPress={() => Linking.openURL(this.props.game.url)}
@@ -280,23 +280,21 @@ export class PostGameContainer extends React.Component<PostGameProps> {
 
   render() {
     return (
-      <View style={GameStyles.postGameContainer}>
-        <View style={GameStyles.nonLiveGameContainer} key={this.props.game.url}>
-          <View style={GameStyles.gameStateContainer}>
-            <View style={GameStyles.scoreContainer}>
-              <Score
-                awayScore={this.props.game.awayScore}
-                awayTeam={this.props.game.awayTeam}
-                homeScore={this.props.game.homeScore}
-                homeTeam={this.props.game.homeTeam}
-              />
-              <TouchableOpacity
-                style={GameStyles.finalTxtContainer}
-                onPress={() => Linking.openURL(this.props.game.url)}
-              >
-                <Text style={GameStyles.finalTxt}>F</Text>
-              </TouchableOpacity>
-            </View>
+      <View style={GameStyles.nonLiveGameContainer} key={this.props.game.url}>
+        <View style={GameStyles.gameStateContainer}>
+          <View style={GameStyles.scoreContainer}>
+            <Score
+              awayScore={this.props.game.awayScore}
+              awayTeam={this.props.game.awayTeam}
+              homeScore={this.props.game.homeScore}
+              homeTeam={this.props.game.homeTeam}
+            />
+            <TouchableOpacity
+              style={GameStyles.finalTxtContainer}
+              onPress={() => Linking.openURL(this.props.game.url)}
+            >
+              <Text style={GameStyles.finalTxt}>F</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
