@@ -57,6 +57,7 @@ export const GameStyles = StyleSheet.create({
     borderRadius: 20,
     flex: 1,
     flexDirection: "row",
+    height: 120,
     minHeight: 120,
     maxHeight: 120,
     marginTop: 12,
@@ -64,6 +65,7 @@ export const GameStyles = StyleSheet.create({
     shadowColor: "#153600",
     shadowOffset: { height: 6, width: 6 },
     shadowOpacity: 0.5,
+    width: 400
   },
   inningStateContainer: {
     backgroundColor: "#55D400",
@@ -102,12 +104,14 @@ export const GameStyles = StyleSheet.create({
     borderColor: "#593811",
     borderWidth: 3,
     borderRadius: 20,
+    height: 86,
     minHeight: 86,
     marginTop: 20,
     padding: 20,
     shadowColor: "#153600",
     shadowOffset: { height: 6, width: 6 },
     shadowOpacity: 0.5,
+    width: 400
   },
   noGamesText: {
     color: "#63513c",
@@ -131,6 +135,7 @@ export const GameStyles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 20,
     flexDirection: "row",
+    height: 122,
     marginTop: 12,
     maxHeight: 122,
     minWidth: 400,
@@ -139,7 +144,8 @@ export const GameStyles = StyleSheet.create({
     justifyContent: "space-evenly",
     shadowColor: "#153600",
     shadowOffset: { height: 6, width: 6 },
-    shadowOpacity: 0.5
+    shadowOpacity: 0.5,
+    width: 400
   },
   preGameTime: {
     color: "#593811",
