@@ -138,6 +138,7 @@ const App = () => {
             name="Settings"
             component={SettingsScreen}
             options={{
+              headerShown: false,
               tabBarLabel: "Settings",
               tabBarIcon: ({ focused, color, size }) => (
                 <Ionicons name="construct-outline" size={24} color={"#63513c"} />
@@ -148,6 +149,7 @@ const App = () => {
             name="Games"
             component={GamesScreen}
             options={{
+              headerShown: false,
               tabBarLabel: "Games",
               tabBarIcon: ({ focused, color, size }) => (
                 <Ionicons name="baseball-outline" color={"#63513c"} size={24} />
