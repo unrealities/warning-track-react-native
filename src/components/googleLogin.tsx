@@ -11,6 +11,7 @@ interface IGoogleLoginProps {
     user: User,
 }
 
+// TODO: Uncaught Error: Client Id property `webClientId` must be defined to use Google auth on this platform.
 const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
     const [user, setUser] = useState<User>(props.user)
     const [signedInUser, setSignedInUser] = useState<boolean>(false)
