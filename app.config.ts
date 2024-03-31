@@ -17,18 +17,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     },
     assetBundlePatterns: ["assets/images/*"],
     description: "Mobile version of warningtrack.co",
-    extra: {
-      firebaseApiKey: process.env.EXPO_PUBLIC_FIREBASE_APIKEY || "",
-      firebaseAppId: process.env.EXPO_PUBLIC_FIREBASE_APPID || "",
-      firebaseMeasurementId: process.env.EXPO_PUBLIC_FIREBASE_MEASUREMENTID || "",
-      firebaseMessagingSenderId: process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDERID || "",
-      firebaseProjectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECTID || "",
-      themoviedb_key: process.env.EXPO_PUBLIC_THEMOVIEDB_APIKEY || "",
-      expoClientId: process.env.EXPO_PUBLIC_CLIENTID_EXPO || "",
-      iosClientId: process.env.EXPO_PUBLIC_CLIENTID_IOS || "",
-      iosURLConfig: process.env.EXPO_PUBLIC_IOS_URLSCHEME || "",
-      webClientId: process.env.EXPO_PUBLIC_CLIENTID_WEB || "",
-    },
     githubUrl: "https://github.com/unrealities/warning-track-react-native",
     icon: "./assets/images/wt.png",
     ios: {

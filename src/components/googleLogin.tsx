@@ -11,15 +11,15 @@ interface IGoogleLoginProps {
     user: User,
 }
 
-// TODO: Uncaught Error: Client Id property `webClientId` must be defined to use Google auth on this platform.
+// TODO: Do no use EXPO_PUBLIC
 const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
     const [user, setUser] = useState<User>(props.user)
     const [signedInUser, setSignedInUser] = useState<boolean>(false)
     const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-        androidClientId: Constants?.expoConfig?.extra?.androidClientId,
-        expoClientId: Constants?.expoConfig?.extra?.expoClientId,
-        iosClientId: Constants?.expoConfig?.extra?.iosClientId,
-        webClientId: Constants?.expoConfig?.extra?.webClientId,
+        androidClientId: process.env.EXPO_PUBLIC_CLIENTID_ANDROID,
+        expoClientId: process.env.EXPO_PUBLIC_CLIENTID_EXPO,
+        iosClientId: process.env.EXPO_PUBLIC_CLIENTID_IOS,
+        webClientId: process.env.EXPO_PUBLIC_CLIENTID_WEB,
         scopes: [
             'profile',
             'email',
@@ -46,11 +46,9 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
     useEffect(() => {
         const googleLogIn = async () => {
             const auth = getAuth()
-
             try {
                 if (response?.type === 'success') {
                     const { id_token } = response.params
-                    const auth = getAuth()
                     const creds = GoogleAuthProvider.credential(id_token)
                     const res = await signInWithCredential(auth, creds)
                     const token = await res.user.getIdToken()
