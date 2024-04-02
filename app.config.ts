@@ -24,7 +24,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       infoPlist: {
         CFBundleURLTypes: [
           {
-            CFBundleURLSchemes: [process.env.CLIENTID_IOS],
+            CFBundleURLSchemes: [process.env.EXPO_PUBLIC_CLIENTID_IOS],
           },
         ],
       },
