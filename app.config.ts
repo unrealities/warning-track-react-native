@@ -20,7 +20,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     githubUrl: "https://github.com/unrealities/warning-track-react-native",
     icon: "./assets/images/wt.png",
     ios: {
-      bundleIdentifier: "com.unrealities.warningtrackbackend",
+      bundleIdentifier: "co.warningtrack.ios",
       infoPlist: {
         CFBundleURLTypes: [
           {
