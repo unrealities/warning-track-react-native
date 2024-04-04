@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { initializeApp } from 'firebase/app'
 import { doc, getFirestore, setDoc } from 'firebase/firestore'
-import { Button, FlatList, StyleSheet, Switch, Text, View } from 'react-native'
+import { FlatList, Pressable, StyleSheet, Switch, Text, View } from 'react-native'
 import * as Notifications from 'expo-notifications'
 
 import UserSettings from '../models/userSettings'
@@ -73,7 +73,9 @@ const SettingContainer = (props: SettingContainerProps) => {
 
     return (
         <View style={styles.container}>
-            <Button onPress={triggerNotifications} title="Trigger Local Notifications" color="#841584" accessibilityLabel="Trigger Local Notifications" />
+            <Pressable style={styles.button} onPress={triggerNotifications}>
+                <Text>Trigger Local Notifications</Text>
+            </Pressable>
             <Text style={styles.text}>{name}</Text>
             <Switch
                 trackColor={{ false: '#767577', true: '#81b0ff' }}
@@ -88,6 +90,16 @@ const SettingContainer = (props: SettingContainerProps) => {
 }
 
 const styles = StyleSheet.create({
+    button: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        elevation: 3,
+        width: 200
+    },
     container: {
         alignItems: 'center',
         alignSelf: 'center',
@@ -97,7 +109,6 @@ const styles = StyleSheet.create({
         maxWidth: 300
     },
     switch: {
-        float: 'left',
         flex: 1,
         maxWidth: 36
     },
