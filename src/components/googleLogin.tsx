@@ -27,7 +27,7 @@ const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
             'https://www.googleapis.com/auth/userinfo.email',
             'https://www.googleapis.com/auth/userinfo.profile',
         ],
-    })
+    },{ native: 'exp://' })
 
     const onLoginSucceeded = async (token: string, res: UserCredential) => {
         user.id = await getUserID()

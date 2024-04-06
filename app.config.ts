@@ -47,7 +47,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         }
       ]
     ],
-    scheme: "warningtrack",
+    scheme: "co.warningtrack",
     slug: myValue,
     splash: {
       backgroundColor: "#44aa00",

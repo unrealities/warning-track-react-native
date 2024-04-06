@@ -40,6 +40,7 @@
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="co.warningtrack.android"/>
         <data android:scheme="com.unrealities.warningtrackbackend"/>
+        <data android:scheme="co.warningtrack"/>
         <data android:scheme="exp+warning-track-backend"/>
       </intent-filter>
     </activity>
