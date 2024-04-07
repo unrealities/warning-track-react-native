@@ -38,6 +38,7 @@
     "expo-google-sign-in": "^10.1.1",
     "expo-image": "~1.10.6",
     "expo-linking": "^6.2.2",
+    "expo-location": "~16.5.5",
     "expo-modules-autolinking": "~1.10.0",
     "expo-network": "~5.8.0",
     "expo-notifications": "~0.27.6",
@@ -52,6 +53,7 @@
     "latest": "^0.2.0",
     "metro-react-native-babel-preset": "^0.77.0",
     "moment": "^2.29.1",
+    "npm": "^10.5.1",
     "query-string": "^6.13.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -64,8 +66,7 @@
     "react-native-unimodules": "~0.14.5",
     "react-native-uuid": "^2.0.1",
     "react-native-web": "~0.19.6",
-    "webpack-merge": "^5.8.0",
-    "expo-location": "~16.5.5"
+    "webpack-merge": "^5.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
