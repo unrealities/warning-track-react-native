@@ -11,6 +11,37 @@ interface IGoogleLoginProps {
     user: User,
 }
 
+// TODO: maybe try this
+
+// import { makeRedirectUri } from 'expo-auth-session';
+// import Constants from 'expo-constants';
+// import * as Google from 'expo-auth-session/providers/google';
+
+// const EXPO_REDIRECT_PARAMS = {
+//   useProxy: true,
+//   projectNameForProxy: '@yourUsername/yourScheme',
+// };
+
+// const NATIVE_REDIRECT_PARAMS = { native: 'yourScheme://' };
+
+// const REDIRECT_PARAMS =
+//   Constants.appOwnership === 'expo'
+//     ? EXPO_REDIRECT_PARAMS
+//     : NATIVE_REDIRECT_PARAMS;
+
+// const GOOGLE_CONFIG = {
+//   androidClientId: '...',
+//   webClientId: '...',
+//   iosClientId: '...',
+//   redirectUri: makeRedirectUri(REDIRECT_PARAMS),
+// };
+
+// const LoginPage = ()=> {
+//      const [request, response, promptAsync] = Google.useAuthRequest(GOOGLE_CONFIG)
+//      ...
+
+// }
+
 // TODO: Do no use EXPO_PUBLIC
 const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
     const [user, setUser] = useState<User>(props.user)
