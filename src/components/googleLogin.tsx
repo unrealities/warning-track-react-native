@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { Pressable, StyleSheet, Text, View } from "react-native"
 import { GoogleAuthProvider, UserCredential, getAuth, onAuthStateChanged, signInWithCredential, signOut } from "firebase/auth"
+import { makeRedirectUri } from 'expo-auth-session'
+import Constants from "expo-constants"
 import * as Google from 'expo-auth-session/providers/google'
-import Constants from 'expo-constants'
 
 import { getGoogleID, getUserID, getUserSettings, setGoogleID, setName, setUserSettings } from '../utilities/hooks/localStorage'
 import User from '../models/user'
@@ -11,54 +12,31 @@ interface IGoogleLoginProps {
     user: User,
 }
 
-// TODO: maybe try this
+const EXPO_REDIRECT_PARAMS = {
+    useProxy: true,
+    projectNameForProxy: '@unrealities/warning-track' // get this from a variable
+}
 
-// import { makeRedirectUri } from 'expo-auth-session';
-// import Constants from 'expo-constants';
-// import * as Google from 'expo-auth-session/providers/google';
+const NATIVE_REDIRECT_PARAMS = { native: 'warning-track://' } // get this from a variable
 
-// const EXPO_REDIRECT_PARAMS = {
-//   useProxy: true,
-//   projectNameForProxy: '@yourUsername/yourScheme',
-// };
+const REDIRECT_PARAMS =
+  Constants.appOwnership === 'expo'
+    ? EXPO_REDIRECT_PARAMS
+    : NATIVE_REDIRECT_PARAMS
 
-// const NATIVE_REDIRECT_PARAMS = { native: 'yourScheme://' };
-
-// const REDIRECT_PARAMS =
-//   Constants.appOwnership === 'expo'
-//     ? EXPO_REDIRECT_PARAMS
-//     : NATIVE_REDIRECT_PARAMS;
-
-// const GOOGLE_CONFIG = {
-//   androidClientId: '...',
-//   webClientId: '...',
-//   iosClientId: '...',
-//   redirectUri: makeRedirectUri(REDIRECT_PARAMS),
-// };
-
-// const LoginPage = ()=> {
-//      const [request, response, promptAsync] = Google.useAuthRequest(GOOGLE_CONFIG)
-//      ...
-
-// }
+const GOOGLE_CONFIG = {
+  androidClientId: process.env.EXPO_PUBLIC_CLIENTID_ANDROID,
+  expoClientId: process.env.EXPO_PUBLIC_CLIENTID_EXPO,
+  iosClientId: process.env.EXPO_PUBLIC_CLIENTID_IOS,
+  redirectUri: makeRedirectUri(REDIRECT_PARAMS),
+  webClientId: process.env.EXPO_PUBLIC_CLIENTID_WEB,
+}
 
 // TODO: Do no use EXPO_PUBLIC
 const GoogleLogin: React.FC<IGoogleLoginProps> = (props: IGoogleLoginProps) => {
     const [user, setUser] = useState<User>(props.user)
     const [signedInUser, setSignedInUser] = useState<boolean>(false)
-    const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-        androidClientId: process.env.EXPO_PUBLIC_CLIENTID_ANDROID,
-        expoClientId: process.env.EXPO_PUBLIC_CLIENTID_EXPO,
-        iosClientId: process.env.EXPO_PUBLIC_CLIENTID_IOS,
-        webClientId: process.env.EXPO_PUBLIC_CLIENTID_WEB,
-        scopes: [
-            'profile',
-            'email',
-            'openid',
-            'https://www.googleapis.com/auth/userinfo.email',
-            'https://www.googleapis.com/auth/userinfo.profile',
-        ],
-    },{ native: 'exp://' })
+    const [request, response, promptAsync] = Google.useAuthRequest(GOOGLE_CONFIG)
 
     const onLoginSucceeded = async (token: string, res: UserCredential) => {
         user.id = await getUserID()
