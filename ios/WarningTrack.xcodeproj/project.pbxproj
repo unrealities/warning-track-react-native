@@ -291,7 +291,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.unrealities.warningtrackbackend";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.warningtrack.ios";
 				PRODUCT_NAME = "warningtrackbackend";
 				VERSIONING_SYSTEM = "apple-generic";
 				TARGETED_DEVICE_FAMILY = "1";
@@ -314,7 +314,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.unrealities.warningtrackbackend";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.warningtrack.ios";
 				PRODUCT_NAME = "warningtrackbackend";
 				VERSIONING_SYSTEM = "apple-generic";
 				TARGETED_DEVICE_FAMILY = "1";
