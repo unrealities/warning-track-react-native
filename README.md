@@ -27,10 +27,6 @@ There are credentials that you need to get from Google that are stored in `/andr
 
 `npx expo prebuild`
 
-## dotenv
-
-[dotenv](https://www.npmjs.com/package/dotenv) is used to to store environment variables in `.env` that is excluded from this repo. This data is read in via `app.config.js`
-
 ## note to self
 
 This app will show you the current games as long as the google function is run. Google login works. You have the tools necessary for notifications to work, but it is currently a static 'hello world' that does not integrate with the app.
