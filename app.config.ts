@@ -38,6 +38,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     name: myValue,
     platforms: ["ios", "android", "web"],
     plugins: [
+      [ "expo-asset"],
+      [ "expo-font"],
       [ "expo-router"],
       [ "@react-native-google-signin/google-signin"],
       [ "expo-notifications",
