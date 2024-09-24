@@ -25,7 +25,7 @@
     "@react-navigation/stack": "^6.3.26",
     "ajv": "^8.12.0",
     "eas": "^0.1.0",
-    "expo": "~51.0.31",
+    "expo": "~51.0.34",
     "expo-app-loading": "^1.1.2",
     "expo-application": "~5.9.1",
     "expo-asset": "~10.0.10",
