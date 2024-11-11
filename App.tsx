@@ -44,27 +44,26 @@ const App = () => {
   let [fontsLoaded] = useFonts({
     'Lobster-Regular': require('./assets/fonts/Lobster-Regular.ttf')
   })
+
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync()
     }
   }, [fontsLoaded])
 
-  let u: User = {
+  const [isNetworkConnected, setIsNetworkConnected] = useState<boolean>(true)
+  const [user, setUser] = useState<User>({
     id: uuid.v4().toString(),
     googleId: '',
     name: 'default'
-  }
-
-  const [isNetworkConnected, setIsNetworkConnected] = useState<boolean>(true)
-  const [user, setUser] = useState<User>(u)
+  })
   const Tab = createBottomTabNavigator()
 
   useEffect(() => {
     const setLocalUser = async () => {
-      u.id = await getUserID()
-      u.name = await getName()
-      setUser(u)
+      const id = await getUserID()
+      const name = await getName()
+      setUser({ ...user, id, name })
     }
 
     setLocalUser()
@@ -73,9 +72,8 @@ const App = () => {
   useEffect(() => {
     const networkConnected = async () => {
       try {
-        await Network.getNetworkStateAsync().then((networkState) => {
-          networkState.isInternetReachable ? setIsNetworkConnected(true) : setIsNetworkConnected(false)
-        })
+        const networkState = await Network.getNetworkStateAsync()
+        setIsNetworkConnected(networkState.isInternetReachable)
       } catch (e) {
         console.error("No network connection")
       }
@@ -87,10 +85,9 @@ const App = () => {
 
       try {
         if (!docSnap.exists()) {
-          getUserID().then(id => {
-            userToUpdate.id = id
-            setUser(userToUpdate)
-          })
+          const id = await getUserID()
+          userToUpdate.id = id
+          setUser(userToUpdate)
           await setDoc(doc(db, 'users', userToUpdate.id).withConverter(UserConverter), userToUpdate)
         }
       } catch (e) {
@@ -99,20 +96,21 @@ const App = () => {
     }
 
     const setCloudUser = async () => {
-      signInAnonymously(auth)
+      if (!auth.currentUser) {
+        await signInAnonymously(auth)
+      }
     }
 
     networkConnected()
     if (isNetworkConnected) {
-      // TODO: still infinite
-      // setCloudUser()
+      setCloudUser()
       updateUser(user)
     }
-  }, [user])
+  }, [isNetworkConnected])
 
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <NavigationContainer >
+      <NavigationContainer>
         <Tab.Navigator
           initialRouteName="Games"
           screenOptions={{
